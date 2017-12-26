@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>C++ a more in depth look into the language</title>
+<meta name="author" content="(Martin Nestorov)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:///home/mdn/reveal.js-3.6.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="file:///home/mdn/reveal.js-3.6.0/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:///home/mdn/reveal.js-3.6.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-26 вт 11:07</p>
+</section>
+
+<section>
+<section id="slide-orgae332c1">
+<h2 id="orgae332c1">Who am I?</h2>
+<ul>
+<li>Martin Nestorov</li>
+<li>Junior 2nd sem.</li>
+<li>I like to type . . . a lot</li>
+<li>email: mdn150@aubg.edu</li>
+<li>Twitter: @mnestorov</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc6f2230">
+<h2 id="orgc6f2230">Why I chose to make these small tutorials</h2>
+<ul>
+<li>People seem to have some problems with the transition from C++ to FDS</li>
+
+<li>I want to help!</li>
+<li>I want to also learn!</li>
+
+</ul>
+
+<p>
+#+BEGIN NOTES
+Over the course of the past several years I found a certain love for C++, but instead of just reading about the language and doing some small experiments with it,
+I wanted to share my knowledge and to get better at it. Seeing how some students struggle with C++ in the beginning I decided that I can help out. That way not only
+am I learning more in-depth concepts, but also I am making the lives of students easier (hopefully).
+#+END NOTES
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf4f1345">
+<h2 id="orgf4f1345">What we are going to cover</h2>
+<p>
+C++ as four sub-languages
+</p>
+<ul>
+<li>C</li>
+<li>OOP</li>
+<li>STL</li>
+<li>Templates</li>
+
+</ul>
+
+<p>
+#+BEGIN NOTES
+C++ can be generally divided into four sub-categories or sub-languages.
+It's a daunting task to go over all of these aspects and trying to teach everything, mainly because I can't! But instead I will try to cover some topics
+that haven't been covered in depth in the C++ lectures and are somewhat elude to the students. Now our list seems like this
+#+END NOTES
+</p>
+<ul>
+<li>File structure</li>
+<li>STL</li>
+<li>Memory management</li>
+<li>Templates</li>
+<li>Inheritance</li>
+<li>OOP</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="file:///home/mdn/reveal.js-3.6.0/lib/js/head.min.js"></script>
+<script src="file:///home/mdn/reveal.js-3.6.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'file:///home/mdn/reveal.js-3.6.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

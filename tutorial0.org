@@ -1,0 +1,45 @@
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_ROOT: file:///home/mdn/reveal.js-3.6.0
+#+REVEAL_TRANS: slide
+#+REVEAL_THEME: moon
+#+Title: C++ a more in depth look into the language
+#+Author: Martin Nestorov
+#+Email: mdn150@aubg.edu / @mdnestorov
+
+* Who am I?  
+    - Martin Nestorov
+    - Junior 2nd sem.
+    - I like to type . . . a lot
+    - email: mdn150@aubg.edu
+    - Twitter: @mnestorov
+
+* Why I chose to make these small tutorials
+  - People seem to have some problems with the transition from C++ to FDS
+
+  - I want to help!
+  - I want to also learn!
+
+#+BEGIN NOTES
+Over the course of the past several years I found a certain love for C++, but instead of just reading about the language and doing some small experiments with it,
+I wanted to share my knowledge and to get better at it. Seeing how some students struggle with C++ in the beginning I decided that I can help out. That way not only
+am I learning more in-depth concepts, but also I am making the lives of students easier (hopefully).
+#+END NOTES
+
+* What we are going to cover
+  C++ as four sub-languages
+  - C
+  - OOP
+  - STL
+  - Templates
+
+#+BEGIN NOTES
+C++ can be generally divided into four sub-categories or sub-languages.
+It's a daunting task to go over all of these aspects and trying to teach everything, mainly because I can't! But instead I will try to cover some topics
+that haven't been covered in depth in the C++ lectures and are somewhat elude to the students. Now our list seems like this
+#+END NOTES
+  - File structure
+  - STL
+  - Memory management
+  - Templates
+  - Inheritance
+  - OOP
