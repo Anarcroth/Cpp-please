@@ -19,7 +19,7 @@
   - I want to help!
   - I want to also learn!
 
-#+BEGIN NOTES
+#+BEGIN NOTES:
 Over the course of the past several years I found a certain love for C++, but instead of just reading about the language and doing some small experiments with it,
 I wanted to share my knowledge and to get better at it. Seeing how some students struggle with C++ in the beginning I decided that I can help out. That way not only
 am I learning more in-depth concepts, but also I am making the lives of students easier (hopefully).
@@ -32,7 +32,7 @@ am I learning more in-depth concepts, but also I am making the lives of students
   - STL
   - Templates
 
-#+BEGIN NOTES
+#+BEGIN NOTES:
 C++ can be generally divided into four sub-categories or sub-languages.
 It's a daunting task to go over all of these aspects and trying to teach everything, mainly because I can't! But instead I will try to cover some topics
 that haven't been covered in depth in the C++ lectures and are somewhat elude to the students. Now our list seems like this
@@ -43,3 +43,31 @@ that haven't been covered in depth in the C++ lectures and are somewhat elude to
   - Templates
   - Inheritance
   - OOP
+
+* File structure
+
+#+BEGIN NOTES:
+It has come to my attention that many people, while writing their homeworks, neglect the advantages of structuring their source files. This is most noticeable
+when they are writing the first 3 FDS homeworks or their FDS project. Being able to properly manage your project into several files and to navigate between them
+in an optimal and cohesive way will minimize your C++ suffering (and coding experience in general).
+
+Now most of you already know this, but there are several great advantages to separating your .CXX files from your .HXX files. One such advantage is that, multiple people
+can start working on several header files and instead of you waiting for them to be ready, you can continue with your work while they finish theirs. This separation of
+implementation is important, because it minimizes dev time. But because you will be working mostly alone with your solutions, you will see another great advantage of structuring
+your files. And that is - it will be much easier for you to understand what you are doing and thus will minimize debugging and problem fixing time.
+
+Since most of you are working with Visual Studio, here is how your structure looks like now:
+Picture 1
+
+And here is how you would want it to look.
+Picture 2
+
+Now I am not going to tell you how to add files and where ti put them, I will just show you how to properly implement header and source files and how to avoid collisions and
+also how to stop writing those damn "xfz.header" files.
+
+First things first.
+
+What's the difference between headers and source?
+Apart from the obvious name difference, header files are considered to be the definition part of the source code, while source (cpp) files are the implementation part.
+Keeping them separate allows us to keep a clean directory and structure and to separate our logic from our implementation.
+#+END NOTES
