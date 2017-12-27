@@ -53,7 +53,7 @@ in an optimal and cohesive way will minimize your C++ suffering (and coding expe
 
 Now most of you already know this, but there are several great advantages to separating your .CXX files from your .HXX files. One such advantage is that, multiple people
 can start working on several header files and instead of you waiting for them to be ready, you can continue with your work while they finish theirs. This separation of
-implementation is important, because it minimizes dev time. But because you will be working mostly alone with your solutions, you will see another great advantage of structuring
+implementation is important, because it minimizes dev time. But because you will be working mostly alone with your solutions, you will see another great adwhat steps does c++ go througt to runvantage of structuring
 your files. And that is - it will be much easier for you to understand what you are doing and thus will minimize debugging and problem fixing time.
 
 Since most of you are working with Visual Studio, here is how your structure looks like now:
@@ -71,3 +71,27 @@ What's the difference between headers and source?
 Apart from the obvious name difference, header files are considered to be the definition part of the source code, while source (cpp) files are the implementation part.
 Keeping them separate allows us to keep a clean directory and structure and to separate our logic from our implementation.
 #+END NOTES
+
+* How does compilation work?
+
+  There are 4 steps of compiling C++ code:
+  - Preprocessing
+  - Compilation
+  - Assembly
+  - Linking
+
+#+BEGIN NOTES:
+When we are trying to run a piece of code (in our case C++), the computer goes through several steps before we see the output, or the errors. 
+
+The first part is the so called preprocessing step, where the preprocessor handles the `preprocessor` directives. These are the `#include`, `#define`, `#if`, `#ifndef`, etc. pieces of code we put on the top
+of our files. At this stage, one file at a time, each of these directives are replaces with their respective pieces of code from other files (they are usually declarations). That is why when we have
+multiple source files, we include only the header files, because they only show us the declarations and not the definitions (thus we minimize time in this step). So after the
+directives have been replaced with the respective file contents or snippets of files (depending in the `#if` `#ifndef` and `#ifdef` and the macro #define keywords) we get at the end "pure C++" code.
+The preprocessor also adds line numbers so that the further steps can identify where the inserted code came from.
+As an example, if we write `#include <iostream>` we actually just insert the contents from the `iostream` file on the top of our main source file (again we must remember that most of
+the time, we are just including declarations).
+So at the end of all of this copying, we get a temporary file that is just C/C++ code. It's indicated by the `*.i` or `*.ii` file extension, meaning that this file is just C/C++ code and must not be preprocessed.
+We must note that the preprocessor is agnostic to the C++ syntax, that is why for instance, in Visual Studio we have the `#pragma` directive that tries to do the `#ifndef` directive work, but that's just a lie. 
+We have to be careful where and how we put our includes.
+
+After we have our "pure C++" code (ending with the *.i/*.ii) suffix, we are ready to move to the next step - Compilation.
