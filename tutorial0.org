@@ -99,4 +99,4 @@ that the compiler will see this variable and we won't bang our head against the 
 After we have our "pure C++" code (ending with the *.i/*.ii) suffix, we are ready to move to the next step - Compilation.
 
 The compilation step is another relatively simple phase, where the preprocessed pure C++ file is transformed into assembly code. From there the compiler invokes an underlying back-end (assembler tool-chain) and assembles the assembly code into
-machine code, thus producing an actual binary file (where there are different binary file formats such as: EFL, *.out, *COFF, SOM). This is the so called object file.
+machine code, thus producing an actual binary file (where there are different binary file formats such as: EFL, *.out, *COFF, SOM). This is the so called object file, which contains the compiled code into binary form of the symbols defined in the input. These symbols are of many different types and are referred to by name in the object file.
