@@ -47,7 +47,7 @@ that haven't been covered in depth in the C++ lectures and are somewhat elude to
 * File structure
 
 #+BEGIN NOTES:
-It has come to my attention that many people, while writing their homeworks, neglect the advantages of structuring their source files. This is most noticeable
+It has come to my attention that many people, while writing their homeworkshttps://en.wikipedia.org/wiki/Object_file, neglect the advantages of structuring their source files. This is most noticeable
 when they are writing the first 3 FDS homeworks or their FDS project. Being able to properly manage your project into several files and to navigate between them
 in an optimal and cohesive way will minimize your C++ suffering (and coding experience in general).
 
@@ -99,4 +99,23 @@ that the compiler will see this variable and we won't bang our head against the 
 After we have our "pure C++" code (ending with the *.i/*.ii) suffix, we are ready to move to the next step - Compilation.
 
 The compilation step is another relatively simple phase, where the preprocessed pure C++ file is transformed into assembly code. From there the compiler invokes an underlying back-end (assembler tool-chain) and assembles the assembly code into
-machine code, thus producing an actual binary file (where there are different binary file formats such as: EFL, *.out, *COFF, SOM). This is the so called object file, which contains the compiled code into binary form of the symbols defined in the input. These symbols are of many different types and are referred to by name in the object file.
+machine code, thus producing an actual binary file (where there are different binary file formats such as: EFL, *.out, *COFF, SOM). This is the so called object file, which contains the compiled code into binary form of the symbols defined in the input. This file is usually no directly executable. These symbols are of many different types and are referred to by name in the object file.
+
+* References
+  https://en.wikipedia.org/wiki/Object_file
+  https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation
+  http://www.cplusplus.com/doc/tutorial/preprocessor/
+  https://stackoverflow.com/questions/6264249/how-does-the-compilation-linking-process-work
+  https://stackoverflow.com/questions/12122446/how-does-c-linking-work-in-practice/30507725#30507725
+  http://www.iecc.com/linker/
+  https://www.airs.com/blog/archives/38
+  http://www.cirosantilli.com/elf-hello-world/
+  https://stackoverflow.com/questions/3322911/what-do-linkers-do/33690144#33690144
+  http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/compile.html
+  https://www.cprogramming.com/compilingandlinking.html
+  http://www.cplusplus.com/articles/2v07M4Gy/
+  http://www.tenouk.com/ModuleW.html
+  http://www.tenouk.com/Bufferoverflowc/Bufferoverflow1.html
+  http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/
+  https://en.wikipedia.org/wiki/Object_file
+  https://stackoverflow.com/questions/3880924/how-to-view-symbols-in-object-files
