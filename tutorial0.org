@@ -93,5 +93,9 @@ the time, we are just including declarations).
 So at the end of all of this copying, we get a temporary file that is just C/C++ code. It's indicated by the `*.i` or `*.ii` file extension, meaning that this file is just C/C++ code and must not be preprocessed.
 We must note that the preprocessor is agnostic to the C++ syntax, that is why for instance, in Visual Studio we have the `#pragma` directive that tries to do the `#ifndef` directive work, but that's just a lie. 
 We have to be careful where and how we put our includes.
+Tip: one of the things we want to do while writing C++ code is to minimize our reliance on the preprocessor. That is, if we are `#define`-ning macros as constants so that we can use them throughout our program, we might
+encounter strange errors, because these directives may be treated as not part of the language. As an example, if we write `#define A_RATIO 1.18` the preprocessor might skip the name and just include the double 1.18. Then
+if we get, or when we get, an error referring to 1.18, we might not know it's because it was a macro define lost from the preprocessor. Instead we can just use `const`s as such: `const double ARatio = 1.18;` Now we know
+that the compiler will see this variable and we won't bang our head against the wall with unnecessary errors.
 
 After we have our "pure C++" code (ending with the *.i/*.ii) suffix, we are ready to move to the next step - Compilation.
