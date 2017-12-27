@@ -83,14 +83,12 @@ Keeping them separate allows us to keep a clean directory and structure and to s
 #+BEGIN NOTES:
 When we are trying to run a piece of code (in our case C++), the computer goes through several steps before we see the output, or the errors. 
 
-The first part is the so called preprocessing step, where the preprocessor handles the `preprocessor` directives. These are the `#include`, `#define`, `#if`, `#ifndef`, etc. pieces of code we put on the top
-of our files. At this stage, one file at a time, each of these directives are replaces with their respective pieces of code from other files (they are usually declarations). That is why when we have
-multiple source files, we include only the header files, because they only show us the declarations and not the definitions (thus we minimize time in this step). So after the
-directives have been replaced with the respective file contents or snippets of files (depending in the `#if` `#ifndef` and `#ifdef` and the macro #define keywords) we get at the end "pure C++" code.
-The preprocessor also adds line numbers so that the further steps can identify where the inserted code came from.
-As an example, if we write `#include <iostream>` we actually just insert the contents from the `iostream` file on the top of our main source file (again we must remember that most of
-the time, we are just including declarations).
+The first part is the so called preprocessing step, where the preprocessor handles the `preprocessor` directives. These are the `#include`, `#define`, `#if`, `#ifndef`, `#ifdef` keywords we put on the top of our files. At this stage, one file at a time, each of these directives are replaces with their respective pieces of code from other files (they are usually only declarations). That is why when we have multiple source files, we include only the header files, because they only show us the declarations and not the definitions (thus we minimize time in this step). So after the directives have been replaced with the respective file contents or snippets of files (depending in the `#if` `#ifndef` and `#ifdef` and the macro #define keywords) we get at the end "pure C++" code. The preprocessor also adds line numbers so that the further steps can identify where the inserted code came from. As an example, if we write `#include <iostream>` we actually just insert the contents from the `iostream` file on the top of our main source file (again we must remember that most of the time, we are just including declarations).
+
+As a side note, this whole process is very similar for C code as well.
+
 So at the end of all of this copying, we get a temporary file that is just C/C++ code. It's indicated by the `*.i` or `*.ii` file extension, meaning that this file is just C/C++ code and must not be preprocessed.
+
 We must note that the preprocessor is agnostic to the C++ syntax, that is why for instance, in Visual Studio we have the `#pragma` directive that tries to do the `#ifndef` directive work, but that's just a lie. 
 We have to be careful where and how we put our includes.
 Tip: one of the things we want to do while writing C++ code is to minimize our reliance on the preprocessor. That is, if we are `#define`-ning macros as constants so that we can use them throughout our program, we might
@@ -99,3 +97,6 @@ if we get, or when we get, an error referring to 1.18, we might not know it's be
 that the compiler will see this variable and we won't bang our head against the wall with unnecessary errors.
 
 After we have our "pure C++" code (ending with the *.i/*.ii) suffix, we are ready to move to the next step - Compilation.
+
+The compilation step is another relatively simple phase, where the preprocessed pure C++ file is transformed into assembly code. From there the compiler invokes an underlying back-end (assembler tool-chain) and assembles the assembly code into
+machine code, thus producing an actual binary file (where there are different binary file formats such as: EFL, *.out, *COFF, SOM). This is the so called object file.
