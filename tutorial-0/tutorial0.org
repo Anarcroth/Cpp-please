@@ -141,3 +141,4 @@ The linker just links all of the object files into one executable file
   https://en.wikipedia.org/wiki/Object_file
   https://stackoverflow.com/questions/3880924/how-to-view-symbols-in-object-files
   https://stackoverflow.com/questions/69112/what-is-a-symbol-table
+  https://codeyarns.com/2014/08/07/how-to-list-symbols-in-object-file/
