@@ -96,10 +96,20 @@ encounter strange errors, because these directives may be treated as not part of
 if we get, or when we get, an error referring to 1.18, we might not know it's because it was a macro define lost from the preprocessor. Instead we can just use `const`s as such: `const double ARatio = 1.18;` Now we know
 that the compiler will see this variable and we won't bang our head against the wall with unnecessary errors.
 
+In order to get only the preprocessed file we can run the
+`g++ -E hello-world.cpp -o hello-world.ii`
+which will produce the `hello-world.ii` file and then we can look inside of it and find out what it includes.
+
 After we have our "pure C++" code (ending with the *.i/*.ii) suffix, we are ready to move to the next step - Compilation.
 
 The compilation step is another relatively simple phase, where the preprocessed pure C++ file is transformed into assembly code. From there the compiler invokes an underlying back-end (assembler tool-chain) and assembles the assembly code into
-machine code, thus producing an actual binary file (where there are different binary file formats such as: EFL, *.out, *COFF, SOM). This is the so called object file, which contains the compiled code into binary form of the symbols defined in the input. This file is usually no directly executable. These symbols are of many different types and are referred to by name in the object file.
+machine code, thus producing an actual binary file (where there are different binary file formats such as: EFL, a.out, *COFF, SOM). This is the so called object file, which contains the compiled code into binary form of the symbols defined in the input. This file is usually no directly executable. The object files also contain additional data in the form of sections, used for linking, debugging, symbolic cross-reference resolution, comments, re-allocations, program symbols, etc (sections can be `.text`, `.bss`, `.data`, `.reloc`, etc.). The object files contain the metadata that hold the memory locations (addressed) of the variables and functions (called symbols) into a associative data structure called a symbolic table. Note that these addresses might not be the final addresses of the symbol in the final executable. The things that might be interesting to us is the symbol table. This is a data structure in the object file that's basically a name and an index. It maps different items in the object file to names that the linker can understand. If you call a function from your code, the compiler doesn't put the final address of the routine in the object file. Instead, it puts a placeholder value into the code and adds a note that tells the linker to look up the reference in the various symbol tables from all the object files it's processing and stick the final location there.
+One big advantage to this is that the compiler can stop the compilation at this phase. Because you won't need to re-compile every file, but only those that have been change, you can specify which files to compile and save time. IDEs and some other tools can do this automatically and check the timestamps of the files and only compile those source codes which have been modified.
+On the compilation step we get the normal compiler errors, such as syntax errors, failed function overload errors, etc.
+
+Once we have the object file we can transform it into special executables, static libraries. Here the linker comes into play.
+
+The linker just links all of the object files into one executable file
 
 * References
   https://en.wikipedia.org/wiki/Object_file
@@ -119,3 +129,4 @@ machine code, thus producing an actual binary file (where there are different bi
   http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/
   https://en.wikipedia.org/wiki/Object_file
   https://stackoverflow.com/questions/3880924/how-to-view-symbols-in-object-files
+  https://stackoverflow.com/questions/69112/what-is-a-symbol-table
