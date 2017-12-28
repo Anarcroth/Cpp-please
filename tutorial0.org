@@ -1,0 +1,149 @@
+#+OPTIONS: num:nil toc:nil
+#+REVEAL_ROOT: file:///home/mdn/reveal.js-3.6.0
+#+REVEAL_TRANS: slide
+#+REVEAL_THEME: moon
+#+Title: C++ a more in depth look into the language
+#+Author: Martin Nestorov
+#+Email: mdn150@aubg.edu / @mdnestorov
+
+* Who am I?  
+    - Martin Nestorov
+    - Junior 2nd sem.
+    - I like to type . . . a lot
+    - email: mdn150@aubg.edu
+    - Twitter: @mnestorov
+
+* Why I chose to make these small tutorials
+  - People seem to have some problems with the transition from C++ to FDS
+
+  - I want to help!
+  - I want to also learn!
+
+#+BEGIN NOTES:
+Over the course of the past several years I found a certain love for C++, but instead of just reading about the language and doing some small experiments with it,
+I wanted to share my knowledge and to get better at it. Seeing how some students struggle with C++ in the beginning I decided that I can help out. That way not only
+am I learning more in-depth concepts, but also I am making the lives of students easier (hopefully).
+#+END NOTES
+
+* What we are going to cover
+  C++ as four sub-languages
+  - C
+  - OOP
+  - STL
+  - Templates
+
+#+BEGIN NOTES:
+C++ can be generally divided into four sub-categories or sub-languages.
+It's a daunting task to go over all of these aspects and trying to teach everything, mainly because I can't! But instead I will try to cover some topics
+that haven't been covered in depth in the C++ lectures and are somewhat elude to the students. Now our list seems like this
+#+END NOTES
+  - File structure
+  - STL
+  - Memory management
+  - Templates
+  - Inheritance
+  - OOP
+
+* File structure
+
+#+BEGIN NOTES:
+It has come to my attention that many people, while writing their homeworkshttps://en.wikipedia.org/wiki/Object_file, neglect the advantages of structuring their source files. This is most noticeable
+when they are writing the first 3 FDS homeworks or their FDS project. Being able to properly manage your project into several files and to navigate between them
+in an optimal and cohesive way will minimize your C++ suffering (and coding experience in general).
+
+Now most of you already know this, but there are several great advantages to separating your .CXX files from your .HXX files. One such advantage is that, multiple people
+can start working on several header files and instead of you waiting for them to be ready, you can continue with your work while they finish theirs. This separation of
+implementation is important, because it minimizes dev time. But because you will be working mostly alone with your solutions, you will see another great adwhat steps does c++ go througt to runvantage of structuring
+your files. And that is - it will be much easier for you to understand what you are doing and thus will minimize debugging and problem fixing time.
+
+Since most of you are working with Visual Studio, here is how your structure looks like now:
+Picture 1
+
+And here is how you would want it to look.
+Picture 2
+
+Now I am not going to tell you how to add files and where ti put them, I will just show you how to properly implement header and source files and how to avoid collisions and
+also how to stop writing those damn "xfz.header" files.
+
+First things first.
+
+What's the difference between headers and source?
+Apart from the obvious name difference, header files are considered to be the definition part of the source code, while source (cpp) files are the implementation part.
+Keeping them separate allows us to keep a clean directory and structure and to separate our logic from our implementation.
+#+END NOTES
+
+* How does compilation work?
+
+  There are 3 steps of compiling C++ code:
+  - Preprocessing
+  - Compilation
+    - Compilation
+    - Assembly
+  - Linking
+
+#+BEGIN NOTES:
+When we are trying to run a piece of code (in our case C++), the computer goes through several steps before we see the output, or the errors. 
+
+The first part is the so called preprocessing step, where the preprocessor handles the `preprocessor` directives. These are the `#include`, `#define`, `#if`, `#ifndef`, `#ifdef` keywords we put on the top of our files. At this stage, one file at a time, each of these directives are replaces with their respective pieces of code from other files (they are usually only declarations). That is why when we have multiple source files, we include only the header files, because they only show us the declarations and not the definitions (thus we minimize time in this step). So after the directives have been replaced with the respective file contents or snippets of files (depending in the `#if` `#ifndef` and `#ifdef` and the macro #define keywords) we get at the end "pure C++" code. The preprocessor also adds line numbers so that the further steps can identify where the inserted code came from. As an example, if we write `#include <iostream>` we actually just insert the contents from the `iostream` file on the top of our main source file (again we must remember that most of the time, we are just including declarations).
+
+As a side note, this whole process is very similar for C code as well.
+
+So at the end of all of this copying, we get a temporary file that is just C/C++ code. It's indicated by the `*.i` or `*.ii` file extension, meaning that this file is just C/C++ code and must not be preprocessed.
+
+We must note that the preprocessor is agnostic to the C++ syntax, that is why for instance, in Visual Studio we have the `#pragma` directive that tries to do the `#ifndef` directive work, but that's just a lie. 
+We have to be careful where and how we put our includes.
+Tip: one of the things we want to do while writing C++ code is to minimize our reliance on the preprocessor. That is, if we are `#define`-ning macros as constants so that we can use them throughout our program, we might
+encounter strange errors, because these directives may be treated as not part of the language. As an example, if we write `#define A_RATIO 1.18` the preprocessor might skip the name and just include the double 1.18. Then
+if we get, or when we get, an error referring to 1.18, we might not know it's because it was a macro define lost from the preprocessor. Instead we can just use `const`s as such: `const double ARatio = 1.18;` Now we know
+that the compiler will see this variable and we won't bang our head against the wall with unnecessary errors.
+
+In order to get only the preprocessed file we can run the
+`g++ -E hello-world.cpp -o hello-world.ii`
+which will produce the `hello-world.ii` file and then we can look inside of it and find out what it includes.
+
+After we have our "pure C++" code (ending with the `*.i/*.ii`) suffix, we are ready to move to the next step - Compilation.
+
+---
+
+The compilation step is another relatively simple phase, where the preprocessed pure C++ file is transformed into assembly code. From there the compiler invokes an underlying back-end (assembler tool-chain) and assembles the assembly code into
+machine code, thus producing an actual binary file (where there are different binary file formats such as: EFL, a.out, *COFF, SOM). This is the so called object file, which contains the compiled code into binary form of the symbols defined in the input. This file is usually no directly executable. The object files also contain additional data in the form of sections, used for linking, debugging, symbolic cross-reference resolution, comments, re-allocations, program symbols, etc (sections can be `.text`, `.bss`, `.data`, `.reloc`, etc.). The object files contain the metadata that hold the memory locations (addressed) of the variables and functions (called symbols) into a associative data structure called a symbolic table. Note that these addresses might not be the final addresses of the symbol in the final executable. The things that might be interesting to us is the symbol table. This is a data structure in the object file that's basically a name and an index. It maps different items in the object file to names that the linker can understand. If you call a function from your code, the compiler doesn't put the final address of the routine in the object file. Instead, it puts a placeholder value into the code and adds a note that tells the linker to look up the reference in the various symbol tables from all the object files it's processing and stick the final location there.
+
+To get the object file we can run
+`g++ -c hello-world.ii` or `g++ -c hello-world.cpp`
+and we can then look inside what an object file looks like with
+`nm hello-world.o` or `objdump -t hello-world.o`
+
+One big advantage to this is that the compiler can stop the compilation at this phase. Because you won't need to re-compile every file, but only those that have been change, you can specify which files to compile and save time. IDEs and some other tools can do this automatically and check the timestamps of the files and only compile those source codes which have been modified.
+On the compilation step we get the normal compiler errors, such as syntax errors, failed function overload errors, etc.
+
+Once we have the object file we can transform it into special executables, shared, or dynamic libraries. Here the linker comes into play.
+
+---
+
+The linker just links all of the object files into one executable file. The just of it is that the linker links object files by resolving undefined definitions of functions in the object files. That is, it goes through the object files and for every undefined function it tries to replace the reference of the undefined symbol with the correct address in another object file or in the standard library. This is the last step where we can take the `.exe` file, load it into memory and run it. At the linking stage we get different errors, such as multiple function definitions, or undefined functions, undefined object, missing references, etc.
+
+---
+
+Conclusion - we can see that this is somewhat of a long process, where a lot of steps take place. This is done, from one point of view, for easier implementation and reduction of complexity.
+
+* References
+  https://en.wikipedia.org/wiki/Object_file
+  https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation
+  http://www.cplusplus.com/doc/tutorial/preprocessor/
+  https://stackoverflow.com/questions/6264249/how-does-the-compilation-linking-process-work
+  https://stackoverflow.com/questions/12122446/how-does-c-linking-work-in-practice/30507725#30507725
+  http://www.iecc.com/linker/
+  https://www.airs.com/blog/archives/38
+  http://www.cirosantilli.com/elf-hello-world/
+  https://stackoverflow.com/questions/3322911/what-do-linkers-do/33690144#33690144
+  http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/compile.html
+  https://www.cprogramming.com/compilingandlinking.html
+  http://www.cplusplus.com/articles/2v07M4Gy/
+  http://www.tenouk.com/ModuleW.html
+  http://www.tenouk.com/Bufferoverflowc/Bufferoverflow1.html
+  http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/
+  https://en.wikipedia.org/wiki/Object_file
+  https://stackoverflow.com/questions/3880924/how-to-view-symbols-in-object-files
+  https://stackoverflow.com/questions/69112/what-is-a-symbol-table
+  https://codeyarns.com/2014/08/07/how-to-list-symbols-in-object-file/
+  http://nickdesaulniers.github.io/blog/2016/11/20/static-and-dynamic-libraries/
