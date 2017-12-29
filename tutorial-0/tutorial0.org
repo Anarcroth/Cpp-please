@@ -138,11 +138,44 @@ Conclusion - we can see that this is somewhat of a long process, where a lot of 
 
 * Memory layout
 
+  The memory layout can be divided into five sections:
+  - text
+  - data
+  - bss
+  - stack
+  - heap
+
+#+BEGIN NOTES:
+  The different segments in memory are the text, data, bss, stack, and heap.
+  
+  The text segment holds the executable instructions inside. The OS tries to make is so that if the same program is running on multiple instances, this part of the code is shared between the individual processes, instead of being copied multiple times.
+
+  The data segment is where the non zero initialized global and statically allocated variables are. Each running instance of the program has an individual segment holding this piece of data.
+
+  The bss segment (Block Started by Symbol) is where all of the zero initialized global and statically allocated variables are. Again, each running instance has an individual bss segment. While running the bss segment is stored in the data segment, but in the execution file it is stored in the bss section.
+
+  The heap is the dynamic part of the memory allocation (C uses `malloc()`, `calloc()`, and `realloc()`, while C++ has `new`). Everything in this part of the memory is anonymous and needs a pointer to gain access to it. When we allocate new memory the process address space grows upwards. This means that as new items are added, the addresses of those items are numerically greater than the addresses of the previous ones. To free up memory from the heap we use `free()` for C and `delete` for C++, thus leaving holes in the memory. This means that when you are allocating objects to the heap and then deleting them, because of their different size, you might get into the situation where some deleted object free up space between objects that are still on the heap. Thus physically leaving free space that cannot be used by larger objects. This is the idea of leaving holes. 
+  
+  We can picture it as if we have a blank wall and then start arranging pictures on it. If we are not careful with our picture arrangement we might get most of the pictures on the wall, but at some point we might get small free spaces that are just blank wall. Thus we technically do have space for more pictures, but this space is fragmented and unusable for bigger pictures (presuming that we cannot chop up our pictures into pieces). This is the same with the memory allocation and de-allocation on the heap. On our machines, where we have virtual memory, we don't really experience this problem, because it is important for the virtual memory to have the object into one continuous block. We can experience this problem of memory fragmentation when we start getting allocation errors (such as `malloc()` returning `null`, or when we cannot free up memory properly, or when our program takes too long to reallocate memory.
+  To overcome this problem we might use some tactical position of object creation to avoid such problems. We can allocate objects from different areas according to their size and/or their expected lifetime. So if you're going to create a lot of objects and destroy them all together later, allocate them from a memory pool. Any other allocations you do in between them won't be from the pool, hence won't be located in between them in memory, so memory will not be fragmented as a result (Using a good algorithm for allocating memory, we can, instead of allocating memory for a lot of small objects, pre-allocate memory for a contiguous array of those smaller objects. Sometimes being a little wasteful when allocating memory can go along way for performance and may save you the trouble of having to deal with memory fragmentation).
+
+  In general we don't have to worry that much for this sort of fragmentation unless our program is long running and has a wide mixture of long lived/short lived, big/small objects that are constantly created and destroyed. But even then the automatic memory allocation is on our side and helps us as much as it can. So we can start worrying about this only when we see clear sings of slow processes and blatant memory errors.
+
+  The great thing about C++ is that the STL handles these allocations very well and it's optimized so if we are relying on the STL (and we should), then we wouldn't have any problems.
+
+  The end of the heap is indicated by the `break` pointer. It is impossible to allocate more data beyond this range, but with system calls `brk()` and `sbrk()` we can move the break further up the memory and free up more space for our running program (keep in mind that such direct system calls are generally a bad practice and should be avoided).
+
+  The stack is the static part of the memory allocation in our program. Here local variables are allocated. These are all the variables that are declared inside a function body and are not set as `static`. Following the stack data structure, local variables, function parameters, addresses, etc. are popped up or pushed down for quick and easy access.
+
+  When a function is called a stack frame (a procedure activation record) is pushed on top of the stack. A stack frame holds information for the address from where the function was called, where to jump back when the function ends (return address), local variables, function parameters, and any other information needed by the function. When the function returns, the stack frame is popped from the top of the stack. The stack grows downwards, meaning that the address of each stack frame is numerically smaller than the previous one.
+
+  So when a program is running, the data, bss, and heap segments are aligned into one continuous memory block (area) called a data segment. The stack is kept separate from them. In theory it is possible for the stack and heap to collide and grow inside each other, but the OS prevents such collisions.
+
+#+END NOTES
+
   This is all the space and data the program needs in order to run properly.
 
   `$$ address space = memory space $$`
-  
-  
 
 * References
 	- https://en.wikipedia.org/wiki/Object_file
@@ -165,3 +198,4 @@ Conclusion - we can see that this is somewhat of a long process, where a lot of 
 	- https://stackoverflow.com/questions/3880924/how-to-view-symbols-in-object-files
 	- https://stackoverflow.com/questions/69112/what-is-a-symbol-table
 	- https://codeyarns.com/2014/08/07/how-to-list-symbols-in-object-file/
+  - https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation
