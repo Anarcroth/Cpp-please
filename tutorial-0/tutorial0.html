@@ -22,16 +22,17 @@
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-26 вт 11:12</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-29 пт 11:48</p>
 </section>
 
 <section>
-<section id="slide-org96f8bf9">
-<h2 id="org96f8bf9">Who am I?</h2>
+<section id="slide-orgf17166f">
+<h2 id="orgf17166f">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -44,8 +45,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org0975597">
-<h2 id="org0975597">Why I chose to make these small tutorials</h2>
+<section id="slide-orgb743f1c">
+<h2 id="orgb743f1c">Why I chose to make these small tutorials</h2>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS</li>
 
@@ -65,8 +66,8 @@ am I learning more in-depth concepts, but also I am making the lives of students
 </section>
 </section>
 <section>
-<section id="slide-orgbc09eb6">
-<h2 id="orgbc09eb6">What we are going to cover</h2>
+<section id="slide-org983ac74">
+<h2 id="org983ac74">What we are going to cover</h2>
 <p>
 C++ as four sub-languages
 </p>
@@ -85,6 +86,7 @@ It's a daunting task to go over all of these aspects and trying to teach everyth
 that haven't been covered in depth in the C++ lectures and are somewhat elude to the students. Now our list seems like this
 #+END NOTES
 </p>
+
 <ul>
 <li>File structure</li>
 <li>STL</li>
@@ -92,6 +94,209 @@ that haven't been covered in depth in the C++ lectures and are somewhat elude to
 <li>Templates</li>
 <li>Inheritance</li>
 <li>OOP</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf0609b1">
+<h2 id="orgf0609b1">File structure</h2>
+<p>
+#+BEGIN NOTES:
+It has come to my attention that many people, while writing their homeworks, neglect the advantages of structuring their source files. This is most noticeable
+when they are writing the first 3 FDS homeworks or their FDS project. Being able to properly manage your project into several files and to navigate between them
+in an optimal and cohesive way will minimize your C++ suffering (and coding experience in general).
+</p>
+
+<p>
+Now most of you already know this, but there are several great advantages to separating your .CXX files from your .HXX files. One such advantage is that, multiple people
+can start working on several header files and instead of you waiting for them to be ready, you can continue with your work while they finish theirs. This separation of
+implementation is important, because it minimizes dev time. But because you will be working mostly alone with your solutions, you will see another great adwhat steps does c++ go througt to runvantage of structuring
+your files. And that is - it will be much easier for you to understand what you are doing and thus will minimize debugging and problem fixing time.
+</p>
+
+<p>
+Since most of you are working with Visual Studio, here is how your structure looks like now:
+Picture 1
+</p>
+
+<p>
+And here is how you would want it to look.
+Picture 2
+</p>
+
+<p>
+Now I am not going to tell you how to add files and where ti put them, I will just show you how to properly implement header and source files and how to avoid collisions and
+also how to stop writing those damn "xfz.header" files.
+</p>
+
+<p>
+First things first.
+</p>
+
+<p>
+What's the difference between headers and source?
+Apart from the obvious name difference, header files are considered to be the definition part of the source code, while source (cpp) files are the implementation part.
+Keeping them separate allows us to keep a clean directory and structure and to separate our logic from our implementation.
+#+END NOTES
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org2621eb2">
+<h2 id="org2621eb2">How does compilation work?</h2>
+<p>
+There are 3 steps of compiling C++ code:
+</p>
+<ul>
+<li>Preprocessing</li>
+<li>Compilation
+<ul>
+<li>Compilation</li>
+<li>Assembly</li>
+
+</ul></li>
+<li>Linking</li>
+
+</ul>
+
+<p>
+#+BEGIN NOTES:
+When we are trying to run a piece of code (in our case C++), the computer goes through several steps before we see the output, or the errors. 
+</p>
+
+<p>
+The first part is the so called preprocessing step, where the preprocessor handles the `preprocessor` directives. These are the `#include`, `#define`, `#if`, `#ifndef`, `#ifdef` keywords we put on the top of our files. At this stage, one file at a time, each of these directives are replaces with their respective pieces of code from other files (they are usually only declarations). That is why when we have multiple source files, we include only the header files, because they only show us the declarations and not the definitions (thus we minimize time in this step). So after the directives have been replaced with the respective file contents or snippets of files (depending in the `#if` `#ifndef` and `#ifdef` and the macro #define keywords) we get at the end "pure C++" code. The preprocessor also adds line numbers so that the further steps can identify where the inserted code came from. As an example, if we write `#include &lt;iostream&gt;` we actually just insert the contents from the `iostream` file on the top of our main source file (again we must remember that most of the time, we are just including declarations).
+</p>
+
+<p>
+As a side note, this whole process is very similar for C code as well.
+</p>
+
+<p>
+So at the end of all of this copying, we get a temporary file that is just C/C++ code. It's indicated by the `*.i` or `*.ii` file extension, meaning that this file is just C/C++ code and must not be preprocessed.
+</p>
+
+<p>
+We must note that the preprocessor is agnostic to the C++ syntax, that is why for instance, in Visual Studio we have the `#pragma` directive that tries to do the `#ifndef` directive work, but that's just a lie. 
+We have to be careful where and how we put our includes.
+Tip: one of the things we want to do while writing C++ code is to minimize our reliance on the preprocessor. That is, if we are `#define`-ning macros as constants so that we can use them throughout our program, we might
+encounter strange errors, because these directives may be treated as not part of the language. As an example, if we write `#define A<sub>RATIO</sub> 1.18` the preprocessor might skip the name and just include the double 1.18. Then
+if we get, or when we get, an error referring to 1.18, we might not know it's because it was a macro define lost from the preprocessor. Instead we can just use `const`s as such: `const double ARatio = 1.18;` Now we know
+that the compiler will see this variable and we won't bang our head against the wall with unnecessary errors.
+</p>
+
+<p>
+In order to get only the preprocessed file we can run the
+`g++ -E hello-world.cpp -o hello-world.ii`
+which will produce the `hello-world.ii` file and then we can look inside of it and find out what it includes.
+</p>
+
+<p>
+After we have our "pure C++" code (ending with the `*.i/*.ii`) suffix, we are ready to move to the next step - Compilation.
+</p>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+The compilation step is another relatively simple phase, where the preprocessed pure C++ file is transformed into assembly code. From there the compiler invokes an underlying back-end (assembler tool-chain) and assembles the assembly code into
+machine code, thus producing an actual binary file (where there are different binary file formats such as: EFL, a.out, *COFF, SOM). This is the so called object file, which contains the compiled code into binary form of the symbols defined in the input. This file is usually no directly executable. The object files also contain additional data in the form of sections, used for linking, debugging, symbolic cross-reference resolution, comments, re-allocations, program symbols, etc (sections can be `.text`, `.bss`, `.data`, `.reloc`, etc.). The object files contain the metadata that hold the memory locations (addressed) of the variables and functions (called symbols) into a associative data structure called a symbolic table. Note that these addresses might not be the final addresses of the symbol in the final executable. The things that might be interesting to us is the symbol table. This is a data structure in the object file that's basically a name and an index. It maps different items in the object file to names that the linker can understand. If you call a function from your code, the compiler doesn't put the final address of the routine in the object file. Instead, it puts a placeholder value into the code and adds a note that tells the linker to look up the reference in the various symbol tables from all the object files it's processing and stick the final location there.
+</p>
+
+<p>
+To get the object file we can run
+`g++ -c hello-world.ii` or `g++ -c hello-world.cpp`
+and we can then look inside what an object file looks like with
+`nm hello-world.o` or `objdump -t hello-world.o`
+</p>
+
+<p>
+One big advantage to this is that the compiler can stop the compilation at this phase. Because you won't need to re-compile every file, but only those that have been change, you can specify which files to compile and save time. IDEs and some other tools can do this automatically and check the timestamps of the files and only compile those source codes which have been modified.
+On the compilation step we get the normal compiler errors, such as syntax errors, failed function overload errors, etc.
+</p>
+
+<p>
+Once we have the object file we can transform it into special executables, shared, or dynamic libraries. Here the linker comes into play.
+</p>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+The linker just links all of the object files into one executable file. The just of it is that the linker links object files by resolving undefined definitions of functions in the object files. That is, it goes through the object files and for every undefined function it tries to replace the reference of the undefined symbol with the correct address in another object file or in the standard library. The whole linking process is somewhat tedious and difficult to follow as it involves moving memory locations and relocation of symbols so we can skip this part, but for those who are interested, there are several links that explain exactly how the linker does its job.
+</p>
+
+<p>
+One thing that we will encounter are the terms dynamic and static linking. Static linking is the process that links the program and the libraries together at normal link time. This means that the binding between the program and the library is known at link time. We are linking the program statically to shared archive of objects (libraries). An example would be the standard `libc.a` library for C. A draw back to this approach is that the size of the executable is quite big, because everything must be bundled together. These static libraries are identified by the `*.a` file extension.
+Although the deployment of such executables is much easier and allows us to have 0 dependencies, the size of them can get too big and such static linkage does not allow us to reuse memory for executable code between different processes. What this means is that when we have multiple executables that rely on the same library, unless the linker of our OS is very smart, it's very likely that we are loading the same piece of code over and over, incrementally increasing the memory we are using for the same piece of code. Another problem is that if we are to change something and have to re-build and run the executable, we would spend a lot of time reallocating with the static library. To overcome this problem we can use dynamic libraries. For the Windows users, these are the famous `*.dll` libraries. In essence, we get an incomplete binary, which is told during runtime, where to search for the code in the respective library. That is - the linkage of the functions from the shared objects and our program is done during runtime right before the program starts. The linker just mentions to the executable that there is a function from a shared object used at this particular place and notes it in the binary, and then carries on. The symbols of the shared objects (the ones in the libraries we are using) are only verified and validated that they exist, but are not combined into the final executable binary. Thus we get several great advantages to using dynamic linking and libraries: Portable executables with smaller size. Standard libraries can be updated and re-patched without the need of re-linkage of every program. We can run multiple processes that use the same shared libraries without the need of copying the same code, thus saving large amounts of memory space.
+</p>
+
+<p>
+This is the last step before we can take the `.exe` file, load it into memory and run it. At the linking stage we get different errors, such as multiple function definitions, or undefined functions, missing references, etc.
+</p>
+
+<p>
+Loading and running - Now that we have a ready executable file we just have to load it into memory and run it. The loader is a general part of the OS and it operates in several steps. The general idea is this - first we validate memory and access privileges to the exe. The OS reads the header of our binary, checks if we have enough space to run the program, checks what kind of access permissions we have, ability to run the instructions, makes sure that this is a valid executable image, and then goes through several steps of loading. To be exact - it allocates primary memory to run the file, copies the address spaces from secondary to primary memory, copies the multiple sections of the executable to the primary memory, copies the command line arguments on to the stack, refreshes the register and repoints the esp (the stack pointer) to the top of the cleared stack, and finally jumps to the start of the program and runs the `main()` method.
+</p>
+
+<p>
+&#x2014;
+</p>
+
+<p>
+Conclusion - we can see that this is somewhat of a long process, where a lot of steps take place. This is done, from one point of view, for easier implementation and reduction of complexity. Being able to control all of these functionalities allows us to create big programs, to compile them in an easy and fast manner, and to understand what kind of errors we are getting at what stage. With the powers of "conditional compilation" we are able to create pre-compiled libraries that need only linking, this is called a "separate compilation model". Knowing the difference between the compilation phase and the link phase can make it easier to hunt for bugs. Compiler errors are usually syntactic in nature &#x2013; a missing semicolon, an extra parenthesis. Linking errors usually have to do with missing or multiple definitions. If you get an error that a function or variable is defined multiple times from the linker, that's a good indication that the error is that two of your source code files have the same function or variable. 
+</p>
+
+<p>
+#+END NOTES
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org6ef548e">
+<h2 id="org6ef548e">Memory layout</h2>
+<p>
+This is all the space and data the program needs in order to run properly.
+</p>
+
+<p>
+`\[ address space = memory space \]`
+</p>
+
+
+
+</section>
+</section>
+<section>
+<section id="slide-org169858d">
+<h2 id="org169858d">References</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Object_file">https://en.wikipedia.org/wiki/Object_file</a></li>
+<li><a href="https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation">https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation</a></li>
+<li><a href="http://www.cplusplus.com/doc/tutorial/preprocessor/">http://www.cplusplus.com/doc/tutorial/preprocessor/</a></li>
+<li><a href="https://stackoverflow.com/questions/6264249/how-does-the-compilation-linking-process-work">https://stackoverflow.com/questions/6264249/how-does-the-compilation-linking-process-work</a></li>
+<li><a href="https://stackoverflow.com/questions/12122446/how-does-c-linking-work-in-practice/30507725#30507725">https://stackoverflow.com/questions/12122446/how-does-c-linking-work-in-practice/30507725#30507725</a></li>
+<li><a href="http://www.iecc.com/linker/">http://www.iecc.com/linker/</a></li>
+<li><a href="https://www.airs.com/blog/archives/38">https://www.airs.com/blog/archives/38</a></li>
+<li><a href="http://www.cirosantilli.com/elf-hello-world/">http://www.cirosantilli.com/elf-hello-world/</a></li>
+<li><a href="https://stackoverflow.com/questions/3322911/what-do-linkers-do/33690144#33690144">https://stackoverflow.com/questions/3322911/what-do-linkers-do/33690144#33690144</a></li>
+<li><a href="http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/compile.html">http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/compile.html</a></li>
+<li><a href="https://www.cprogramming.com/compilingandlinking.html">https://www.cprogramming.com/compilingandlinking.html</a></li>
+<li><a href="http://www.cplusplus.com/articles/2v07M4Gy/">http://www.cplusplus.com/articles/2v07M4Gy/</a></li>
+<li><a href="http://www.tenouk.com/ModuleW.html">http://www.tenouk.com/ModuleW.html</a></li>
+<li><a href="http://www.tenouk.com/Bufferoverflowc/Bufferoverflow1.html">http://www.tenouk.com/Bufferoverflowc/Bufferoverflow1.html</a></li>
+<li><a href="http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/">http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/</a></li>
+<li><a href="http://nickdesaulniers.github.io/blog/2016/11/20/static-and-dynamic-libraries/">http://nickdesaulniers.github.io/blog/2016/11/20/static-and-dynamic-libraries/</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Object_file">https://en.wikipedia.org/wiki/Object_file</a></li>
+<li><a href="https://stackoverflow.com/questions/3880924/how-to-view-symbols-in-object-files">https://stackoverflow.com/questions/3880924/how-to-view-symbols-in-object-files</a></li>
+<li><a href="https://stackoverflow.com/questions/69112/what-is-a-symbol-table">https://stackoverflow.com/questions/69112/what-is-a-symbol-table</a></li>
+<li><a href="https://codeyarns.com/2014/08/07/how-to-list-symbols-in-object-file/">https://codeyarns.com/2014/08/07/how-to-list-symbols-in-object-file/</a></li>
 
 </ul>
 </section>
