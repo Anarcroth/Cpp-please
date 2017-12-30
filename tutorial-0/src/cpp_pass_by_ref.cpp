@@ -10,5 +10,6 @@ int main()
      int a = 5;
      f(a);
      std::cout << "a = " << a << std::endl;
+                                 
      return 0;
 }
