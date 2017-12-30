@@ -28,36 +28,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-30 сб 23:10</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-30 сб 23:37</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org207f42d">Who am I?</a></li>
-<li><a href="#/slide-org9548727">Why I chose to make these small tutorials</a></li>
-<li><a href="#/slide-orgf2f5d1e">How to look at C++</a></li>
-<li><a href="#/slide-org4b4bd90">What we are going to cover</a></li>
-<li><a href="#/slide-org2592750">File structure</a></li>
-<li><a href="#/slide-org5e5934c">How does compilation work?</a></li>
-<li><a href="#/slide-org5c28b3e">Compilation</a></li>
-<li><a href="#/slide-orgbece398">Linking</a></li>
-<li><a href="#/slide-orgb611f30">Conclusion</a></li>
-<li><a href="#/slide-org3af76a3">Memory management</a></li>
-<li><a href="#/slide-org5f16b8f">Memory space in C++</a></li>
-<li><a href="#/slide-orgbb64c4a">How to handle memory in C++</a></li>
-<li><a href="#/slide-org33ec0b1">Pass by reference in C</a></li>
-<li><a href="#/slide-org84c6dbe">Pass by reference in C++</a></li>
-<li><a href="#/slide-org195b951">References</a></li>
+<li><a href="#/slide-org9299670">Who am I?</a></li>
+<li><a href="#/slide-orge332aa5">What we are going to cover</a></li>
+<li><a href="#/slide-orgd174899">File structure</a></li>
+<li><a href="#/slide-org375607d">How does compilation work?</a></li>
+<li><a href="#/slide-orge922a85">Memory management</a></li>
+<li><a href="#/slide-org91c1417">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org207f42d">
-<h2 id="org207f42d">Who am I?</h2>
+<section id="slide-org9299670">
+<h2 id="org9299670">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -70,8 +61,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org9548727">
-<h2 id="org9548727">Why I chose to make these small tutorials</h2>
+<section id="slide-orgfdc5cff">
+<h3 id="orgfdc5cff">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -81,10 +72,6 @@
 
 <aside class="notes">
 <p>
-
-</p>
-
-<p>
 Over the course of the past several years I found a certain love for C++, but instead of just reading about the language and doing some small experiments with it,   I wanted to share my knowledge and to get better at it. Seeing how some students struggle with C++ in the beginning courses, I decided that I can help out. That way not only am I learning more in-depth concepts, but also I am making the lives of students easier (hopefully).
 </p>
 
@@ -93,10 +80,10 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-orgf2f5d1e">
-<h2 id="orgf2f5d1e">How to look at C++</h2>
+<section id="slide-orgb13cbd0">
+<h3 id="orgb13cbd0">How to look at C++</h3>
 <p>
-C++ as four sub-languages
+C++ as <b>four</b> sub-languages
 </p>
 <ul>
 <li>C</li>
@@ -108,10 +95,6 @@ C++ as four sub-languages
 
 <aside class="notes">
 <p>
-
-</p>
-
-<p>
 C++ can be generally divided into four sub-categories or sub-languages.
 It's a daunting task to go over all of these aspects and trying to teach everything, mainly because I can't! But instead I will try to cover some topics
 that haven't been covered in depth in the C++ lectures and are somewhat elude to the students. Now our list seems like this
@@ -122,8 +105,8 @@ that haven't been covered in depth in the C++ lectures and are somewhat elude to
 </section>
 </section>
 <section>
-<section id="slide-org4b4bd90">
-<h2 id="org4b4bd90">What we are going to cover</h2>
+<section id="slide-orge332aa5">
+<h2 id="orge332aa5">What we are going to cover</h2>
 <ul>
 <li>File structure</li>
 <li>Memory management</li>
@@ -137,13 +120,9 @@ that haven't been covered in depth in the C++ lectures and are somewhat elude to
 </section>
 </section>
 <section>
-<section id="slide-org2592750">
-<h2 id="org2592750">File structure</h2>
+<section id="slide-orgd174899">
+<h2 id="orgd174899">File structure</h2>
 <aside class="notes">
-<p>
-
-</p>
-
 <p>
 It has come to my attention that many people, while writing their homeworks, neglect the advantages of structuring their <b><b>source</b></b> files. This is most noticeable when they are writing the first 3 FDS homeworks or their FDS project. Being able to properly manage your project into several files and to navigate between them in an optimal and cohesive way will minimize your C++ suffering (and coding experience in general).
 </p>
@@ -179,8 +158,8 @@ What's the difference between headers and sources? Apart from the obvious name d
 </section>
 </section>
 <section>
-<section id="slide-org5e5934c">
-<h2 id="org5e5934c">How does compilation work?</h2>
+<section id="slide-org375607d">
+<h2 id="org375607d">How does compilation work?</h2>
 <p>
 There are 3 steps of compiling C++ code:
 </p>
@@ -197,10 +176,6 @@ There are 3 steps of compiling C++ code:
 </ul>
 
 <aside class="notes">
-<p>
-
-</p>
-
 <p>
 When we are trying to run a piece of code (in our case C++), the computer goes through several steps before we see the output, or the errors. 
 </p>
@@ -244,8 +219,8 @@ After we have our "pure C++" code (ending with the `*.i/*.ii`) suffix, we are re
 </section>
 </section>
 <section>
-<section id="slide-org5c28b3e">
-<h2 id="org5c28b3e">Compilation</h2>
+<section id="slide-org70f5779">
+<h3 id="org70f5779">Compilation</h3>
 <ul>
 <li>Step 1 - Compile</li>
 <li>Step 2 - Assemble</li>
@@ -258,7 +233,7 @@ To get the object file we can run
 
 <div class="org-src-container">
 
-<pre  class="src src-sh"><span style="color: #fa8072;">`g++ -c hello-world.ii`</span>
+<pre  class="src src-sh">g++ -c hello-world.ii
 </pre>
 </div>
 
@@ -268,7 +243,7 @@ or
 
 <div class="org-src-container">
 
-<pre  class="src src-sh"><span style="color: #fa8072;">`g++ -c hello-world.cpp`</span>
+<pre  class="src src-sh">g++ -c hello-world.cpp
 </pre>
 </div>
 
@@ -278,7 +253,7 @@ and we can then look inside what an object file looks like with
 
 <div class="org-src-container">
 
-<pre  class="src src-sh"><span style="color: #fa8072;">`nm hello-world.o`</span>
+<pre  class="src src-sh">nm hello-world.o
 </pre>
 </div>
 
@@ -288,15 +263,11 @@ or
 
 <div class="org-src-container">
 
-<pre  class="src src-sh"><span style="color: #fa8072;">`objdump -t hello-world.o`</span>
+<pre  class="src src-sh">objdump -t hello-world.o
 </pre>
 </div>
 
 <aside class="notes">
-<p>
-
-</p>
-
 <p>
 The <b><b>compilation</b></b> step is another relatively simple phase, where the preprocessed pure C++ file is transformed into <b>assembly</b> code. From there the compiler invokes an underlying back-end (assembler tool-chain) and assembles the assembly code into <b>machine</b> code, thus producing an actual <b>binary file</b> (where there are different binary file formats such as: `EFL`, `a.out`, `COFF`, `SOM`). This is the so called <b>object file</b>, which contains the compiled code into binary form of the symbols defined in the input. This file is usually no directly executable. The object files also contain additional data in the form of sections, used for linking, debugging, symbolic cross-reference resolution, comments, re-allocations, program symbols, etc (sections can be `.text`, `.bss`, `.data`, `.reloc`, etc.). The object files contain the metadata that hold the memory locations (addressed) of the variables and functions (called symbols) into an associative data structure called a <b>symbolic table</b>. Note that these addresses might not be the final addresses of the symbol in the final executable. The things that might be interesting to us is the symbol table. This is a data structure in the object file that's basically a name and an index. It maps different items in the object file to names that the linker can understand. If you call a function from your code, the compiler doesn't put the final address of the routine in the object file. Instead, it puts a placeholder value into the code and adds a note that tells the linker to look up the reference in the various symbol tables from all the object files it's processing and stick the final location there.
 </p>
@@ -346,23 +317,19 @@ Once we have the object file we can transform it into special <b>executables</b>
 </section>
 </section>
 <section>
-<section id="slide-orgbece398">
-<h2 id="orgbece398">Linking</h2>
+<section id="slide-org9e5023c">
+<h3 id="org9e5023c">Linking</h3>
 <p>
 The <b><b>linker</b></b> just links all of the object files into one executable file.
 </p>
 
 
 <div class="figure">
-<p><img src="./pics/objfilebeforelinking.png" alt="objfilebeforelinking.png" />
+<p><img src="./pics/objfilebeforelinking.png" alt="objfilebeforelinking.png" height="38%," width="38%" />
 </p>
 </div>
 
 <aside class="notes">
-<p>
-
-</p>
-
 <p>
 The <b><b>linker</b></b> just links all of the object files into one executable file. The just of it is that the linker <b>links</b> object files by resolving undefined definitions of functions in the object files. That is, it goes through the object files and for every undefined function it tries to replace the reference of the undefined symbol with the correct address in another object file or in the standard library. The whole linking process is somewhat tedious and difficult to follow as it involves moving memory locations and relocation of symbols so we can skip this part, but for those who are interested, there are several links that explain exactly how the linker does its job.
 </p>
@@ -398,8 +365,8 @@ This is the last step before we can take the `.exe` file, load it into memory an
 </section>
 </section>
 <section>
-<section id="slide-orgb611f30">
-<h2 id="orgb611f30">Conclusion</h2>
+<section id="slide-org3c972f5">
+<h3 id="org3c972f5">Conclusion</h3>
 <ul>
 <li>Understanding undefined behavior better</li>
 <li>Understanding errors</li>
@@ -409,10 +376,6 @@ This is the last step before we can take the `.exe` file, load it into memory an
 
 <aside class="notes">
 <p>
-
-</p>
-
-<p>
 <b><b>Conclusion</b></b> - we can see that this is somewhat of a long process, where a lot of steps take place. This is done, from one point of view, for easier implementation and reduction of complexity. Being able to control all of these functionalities allows us to create big programs, to compile them in an easy and fast manner, and to understand what kind of errors we are getting at what stage. With the powers of "conditional compilation" we are able to create pre-compiled libraries that need only linking, this is called a "separate compilation model". Knowing the difference between the compilation phase and the link phase can make it easier to hunt for bugs. Compiler errors are usually syntactic in nature &#x2013; a missing semicolon, an extra parenthesis. Linking errors usually have to do with missing or multiple definitions. If you get an error that a function or variable is defined multiple times from the linker, that's a good indication that the error is that two of your source code files have the same function or variable. 
 </p>
 
@@ -421,8 +384,8 @@ This is the last step before we can take the `.exe` file, load it into memory an
 </section>
 </section>
 <section>
-<section id="slide-org3af76a3">
-<h2 id="org3af76a3">Memory management</h2>
+<section id="slide-orge922a85">
+<h2 id="orge922a85">Memory management</h2>
 <p>
 The memory layout can be divided into <b>five</b> sections:
 </p>
@@ -436,10 +399,6 @@ The memory layout can be divided into <b>five</b> sections:
 </ul>
 
 <aside class="notes">
-<p>
-
-</p>
-
 <p>
 The different segments in memory are the <b>text</b>, <b>data</b>, <b>bss</b>, <b>stack</b>, and <b>heap</b>.
 </p>
@@ -501,8 +460,8 @@ So when a program is running, the data, bss, and heap segments are aligned into 
 </section>
 </section>
 <section>
-<section id="slide-org5f16b8f">
-<h2 id="org5f16b8f">Memory space in C++</h2>
+<section id="slide-orgf9d606d">
+<h3 id="orgf9d606d">Memory space in C++</h3>
 <p>
 This is all the space and data the program needs in order to run properly.
 </p>
@@ -513,26 +472,23 @@ This is all the space and data the program needs in order to run properly.
 
 
 <div class="figure">
-<p><img src="./pics/memlayout.png" alt="memlayout.png" height="36%," width="36%" />
+<p><img src="./pics/memlayout.png" alt="memlayout.png" height="38%," width="38%" />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgbb64c4a">
-<h2 id="orgbb64c4a">How to handle memory in C++</h2>
+<section id="slide-org3e4b23e">
+<h3 id="org3e4b23e">How to handle memory in C++</h3>
 <ul>
+<li>Pointers</li>
 <li>Pass by value</li>
 <li>Pass by reference</li>
 
 </ul>
 
 <aside class="notes">
-<p>
-
-</p>
-
 <p>
 Before we start actually looking at code. . . why do we use pointers? Well we know that is <b><b>saves</b></b> time but how exactly? We saw that in order to get data from the free storage we must use pointers, but is that the only benefit? Much to our <b>"surprise"</b>, there are a lot of awesome advantages to using pointers, and with a little practice we can enjoy them.
 </p>
@@ -554,8 +510,8 @@ Lets take this example now:
 </section>
 </section>
 <section>
-<section id="slide-org33ec0b1">
-<h2 id="org33ec0b1">Pass by reference in C</h2>
+<section id="slide-org5308e33">
+<h3 id="org5308e33">Pass by reference in C</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C"><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">stdio.h</span><span style="color: #99d1ce;">&gt;</span>
@@ -579,7 +535,6 @@ Lets take this example now:
 
 <aside class="notes">
 <p>
-
 With this example we can see how, although we are passing a pointer, we are still employing the pass-by-value idiom. This is normal for all C code. And it will work for C++ as well, this type of passing is called "C-style pass-by-value imitation". The code does what we expect, because after the function call we de-reference the pointer which we have passed to the function in order to get the integer it was pointing to. In other words, the copy of the pointer in the function body changes the same `int` we have in memory (the one we have declared in the `main` method), regardless of the fact that a copy pointer is doing that (the integer is still changes because we are pointing to that integer). This is how we "imitate" pass-by-reference, the old way.
 </p>
 
@@ -592,8 +547,8 @@ Let's look at the same example, but in C++ code.
 </section>
 </section>
 <section>
-<section id="slide-org84c6dbe">
-<h2 id="org84c6dbe">Pass by reference in C++</h2>
+<section id="slide-org2caaec2">
+<h3 id="org2caaec2">Pass by reference in C++</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span>
@@ -616,7 +571,6 @@ Let's look at the same example, but in C++ code.
 
 <aside class="notes">
 <p>
-
 Doing the exact same thing, the difference is that we have no pointer declared, because we don't need one, and we changed the sign of parameter we pass, from `*` to an `&amp;`. Here C++ and it's awesome new feature allows us to actually pass a real reference to the function. This means that the function is working with the real data we have passed, and <b><b>not</b></b> with a copy of it.
 </p>
 
@@ -626,15 +580,18 @@ Hopefully this cleared some things about pointers, but the question now is: when
 
 </aside>
 
-
 </section>
 </section>
 <section>
-<section id="slide-org195b951">
-<h2 id="org195b951">References</h2>
-<p>
-<b><b>Preprocessing, Compilation, and Linking</b></b>
-</p>
+<section id="slide-org91c1417">
+<h2 id="org91c1417">References</h2>
+<div class="outline-text-2" id="text-org91c1417">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org7eb24ae">
+<h3 id="org7eb24ae"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Object_file">https://en.wikipedia.org/wiki/Object_file</a></li>
 <li><a href="https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation">https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation</a></li>
@@ -659,9 +616,11 @@ Hopefully this cleared some things about pointers, but the question now is: when
 
 </ul>
 
-<p>
-<b><b>Memory management</b></b>
-</p>
+</section>
+</section>
+<section>
+<section id="slide-orga4f94ba">
+<h3 id="orga4f94ba"><b><b>Memory management</b></b></h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation">https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation</a></li>
 <li><a href="http://www.tenouk.com/ModuleW.html">http://www.tenouk.com/ModuleW.html</a></li>
@@ -670,6 +629,16 @@ Hopefully this cleared some things about pointers, but the question now is: when
 <li><a href="http://www.guideforschool.com/625348-memory-address-calculation-in-an-array/">http://www.guideforschool.com/625348-memory-address-calculation-in-an-array/</a></li>
 <li><a href="http://www.gotw.ca/gotw/009.htm">http://www.gotw.ca/gotw/009.htm</a></li>
 <li><a href="http://www-cs-students.stanford.edu/~sjac/c-to-cpp-info/references">http://www-cs-students.stanford.edu/~sjac/c-to-cpp-info/references</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org5728c5f">
+<h3 id="org5728c5f"><b><b>File Structure</b></b></h3>
+<ul>
+<li><a href="http://www.cplusplus.com/forum/articles/10627/">http://www.cplusplus.com/forum/articles/10627/</a></li>
 
 </ul>
 </section>
@@ -692,8 +661,8 @@ slideNumber: 'c',
 rollingLinks: true,
 keyboard: true,
 overview: true,
-width: 1200,
-height: 800,
+width: 1920,
+height: 1080,
 margin: 0.20,
 minScale: 0.50,
 maxScale: 2.50,
