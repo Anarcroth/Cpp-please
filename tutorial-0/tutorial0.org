@@ -151,7 +151,7 @@ Picture 2
 
 #+END NOTES
 
-* Memory layout
+* Memory management
 
   The memory layout can be divided into *five* sections:
   - text
@@ -219,3 +219,8 @@ Picture 2
   **Memory management**
   - https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation
 	- http://www.tenouk.com/ModuleW.html
+  - https://stackoverflow.com/questions/2229498/passing-by-reference-in-c
+  - https://stackoverflow.com/questions/13654138/what-exactly-is-the-difference-between-pass-by-reference-in-c-and-in-c
+  - http://www.guideforschool.com/625348-memory-address-calculation-in-an-array/
+  - http://www.gotw.ca/gotw/009.htm
+  - http://www-cs-students.stanford.edu/~sjac/c-to-cpp-info/references
