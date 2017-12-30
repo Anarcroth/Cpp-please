@@ -205,7 +205,7 @@ Picture 2
 
   Before we start actually looking at code. . . why do we use pointers? Well we know that is **saves** time but how exactly? We saw that in order to get data from the free storage we must use pointers, but is that the only benefit? Much to our *"surprise"*, there are a lot of awesome advantages to using pointers, and with a little practice we can enjoy them.
 
-  So first things first, why do we save time and space with them? Because C++, by default, copies every parameter we pass in to a function, which means that if we have large object which we must pass to a lot of functions, that object, and all of its data, will be copied to the stack frame of that function and then discarded. Not only are we doing unnecessary copy work, but we might also fall into the trap that we are transforming the object and chaining its state, but in reality, we are doing only work with the copied object. Here is a practical example - two years ago, I wrote a C++ program that passed objects like crazy in order to render an image at the end. The program, depending on the level quality it rendered, took between 30 secs to 30 minutes for the highest quality. The same program, when it used the power of passing by reference, took from 10 secs to 5 minutes max. Ain't optimization beautiful.
+  So first things first, why do we save time and space with them? Because C++, by default, copies every parameter we pass in to a function, which means that if we have large object which we must pass to a lot of functions, that object, and all of its data, will be copied to the stack frame of that function and then discarded. Not only are we doing unnecessary copy work, but we might also fall into the trap that we are transforming the object and changing its state, but in reality, we are doing only work with the copied object. Here is a practical example - two years ago, I wrote a C++ program that passed objects like crazy in order to render an image at the end. The program, depending on the level quality it rendered, took between 30 secs to 30 minutes for the highest quality. The same program, when it used the power of passing by reference, took from 10 secs to 5 minutes max. Ain't optimization beautiful.
 
   Lets get back to the world of C++ and go over how we pass arguments to functions. In particular we will try to review the difference between passing by value and passing by reference and dealing with pointers.
 
@@ -218,23 +218,50 @@ Picture 2
 
     void f(int *j) 
     {
-    (*j)++;
+        (*j)++;
     }
 
     int main() 
     {
-    int i = 20;
-    int *p = &i;
-    f(p);
-    printf("i = %d\n", i);
+        int i = 20;
+        int *p = &i;
+        f(p);
+        printf("i = %d\n", i);
 
-    return 0;
+        return 0;
     }
 #+END_SRC
 
 #+BEGIN NOTES:
  
+  With this example we can see how, although we are passing a pointer, we are still employing the pass-by-value idiom. This is normal for all C code. And it will work for C++ as well, this type of passing is called "C-style pass-by-value imitation". The code does what we expect, because after the function call we de-reference the pointer which we have passed to the function in order to get the integer it was pointing to. In other words, the copy of the pointer in the function body changes the same `int` we have in memory (the one we have declared in the `main` method), regardless of the fact that a copy pointer is doing that (the integer is still changes because we are pointing to that integer). This is how we "imitate" pass-by-reference, the old way.
 
+  Let's look at the same example, but in C++ code.
+
+#+END NOTES
+
+#+BEGIN_SRC C++
+    #include <iostream>
+
+    void f(int& a)
+    {
+         a += 1;
+    }
+
+    int main()
+    {
+        int a = 5;
+        f(a);
+        std::cout << "a = " << a << std::endl;
+        return 0;
+    }
+#+END_SRC
+
+#+BEGIN NOTES:
+  
+  Doing the exact same thing, the difference is that we have no pointer declared, because we don't need one, and we changed the sign of parameter we pass, from `*` to an `&`. Here C++ and it's awesome new feature allows us to actually pass a real reference to the function. This means that the function is working with the real data we have passed, and **not** with a copy of it.
+
+  Hopefully this cleared some things about pointers, but the question now is: when should I pass by reference and when by value, and when I am passing by reference, which of the two ways should I employ? The general answer to this is - it depends on the code you are writing and the problem you are solving, but because this is too generic, here is some better advise - when writing C, imitate the pass by reference when you *want* the data to be changed, other wide, pass it by value. When writing C++, do the same, use the C++ style with real reference passing, and also, as a bonus rule, pass **objects** by reference (this minimizes the situation where you have to copy large amounts of data to functions that only read from the passed objects).
 #+END NOTES
 
 
