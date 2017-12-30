@@ -27,34 +27,34 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-30 сб 22:49</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-30 сб 22:54</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org487bc09">Who am I?</a></li>
-<li><a href="#/slide-org1e7db97">Why I chose to make these small tutorials</a></li>
-<li><a href="#/slide-org1c5a015">How to look at C++</a></li>
-<li><a href="#/slide-org28cde42">What we are going to cover</a></li>
-<li><a href="#/slide-org20fbe68">File structure</a></li>
-<li><a href="#/slide-orgb6dbcc0">How does compilation work?</a></li>
-<li><a href="#/slide-org309727e">Compilation</a></li>
-<li><a href="#/slide-org3dbe8db">Linking</a></li>
-<li><a href="#/slide-orgc95950b">Conclusion</a></li>
-<li><a href="#/slide-orgafa6794">Memory management</a></li>
-<li><a href="#/slide-org405080d">Memory space in C++</a></li>
-<li><a href="#/slide-org3b9ac32">How to handle memory in C++</a></li>
-<li><a href="#/slide-orgdecb923">References</a></li>
+<li><a href="#/slide-org7974cbd">Who am I?</a></li>
+<li><a href="#/slide-orgc9dd7b0">Why I chose to make these small tutorials</a></li>
+<li><a href="#/slide-orgf8fafed">How to look at C++</a></li>
+<li><a href="#/slide-org8e6cb82">What we are going to cover</a></li>
+<li><a href="#/slide-orgb0a1b8f">File structure</a></li>
+<li><a href="#/slide-org8858da0">How does compilation work?</a></li>
+<li><a href="#/slide-orgb924adc">Compilation</a></li>
+<li><a href="#/slide-org35d4291">Linking</a></li>
+<li><a href="#/slide-orge506714">Conclusion</a></li>
+<li><a href="#/slide-org0c115c2">Memory management</a></li>
+<li><a href="#/slide-org7cf5c53">Memory space in C++</a></li>
+<li><a href="#/slide-org89c1e52">How to handle memory in C++</a></li>
+<li><a href="#/slide-org734b262">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org487bc09">
-<h2 id="org487bc09">Who am I?</h2>
+<section id="slide-org7974cbd">
+<h2 id="org7974cbd">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -67,8 +67,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org1e7db97">
-<h2 id="org1e7db97">Why I chose to make these small tutorials</h2>
+<section id="slide-orgc9dd7b0">
+<h2 id="orgc9dd7b0">Why I chose to make these small tutorials</h2>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -77,7 +77,7 @@
 </ul>
 
 <p>
-#+BEGIN NOTES:
+#+BEGIN<sub>NOTES</sub>:
 </p>
 
 <p>
@@ -85,14 +85,14 @@ Over the course of the past several years I found a certain love for C++, but in
 </p>
 
 <p>
-#+END NOTES
+#+END<sub>NOTES</sub>
 </p>
 
 </section>
 </section>
 <section>
-<section id="slide-org1c5a015">
-<h2 id="org1c5a015">How to look at C++</h2>
+<section id="slide-orgf8fafed">
+<h2 id="orgf8fafed">How to look at C++</h2>
 <p>
 C++ as four sub-languages
 </p>
@@ -104,8 +104,9 @@ C++ as four sub-languages
 
 </ul>
 
+<aside class="notes">
 <p>
-#+BEGIN NOTES:
+
 </p>
 
 <p>
@@ -114,15 +115,13 @@ It's a daunting task to go over all of these aspects and trying to teach everyth
 that haven't been covered in depth in the C++ lectures and are somewhat elude to the students. Now our list seems like this
 </p>
 
-<p>
-#+END NOTES
-</p>
+</aside>
 
 </section>
 </section>
 <section>
-<section id="slide-org28cde42">
-<h2 id="org28cde42">What we are going to cover</h2>
+<section id="slide-org8e6cb82">
+<h2 id="org8e6cb82">What we are going to cover</h2>
 <ul>
 <li>File structure</li>
 <li>Memory management</li>
@@ -136,10 +135,11 @@ that haven't been covered in depth in the C++ lectures and are somewhat elude to
 </section>
 </section>
 <section>
-<section id="slide-org20fbe68">
-<h2 id="org20fbe68">File structure</h2>
+<section id="slide-orgb0a1b8f">
+<h2 id="orgb0a1b8f">File structure</h2>
+<aside class="notes">
 <p>
-#+BEGIN NOTES:
+
 </p>
 
 <p>
@@ -172,15 +172,13 @@ First things first.
 What's the difference between headers and sources? Apart from the obvious name difference, header files are considered to be the <b>definition</b> part of the source code, while source (cpp) files are the <b>implementation</b> part. Keeping them separate allows us to keep a clean directory and structure and to separate our logic from our implementation.
 </p>
 
-<p>
-#+END NOTES
-</p>
+</aside>
 
 </section>
 </section>
 <section>
-<section id="slide-orgb6dbcc0">
-<h2 id="orgb6dbcc0">How does compilation work?</h2>
+<section id="slide-org8858da0">
+<h2 id="org8858da0">How does compilation work?</h2>
 <p>
 There are 3 steps of compiling C++ code:
 </p>
@@ -196,8 +194,9 @@ There are 3 steps of compiling C++ code:
 
 </ul>
 
+<aside class="notes">
 <p>
-#+BEGIN NOTES:
+
 </p>
 
 <p>
@@ -238,15 +237,13 @@ which will produce the `hello-world.ii` file and then we can look inside of it a
 After we have our "pure C++" code (ending with the `*.i/*.ii`) suffix, we are ready to move to the next step - <b>Compilation</b>.
 </p>
 
-<p>
-#+END NOTES
-</p>
+</aside>
 
 </section>
 </section>
 <section>
-<section id="slide-org309727e">
-<h2 id="org309727e">Compilation</h2>
+<section id="slide-orgb924adc">
+<h2 id="orgb924adc">Compilation</h2>
 <ul>
 <li>Step 1 - Compile</li>
 <li>Step 2 - Assemble</li>
@@ -334,14 +331,14 @@ Once we have the object file we can transform it into special <b>executables</b>
 </p>
 
 <p>
-#+END NOTES
+#+END<sub>NOTES</sub>
 </p>
 
 </section>
 </section>
 <section>
-<section id="slide-org3dbe8db">
-<h2 id="org3dbe8db">Linking</h2>
+<section id="slide-org35d4291">
+<h2 id="org35d4291">Linking</h2>
 <p>
 The <b><b>linker</b></b> just links all of the object files into one executable file.
 </p>
@@ -387,14 +384,14 @@ This is the last step before we can take the `.exe` file, load it into memory an
 </p>
 
 <p>
-#+END NOTES
+#+END<sub>NOTES</sub>
 </p>
 
 </section>
 </section>
 <section>
-<section id="slide-orgc95950b">
-<h2 id="orgc95950b">Conclusion</h2>
+<section id="slide-orge506714">
+<h2 id="orge506714">Conclusion</h2>
 <ul>
 <li>Understanding undefined behavior better</li>
 <li>Understanding errors</li>
@@ -411,14 +408,14 @@ This is the last step before we can take the `.exe` file, load it into memory an
 </p>
 
 <p>
-#+END NOTES
+#+END<sub>NOTES</sub>
 </p>
 
 </section>
 </section>
 <section>
-<section id="slide-orgafa6794">
-<h2 id="orgafa6794">Memory management</h2>
+<section id="slide-org0c115c2">
+<h2 id="org0c115c2">Memory management</h2>
 <p>
 The memory layout can be divided into <b>five</b> sections:
 </p>
@@ -431,8 +428,9 @@ The memory layout can be divided into <b>five</b> sections:
 
 </ul>
 
+<aside class="notes">
 <p>
-#+BEGIN NOTES:
+
 </p>
 
 <p>
@@ -491,15 +489,13 @@ When a function is called a stack frame (a procedure activation record) is pushe
 So when a program is running, the data, bss, and heap segments are aligned into one continuous memory block (area) called a data segment. The stack is kept separate from them. In theory it is possible for the stack and heap to collide and grow inside each other, but the OS prevents such collisions.
 </p>
 
-<p>
-#+END NOTES
-</p>
+</aside>
 
 </section>
 </section>
 <section>
-<section id="slide-org405080d">
-<h2 id="org405080d">Memory space in C++</h2>
+<section id="slide-org7cf5c53">
+<h2 id="org7cf5c53">Memory space in C++</h2>
 <p>
 This is all the space and data the program needs in order to run properly.
 </p>
@@ -510,23 +506,24 @@ This is all the space and data the program needs in order to run properly.
 
 
 <div class="figure">
-<p><img src="./pics/memlayout.png" alt="memlayout.png" />
+<p><img src="./pics/memlayout.png" alt="memlayout.png" height="36%," width="36%" />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org3b9ac32">
-<h2 id="org3b9ac32">How to handle memory in C++</h2>
+<section id="slide-org89c1e52">
+<h2 id="org89c1e52">How to handle memory in C++</h2>
 <ul>
 <li>Passing by value</li>
 <li>Passing by reference</li>
 
 </ul>
 
+<aside class="notes">
 <p>
-#+BEGIN NOTES:
+
 </p>
 
 <p>
@@ -545,9 +542,7 @@ Lets get back to the world of C++ and go over how we pass arguments to functions
 Lets take this example now:
 </p>
 
-<p>
-#+END NOTES
-</p>
+</aside>
 
 <div class="org-src-container">
 
@@ -570,11 +565,9 @@ Lets take this example now:
 </pre>
 </div>
 
+<aside class="notes">
 <p>
-#+BEGIN NOTES:
-</p>
 
-<p>
 With this example we can see how, although we are passing a pointer, we are still employing the pass-by-value idiom. This is normal for all C code. And it will work for C++ as well, this type of passing is called "C-style pass-by-value imitation". The code does what we expect, because after the function call we de-reference the pointer which we have passed to the function in order to get the integer it was pointing to. In other words, the copy of the pointer in the function body changes the same `int` we have in memory (the one we have declared in the `main` method), regardless of the fact that a copy pointer is doing that (the integer is still changes because we are pointing to that integer). This is how we "imitate" pass-by-reference, the old way.
 </p>
 
@@ -582,9 +575,7 @@ With this example we can see how, although we are passing a pointer, we are stil
 Let's look at the same example, but in C++ code.
 </p>
 
-<p>
-#+END NOTES
-</p>
+</aside>
 
 <div class="org-src-container">
 
@@ -606,11 +597,9 @@ Let's look at the same example, but in C++ code.
 </pre>
 </div>
 
+<aside class="notes">
 <p>
-#+BEGIN NOTES:
-</p>
 
-<p>
 Doing the exact same thing, the difference is that we have no pointer declared, because we don't need one, and we changed the sign of parameter we pass, from `*` to an `&amp;`. Here C++ and it's awesome new feature allows us to actually pass a real reference to the function. This means that the function is working with the real data we have passed, and <b><b>not</b></b> with a copy of it.
 </p>
 
@@ -618,16 +607,14 @@ Doing the exact same thing, the difference is that we have no pointer declared, 
 Hopefully this cleared some things about pointers, but the question now is: when should I pass by reference and when by value, and when I am passing by reference, which of the two ways should I employ? The general answer to this is - it depends on the code you are writing and the problem you are solving, but because this is too generic, here is some better advise - when writing C, imitate the pass by reference when you <b>want</b> the data to be changed, other wide, pass it by value. When writing C++, do the same, use the C++ style with real reference passing, and also, as a bonus rule, pass <b><b>objects</b></b> by reference (this minimizes the situation where you have to copy large amounts of data to functions that only read from the passed objects).
 </p>
 
-<p>
-#+END NOTES
-</p>
+</aside>
 
 
 </section>
 </section>
 <section>
-<section id="slide-orgdecb923">
-<h2 id="orgdecb923">References</h2>
+<section id="slide-org734b262">
+<h2 id="org734b262">References</h2>
 <p>
 <b><b>Preprocessing, Compilation, and Linking</b></b>
 </p>
