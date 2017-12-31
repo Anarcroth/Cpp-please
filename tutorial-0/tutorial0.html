@@ -28,27 +28,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-30 сб 23:37</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-31 нд 08:28</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org9299670">Who am I?</a></li>
-<li><a href="#/slide-orge332aa5">What we are going to cover</a></li>
-<li><a href="#/slide-orgd174899">File structure</a></li>
-<li><a href="#/slide-org375607d">How does compilation work?</a></li>
-<li><a href="#/slide-orge922a85">Memory management</a></li>
-<li><a href="#/slide-org91c1417">References</a></li>
+<li><a href="#/slide-org59e4feb">Who am I?</a></li>
+<li><a href="#/slide-orgdce277b">What we are going to cover</a></li>
+<li><a href="#/slide-org0ba9636">File structure</a></li>
+<li><a href="#/slide-orge5faadb">How does compilation work?</a></li>
+<li><a href="#/slide-org73ebc35">Memory management</a></li>
+<li><a href="#/slide-orgfcfb75f">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org9299670">
-<h2 id="org9299670">Who am I?</h2>
+<section id="slide-org59e4feb">
+<h2 id="org59e4feb">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -61,8 +61,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgfdc5cff">
-<h3 id="orgfdc5cff">Why I chose to make these small tutorials</h3>
+<section id="slide-org14f06af">
+<h3 id="org14f06af">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -80,8 +80,8 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-orgb13cbd0">
-<h3 id="orgb13cbd0">How to look at C++</h3>
+<section id="slide-org000a01f">
+<h3 id="org000a01f">How to look at C++</h3>
 <p>
 C++ as <b>four</b> sub-languages
 </p>
@@ -105,8 +105,8 @@ that haven't been covered in depth in the C++ lectures and are somewhat elude to
 </section>
 </section>
 <section>
-<section id="slide-orge332aa5">
-<h2 id="orge332aa5">What we are going to cover</h2>
+<section id="slide-orgdce277b">
+<h2 id="orgdce277b">What we are going to cover</h2>
 <ul>
 <li>File structure</li>
 <li>Memory management</li>
@@ -120,8 +120,8 @@ that haven't been covered in depth in the C++ lectures and are somewhat elude to
 </section>
 </section>
 <section>
-<section id="slide-orgd174899">
-<h2 id="orgd174899">File structure</h2>
+<section id="slide-org0ba9636">
+<h2 id="org0ba9636">File structure</h2>
 <aside class="notes">
 <p>
 It has come to my attention that many people, while writing their homeworks, neglect the advantages of structuring their <b><b>source</b></b> files. This is most noticeable when they are writing the first 3 FDS homeworks or their FDS project. Being able to properly manage your project into several files and to navigate between them in an optimal and cohesive way will minimize your C++ suffering (and coding experience in general).
@@ -158,8 +158,8 @@ What's the difference between headers and sources? Apart from the obvious name d
 </section>
 </section>
 <section>
-<section id="slide-org375607d">
-<h2 id="org375607d">How does compilation work?</h2>
+<section id="slide-orge5faadb">
+<h2 id="orge5faadb">How does compilation work?</h2>
 <p>
 There are 3 steps of compiling C++ code:
 </p>
@@ -219,8 +219,8 @@ After we have our "pure C++" code (ending with the `*.i/*.ii`) suffix, we are re
 </section>
 </section>
 <section>
-<section id="slide-org70f5779">
-<h3 id="org70f5779">Compilation</h3>
+<section id="slide-org64467ab">
+<h3 id="org64467ab">Compilation</h3>
 <ul>
 <li>Step 1 - Compile</li>
 <li>Step 2 - Assemble</li>
@@ -317,8 +317,8 @@ Once we have the object file we can transform it into special <b>executables</b>
 </section>
 </section>
 <section>
-<section id="slide-org9e5023c">
-<h3 id="org9e5023c">Linking</h3>
+<section id="slide-orgc5edbb2">
+<h3 id="orgc5edbb2">Linking</h3>
 <p>
 The <b><b>linker</b></b> just links all of the object files into one executable file.
 </p>
@@ -365,8 +365,8 @@ This is the last step before we can take the `.exe` file, load it into memory an
 </section>
 </section>
 <section>
-<section id="slide-org3c972f5">
-<h3 id="org3c972f5">Conclusion</h3>
+<section id="slide-org9006cda">
+<h3 id="org9006cda">Conclusion</h3>
 <ul>
 <li>Understanding undefined behavior better</li>
 <li>Understanding errors</li>
@@ -384,8 +384,8 @@ This is the last step before we can take the `.exe` file, load it into memory an
 </section>
 </section>
 <section>
-<section id="slide-orge922a85">
-<h2 id="orge922a85">Memory management</h2>
+<section id="slide-org73ebc35">
+<h2 id="org73ebc35">Memory management</h2>
 <p>
 The memory layout can be divided into <b>five</b> sections:
 </p>
@@ -460,8 +460,8 @@ So when a program is running, the data, bss, and heap segments are aligned into 
 </section>
 </section>
 <section>
-<section id="slide-orgf9d606d">
-<h3 id="orgf9d606d">Memory space in C++</h3>
+<section id="slide-org055869b">
+<h3 id="org055869b">Memory space in C++</h3>
 <p>
 This is all the space and data the program needs in order to run properly.
 </p>
@@ -479,8 +479,8 @@ This is all the space and data the program needs in order to run properly.
 </section>
 </section>
 <section>
-<section id="slide-org3e4b23e">
-<h3 id="org3e4b23e">How to handle memory in C++</h3>
+<section id="slide-org4bff665">
+<h3 id="org4bff665">How to handle memory in C++</h3>
 <ul>
 <li>Pointers</li>
 <li>Pass by value</li>
@@ -490,11 +490,11 @@ This is all the space and data the program needs in order to run properly.
 
 <aside class="notes">
 <p>
-Before we start actually looking at code. . . why do we use pointers? Well we know that is <b><b>saves</b></b> time but how exactly? We saw that in order to get data from the free storage we must use pointers, but is that the only benefit? Much to our <b>"surprise"</b>, there are a lot of awesome advantages to using pointers, and with a little practice we can enjoy them.
+Before we start actually looking at any code. . . why do we use pointers? Well we know that it <b><b>saves</b></b> time but how exactly? We saw that in order to get data from the free storage we must use pointers, but is that the only benefit? Much to our <b>"surprise"</b>, there are a lot of awesome advantages to using pointers, and with a little practice we can enjoy them.
 </p>
 
 <p>
-So first things first, why do we save time and space with them? Because C++, by default, copies every parameter we pass in to a function, which means that if we have large object which we must pass to a lot of functions, that object, and all of its data, will be copied to the stack frame of that function and then discarded. Not only are we doing unnecessary copy work, but we might also fall into the trap that we are transforming the object and changing its state, but in reality, we are doing only work with the copied object. Here is a practical example - two years ago, I wrote a C++ program that passed objects like crazy in order to render an image at the end. The program, depending on the level quality it rendered, took between 30 secs to 30 minutes for the highest quality. The same program, when it used the power of passing by reference, took from 10 secs to 5 minutes max. Ain't optimization beautiful.
+So first things first, why do we save time and space with them? Because C++, by default, <b>copies</b> every parameter we pass in to a function, which means that if we have large object (or large variables for that matter) which we must pass to a lot of functions, that object, and all of its data, will be copied to the stack frame of that function and then, when we leave the function, the copied data will be discarded. This means that when we are passing by value, a copy of <b><b>every</b></b> parameter is made and we make changes to the <b>copy</b>, <b>not</b> on the originally passed data. Not only are we doing unnecessary copy work, but we might also fall into the trap that we are transforming the object and changing its state, but in reality, we are doing only work with the copied object. Here is a practical example - two years ago, I wrote a C++ program that passed objects like crazy in order to render an image at the end. The program, depending on the level quality it rendered, took between 30 secs to 30 minutes for the highest quality. The same program, when it used the power of passing by reference, took from 10 secs to 5 minutes max. Ain't optimization beautiful.
 </p>
 
 <p>
@@ -510,8 +510,8 @@ Lets take this example now:
 </section>
 </section>
 <section>
-<section id="slide-org5308e33">
-<h3 id="org5308e33">Pass by reference in C</h3>
+<section id="slide-org13ab490">
+<h3 id="org13ab490">Pass by reference in C</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C"><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">stdio.h</span><span style="color: #99d1ce;">&gt;</span>
@@ -535,7 +535,7 @@ Lets take this example now:
 
 <aside class="notes">
 <p>
-With this example we can see how, although we are passing a pointer, we are still employing the pass-by-value idiom. This is normal for all C code. And it will work for C++ as well, this type of passing is called "C-style pass-by-value imitation". The code does what we expect, because after the function call we de-reference the pointer which we have passed to the function in order to get the integer it was pointing to. In other words, the copy of the pointer in the function body changes the same `int` we have in memory (the one we have declared in the `main` method), regardless of the fact that a copy pointer is doing that (the integer is still changes because we are pointing to that integer). This is how we "imitate" pass-by-reference, the old way.
+With this example we can see how, although we are passing a pointer, we are still employing the pass-by-value idiom. This is normal for all C code (this will also work for C++ as well). This type of passing is called "C-style pass-by-value imitation". The code does what we expect, because after the function call we <b>de-reference</b> the pointer which we have passed to the function in order to get the integer it was pointing to. <b>De-referencing</b> means that we are evaluating what the pointer points to. In our case, when the function call finishes and we de-reference the pointer, we are just looking at the value to which the pointer is pointing. So here is what's happening, when we pass a pointer to the function, that pointer gets copied, and that copy is used in the function. At this point we have two pointers, which are pointing to the same value. When we go through the function body, the <b>copied</b> pointer <b>changes</b> the value it points to (in our case it changes the `i` variable declared in `main`). In other words, the copy of the pointer in the function body changes the same `int` we have in memory, regardless of the fact that a copy pointer is doing that (the integer is still changed because we are pointing to that integer). This is how we "imitate" pass-by-reference, the old way.
 </p>
 
 <p>
@@ -547,8 +547,8 @@ Let's look at the same example, but in C++ code.
 </section>
 </section>
 <section>
-<section id="slide-org2caaec2">
-<h3 id="org2caaec2">Pass by reference in C++</h3>
+<section id="slide-org3a6e5fd">
+<h3 id="org3a6e5fd">Pass by reference in C++</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span>
@@ -571,7 +571,7 @@ Let's look at the same example, but in C++ code.
 
 <aside class="notes">
 <p>
-Doing the exact same thing, the difference is that we have no pointer declared, because we don't need one, and we changed the sign of parameter we pass, from `*` to an `&amp;`. Here C++ and it's awesome new feature allows us to actually pass a real reference to the function. This means that the function is working with the real data we have passed, and <b><b>not</b></b> with a copy of it.
+Doing the exact same thing, the difference is that we have no pointer declared, because we don't need one, and we changed the sign of parameter we pass, from an `*` to an `&amp;`. Here C++ and it's awesome new feature allows us to actually pass a real reference to the function. This means that the function is working with the real data we have passed, and <b><b>not</b></b> with a copy of it. If we make changes to the variable inside the function, those changes will <b>stick</b> once we leave the function!
 </p>
 
 <p>
@@ -583,15 +583,15 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org91c1417">
-<h2 id="org91c1417">References</h2>
-<div class="outline-text-2" id="text-org91c1417">
+<section id="slide-orgfcfb75f">
+<h2 id="orgfcfb75f">References</h2>
+<div class="outline-text-2" id="text-orgfcfb75f">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org7eb24ae">
-<h3 id="org7eb24ae"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
+<section id="slide-org8c42341">
+<h3 id="org8c42341"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Object_file">https://en.wikipedia.org/wiki/Object_file</a></li>
 <li><a href="https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation">https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation</a></li>
@@ -619,8 +619,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-orga4f94ba">
-<h3 id="orga4f94ba"><b><b>Memory management</b></b></h3>
+<section id="slide-orge13a644">
+<h3 id="orge13a644"><b><b>Memory management</b></b></h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation">https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation</a></li>
 <li><a href="http://www.tenouk.com/ModuleW.html">http://www.tenouk.com/ModuleW.html</a></li>
@@ -635,8 +635,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org5728c5f">
-<h3 id="org5728c5f"><b><b>File Structure</b></b></h3>
+<section id="slide-org8408011">
+<h3 id="org8408011"><b><b>File Structure</b></b></h3>
 <ul>
 <li><a href="http://www.cplusplus.com/forum/articles/10627/">http://www.cplusplus.com/forum/articles/10627/</a></li>
 
