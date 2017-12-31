@@ -28,27 +28,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-31 нд 08:28</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-31 нд 10:08</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org59e4feb">Who am I?</a></li>
-<li><a href="#/slide-orgdce277b">What we are going to cover</a></li>
-<li><a href="#/slide-org0ba9636">File structure</a></li>
-<li><a href="#/slide-orge5faadb">How does compilation work?</a></li>
-<li><a href="#/slide-org73ebc35">Memory management</a></li>
-<li><a href="#/slide-orgfcfb75f">References</a></li>
+<li><a href="#/slide-orgb2db4ba">Who am I?</a></li>
+<li><a href="#/slide-orgf1454e4">What we are going to cover</a></li>
+<li><a href="#/slide-orgf19a7ac">File structure</a></li>
+<li><a href="#/slide-orga4d8e76">How does compilation work?</a></li>
+<li><a href="#/slide-orge6a10a3">Memory management</a></li>
+<li><a href="#/slide-org1c2d3b7">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org59e4feb">
-<h2 id="org59e4feb">Who am I?</h2>
+<section id="slide-orgb2db4ba">
+<h2 id="orgb2db4ba">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -61,8 +61,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org14f06af">
-<h3 id="org14f06af">Why I chose to make these small tutorials</h3>
+<section id="slide-org4a503c4">
+<h3 id="org4a503c4">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -80,8 +80,8 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-org000a01f">
-<h3 id="org000a01f">How to look at C++</h3>
+<section id="slide-org184b711">
+<h3 id="org184b711">How to look at C++</h3>
 <p>
 C++ as <b>four</b> sub-languages
 </p>
@@ -95,9 +95,7 @@ C++ as <b>four</b> sub-languages
 
 <aside class="notes">
 <p>
-C++ can be generally divided into four sub-categories or sub-languages.
-It's a daunting task to go over all of these aspects and trying to teach everything, mainly because I can't! But instead I will try to cover some topics
-that haven't been covered in depth in the C++ lectures and are somewhat elude to the students. Now our list seems like this
+C++ can be generally divided into four sub-categories or sub-languages. It's a daunting task to go over all of these aspects and trying to teach everything, mainly because I can't! But instead I will try to cover some topics that haven't been covered in depth in the C++ lectures and are somewhat elude to the students. Now our list seems like this
 </p>
 
 </aside>
@@ -105,8 +103,8 @@ that haven't been covered in depth in the C++ lectures and are somewhat elude to
 </section>
 </section>
 <section>
-<section id="slide-orgdce277b">
-<h2 id="orgdce277b">What we are going to cover</h2>
+<section id="slide-orgf1454e4">
+<h2 id="orgf1454e4">What we are going to cover</h2>
 <ul>
 <li>File structure</li>
 <li>Memory management</li>
@@ -120,25 +118,44 @@ that haven't been covered in depth in the C++ lectures and are somewhat elude to
 </section>
 </section>
 <section>
-<section id="slide-org0ba9636">
-<h2 id="org0ba9636">File structure</h2>
+<section id="slide-orgf19a7ac">
+<h2 id="orgf19a7ac">File structure</h2>
+<ul>
+<li>Advantages:
+<ul>
+<li>Better code organization</li>
+<li>Faster compiling</li>
+<li>Separation of <b>implementation</b> from <b>interface</b></li>
+
+</ul></li>
+
+<li>Disadvantages:
+<ul>
+<li>More complicated structure</li>
+
+</ul></li>
+
+</ul>
+
 <aside class="notes">
 <p>
 It has come to my attention that many people, while writing their homeworks, neglect the advantages of structuring their <b><b>source</b></b> files. This is most noticeable when they are writing the first 3 FDS homeworks or their FDS project. Being able to properly manage your project into several files and to navigate between them in an optimal and cohesive way will minimize your C++ suffering (and coding experience in general).
 </p>
 
 <p>
-Now most of you already know this, but there are several great advantages to separating your <b>implementation</b> (cpp) files from your <b>definition</b> (h) files. One such advantage is that, multiple people can start working on several <b>header</b> files and instead of you waiting for them to be ready, you can continue with your work while they finish theirs. This separation of implementation is important, because it minimizes development time. But because you will be working mostly alone with your solutions, you will see another great advantage of structuring your files, and that is - it will be much easier for you to understand what you are doing and thus will minimize debugging and problem fixing time.
+Now most of you already know this, but there are several great advantages to separating your <b>implementation</b> (cpp) files from your <b>interface</b> (h) files. One advantage is that this will bring code clarity to your program. Instead of navigating through one big <b>400</b> line <code>Source.cpp</code> file, and wondering where that one definition of that object is and then going back to the <code>main()</code> method to fix one line, you will have a nicely structured system. Every class will have it's own implementation and interface file, thus minimizing code searching and optimizing code writing! But that's not all. This separation will allow you to compile your programs even faster. That is, every <b>source</b> file is compiled on its own. When you make a small change in your original 400 line monstrosity, you have to wait for all of that code to <b><b>re-compile</b></b>, but if you have the files separated, you just have to re-compile only the changes files, making waiting time much smaller (naturally this effect can be seen when compiling large programs, while small ones won't have such noticeable impact on time). And lastly, we also gain the benefit of implementation from interface separation.
 </p>
 
 <p>
-  Since most of you are working with Visual Studio, here is how your structure looks like now:
-Picture 1
+But what we are sacrificing for these benefits is that we are increasing our project complexity. This shouldn't scare us that much, but we do have to keep this in mind - <b><b>We have to limit ourselves not to over layer our program</b></b>.
 </p>
 
 <p>
-  And here is how you would want it to look.
-Picture 2
+Since most of you are working with Visual Studio, here is how your structure looks like now: Picture 1
+</p>
+
+<p>
+And here is how you would want it to look: Picture 2
 </p>
 
 <p>
@@ -147,10 +164,7 @@ Now I am not going to tell you how to add files and where to put them, I will ju
 
 <p>
 First things first.
-</p>
-
-<p>
-What's the difference between headers and sources? Apart from the obvious name difference, header files are considered to be the <b>definition</b> part of the source code, while source (cpp) files are the <b>implementation</b> part. Keeping them separate allows us to keep a clean directory and structure and to separate our logic from our implementation.
+What's the difference between headers and sources? Apart from the obvious name difference, header files are considered to be the <b>interface</b> part of the source code, while source (cpp) files are the <b>implementation</b> part. Keeping them separate allows us to keep a clean directory and structure and to separate our logic from our implementation.
 </p>
 
 </aside>
@@ -158,8 +172,85 @@ What's the difference between headers and sources? Apart from the obvious name d
 </section>
 </section>
 <section>
-<section id="slide-orge5faadb">
-<h2 id="orge5faadb">How does compilation work?</h2>
+<section id="slide-org52bf478">
+<h3 id="org52bf478">How to work with header?</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">//</span><span style="color: #245361;">header we always include</span>
+<span class="linenr"> 1: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"awesomeclass1.h"</span>
+<span class="linenr"> 2: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"awesomeclass2.h"</span>
+<span class="linenr"> 3: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"awesomeclass3.h"</span> <span style="color: #245361;">// </span><span style="color: #245361;">our own class headers</span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #d26937;">int</span> <span style="color: #599cab;">main</span><span style="color: #99d1ce;">()</span>
+<span class="linenr"> 6: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 7: </span>    <span style="color: #d26937;">awesomeclass1</span> <span style="color: #599cab;">ac</span>;
+<span class="linenr"> 8: </span>    <span style="color: #d26937;">awesomeclass2</span> <span style="color: #599cab;">ac2</span>;
+<span class="linenr"> 9: </span>    <span style="color: #d26937;">awesomeclass3</span> <span style="color: #599cab;">ac3</span>;
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>    ac.do_something<span style="color: #33859e;">(</span>ac2<span style="color: #33859e;">)</span>;
+<span class="linenr">12: </span>
+<span class="linenr">13: </span>    ac3 = ac;
+<span class="linenr">14: </span>
+<span class="linenr">15: </span>    <span style="color: #195466; font-weight: bold;">return</span> <span style="color: #33859e; font-weight: bold;">0</span>;
+<span class="linenr">16: </span><span style="color: #99d1ce;">}</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+So what are header files and what do they do?
+</p>
+
+<p>
+Header files, usually ending with the <code>*.h</code> file extension (can be also <code>*.hxx</code>, <code>*.hpp</code>, or nothing at all), are code files that are <b><b>included</b></b> in our source files. We can look at header files as code that only serves as the interface to our classes. That is, it holds a declaration which we later on implement and/or include in our source files.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org1051b22">
+<h3 id="org1051b22">Header guards</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
+<span class="linenr"> 1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">x</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #245361;">// </span><span style="color: #245361;">a.h</span>
+<span class="linenr"> 4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">a</span> <span style="color: #99d1ce;">{</span> <span style="color: #d26937;">X</span> <span style="color: #599cab;">x</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #245361;">// </span><span style="color: #245361;">b.h</span>
+<span class="linenr"> 7: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">b</span> <span style="color: #99d1ce;">{</span> <span style="color: #d26937;">X</span> <span style="color: #599cab;">x</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #245361;">// </span><span style="color: #245361;">source.cpp</span>
+<span class="linenr">10: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"a.h"</span> <span style="color: #245361;">// </span><span style="color: #245361;">include x.h for the first time</span>
+<span class="linenr">11: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"b.h"</span> <span style="color: #245361;">// </span><span style="color: #245361;">error! include x.h again!</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgaa58a9d">
+<h3 id="orgaa58a9d"></h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
+<span class="linenr">1: </span><span style="color: #c23127;">#if</span><span style="color: #c23127;">n</span><span style="color: #c23127;">def</span> __X_H_INCLUDED__
+<span class="linenr">2: </span><span style="color: #c23127;">#define</span> <span style="color: #599cab;">__X_H_INCLUDED__</span>
+<span class="linenr">3: </span>
+<span class="linenr">4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">x</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr">5: </span>
+<span class="linenr">6: </span><span style="color: #c23127;">#endif</span>
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orga4d8e76">
+<h2 id="orga4d8e76">How does compilation work?</h2>
 <p>
 There are 3 steps of compiling C++ code:
 </p>
@@ -181,7 +272,7 @@ When we are trying to run a piece of code (in our case C++), the computer goes t
 </p>
 
 <p>
-The first part is the so called <b><b>preprocessing</b></b> step, where the <b>preprocessor</b> handles the `preprocessor` <b>directives</b>. These are the `#include`, `#define`, `#if`, `#ifndef`, `#ifdef` keywords we put on the top of our files. At this stage, one file at a time, each of these <b>directives</b> are replaces with their respective pieces of code from other files (they are usually only declarations). That is why when we have multiple source files, we include only the header files, because they only show us the declarations and not the definitions (thus we minimize time in this step). So after the directives have been replaced with the respective file contents or snippets of files (depending in the `#if` `#ifndef` and `#ifdef` and the macro `#define` keywords) we get at the end "pure C++" code. The preprocessor also adds line numbers so that the further steps can identify where the inserted code came from. As an example, if we write `#include &lt;iostream&gt;` we actually just insert the contents from the `iostream` library on the top of our main source file (again we must remember that most of the time, we are just including declarations).
+The first part is the so called <b><b>preprocessing</b></b> step, where the <b>preprocessor</b> handles the <code>preprocessor</code> <b>directives</b>. These are the <code>#include</code>, <code>#define</code>, <code>#if</code>, <code>#ifndef</code>, <code>#ifdef</code> keywords we put on the top of our files. At this stage, one file at a time, each of these <b>directives</b> are replaces with their respective pieces of code from other files (they are usually only declarations). That is why when we have multiple source files, we include only the header files, because they only show us the declarations and not the definitions (thus we minimize time in this step). So after the directives have been replaced with the respective file contents or snippets of files (depending in the <code>#if</code> <code>#ifndef</code> and <code>#ifdef</code> and the macro <code>#define</code> keywords) we get at the end "pure C++" code. The preprocessor also adds line numbers so that the further steps can identify where the inserted code came from. As an example, if we write <code>#include &lt;iostream&gt;</code> we actually just insert the contents from the <code>iostream</code> library on the top of our main source file (again we must remember that most of the time, we are just including declarations).
 </p>
 
 <p>
@@ -189,11 +280,11 @@ As a side note, this whole process is very similar for C code as well.
 </p>
 
 <p>
-So at the end of all of this copying, we get a temporary file that is just C/C++ code. It's indicated by the `*.i` or `*.ii` file extension, meaning that this file is just C/C++ code and must not be preprocessed.
+So at the end of all of this copying, we get a temporary file that is just C/C++ code. It's indicated by the <code>*.i</code> or <code>*.ii</code> file extension, meaning that this file is just C/C++ code and must not be preprocessed.
 </p>
 
 <p>
-We must note that the preprocessor is agnostic to the C++ syntax, that is why for instance, in Visual Studio we have the `#pragma` directive that tries to do the `#ifndef` directive work, but that's just a lie. 
+We must note that the preprocessor is agnostic to the C++ syntax, that is why for instance, in Visual Studio we have the <code>#pragma</code> directive that tries to do the <code>#ifndef</code> directive work, but that's just a lie. 
 </p>
 
 <p>
@@ -201,17 +292,17 @@ We have to be careful where and how we put our <b>includes</b>.
 </p>
 
 <p>
-<b><b>Tip:</b></b> one of the things we want to do while writing C++ code is to minimize our reliance on the preprocessor. That is, if we are `#define`-ning macros as constants so that we can use them throughout our program, we might encounter strange errors, because these directives may be treated as not part of the language. As an example, if we write `#define A<sub>RATIO</sub> 1.18` the preprocessor might skip the name and just include the double 1.18. Then if we get, or when we get, an error referring to 1.18, we might not know it's because it was a macro define lost from the preprocessor. Instead we can just use `const`s as such: `const double ARatio = 1.18;` Now we know that the compiler will see this variable and we won't bang our head against the wall with unnecessary errors.
+<b><b>Tip:</b></b> one of the things we want to do while writing C++ code is to minimize our reliance on the preprocessor. That is, if we are <code>#define</code>-ning macros as constants so that we can use them throughout our program, we might encounter strange errors, because these directives may be treated as not part of the language. As an example, if we write <code>#define A_RATIO 1.18</code> the preprocessor might skip the name and just include the double 1.18. Then if we get, or when we get, an error referring to 1.18, we might not know it's because it was a macro define lost from the preprocessor. Instead we can just use <code>const~s as such: ~const double ARatio = 1.18;</code> Now we know that the compiler will see this variable and we won't bang our head against the wall with unnecessary errors.
 </p>
 
 <p>
 In order to get only the preprocessed file we can run the
-`g++ -E hello-world.cpp -o hello-world.ii`
-which will produce the `hello-world.ii` file and then we can look inside of it and find out what it includes.
+<code>g++ -E hello-world.cpp -o hello-world.ii</code>
+which will produce the <code>hello-world.ii</code> file and then we can look inside of it and find out what it includes.
 </p>
 
 <p>
-After we have our "pure C++" code (ending with the `*.i/*.ii`) suffix, we are ready to move to the next step - <b>Compilation</b>.
+After we have our "pure C++" code (ending with the <code>*.i/*.ii</code>) suffix, we are ready to move to the next step - <b>Compilation</b>.
 </p>
 
 </aside>
@@ -219,8 +310,8 @@ After we have our "pure C++" code (ending with the `*.i/*.ii`) suffix, we are re
 </section>
 </section>
 <section>
-<section id="slide-org64467ab">
-<h3 id="org64467ab">Compilation</h3>
+<section id="slide-orgf406b9c">
+<h3 id="orgf406b9c">Compilation</h3>
 <ul>
 <li>Step 1 - Compile</li>
 <li>Step 2 - Assemble</li>
@@ -269,39 +360,7 @@ or
 
 <aside class="notes">
 <p>
-The <b><b>compilation</b></b> step is another relatively simple phase, where the preprocessed pure C++ file is transformed into <b>assembly</b> code. From there the compiler invokes an underlying back-end (assembler tool-chain) and assembles the assembly code into <b>machine</b> code, thus producing an actual <b>binary file</b> (where there are different binary file formats such as: `EFL`, `a.out`, `COFF`, `SOM`). This is the so called <b>object file</b>, which contains the compiled code into binary form of the symbols defined in the input. This file is usually no directly executable. The object files also contain additional data in the form of sections, used for linking, debugging, symbolic cross-reference resolution, comments, re-allocations, program symbols, etc (sections can be `.text`, `.bss`, `.data`, `.reloc`, etc.). The object files contain the metadata that hold the memory locations (addressed) of the variables and functions (called symbols) into an associative data structure called a <b>symbolic table</b>. Note that these addresses might not be the final addresses of the symbol in the final executable. The things that might be interesting to us is the symbol table. This is a data structure in the object file that's basically a name and an index. It maps different items in the object file to names that the linker can understand. If you call a function from your code, the compiler doesn't put the final address of the routine in the object file. Instead, it puts a placeholder value into the code and adds a note that tells the linker to look up the reference in the various symbol tables from all the object files it's processing and stick the final location there.
-</p>
-
-<p>
-To get the object file we can run
-</p>
-
-<p>
-`g++ -c hello-world.ii`
-</p>
-
-<p>
-or
-</p>
-
-<p>
-`g++ -c hello-world.cpp`
-</p>
-
-<p>
-and we can then look inside what an object file looks like with
-</p>
-
-<p>
-`nm hello-world.o`
-</p>
-
-<p>
-or
-</p>
-
-<p>
-`objdump -t hello-world.o`
+The <b><b>compilation</b></b> step is another relatively simple phase, where the preprocessed pure C++ file is transformed into <b>assembly</b> code. From there the compiler invokes an underlying back-end (assembler tool-chain) and assembles the assembly code into <b>machine</b> code, thus producing an actual <b>binary file</b> (where there are different binary file formats such as: <code>EFL</code>, <code>a.out</code>, <code>COFF</code>, <code>SOM</code>). This is the so called <b>object file</b>, which contains the compiled code into binary form of the symbols defined in the input. This file is usually no directly executable. The object files also contain additional data in the form of sections, used for linking, debugging, symbolic cross-reference resolution, comments, re-allocations, program symbols, etc (sections can be <code>.text</code>, <code>.bss</code>, <code>.data</code>, <code>.reloc</code>, etc.). The object files contain the metadata that hold the memory locations (addressed) of the variables and functions (called symbols) into an associative data structure called a <b>symbolic table</b>. Note that these addresses might not be the final addresses of the symbol in the final executable. The things that might be interesting to us is the symbol table. This is a data structure in the object file that's basically a name and an index. It maps different items in the object file to names that the linker can understand. If you call a function from your code, the compiler doesn't put the final address of the routine in the object file. Instead, it puts a placeholder value into the code and adds a note that tells the linker to look up the reference in the various symbol tables from all the object files it's processing and stick the final location there.
 </p>
 
 <p>
@@ -317,8 +376,8 @@ Once we have the object file we can transform it into special <b>executables</b>
 </section>
 </section>
 <section>
-<section id="slide-orgc5edbb2">
-<h3 id="orgc5edbb2">Linking</h3>
+<section id="slide-org37fde44">
+<h3 id="org37fde44">Linking</h3>
 <p>
 The <b><b>linker</b></b> just links all of the object files into one executable file.
 </p>
@@ -335,7 +394,7 @@ The <b><b>linker</b></b> just links all of the object files into one executable 
 </p>
 
 <p>
-One thing that we will encounter are the terms <b><b>dynamic</b></b> and <b><b>static</b></b> linking. <b>Static</b> linking is the process that links the program and the libraries together at normal link time. This means that the binding between the program and the library is known at link time. We are linking the program statically to a <b>shared archive</b> of objects (libraries). An example would be the standard `libc.a` library for <b><b>C</b></b>. A draw back to this approach is that the size of the executable is quite big, because everything must be bundled together. These static libraries are identified by the `*.a` file extension.
+One thing that we will encounter are the terms <b><b>dynamic</b></b> and <b><b>static</b></b> linking. <b>Static</b> linking is the process that links the program and the libraries together at normal link time. This means that the binding between the program and the library is known at link time. We are linking the program statically to a <b>shared archive</b> of objects (libraries). An example would be the standard <code>libc.a</code> library for <b><b>C</b></b>. A draw back to this approach is that the size of the executable is quite big, because everything must be bundled together. These static libraries are identified by the <code>*.a</code> file extension.
 </p>
 
 <p>
@@ -343,7 +402,7 @@ Although the deployment of such <b>executables</b> is much easier and allows us 
 </p>
 
 <p>
-To overcome this problem we can use <b><b>dynamic</b></b> libraries. For the Windows users, these are the famous `*.dll` files. In essence, we get an <b>incomplete</b> binary, which is told <b>during</b> runtime, where to search for the code in the respective library. That is - the linkage of the functions from the shared objects and our program is done during runtime right before the program starts. The linker just mentions to the executable that there is a function from a shared object used at this particular place and notes it in the binary, and then carries on. The symbols of the shared objects (the ones in the libraries we are using) are only verified and validated that they exist, but are not combined into the final executable binary. Thus we get several great advantages to using dynamic linking and libraries:
+To overcome this problem we can use <b><b>dynamic</b></b> libraries. For the Windows users, these are the famous <code>*.dll</code> files. In essence, we get an <b>incomplete</b> binary, which is told <b>during</b> runtime, where to search for the code in the respective library. That is - the linkage of the functions from the shared objects and our program is done during runtime right before the program starts. The linker just mentions to the executable that there is a function from a shared object used at this particular place and notes it in the binary, and then carries on. The symbols of the shared objects (the ones in the libraries we are using) are only verified and validated that they exist, but are not combined into the final executable binary. Thus we get several great advantages to using dynamic linking and libraries:
 </p>
 <ul>
 <li>Portable executables with smaller size.</li>
@@ -353,11 +412,11 @@ To overcome this problem we can use <b><b>dynamic</b></b> libraries. For the Win
 </ul>
 
 <p>
-This is the last step before we can take the `.exe` file, load it into memory and run it. At the linking stage we get different errors, such as <b>multiple function definitions</b>, or <b>undefined functions</b>, <b>missing references</b>, etc.
+This is the last step before we can take the <code>.exe</code> file, load it into memory and run it. At the linking stage we get different errors, such as <b>multiple function definitions</b>, or <b>undefined functions</b>, <b>missing references</b>, etc.
 </p>
 
 <p>
-<b><b>Loading and running</b></b> - Now that we have a ready executable file we just have to <b>load</b> it into memory and run it. The <b><b>loader</b></b> is a general part of the OS and it operates in several steps. The general idea is this - first we validate memory and access privileges to the exe. The OS reads the header of our binary, checks if we have enough space to run the program, checks what kind of access permissions we have, checks the ability to run the instructions, makes sure that this is a valid executable image, and then goes through several steps of loading. To be exact - it allocates primary memory to run the file, copies the address spaces from secondary to primary memory, copies the multiple sections of the executable to the primary memory, copies the command line arguments on to the stack, refreshes the register and re-points the <b><b>esp</b></b> (the stack pointer) to the top of the cleared stack, and finally jumps to the start of the program and runs the `main()` method.
+<b><b>Loading and running</b></b> - Now that we have a ready executable file we just have to <b>load</b> it into memory and run it. The <b><b>loader</b></b> is a general part of the OS and it operates in several steps. The general idea is this - first we validate memory and access privileges to the exe. The OS reads the header of our binary, checks if we have enough space to run the program, checks what kind of access permissions we have, checks the ability to run the instructions, makes sure that this is a valid executable image, and then goes through several steps of loading. To be exact - it allocates primary memory to run the file, copies the address spaces from secondary to primary memory, copies the multiple sections of the executable to the primary memory, copies the command line arguments on to the stack, refreshes the register and re-points the <b><b>esp</b></b> (the stack pointer) to the top of the cleared stack, and finally jumps to the start of the program and runs the <code>main()</code> method.
 </p>
 
 </aside>
@@ -365,8 +424,8 @@ This is the last step before we can take the `.exe` file, load it into memory an
 </section>
 </section>
 <section>
-<section id="slide-org9006cda">
-<h3 id="org9006cda">Conclusion</h3>
+<section id="slide-org45c7ac9">
+<h3 id="org45c7ac9">Conclusion</h3>
 <ul>
 <li>Understanding undefined behavior better</li>
 <li>Understanding errors</li>
@@ -384,8 +443,8 @@ This is the last step before we can take the `.exe` file, load it into memory an
 </section>
 </section>
 <section>
-<section id="slide-org73ebc35">
-<h2 id="org73ebc35">Memory management</h2>
+<section id="slide-orge6a10a3">
+<h2 id="orge6a10a3">Memory management</h2>
 <p>
 The memory layout can be divided into <b>five</b> sections:
 </p>
@@ -416,15 +475,15 @@ The <b><b>bss</b></b> segment (**B**lock **S**tarted by **S**ymbol) is where all
 </p>
 
 <p>
-The <b><b>heap</b></b> is the dynamic part of the memory allocation (C uses `malloc()`, `calloc()`, and `realloc()`, while C++ has `new`). We should make a quick clarification here. You might encounter two different terms that are often used interchangeably - one is the <b>heap</b> and the other is the <b>free store</b>. The difference between them in terms of their functionality is none, but following the C++ standards we can see that the heap is never mentioned apart from being an <b>abstract data structure</b>. This is so, because the heap is allocated or freed via `malloc()`, `calloc()`, `realloc()`, and `free()`, while the free store is allocated or deleted with `new` and `delete`. Although `new` and `delete` might be implemented in terms of `malloc()` and `free()`, these are not the same memory locations and they cannot be used <b><b>safely</b></b> interchangeably. For the sake of simplicity, we will continue referring to them under the <b>heap</b> term, but note that C++ does not used the heap the way C uses it.
+The <b><b>heap</b></b> is the dynamic part of the memory allocation (C uses <code>malloc()</code>, <code>calloc()</code>, and <code>realloc()</code>, while C++ has <code>new</code>). We should make a quick clarification here. You might encounter two different terms that are often used interchangeably - one is the <b>heap</b> and the other is the <b>free store</b>. The difference between them in terms of their functionality is none, but following the C++ standards we can see that the heap is never mentioned apart from being an <b>abstract data structure</b>. This is so, because the heap is allocated or freed via <code>malloc()</code>, <code>calloc()</code>, <code>realloc()</code>, and <code>free()</code>, while the free store is allocated or deleted with <code>new</code> and <code>delete</code>. Although <code>new</code> and <code>delete</code> might be implemented in terms of <code>malloc()</code> and <code>free()</code>, these are not the same memory locations and they cannot be used <b><b>safely</b></b> interchangeably. For the sake of simplicity, we will continue referring to them under the <b>heap</b> term, but note that C++ does not used the heap the way C uses it.
 </p>
 
 <p>
-Everything in this part of the memory is anonymous and needs a pointer to gain access to it. When we allocate new memory the process address space grows upwards. This means that as new items are added, the addresses of those items are numerically greater than the addresses of the previous ones. To free up memory from the heap we use `free()` for C and `delete` for C++, thus leaving holes in the memory. This means that when you are allocating objects to the heap and then deleting them, because of their different size, you might get into the situation where some deleted object free up space between objects that are still on the heap. Thus physically leaving free space that cannot be used by larger objects. This is the idea of leaving holes. 
+Everything in this part of the memory is anonymous and needs a pointer to gain access to it. When we allocate new memory the process address space grows upwards. This means that as new items are added, the addresses of those items are numerically greater than the addresses of the previous ones. To free up memory from the heap we use <code>free()</code> for C and <code>delete</code> for C++, thus leaving holes in the memory. This means that when you are allocating objects to the heap and then deleting them, because of their different size, you might get into the situation where some deleted object free up space between objects that are still on the heap. Thus physically leaving free space that cannot be used by larger objects. This is the idea of leaving holes. 
 </p>
 
 <p>
-We can picture it as if we have a blank wall and then start arranging pictures on it. If we are not careful with our picture arrangement we might get most of the pictures on the wall, but at some point we might get small free spaces that are just blank wall. Thus we technically do have space for more pictures, but this space is fragmented and unusable for bigger pictures (presuming that we cannot chop up our pictures into pieces). This is the same with the memory allocation and de-allocation on the heap. On our machines, where we have virtual memory, we don't really experience this problem, because it is important for the virtual memory to have the object into one continuous block. We can experience this problem of memory fragmentation when we start getting allocation errors (such as `malloc()` returning `null`, or when we cannot free up memory properly, or when our program takes too long to reallocate memory.
+We can picture it as if we have a blank wall and then start arranging pictures on it. If we are not careful with our picture arrangement we might get most of the pictures on the wall, but at some point we might get small free spaces that are just blank wall. Thus we technically do have space for more pictures, but this space is fragmented and unusable for bigger pictures (presuming that we cannot chop up our pictures into pieces). This is the same with the memory allocation and de-allocation on the heap. On our machines, where we have virtual memory, we don't really experience this problem, because it is important for the virtual memory to have the object into one continuous block. We can experience this problem of memory fragmentation when we start getting allocation errors (such as <code>malloc()</code> returning <code>null</code>, or when we cannot free up memory properly, or when our program takes too long to reallocate memory.
 </p>
 
 <p>
@@ -440,11 +499,11 @@ The great thing about C++ is that the STL handles these allocations very well an
 </p>
 
 <p>
-The end of the heap is indicated by the `break` pointer. It is impossible to allocate more data beyond this range, but with system calls `brk()` and `sbrk()` we can move the break further up the memory and free up more space for our running program (keep in mind that such direct system calls are generally a bad practice and should be avoided).
+The end of the heap is indicated by the <code>break</code> pointer. It is impossible to allocate more data beyond this range, but with system calls <code>brk()</code> and <code>sbrk()</code> we can move the break further up the memory and free up more space for our running program (keep in mind that such direct system calls are generally a bad practice and should be avoided).
 </p>
 
 <p>
-The <b><b>stack</b></b> is the static part of the memory allocation in our program. Here local variables are allocated. These are all the variables that are declared inside a function body and are not set as `static`. Following the stack data structure, local variables, function parameters, addresses, etc. are popped up or pushed down for quick and easy access.
+The <b><b>stack</b></b> is the static part of the memory allocation in our program. Here local variables are allocated. These are all the variables that are declared inside a function body and are not set as <code>static</code>. Following the stack data structure, local variables, function parameters, addresses, etc. are popped up or pushed down for quick and easy access.
 </p>
 
 <p>
@@ -460,8 +519,8 @@ So when a program is running, the data, bss, and heap segments are aligned into 
 </section>
 </section>
 <section>
-<section id="slide-org055869b">
-<h3 id="org055869b">Memory space in C++</h3>
+<section id="slide-org0ff9c61">
+<h3 id="org0ff9c61">Memory space in C++</h3>
 <p>
 This is all the space and data the program needs in order to run properly.
 </p>
@@ -479,8 +538,8 @@ This is all the space and data the program needs in order to run properly.
 </section>
 </section>
 <section>
-<section id="slide-org4bff665">
-<h3 id="org4bff665">How to handle memory in C++</h3>
+<section id="slide-org101afe8">
+<h3 id="org101afe8">How to handle memory in C++</h3>
 <ul>
 <li>Pointers</li>
 <li>Pass by value</li>
@@ -510,32 +569,32 @@ Lets take this example now:
 </section>
 </section>
 <section>
-<section id="slide-org13ab490">
-<h3 id="org13ab490">Pass by reference in C</h3>
+<section id="slide-org7c5905b">
+<h3 id="org7c5905b">Pass by reference in C</h3>
 <div class="org-src-container">
 
-<pre  class="src src-C"><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">stdio.h</span><span style="color: #99d1ce;">&gt;</span>
-
-<span style="color: #d26937;">void</span> <span style="color: #599cab;">f</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">int</span> *<span style="color: #599cab;">j</span><span style="color: #99d1ce;">)</span> 
-<span style="color: #99d1ce;">{</span>
-    <span style="color: #33859e;">(</span>*j<span style="color: #33859e;">)</span>++;
-<span style="color: #99d1ce;">}</span>
-
-<span style="color: #d26937;">int</span> <span style="color: #599cab;">main</span><span style="color: #99d1ce;">()</span> 
-<span style="color: #99d1ce;">{</span>
-    <span style="color: #d26937;">int</span> <span style="color: #599cab;">i</span> = <span style="color: #33859e; font-weight: bold;">20</span>;
-    <span style="color: #d26937;">int</span> *<span style="color: #599cab;">p</span> = &amp;i;
-    f<span style="color: #33859e;">(</span>p<span style="color: #33859e;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">or f(&amp;i); will yield the same result</span>
-    printf<span style="color: #33859e;">(</span><span style="color: #2aa889;">"i = %d\n"</span>, i<span style="color: #33859e;">)</span>;
-
-    <span style="color: #195466; font-weight: bold;">return</span> <span style="color: #33859e; font-weight: bold;">0</span>;
-<span style="color: #99d1ce;">}</span>
+<pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">stdio.h</span><span style="color: #99d1ce;">&gt;</span>
+<span class="linenr"> 1: </span>
+<span class="linenr"> 2: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">f</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">int</span> *<span style="color: #599cab;">j</span><span style="color: #99d1ce;">)</span> 
+<span class="linenr"> 3: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #33859e;">(</span>*j<span style="color: #33859e;">)</span>++;
+<span class="linenr"> 5: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #d26937;">int</span> <span style="color: #599cab;">main</span><span style="color: #99d1ce;">()</span> 
+<span class="linenr"> 8: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 9: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">i</span> = <span style="color: #33859e; font-weight: bold;">20</span>;
+<span class="linenr">10: </span>    <span style="color: #d26937;">int</span> *<span style="color: #599cab;">p</span> = &amp;i;
+<span class="linenr">11: </span>    f<span style="color: #33859e;">(</span>p<span style="color: #33859e;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">or f(&amp;i); will yield the same result</span>
+<span class="linenr">12: </span>    printf<span style="color: #33859e;">(</span><span style="color: #2aa889;">"i = %d\n"</span>, i<span style="color: #33859e;">)</span>;
+<span class="linenr">13: </span>
+<span class="linenr">14: </span>    <span style="color: #195466; font-weight: bold;">return</span> <span style="color: #33859e; font-weight: bold;">0</span>;
+<span class="linenr">15: </span><span style="color: #99d1ce;">}</span>
 </pre>
 </div>
 
 <aside class="notes">
 <p>
-With this example we can see how, although we are passing a pointer, we are still employing the pass-by-value idiom. This is normal for all C code (this will also work for C++ as well). This type of passing is called "C-style pass-by-value imitation". The code does what we expect, because after the function call we <b>de-reference</b> the pointer which we have passed to the function in order to get the integer it was pointing to. <b>De-referencing</b> means that we are evaluating what the pointer points to. In our case, when the function call finishes and we de-reference the pointer, we are just looking at the value to which the pointer is pointing. So here is what's happening, when we pass a pointer to the function, that pointer gets copied, and that copy is used in the function. At this point we have two pointers, which are pointing to the same value. When we go through the function body, the <b>copied</b> pointer <b>changes</b> the value it points to (in our case it changes the `i` variable declared in `main`). In other words, the copy of the pointer in the function body changes the same `int` we have in memory, regardless of the fact that a copy pointer is doing that (the integer is still changed because we are pointing to that integer). This is how we "imitate" pass-by-reference, the old way.
+With this example we can see how, although we are passing a pointer, we are still employing the pass-by-value idiom. This is normal for all C code (this will also work for C++ as well). This type of passing is called "C-style pass-by-value imitation". The code does what we expect, because after the function call we <b>de-reference</b> the pointer which we have passed to the function in order to get the integer it was pointing to. <b>De-referencing</b> means that we are evaluating what the pointer points to. In our case, when the function call finishes and we de-reference the pointer, we are just looking at the value to which the pointer is pointing. So here is what's happening, when we pass a pointer to the function, that pointer gets copied, and that copy is used in the function. At this point we have two pointers, which are pointing to the same value. When we go through the function body, the <b>copied</b> pointer <b>changes</b> the value it points to (in our case it changes the <code>i</code> variable declared in <code>main</code>). In other words, the copy of the pointer in the function body changes the same <code>int</code> we have in memory, regardless of the fact that a copy pointer is doing that (the integer is still changed because we are pointing to that integer). This is how we "imitate" pass-by-reference, the old way.
 </p>
 
 <p>
@@ -547,31 +606,31 @@ Let's look at the same example, but in C++ code.
 </section>
 </section>
 <section>
-<section id="slide-org3a6e5fd">
-<h3 id="org3a6e5fd">Pass by reference in C++</h3>
+<section id="slide-orga124972">
+<h3 id="orga124972">Pass by reference in C++</h3>
 <div class="org-src-container">
 
-<pre  class="src src-C++"><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span>
-
-<span style="color: #d26937;">void</span> <span style="color: #599cab;">f</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">int</span>&amp; <span style="color: #599cab;">a</span><span style="color: #99d1ce;">)</span>
-<span style="color: #99d1ce;">{</span>
-     a += <span style="color: #33859e; font-weight: bold;">1</span>;
-<span style="color: #99d1ce;">}</span>
-
-<span style="color: #d26937;">int</span> <span style="color: #599cab;">main</span><span style="color: #99d1ce;">()</span>
-<span style="color: #99d1ce;">{</span>
-    <span style="color: #d26937;">int</span> <span style="color: #599cab;">a</span> = <span style="color: #33859e; font-weight: bold;">5</span>;
-    f<span style="color: #33859e;">(</span>a<span style="color: #33859e;">)</span>;
-    <span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa889;">"a = "</span> &lt;&lt; a &lt;&lt; <span style="color: #33859e; font-weight: bold;">std</span>::endl;
-
-    <span style="color: #195466; font-weight: bold;">return</span> <span style="color: #33859e; font-weight: bold;">0</span>;
-<span style="color: #99d1ce;">}</span>
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span>
+<span class="linenr"> 1: </span>
+<span class="linenr"> 2: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">f</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">int</span>&amp; <span style="color: #599cab;">a</span><span style="color: #99d1ce;">)</span>
+<span class="linenr"> 3: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 4: </span>     a += <span style="color: #33859e; font-weight: bold;">1</span>;
+<span class="linenr"> 5: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #d26937;">int</span> <span style="color: #599cab;">main</span><span style="color: #99d1ce;">()</span>
+<span class="linenr"> 8: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 9: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">a</span> = <span style="color: #33859e; font-weight: bold;">5</span>;
+<span class="linenr">10: </span>    f<span style="color: #33859e;">(</span>a<span style="color: #33859e;">)</span>;
+<span class="linenr">11: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa889;">"a = "</span> &lt;&lt; a &lt;&lt; <span style="color: #33859e; font-weight: bold;">std</span>::endl;
+<span class="linenr">12: </span>
+<span class="linenr">13: </span>    <span style="color: #195466; font-weight: bold;">return</span> <span style="color: #33859e; font-weight: bold;">0</span>;
+<span class="linenr">14: </span><span style="color: #99d1ce;">}</span>
 </pre>
 </div>
 
 <aside class="notes">
 <p>
-Doing the exact same thing, the difference is that we have no pointer declared, because we don't need one, and we changed the sign of parameter we pass, from an `*` to an `&amp;`. Here C++ and it's awesome new feature allows us to actually pass a real reference to the function. This means that the function is working with the real data we have passed, and <b><b>not</b></b> with a copy of it. If we make changes to the variable inside the function, those changes will <b>stick</b> once we leave the function!
+Doing the exact same thing, the difference is that we have no pointer declared, because we don't need one, and we changed the sign of parameter we pass, from an <code>*</code> to an <code>&amp;</code>. Here C++ and it's awesome new feature allows us to actually pass a real reference to the function. This means that the function is working with the real data we have passed, and <b><b>not</b></b> with a copy of it. If we make changes to the variable inside the function, those changes will <b>stick</b> once we leave the function!
 </p>
 
 <p>
@@ -583,15 +642,15 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-orgfcfb75f">
-<h2 id="orgfcfb75f">References</h2>
-<div class="outline-text-2" id="text-orgfcfb75f">
+<section id="slide-org1c2d3b7">
+<h2 id="org1c2d3b7">References</h2>
+<div class="outline-text-2" id="text-org1c2d3b7">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org8c42341">
-<h3 id="org8c42341"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
+<section id="slide-org4193796">
+<h3 id="org4193796"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Object_file">https://en.wikipedia.org/wiki/Object_file</a></li>
 <li><a href="https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation">https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation</a></li>
@@ -619,8 +678,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-orge13a644">
-<h3 id="orge13a644"><b><b>Memory management</b></b></h3>
+<section id="slide-org784e980">
+<h3 id="org784e980"><b><b>Memory management</b></b></h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation">https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation</a></li>
 <li><a href="http://www.tenouk.com/ModuleW.html">http://www.tenouk.com/ModuleW.html</a></li>
@@ -635,8 +694,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org8408011">
-<h3 id="org8408011"><b><b>File Structure</b></b></h3>
+<section id="slide-orgc85f908">
+<h3 id="orgc85f908"><b><b>File Structure</b></b></h3>
 <ul>
 <li><a href="http://www.cplusplus.com/forum/articles/10627/">http://www.cplusplus.com/forum/articles/10627/</a></li>
 
