@@ -28,27 +28,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2017-12-31 нд 10:08</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-01 пн 21:53</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgb2db4ba">Who am I?</a></li>
-<li><a href="#/slide-orgf1454e4">What we are going to cover</a></li>
-<li><a href="#/slide-orgf19a7ac">File structure</a></li>
-<li><a href="#/slide-orga4d8e76">How does compilation work?</a></li>
-<li><a href="#/slide-orge6a10a3">Memory management</a></li>
-<li><a href="#/slide-org1c2d3b7">References</a></li>
+<li><a href="#/slide-org1573061">Who am I?</a></li>
+<li><a href="#/slide-orgeb8a873">What we are going to cover</a></li>
+<li><a href="#/slide-orgc88a449">File structure</a></li>
+<li><a href="#/slide-orge05a66d">How does compilation work?</a></li>
+<li><a href="#/slide-org3ae0dbf">Memory management</a></li>
+<li><a href="#/slide-orgb4b986a">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orgb2db4ba">
-<h2 id="orgb2db4ba">Who am I?</h2>
+<section id="slide-org1573061">
+<h2 id="org1573061">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -61,8 +61,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org4a503c4">
-<h3 id="org4a503c4">Why I chose to make these small tutorials</h3>
+<section id="slide-orge5d0bca">
+<h3 id="orge5d0bca">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -80,8 +80,8 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-org184b711">
-<h3 id="org184b711">How to look at C++</h3>
+<section id="slide-org63d84fa">
+<h3 id="org63d84fa">How to look at C++</h3>
 <p>
 C++ as <b>four</b> sub-languages
 </p>
@@ -103,10 +103,12 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-orgf1454e4">
-<h2 id="orgf1454e4">What we are going to cover</h2>
+<section id="slide-orgeb8a873">
+<h2 id="orgeb8a873">What we are going to cover</h2>
+<p>
+3.66 MB- File structure
+</p>
 <ul>
-<li>File structure</li>
 <li>Memory management</li>
 <li>Templates</li>
 <li>Inheritance</li>
@@ -118,8 +120,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-orgf19a7ac">
-<h2 id="orgf19a7ac">File structure</h2>
+<section id="slide-orgc88a449">
+<h2 id="orgc88a449">File structure</h2>
 <ul>
 <li>Advantages:
 <ul>
@@ -172,8 +174,8 @@ What's the difference between headers and sources? Apart from the obvious name d
 </section>
 </section>
 <section>
-<section id="slide-org52bf478">
-<h3 id="org52bf478">How to work with header?</h3>
+<section id="slide-org8fb54ed">
+<h3 id="org8fb54ed">How to work with header?</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">//</span><span style="color: #245361;">header we always include</span>
@@ -202,7 +204,7 @@ So what are header files and what do they do?
 </p>
 
 <p>
-Header files, usually ending with the <code>*.h</code> file extension (can be also <code>*.hxx</code>, <code>*.hpp</code>, or nothing at all), are code files that are <b><b>included</b></b> in our source files. We can look at header files as code that only serves as the interface to our classes. That is, it holds a declaration which we later on implement and/or include in our source files.
+Header files, usually ending with the <code>*.h</code> file extension (can be also <code>*.hxx</code>, <code>*.hpp</code>, or nothing at all), are code files that are <b><b>included</b></b> in our source files. We can look at header files as code that only serves as the interface to our classes. That is, it holds a declaration which we later on implement and/or include in our source files. Although we will talk about header files and how we <code>#include</code> them later on, what we can say now is that for every header file that is included, the contents of that file are put in the place of the <code>#include</code> keyword. What we can expect header files to do is to hold <b>declarations</b> inside of them. They just tell us what we are going to implement, but not <b>how</b> we are going to implement it (that's the job of the source files).
 </p>
 
 </aside>
@@ -210,8 +212,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </section>
 </section>
 <section>
-<section id="slide-org1051b22">
-<h3 id="org1051b22">Header guards</h3>
+<section id="slide-org5bcbee7">
+<h3 id="org5bcbee7">Header guards</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -229,11 +231,18 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </pre>
 </div>
 
+<aside class="notes">
+<p>
+Because we are going to be using a lot of headers in our program, we would need to include all of them. But because these files are actually copied when we <b>include</b> them, we would have several problems. One would be the code duplication. Another one will be the multiple declarations of classes and functions. To overcome this problem we would need to <b>guard</b> our header files in order not to use them more than once in our program. That is why we use the directives <code>#ifndef</code>, <code>#define</code>, and <code>#endif</code>. When we wrap our header file around with these directives, we ensure that the preprocessor will not copy a single file more than once into the source file.
+</p>
+
+</aside>
+
 </section>
 </section>
 <section>
-<section id="slide-orgaa58a9d">
-<h3 id="orgaa58a9d"></h3>
+<section id="slide-org4a2967f">
+<h3 id="org4a2967f"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -249,8 +258,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </section>
 </section>
 <section>
-<section id="slide-orga4d8e76">
-<h2 id="orga4d8e76">How does compilation work?</h2>
+<section id="slide-orge05a66d">
+<h2 id="orge05a66d">How does compilation work?</h2>
 <p>
 There are 3 steps of compiling C++ code:
 </p>
@@ -310,8 +319,8 @@ After we have our "pure C++" code (ending with the <code>*.i/*.ii</code>) suffix
 </section>
 </section>
 <section>
-<section id="slide-orgf406b9c">
-<h3 id="orgf406b9c">Compilation</h3>
+<section id="slide-org6b741e5">
+<h3 id="org6b741e5">Compilation</h3>
 <ul>
 <li>Step 1 - Compile</li>
 <li>Step 2 - Assemble</li>
@@ -376,8 +385,8 @@ Once we have the object file we can transform it into special <b>executables</b>
 </section>
 </section>
 <section>
-<section id="slide-org37fde44">
-<h3 id="org37fde44">Linking</h3>
+<section id="slide-orgb57efe8">
+<h3 id="orgb57efe8">Linking</h3>
 <p>
 The <b><b>linker</b></b> just links all of the object files into one executable file.
 </p>
@@ -424,8 +433,8 @@ This is the last step before we can take the <code>.exe</code> file, load it int
 </section>
 </section>
 <section>
-<section id="slide-org45c7ac9">
-<h3 id="org45c7ac9">Conclusion</h3>
+<section id="slide-org6a77a79">
+<h3 id="org6a77a79">Conclusion</h3>
 <ul>
 <li>Understanding undefined behavior better</li>
 <li>Understanding errors</li>
@@ -443,8 +452,8 @@ This is the last step before we can take the <code>.exe</code> file, load it int
 </section>
 </section>
 <section>
-<section id="slide-orge6a10a3">
-<h2 id="orge6a10a3">Memory management</h2>
+<section id="slide-org3ae0dbf">
+<h2 id="org3ae0dbf">Memory management</h2>
 <p>
 The memory layout can be divided into <b>five</b> sections:
 </p>
@@ -519,8 +528,8 @@ So when a program is running, the data, bss, and heap segments are aligned into 
 </section>
 </section>
 <section>
-<section id="slide-org0ff9c61">
-<h3 id="org0ff9c61">Memory space in C++</h3>
+<section id="slide-orgaf8d4eb">
+<h3 id="orgaf8d4eb">Memory space in C++</h3>
 <p>
 This is all the space and data the program needs in order to run properly.
 </p>
@@ -538,8 +547,8 @@ This is all the space and data the program needs in order to run properly.
 </section>
 </section>
 <section>
-<section id="slide-org101afe8">
-<h3 id="org101afe8">How to handle memory in C++</h3>
+<section id="slide-org91d8cba">
+<h3 id="org91d8cba">How to handle memory in C++</h3>
 <ul>
 <li>Pointers</li>
 <li>Pass by value</li>
@@ -569,8 +578,8 @@ Lets take this example now:
 </section>
 </section>
 <section>
-<section id="slide-org7c5905b">
-<h3 id="org7c5905b">Pass by reference in C</h3>
+<section id="slide-org8aeb5af">
+<h3 id="org8aeb5af">Pass by reference in C</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">stdio.h</span><span style="color: #99d1ce;">&gt;</span>
@@ -606,8 +615,8 @@ Let's look at the same example, but in C++ code.
 </section>
 </section>
 <section>
-<section id="slide-orga124972">
-<h3 id="orga124972">Pass by reference in C++</h3>
+<section id="slide-orgc31d16e">
+<h3 id="orgc31d16e">Pass by reference in C++</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span>
@@ -642,15 +651,15 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org1c2d3b7">
-<h2 id="org1c2d3b7">References</h2>
-<div class="outline-text-2" id="text-org1c2d3b7">
+<section id="slide-orgb4b986a">
+<h2 id="orgb4b986a">References</h2>
+<div class="outline-text-2" id="text-orgb4b986a">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org4193796">
-<h3 id="org4193796"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
+<section id="slide-orgb765ac7">
+<h3 id="orgb765ac7"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Object_file">https://en.wikipedia.org/wiki/Object_file</a></li>
 <li><a href="https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation">https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation</a></li>
@@ -678,8 +687,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org784e980">
-<h3 id="org784e980"><b><b>Memory management</b></b></h3>
+<section id="slide-orgb54b1dc">
+<h3 id="orgb54b1dc"><b><b>Memory management</b></b></h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation">https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation</a></li>
 <li><a href="http://www.tenouk.com/ModuleW.html">http://www.tenouk.com/ModuleW.html</a></li>
@@ -694,8 +703,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-orgc85f908">
-<h3 id="orgc85f908"><b><b>File Structure</b></b></h3>
+<section id="slide-org1678a69">
+<h3 id="org1678a69"><b><b>File Structure</b></b></h3>
 <ul>
 <li><a href="http://www.cplusplus.com/forum/articles/10627/">http://www.cplusplus.com/forum/articles/10627/</a></li>
 
