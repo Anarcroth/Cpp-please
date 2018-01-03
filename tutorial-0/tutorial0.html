@@ -28,27 +28,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-01 пн 21:53</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-03 ср 14:18</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org1573061">Who am I?</a></li>
-<li><a href="#/slide-orgeb8a873">What we are going to cover</a></li>
-<li><a href="#/slide-orgc88a449">File structure</a></li>
-<li><a href="#/slide-orge05a66d">How does compilation work?</a></li>
-<li><a href="#/slide-org3ae0dbf">Memory management</a></li>
-<li><a href="#/slide-orgb4b986a">References</a></li>
+<li><a href="#/slide-org8e3eb8d">Who am I?</a></li>
+<li><a href="#/slide-orgdcf8cf6">What we are going to cover</a></li>
+<li><a href="#/slide-orgeeaa605">File structure</a></li>
+<li><a href="#/slide-orgddca4a4">How does compilation work?</a></li>
+<li><a href="#/slide-orgc47a986">Memory management</a></li>
+<li><a href="#/slide-orga63752a">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org1573061">
-<h2 id="org1573061">Who am I?</h2>
+<section id="slide-org8e3eb8d">
+<h2 id="org8e3eb8d">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -61,8 +61,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orge5d0bca">
-<h3 id="orge5d0bca">Why I chose to make these small tutorials</h3>
+<section id="slide-org8cdad50">
+<h3 id="org8cdad50">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -80,8 +80,8 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-org63d84fa">
-<h3 id="org63d84fa">How to look at C++</h3>
+<section id="slide-orgd8b2cdf">
+<h3 id="orgd8b2cdf">How to look at C++</h3>
 <p>
 C++ as <b>four</b> sub-languages
 </p>
@@ -103,8 +103,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-orgeb8a873">
-<h2 id="orgeb8a873">What we are going to cover</h2>
+<section id="slide-orgdcf8cf6">
+<h2 id="orgdcf8cf6">What we are going to cover</h2>
 <p>
 3.66 MB- File structure
 </p>
@@ -120,8 +120,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-orgc88a449">
-<h2 id="orgc88a449">File structure</h2>
+<section id="slide-orgeeaa605">
+<h2 id="orgeeaa605">File structure</h2>
 <ul>
 <li>Advantages:
 <ul>
@@ -166,7 +166,7 @@ Now I am not going to tell you how to add files and where to put them, I will ju
 
 <p>
 First things first.
-What's the difference between headers and sources? Apart from the obvious name difference, header files are considered to be the <b>interface</b> part of the source code, while source (cpp) files are the <b>implementation</b> part. Keeping them separate allows us to keep a clean directory and structure and to separate our logic from our implementation.
+What's the difference between headers and sources? Apart from the obvious name difference, header files are considered to be the <b>interface</b> part of the source code, that is, the place where we explain what the program does, but <b>not</b> how it does it. The source (cpp) files are the <b>implementation</b> part, this is where we explain <b>how</b> we implement the interface. Keeping them separate allows us to keep a clean directory and structure and to separate our logic from our implementation.
 </p>
 
 </aside>
@@ -174,8 +174,8 @@ What's the difference between headers and sources? Apart from the obvious name d
 </section>
 </section>
 <section>
-<section id="slide-org8fb54ed">
-<h3 id="org8fb54ed">How to work with header?</h3>
+<section id="slide-org898516f">
+<h3 id="org898516f">How to work with header?</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">//</span><span style="color: #245361;">header we always include</span>
@@ -212,8 +212,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </section>
 </section>
 <section>
-<section id="slide-org5bcbee7">
-<h3 id="org5bcbee7">Header guards</h3>
+<section id="slide-org7c6e6ad">
+<h3 id="org7c6e6ad">Header guards</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -231,18 +231,11 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </pre>
 </div>
 
-<aside class="notes">
-<p>
-Because we are going to be using a lot of headers in our program, we would need to include all of them. But because these files are actually copied when we <b>include</b> them, we would have several problems. One would be the code duplication. Another one will be the multiple declarations of classes and functions. To overcome this problem we would need to <b>guard</b> our header files in order not to use them more than once in our program. That is why we use the directives <code>#ifndef</code>, <code>#define</code>, and <code>#endif</code>. When we wrap our header file around with these directives, we ensure that the preprocessor will not copy a single file more than once into the source file.
-</p>
-
-</aside>
-
 </section>
 </section>
 <section>
-<section id="slide-org4a2967f">
-<h3 id="org4a2967f"></h3>
+<section id="slide-org201fdc1">
+<h3 id="org201fdc1"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -255,11 +248,126 @@ Because we are going to be using a lot of headers in our program, we would need 
 </pre>
 </div>
 
+<aside class="notes">
+<p>
+Because we are going to be using a lot of headers in our program, we would need to include all of them. But because these files are actually copied when we <b>include</b> them, we would have several problems. One would be the code duplication. Another one will be the multiple declarations of classes and functions. To overcome this problem we would need to <b>guard</b> our header files in order not to use them more than once in our program. That is why we use the directives <code>#ifndef</code>, <code>#define</code>, and <code>#endif</code>. When we wrap our header file around with these directives, we ensure that the preprocessor will not copy a single file more than once into the source file.
+</p>
+
+</aside>
+
 </section>
 </section>
 <section>
-<section id="slide-orge05a66d">
-<h2 id="orge05a66d">How does compilation work?</h2>
+<section id="slide-org2e62f29">
+<h3 id="org2e62f29">Declarations vs Definitions</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">declarations</span>
+<span class="linenr"> 1: </span><span style="color: #195466; font-weight: bold;">extern</span> <span style="color: #d26937;">int</span> <span style="color: #599cab;">a</span>;
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">extern</span> <span style="color: #d26937;">char</span> <span style="color: #599cab;">b</span>;
+<span class="linenr"> 3: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">foo</span>; <span style="color: #245361;">// </span><span style="color: #245361;">extern not allowed for user types</span>
+<span class="linenr"> 4: </span><span style="color: #d26937;">double</span> <span style="color: #599cab;">sum</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">double</span>, <span style="color: #d26937;">int</span><span style="color: #99d1ce;">)</span>;  <span style="color: #245361;">// </span><span style="color: #245361;">no need for extern</span>
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #245361;">// </span><span style="color: #245361;">definitions</span>
+<span class="linenr"> 7: </span><span style="color: #d26937;">int</span> <span style="color: #599cab;">a</span>; <span style="color: #245361;">// </span><span style="color: #245361;">the implementation of a</span>
+<span class="linenr"> 8: </span><span style="color: #d26937;">char</span> <span style="color: #599cab;">c</span>; <span style="color: #245361;">// </span><span style="color: #245361;">the implementation of c</span>
+<span class="linenr"> 9: </span><span style="color: #d26937;">double</span> <span style="color: #599cab;">div</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">double</span> <span style="color: #599cab;">a</span>, <span style="color: #d26937;">int</span> <span style="color: #599cab;">x</span><span style="color: #99d1ce;">)</span> <span style="color: #99d1ce;">{</span> <span style="color: #195466; font-weight: bold;">return</span> a / x; <span style="color: #99d1ce;">}</span>
+<span class="linenr">10: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">foo</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+I want to take some time now to revisit two old concepts before we continue - namely I want to talk about <b>declarations</b> and <b>definitions</b>. Here we will mention the role of the <b>compiler</b> and <b>linker</b> briefly, but we will cover them later on. Now a <b>declaration</b> introduces an identifier and its type, be that type of a variable, object, or a function. Basically we are saying to the compiler that there is something with this name and this type, but we are not specifying <b>how</b> this specific thing is implemented. This is what the <b>compiler</b> needs in order to make a reference to that declaration. We can imagine the situation where we have a function which we want to use in multiple files in our program, it's just a very useful function, but we don't want to provide the implementation of the function in every source file. That's why we just declare the function, the compiler sees the declaration, makes a reference to it without the need to know its implementation, and then when we build the final executable, the linker links every reference of the declared function to its implementation. If you remember from the C++ course, a function prototype is a declaration.
+</p>
+
+<p>
+A <b>definition</b> in C++ is when we a define something in its complete form. This means that we need to both declare something and define it at the same time. We actually implement that specific identifier we have declared. When we write functions and give them a function body at the same time is a form of definition. When we write <code>int x;</code> we are both declaring and defining the variable <code>x</code>. This means that we are telling the compiler that there is a variable <code>x</code> of type <code>int</code> that is in the global scope in the current source file. It's important to note that giving this variable a value is not necessary in order to define it. But in the examples we have this specific keyword <code>extern</code> that is associated with declarations. What <code>extern</code> does is that it marks the variable and tells the compiler that this is only a definition and that a declaration will be found somewhere else. In general we use <code>extern</code> when we want to declare global variables in header files and <b>define</b> them in some source file.
+</p>
+
+<p>
+We can <b>declare</b> something as much as we like in as many files as we want, but we can only <b>define</b> something only <b>once</b>. Often when we get errors telling us that something is undefined (this is at linker time), what that means is that we have something declared, but we have not defined its implementation anywhere and we get a <b>missing symbols error</b>. On the other hand when we have multiple definitions of the same thing, the linker is confused as to which specific definition we want and we get a <b>duplicate symbols error</b>.
+</p>
+
+<p>
+Okay now let us go back to header files.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org11b8c53">
+<h3 id="org11b8c53">When and how to use headers</h3>
+<p>
+<code>class A</code> ==&gt; (uses) ==&gt; <code>class B</code> 
+</p>
+
+<ul>
+<li>do nothing if: A makes no references at all to B</li>
+<li>do nothing if: The only reference to B is in a friend declaration</li>
+<li>forward declare B if: A contains a B pointer or reference: <code>B* b</code>;</li>
+<li>forward declare B if: one or more functions has a B <b>object/pointer/reference</b> as a parameter, or as a return type: <code>B MyFunction(B myb)</code>;</li>
+<li><code>#include "b.h"</code> if: B is a parent class of A</li>
+<li><code>#include "b.h"</code> if: A contains a B object: <code>B b</code>;</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1cd24e9">
+<h3 id="org1cd24e9"></h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#if</span><span style="color: #c23127;">n</span><span style="color: #c23127;">def</span> __X_H_INCLUDED__
+<span class="linenr"> 1: </span><span style="color: #c23127;">#define</span> <span style="color: #599cab;">__X_H_INCLUDED__</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #245361;">// </span><span style="color: #245361;">Forward declare dependencies</span>
+<span class="linenr"> 4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">F</span>;
+<span class="linenr"> 5: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">B</span>;
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #245361;">// </span><span style="color: #245361;">Include dependencies</span>
+<span class="linenr"> 8: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">map</span><span style="color: #99d1ce;">&gt;</span>
+<span class="linenr"> 9: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"c.h"</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #245361;">// </span><span style="color: #245361;">Our current class</span>
+<span class="linenr">12: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">myclass</span> : <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">c</span>
+<span class="linenr">13: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">14: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">15: </span>  <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">map</span><span style="color: #33859e;">&lt;</span><span style="color: #d26937;">int</span>, <span style="color: #d26937;">char</span><span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">matrix</span>;  <span style="color: #245361;">// </span><span style="color: #245361;">a map object that is required by our class</span>
+<span class="linenr">16: </span>  <span style="color: #d26937;">F</span>* <span style="color: #599cab;">f</span>;                        <span style="color: #245361;">// </span><span style="color: #245361;">F pointer, so forward declare F</span>
+<span class="linenr">17: </span>  <span style="color: #d26937;">void</span> <span style="color: #599cab;">Func</span><span style="color: #33859e;">(</span><span style="color: #d26937;">B</span>&amp; <span style="color: #599cab;">b</span><span style="color: #33859e;">)</span>;             <span style="color: #245361;">// </span><span style="color: #245361;">B reference, so forward declare B</span>
+<span class="linenr">18: </span>
+<span class="linenr">19: </span>  <span style="color: #195466; font-weight: bold;">friend</span> <span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">MyFriend</span>;       <span style="color: #245361;">// </span><span style="color: #245361;">friend declaration is not a dependency</span>
+<span class="linenr">20: </span>                               <span style="color: #245361;">// </span><span style="color: #245361;">don't do anything about MyFriend</span>
+<span class="linenr">21: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">22: </span><span style="color: #c23127;">#endif</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Since we will be writing a lot of classes, there will be a lot of dependencies. As an example, a derived class will always be dependent of its parent class, which means that we must be aware of the parent class at compile time, so we can use the derived class. There are two general forms of dependencies - one is, that there will be things that can be <b>forward declared</b>, and the other is, that things need to be <code>#include</code>-ed. Let's take an example with the following. Image we have class <code>A</code>, which uses class <code>B</code>. This makes A dependent on B. To decide if we need to <b>forward declare</b> or to include A depends on what the interaction between the two classes is.
+</p>
+
+<p>
+Some explanation is required here. First of we are protecting our class with the header guards. Then we are forward declaring two classes <code>F</code> and <code>B</code>. This means that we are telling the compiler that there is a user type class called <b>F</b> and <b>B</b> and that the implementation of the classes are somewhere else. This allows us to access the methods and variables of <b>F</b> and <b>B</b> without needing to specify their implementation. Forward declarations can be useful, because they can reduce compilation time. If we just want to access and use one or two functions from a class, instead of including the whole class (and copying its contents to the current file) we can just forward declare it and save ourselves some time.
+</p>
+
+<p>
+In general we want to remember this simple rule - prefer forward declarations to includes, in order to save compilation time and circular dependency issues.
+</p>
+
+</aside>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgddca4a4">
+<h2 id="orgddca4a4">How does compilation work?</h2>
 <p>
 There are 3 steps of compiling C++ code:
 </p>
@@ -319,8 +427,8 @@ After we have our "pure C++" code (ending with the <code>*.i/*.ii</code>) suffix
 </section>
 </section>
 <section>
-<section id="slide-org6b741e5">
-<h3 id="org6b741e5">Compilation</h3>
+<section id="slide-orgf80d8f0">
+<h3 id="orgf80d8f0">Compilation</h3>
 <ul>
 <li>Step 1 - Compile</li>
 <li>Step 2 - Assemble</li>
@@ -385,8 +493,8 @@ Once we have the object file we can transform it into special <b>executables</b>
 </section>
 </section>
 <section>
-<section id="slide-orgb57efe8">
-<h3 id="orgb57efe8">Linking</h3>
+<section id="slide-orgb53871d">
+<h3 id="orgb53871d">Linking</h3>
 <p>
 The <b><b>linker</b></b> just links all of the object files into one executable file.
 </p>
@@ -433,8 +541,8 @@ This is the last step before we can take the <code>.exe</code> file, load it int
 </section>
 </section>
 <section>
-<section id="slide-org6a77a79">
-<h3 id="org6a77a79">Conclusion</h3>
+<section id="slide-org22c3767">
+<h3 id="org22c3767">Conclusion</h3>
 <ul>
 <li>Understanding undefined behavior better</li>
 <li>Understanding errors</li>
@@ -452,8 +560,8 @@ This is the last step before we can take the <code>.exe</code> file, load it int
 </section>
 </section>
 <section>
-<section id="slide-org3ae0dbf">
-<h2 id="org3ae0dbf">Memory management</h2>
+<section id="slide-orgc47a986">
+<h2 id="orgc47a986">Memory management</h2>
 <p>
 The memory layout can be divided into <b>five</b> sections:
 </p>
@@ -528,8 +636,8 @@ So when a program is running, the data, bss, and heap segments are aligned into 
 </section>
 </section>
 <section>
-<section id="slide-orgaf8d4eb">
-<h3 id="orgaf8d4eb">Memory space in C++</h3>
+<section id="slide-org294a190">
+<h3 id="org294a190">Memory space in C++</h3>
 <p>
 This is all the space and data the program needs in order to run properly.
 </p>
@@ -547,8 +655,8 @@ This is all the space and data the program needs in order to run properly.
 </section>
 </section>
 <section>
-<section id="slide-org91d8cba">
-<h3 id="org91d8cba">How to handle memory in C++</h3>
+<section id="slide-orgcb0522e">
+<h3 id="orgcb0522e">How to handle memory in C++</h3>
 <ul>
 <li>Pointers</li>
 <li>Pass by value</li>
@@ -578,8 +686,8 @@ Lets take this example now:
 </section>
 </section>
 <section>
-<section id="slide-org8aeb5af">
-<h3 id="org8aeb5af">Pass by reference in C</h3>
+<section id="slide-org8e330f7">
+<h3 id="org8e330f7">Pass by reference in C</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">stdio.h</span><span style="color: #99d1ce;">&gt;</span>
@@ -615,8 +723,8 @@ Let's look at the same example, but in C++ code.
 </section>
 </section>
 <section>
-<section id="slide-orgc31d16e">
-<h3 id="orgc31d16e">Pass by reference in C++</h3>
+<section id="slide-org88cf3c6">
+<h3 id="org88cf3c6">Pass by reference in C++</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span>
@@ -651,15 +759,15 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-orgb4b986a">
-<h2 id="orgb4b986a">References</h2>
-<div class="outline-text-2" id="text-orgb4b986a">
+<section id="slide-orga63752a">
+<h2 id="orga63752a">References</h2>
+<div class="outline-text-2" id="text-orga63752a">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgb765ac7">
-<h3 id="orgb765ac7"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
+<section id="slide-orgdaf4991">
+<h3 id="orgdaf4991"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Object_file">https://en.wikipedia.org/wiki/Object_file</a></li>
 <li><a href="https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation">https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation</a></li>
@@ -687,8 +795,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-orgb54b1dc">
-<h3 id="orgb54b1dc"><b><b>Memory management</b></b></h3>
+<section id="slide-orgf76cf52">
+<h3 id="orgf76cf52"><b><b>Memory management</b></b></h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation">https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation</a></li>
 <li><a href="http://www.tenouk.com/ModuleW.html">http://www.tenouk.com/ModuleW.html</a></li>
@@ -703,10 +811,14 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org1678a69">
-<h3 id="org1678a69"><b><b>File Structure</b></b></h3>
+<section id="slide-orgc3d7c8b">
+<h3 id="orgc3d7c8b"><b><b>File Structure</b></b></h3>
 <ul>
 <li><a href="http://www.cplusplus.com/forum/articles/10627/">http://www.cplusplus.com/forum/articles/10627/</a></li>
+<li><a href="http://www.learncpp.com/cpp-tutorial/19-header-files/">http://www.learncpp.com/cpp-tutorial/19-header-files/</a></li>
+<li><a href="https://stackoverflow.com/questions/333889/why-have-header-files-and-cpp-files">https://stackoverflow.com/questions/333889/why-have-header-files-and-cpp-files</a></li>
+<li><a href="https://www.cprogramming.com/declare_vs_define.html">https://www.cprogramming.com/declare_vs_define.html</a></li>
+<li><a href="https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration">https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration</a></li>
 
 </ul>
 </section>
