@@ -28,27 +28,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-03 ср 15:06</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-03 ср 18:48</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgf13f3ec">Who am I?</a></li>
-<li><a href="#/slide-org870e76b">What we are going to cover</a></li>
-<li><a href="#/slide-orgf4c150b">File structure</a></li>
-<li><a href="#/slide-org9f2d0d4">How does compilation work?</a></li>
-<li><a href="#/slide-org9f1f8d6">Memory management</a></li>
-<li><a href="#/slide-orgb6618f7">References</a></li>
+<li><a href="#/slide-orgbb60028">Who am I?</a></li>
+<li><a href="#/slide-org3a44791">What we are going to cover</a></li>
+<li><a href="#/slide-orga8c82ed">File structure</a></li>
+<li><a href="#/slide-org415ec19">How does compilation work?</a></li>
+<li><a href="#/slide-orge2c5a0c">Memory management</a></li>
+<li><a href="#/slide-org064d85a">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orgf13f3ec">
-<h2 id="orgf13f3ec">Who am I?</h2>
+<section id="slide-orgbb60028">
+<h2 id="orgbb60028">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -61,8 +61,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgb2c3371">
-<h3 id="orgb2c3371">Why I chose to make these small tutorials</h3>
+<section id="slide-orgd52b390">
+<h3 id="orgd52b390">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -80,8 +80,8 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-org53a86ce">
-<h3 id="org53a86ce">How to look at C++</h3>
+<section id="slide-org7a4845b">
+<h3 id="org7a4845b">How to look at C++</h3>
 <p>
 C++ as <b>four</b> sub-languages
 </p>
@@ -111,13 +111,13 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-org870e76b">
-<h2 id="org870e76b">What we are going to cover</h2>
+<section id="slide-org3a44791">
+<h2 id="org3a44791">What we are going to cover</h2>
 <ul>
 <li>File structure</li>
 <li>Memory management</li>
-<li>Templates</li>
 <li>Inheritance</li>
+<li>Templates</li>
 <li>OOP</li>
 <li>STL</li>
 
@@ -126,8 +126,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-orgf4c150b">
-<h2 id="orgf4c150b">File structure</h2>
+<section id="slide-orga8c82ed">
+<h2 id="orga8c82ed">File structure</h2>
 <ul>
 <li>Advantages:
 <ul>
@@ -180,8 +180,8 @@ What's the difference between headers and sources? Apart from the obvious name d
 </section>
 </section>
 <section>
-<section id="slide-orgae16eab">
-<h3 id="orgae16eab">How to work with header?</h3>
+<section id="slide-orga402ae1">
+<h3 id="orga402ae1">How to work with headers?</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">//</span><span style="color: #245361;">header we always include</span>
@@ -222,8 +222,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </section>
 </section>
 <section>
-<section id="slide-org6f49374">
-<h3 id="org6f49374">Header guards</h3>
+<section id="slide-orgd619bff">
+<h3 id="orgd619bff">Header guards</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -244,8 +244,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </section>
 </section>
 <section>
-<section id="slide-orge1c80fd">
-<h3 id="orge1c80fd"></h3>
+<section id="slide-orgfd4b815">
+<h3 id="orgfd4b815"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -268,8 +268,8 @@ Because we are going to be using a lot of headers in our program, we would need 
 </section>
 </section>
 <section>
-<section id="slide-org77453c9">
-<h3 id="org77453c9">Declarations vs Definitions</h3>
+<section id="slide-org321a063">
+<h3 id="org321a063">Declarations vs Definitions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">declarations</span>
@@ -292,7 +292,7 @@ I want to take some time now to revisit two old concepts before we continue - na
 </p>
 
 <p>
-A <b>definition</b> in C++ is when we a define something in its complete form. This means that we need to both declare something and define it at the same time. We actually implement that specific identifier we have declared. When we write functions and give them a function body at the same time is a form of definition. When we write <code>int x;</code> we are both declaring and defining the variable <code>x</code>. This means that we are telling the compiler that there is a variable <code>x</code> of type <code>int</code> that is in the global scope in the current source file. It's important to note that giving this variable a value is not necessary in order to define it. But in the examples we have this specific keyword <code>extern</code> that is associated with declarations. What <code>extern</code> does is that it marks the variable and tells the compiler that this is only a definition and that a declaration will be found somewhere else. In general we use <code>extern</code> when we want to declare global variables in header files and <b>define</b> them in some source file.
+A <b>definition</b> in C++ is when we a define something in its complete form. This means that we need to both declare something and define it at the same time. We actually implement that specific identifier we have declared. When we write functions and give them a function body at the same time, that is a form of definition. When we write <code>int x;</code> we are both declaring and defining the variable <code>x</code>. This means that we are telling the compiler that there is a variable <code>x</code> of type <code>int</code> that is in the global scope in the current source file. It's important to note that giving this variable a value is not necessary in order to define it. But in the examples we have this specific keyword <code>extern</code> that is associated with declarations. What <code>extern</code> does is that it marks the variable and tells the compiler that this is only a definition and that a declaration will be found somewhere else. In general we use <code>extern</code> when we want to declare global variables in header files and <b>define</b> them in some source file.
 </p>
 
 <p>
@@ -308,8 +308,8 @@ Okay now let us go back to header files.
 </section>
 </section>
 <section>
-<section id="slide-org19f9d31">
-<h3 id="org19f9d31">When and how to use headers</h3>
+<section id="slide-orgc754ed6">
+<h3 id="orgc754ed6">When and how to use headers</h3>
 <p>
 <code>class A</code> ==&gt; (uses) ==&gt; <code>class B</code> 
 </p>
@@ -327,8 +327,8 @@ Okay now let us go back to header files.
 </section>
 </section>
 <section>
-<section id="slide-org01807c2">
-<h3 id="org01807c2"></h3>
+<section id="slide-org8e05dd5">
+<h3 id="org8e05dd5"></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#if</span><span style="color: #c23127;">n</span><span style="color: #c23127;">def</span> __X_H_INCLUDED__
@@ -375,8 +375,8 @@ In general we want to remember this simple rule - prefer forward declarations to
 </section>
 </section>
 <section>
-<section id="slide-orgf4f026d">
-<h3 id="orgf4f026d">Circular Dependencies</h3>
+<section id="slide-orga1f0c36">
+<h3 id="orga1f0c36">Circular Dependencies</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">b.h</span>
@@ -399,8 +399,8 @@ I mentioned at some point about circular dependencies, but they are something th
 </section>
 </section>
 <section>
-<section id="slide-org9f2d0d4">
-<h2 id="org9f2d0d4">How does compilation work?</h2>
+<section id="slide-org415ec19">
+<h2 id="org415ec19">How does compilation work?</h2>
 <p>
 There are 3 steps of compiling C++ code:
 </p>
@@ -434,15 +434,11 @@ So at the end of all of this copying, we get a temporary file that is just C/C++
 </p>
 
 <p>
-We must note that the preprocessor is agnostic to the C++ syntax, that is why for instance, in Visual Studio we have the <code>#pragma</code> directive that tries to do the <code>#ifndef</code> directive work, but that's just a lie. 
-</p>
-
-<p>
 We have to be careful where and how we put our <b>includes</b>.
 </p>
 
 <p>
-<b><b>Tip:</b></b> one of the things we want to do while writing C++ code is to minimize our reliance on the preprocessor. That is, if we are <code>#define</code>-ning macros as constants so that we can use them throughout our program, we might encounter strange errors, because these directives may be treated as not part of the language. As an example, if we write <code>#define A_RATIO 1.18</code> the preprocessor might skip the name and just include the double 1.18. Then if we get, or when we get, an error referring to 1.18, we might not know it's because it was a macro define lost from the preprocessor. Instead we can just use <code>const~s as such: ~const double ARatio = 1.18;</code> Now we know that the compiler will see this variable and we won't bang our head against the wall with unnecessary errors.
+<b><b>Tip:</b></b> one of the things we want to do while writing C++ code is to minimize our reliance on the preprocessor. That is, if we are <code>#define</code>-ning macros as constants so that we can use them throughout our program, we might encounter strange errors, because these directives may be treated as not part of the language. As an example, if we write <code>#define A_RATIO 1.18</code> the preprocessor might skip the name and just include the double 1.18. Then if we get, or when we get, an error referring to 1.18, we might not know it, because it was a macro define lost from the preprocessor. Instead we can just use <code>const~s as such: ~const double ARatio = 1.18;</code> Now we know that the compiler will see this variable and we won't bang our head against the wall with unnecessary errors.
 </p>
 
 <p>
@@ -460,8 +456,8 @@ After we have our "pure C++" code (ending with the <code>*.i/*.ii</code>) suffix
 </section>
 </section>
 <section>
-<section id="slide-org8cfb89f">
-<h3 id="org8cfb89f">Compilation</h3>
+<section id="slide-org5efe118">
+<h3 id="org5efe118">Compilation</h3>
 <ul>
 <li>Step 1 - Compile</li>
 <li>Step 2 - Assemble</li>
@@ -526,8 +522,8 @@ Once we have the object file we can transform it into special <b>executables</b>
 </section>
 </section>
 <section>
-<section id="slide-org4968f50">
-<h3 id="org4968f50">Linking</h3>
+<section id="slide-org331b708">
+<h3 id="org331b708">Linking</h3>
 <p>
 The <b><b>linker</b></b> just links all of the object files into one executable file.
 </p>
@@ -574,8 +570,8 @@ This is the last step before we can take the <code>.exe</code> file, load it int
 </section>
 </section>
 <section>
-<section id="slide-orgf6a2c28">
-<h3 id="orgf6a2c28">Conclusion</h3>
+<section id="slide-orgd067968">
+<h3 id="orgd067968">Conclusion</h3>
 <ul>
 <li>Understanding undefined behavior better</li>
 <li>Understanding errors</li>
@@ -593,8 +589,8 @@ This is the last step before we can take the <code>.exe</code> file, load it int
 </section>
 </section>
 <section>
-<section id="slide-org9f1f8d6">
-<h2 id="org9f1f8d6">Memory management</h2>
+<section id="slide-orge2c5a0c">
+<h2 id="orge2c5a0c">Memory management</h2>
 <p>
 The memory layout can be divided into <b>five</b> sections:
 </p>
@@ -602,8 +598,8 @@ The memory layout can be divided into <b>five</b> sections:
 <li>text</li>
 <li>data</li>
 <li>bss</li>
-<li>stack</li>
 <li>heap / free store</li>
+<li>stack</li>
 
 </ul>
 
@@ -613,7 +609,7 @@ The different segments in memory are the <b>text</b>, <b>data</b>, <b>bss</b>, <
 </p>
 
 <p>
-The text segment holds the executable instructions inside. The OS tries to make is so that if the same program is running on multiple instances, this part of the code is shared between the individual processes, instead of being copied multiple times.
+The <b><b>text</b></b> segment holds the executable instructions inside. The OS tries to make is so that if the same program is running on multiple instances, this part of the code is shared between the individual processes, instead of being copied multiple times.
 </p>
 
 <p>
@@ -621,11 +617,11 @@ The <b><b>data</b></b> segment is where the non zero initialized global and stat
 </p>
 
 <p>
-The <b><b>bss</b></b> segment (**B**lock **S**tarted by **S**ymbol) is where all of the zero initialized global and statically allocated variables are. Again, each running instance has an individual bss segment. While running the bss segment is stored in the data segment, but in the execution file it is stored in the bss section.
+The <b><b>bss</b></b> segment (<b><b>B</b></b> lock <b><b>S</b></b> tarted by <b><b>S</b></b> ymbol) is where all of the zero initialized global and statically allocated variables are. Again, each running instance has an individual bss segment. While running the bss segment is stored in the data segment, but in the execution file it is stored in the bss section.
 </p>
 
 <p>
-The <b><b>heap</b></b> is the dynamic part of the memory allocation (C uses <code>malloc()</code>, <code>calloc()</code>, and <code>realloc()</code>, while C++ has <code>new</code>). We should make a quick clarification here. You might encounter two different terms that are often used interchangeably - one is the <b>heap</b> and the other is the <b>free store</b>. The difference between them in terms of their functionality is none, but following the C++ standards we can see that the heap is never mentioned apart from being an <b>abstract data structure</b>. This is so, because the heap is allocated or freed via <code>malloc()</code>, <code>calloc()</code>, <code>realloc()</code>, and <code>free()</code>, while the free store is allocated or deleted with <code>new</code> and <code>delete</code>. Although <code>new</code> and <code>delete</code> might be implemented in terms of <code>malloc()</code> and <code>free()</code>, these are not the same memory locations and they cannot be used <b><b>safely</b></b> interchangeably. For the sake of simplicity, we will continue referring to them under the <b>heap</b> term, but note that C++ does not used the heap the way C uses it.
+The <b><b>heap</b></b> is the dynamic part of the memory allocation (<b><b>C</b></b> uses <code>malloc()</code>, <code>calloc()</code>, and <code>realloc()</code>, while <b><b>C++</b></b> has <code>new</code>). We should make a quick clarification here. You might encounter two different terms that are often used interchangeably - one is the <b>heap</b> and the other is the <b>free store</b>. The difference between them in terms of their functionality is none, but following the C++ standards we can see that the heap is never mentioned apart from being an <b>abstract data structure</b>. This is so, because the heap is allocated or freed via <code>malloc()</code>, <code>calloc()</code>, <code>realloc()</code>, and <code>free()</code>, while the free store is allocated or deleted with <code>new</code> and <code>delete</code>. Although <code>new</code> and <code>delete</code> might be implemented in terms of <code>malloc()</code> and <code>free()</code>, these are not the same memory locations and they cannot be used <b><b>safely</b></b> interchangeably. For the sake of simplicity, we will continue referring to them under the <b>heap</b> term, but note that C++ does not used the heap the way C uses it.
 </p>
 
 <p>
@@ -633,7 +629,7 @@ Everything in this part of the memory is anonymous and needs a pointer to gain a
 </p>
 
 <p>
-We can picture it as if we have a blank wall and then start arranging pictures on it. If we are not careful with our picture arrangement we might get most of the pictures on the wall, but at some point we might get small free spaces that are just blank wall. Thus we technically do have space for more pictures, but this space is fragmented and unusable for bigger pictures (presuming that we cannot chop up our pictures into pieces). This is the same with the memory allocation and de-allocation on the heap. On our machines, where we have virtual memory, we don't really experience this problem, because it is important for the virtual memory to have the object into one continuous block. We can experience this problem of memory fragmentation when we start getting allocation errors (such as <code>malloc()</code> returning <code>null</code>, or when we cannot free up memory properly, or when our program takes too long to reallocate memory.
+We can picture it as if we have a blank wall and then start arranging pictures on it. If we are not careful with our picture arrangement we might get most of the pictures on the wall, but at some point we might get small free spaces that are just blank wall. Thus we technically do have space for more pictures, but this space is fragmented and unusable for bigger pictures (presuming that we cannot chop up our pictures into pieces). This is the same with the memory allocation and de-allocation on the heap. On our machines, where we have virtual memory, we don't really experience this problem, because it is important for the virtual memory to have the object into one continuous block. We can experience this problem of memory fragmentation when we start getting allocation errors (such as <code>malloc()</code> returning <code>null</code>), or when we cannot free up memory properly, or when our program takes too long to reallocate memory.
 </p>
 
 <p>
@@ -645,7 +641,7 @@ In general we don't have to worry that much for this sort of fragmentation unles
 </p>
 
 <p>
-The great thing about C++ is that the STL handles these allocations very well and it's optimized so if we are relying on the STL (and we should), then we wouldn't have any problems.
+The great thing about C++ is that the <b>STL</b> handles these allocations very well and it's optimized so if we are relying on the STL (and we should), then we wouldn't have any problems.
 </p>
 
 <p>
@@ -657,7 +653,7 @@ The <b><b>stack</b></b> is the static part of the memory allocation in our progr
 </p>
 
 <p>
-When a function is called a stack frame (a procedure activation record) is pushed on top of the stack. A stack frame holds information for the address from where the function was called, where to jump back when the function ends (return address), local variables, function parameters, and any other information needed by the function. When the function returns, the stack frame is popped from the top of the stack. The stack grows downwards, meaning that the address of each stack frame is numerically smaller than the previous one.
+When a function is called a <b>stack frame</b> (a procedure activation record) is pushed on top of the stack. A stack frame holds information for the address from where the function was called, where to jump back when the function ends (<b>return address</b>), local variables, function parameters, and any other information needed by the function. When the function returns, the stack frame is popped from the top of the stack. The stack grows downwards, meaning that the address of each stack frame is numerically smaller than the previous one.
 </p>
 
 <p>
@@ -669,8 +665,8 @@ So when a program is running, the data, bss, and heap segments are aligned into 
 </section>
 </section>
 <section>
-<section id="slide-orgd2c80c7">
-<h3 id="orgd2c80c7">Memory space in C++</h3>
+<section id="slide-orgc1a6d59">
+<h3 id="orgc1a6d59">Memory space in C++</h3>
 <p>
 This is all the space and data the program needs in order to run properly.
 </p>
@@ -688,8 +684,8 @@ This is all the space and data the program needs in order to run properly.
 </section>
 </section>
 <section>
-<section id="slide-org9e0041f">
-<h3 id="org9e0041f">How to handle memory in C++</h3>
+<section id="slide-org004341d">
+<h3 id="org004341d">How to handle memory in C++</h3>
 <ul>
 <li>Pointers</li>
 <li>Pass by value</li>
@@ -719,11 +715,11 @@ Lets take this example now:
 </section>
 </section>
 <section>
-<section id="slide-org229cbbc">
-<h3 id="org229cbbc">Pass by reference in C</h3>
+<section id="slide-orgc6fac2e">
+<h3 id="orgc6fac2e">Pass by reference in C</h3>
 <div class="org-src-container">
 
-<pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">stdio.h</span><span style="color: #99d1ce;">&gt;</span>
+<pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"stdio.h"</span>
 <span class="linenr"> 1: </span>
 <span class="linenr"> 2: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">f</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">int</span> *<span style="color: #599cab;">j</span><span style="color: #99d1ce;">)</span> 
 <span class="linenr"> 3: </span><span style="color: #99d1ce;">{</span>
@@ -744,7 +740,7 @@ Lets take this example now:
 
 <aside class="notes">
 <p>
-With this example we can see how, although we are passing a pointer, we are still employing the pass-by-value idiom. This is normal for all C code (this will also work for C++ as well). This type of passing is called "C-style pass-by-value imitation". The code does what we expect, because after the function call we <b>de-reference</b> the pointer which we have passed to the function in order to get the integer it was pointing to. <b>De-referencing</b> means that we are evaluating what the pointer points to. In our case, when the function call finishes and we de-reference the pointer, we are just looking at the value to which the pointer is pointing. So here is what's happening, when we pass a pointer to the function, that pointer gets copied, and that copy is used in the function. At this point we have two pointers, which are pointing to the same value. When we go through the function body, the <b>copied</b> pointer <b>changes</b> the value it points to (in our case it changes the <code>i</code> variable declared in <code>main</code>). In other words, the copy of the pointer in the function body changes the same <code>int</code> we have in memory, regardless of the fact that a copy pointer is doing that (the integer is still changed because we are pointing to that integer). This is how we "imitate" pass-by-reference, the old way.
+With this example we can see how, although we are passing a pointer, we are still employing the pass-by-value idiom. This is normal for all C code (this will also work for C++ as well). This type of passing is called <b>"C-style pass-by-value imitation"</b> . The code does what we expect, because after the function call we <b>de-reference</b> the pointer which we have passed to the function in order to get the integer it was pointing to. <b>De-referencing</b> means that we are evaluating what the pointer points to. In our case, when the function call finishes and we de-reference the pointer, we are just looking at the value to which the pointer is pointing. So here is what's happening, when we pass a pointer to the function, that pointer gets copied, and that copy is used in the function. At this point we have two pointers, which are pointing to the same value. When we go through the function body, the <b>copied</b> pointer <b>changes</b> the value it points to (in our case it changes the <code>i</code> variable declared in <code>main</code>). In other words, the copy of the pointer in the function body changes the same <code>int</code> we have in memory, regardless of the fact that a copy pointer is doing that (the integer is still changed because we are pointing to that integer). This is how we <b>"imitate"</b> pass-by-reference, the old way.
 </p>
 
 <p>
@@ -756,8 +752,8 @@ Let's look at the same example, but in C++ code.
 </section>
 </section>
 <section>
-<section id="slide-orgef4e04a">
-<h3 id="orgef4e04a">Pass by reference in C++</h3>
+<section id="slide-org6361c77">
+<h3 id="org6361c77">Pass by reference in C++</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span>
@@ -792,15 +788,15 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-orgb6618f7">
-<h2 id="orgb6618f7">References</h2>
-<div class="outline-text-2" id="text-orgb6618f7">
+<section id="slide-org064d85a">
+<h2 id="org064d85a">References</h2>
+<div class="outline-text-2" id="text-org064d85a">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org2b13e89">
-<h3 id="org2b13e89"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
+<section id="slide-org056101a">
+<h3 id="org056101a"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Object_file">https://en.wikipedia.org/wiki/Object_file</a></li>
 <li><a href="https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation">https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation</a></li>
@@ -828,8 +824,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org49869f4">
-<h3 id="org49869f4"><b><b>Memory management</b></b></h3>
+<section id="slide-org3b549db">
+<h3 id="org3b549db"><b><b>Memory management</b></b></h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation">https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation</a></li>
 <li><a href="http://www.tenouk.com/ModuleW.html">http://www.tenouk.com/ModuleW.html</a></li>
@@ -844,8 +840,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org7edefe9">
-<h3 id="org7edefe9"><b><b>File Structure</b></b></h3>
+<section id="slide-org1250e2f">
+<h3 id="org1250e2f"><b><b>File Structure</b></b></h3>
 <ul>
 <li><a href="http://www.cplusplus.com/forum/articles/10627/">http://www.cplusplus.com/forum/articles/10627/</a></li>
 <li><a href="http://www.learncpp.com/cpp-tutorial/19-header-files/">http://www.learncpp.com/cpp-tutorial/19-header-files/</a></li>
