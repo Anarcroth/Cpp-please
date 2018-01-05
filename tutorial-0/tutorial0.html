@@ -28,27 +28,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-03 ср 18:48</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-05 пт 12:59</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgbb60028">Who am I?</a></li>
-<li><a href="#/slide-org3a44791">What we are going to cover</a></li>
-<li><a href="#/slide-orga8c82ed">File structure</a></li>
-<li><a href="#/slide-org415ec19">How does compilation work?</a></li>
-<li><a href="#/slide-orge2c5a0c">Memory management</a></li>
-<li><a href="#/slide-org064d85a">References</a></li>
+<li><a href="#/slide-org13f606e">Who am I?</a></li>
+<li><a href="#/slide-org32f9fc2">What we are going to cover</a></li>
+<li><a href="#/slide-org8a2c502">File structure</a></li>
+<li><a href="#/slide-orgbe56d4a">How does compilation work?</a></li>
+<li><a href="#/slide-orge5fa59a">Memory management</a></li>
+<li><a href="#/slide-org9babeba">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orgbb60028">
-<h2 id="orgbb60028">Who am I?</h2>
+<section id="slide-org13f606e">
+<h2 id="org13f606e">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -61,8 +61,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgd52b390">
-<h3 id="orgd52b390">Why I chose to make these small tutorials</h3>
+<section id="slide-orgc2574e5">
+<h3 id="orgc2574e5">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -80,8 +80,8 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-org7a4845b">
-<h3 id="org7a4845b">How to look at C++</h3>
+<section id="slide-org59fee63">
+<h3 id="org59fee63">How to look at C++</h3>
 <p>
 C++ as <b>four</b> sub-languages
 </p>
@@ -111,8 +111,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-org3a44791">
-<h2 id="org3a44791">What we are going to cover</h2>
+<section id="slide-org32f9fc2">
+<h2 id="org32f9fc2">What we are going to cover</h2>
 <ul>
 <li>File structure</li>
 <li>Memory management</li>
@@ -126,8 +126,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-orga8c82ed">
-<h2 id="orga8c82ed">File structure</h2>
+<section id="slide-org8a2c502">
+<h2 id="org8a2c502">File structure</h2>
 <ul>
 <li>Advantages:
 <ul>
@@ -180,8 +180,8 @@ What's the difference between headers and sources? Apart from the obvious name d
 </section>
 </section>
 <section>
-<section id="slide-orga402ae1">
-<h3 id="orga402ae1">How to work with headers?</h3>
+<section id="slide-orgb69a5c5">
+<h3 id="orgb69a5c5">How to work with headers?</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">//</span><span style="color: #245361;">header we always include</span>
@@ -222,8 +222,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </section>
 </section>
 <section>
-<section id="slide-orgd619bff">
-<h3 id="orgd619bff">Header guards</h3>
+<section id="slide-orgdc5ce06">
+<h3 id="orgdc5ce06">Header guards</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -242,10 +242,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </div>
 
 </section>
-</section>
-<section>
-<section id="slide-orgfd4b815">
-<h3 id="orgfd4b815"></h3>
+<section >
+
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -268,8 +266,8 @@ Because we are going to be using a lot of headers in our program, we would need 
 </section>
 </section>
 <section>
-<section id="slide-org321a063">
-<h3 id="org321a063">Declarations vs Definitions</h3>
+<section id="slide-org04ffb17">
+<h3 id="org04ffb17">Declarations vs Definitions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">declarations</span>
@@ -308,8 +306,8 @@ Okay now let us go back to header files.
 </section>
 </section>
 <section>
-<section id="slide-orgc754ed6">
-<h3 id="orgc754ed6">When and how to use headers</h3>
+<section id="slide-orgb9c6b80">
+<h3 id="orgb9c6b80">When and how to use headers</h3>
 <p>
 <code>class A</code> ==&gt; (uses) ==&gt; <code>class B</code> 
 </p>
@@ -324,15 +322,14 @@ Okay now let us go back to header files.
 
 </ul>
 
+
 </section>
-</section>
-<section>
-<section id="slide-org8e05dd5">
-<h3 id="org8e05dd5"></h3>
+<section >
+
 <div class="org-src-container">
 
-<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#if</span><span style="color: #c23127;">n</span><span style="color: #c23127;">def</span> __X_H_INCLUDED__
-<span class="linenr"> 1: </span><span style="color: #c23127;">#define</span> <span style="color: #599cab;">__X_H_INCLUDED__</span>
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#if</span><span style="color: #c23127;">n</span><span style="color: #c23127;">def</span> __MY_CLASS_H_INCLUDED__
+<span class="linenr"> 1: </span><span style="color: #c23127;">#define</span> <span style="color: #599cab;">__MY_CLASS_H_INCLUDED__</span>
 <span class="linenr"> 2: </span>
 <span class="linenr"> 3: </span><span style="color: #245361;">// </span><span style="color: #245361;">Forward declare dependencies</span>
 <span class="linenr"> 4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">F</span>;
@@ -343,7 +340,7 @@ Okay now let us go back to header files.
 <span class="linenr"> 9: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"c.h"</span>
 <span class="linenr">10: </span>
 <span class="linenr">11: </span><span style="color: #245361;">// </span><span style="color: #245361;">Our current class</span>
-<span class="linenr">12: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">myclass</span> : <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">c</span>
+<span class="linenr">12: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">MyClass</span> : <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">c</span>
 <span class="linenr">13: </span><span style="color: #99d1ce;">{</span>
 <span class="linenr">14: </span><span style="color: #195466; font-weight: bold;">public</span>:
 <span class="linenr">15: </span>  <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">map</span><span style="color: #33859e;">&lt;</span><span style="color: #d26937;">int</span>, <span style="color: #d26937;">char</span><span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">matrix</span>;  <span style="color: #245361;">// </span><span style="color: #245361;">a map object that is required by our class</span>
@@ -375,8 +372,8 @@ In general we want to remember this simple rule - prefer forward declarations to
 </section>
 </section>
 <section>
-<section id="slide-orga1f0c36">
-<h3 id="orga1f0c36">Circular Dependencies</h3>
+<section id="slide-org71d35fa">
+<h3 id="org71d35fa">Circular Dependencies</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">b.h</span>
@@ -399,8 +396,8 @@ I mentioned at some point about circular dependencies, but they are something th
 </section>
 </section>
 <section>
-<section id="slide-org415ec19">
-<h2 id="org415ec19">How does compilation work?</h2>
+<section id="slide-orgbe56d4a">
+<h2 id="orgbe56d4a">How does compilation work?</h2>
 <p>
 There are 3 steps of compiling C++ code:
 </p>
@@ -421,6 +418,28 @@ There are 3 steps of compiling C++ code:
 When we are trying to run a piece of code (in our case C++), the computer goes through several steps before we see the output, or the errors. 
 </p>
 
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org5e6d2b0">
+<h3 id="org5e6d2b0">Preprocessing</h3>
+<p class="fragment roll-in">
+In order to get only the preprocessed file we can run the
+</p>
+
+<div class="org-src-container">
+
+<pre  class="fragment roll-in">g++ -E hello-world.cpp -o hello-world.ii
+</pre>
+</div>
+
+<p class="fragment roll-in">
+which will produce the <code>hello-world.ii</code> file and then we can look inside of it and find out what it includes.
+</p>
+
+<aside class="notes">
 <p>
 The first part is the so called <b><b>preprocessing</b></b> step, where the <b>preprocessor</b> handles the <code>preprocessor</code> <b>directives</b>. These are the <code>#include</code>, <code>#define</code>, <code>#if</code>, <code>#ifndef</code>, <code>#ifdef</code> keywords we put on the top of our files. At this stage, one file at a time, each of these <b>directives</b> are replaces with their respective pieces of code from other files (they are usually only declarations). That is why when we have multiple source files, we include only the header files, because they only show us the declarations and not the definitions (thus we minimize time in this step). So after the directives have been replaced with the respective file contents or snippets of files (depending in the <code>#if</code> <code>#ifndef</code> and <code>#ifdef</code> and the macro <code>#define</code> keywords) we get at the end "pure C++" code. The preprocessor also adds line numbers so that the further steps can identify where the inserted code came from. As an example, if we write <code>#include &lt;iostream&gt;</code> we actually just insert the contents from the <code>iostream</code> library on the top of our main source file (again we must remember that most of the time, we are just including declarations).
 </p>
@@ -437,14 +456,25 @@ So at the end of all of this copying, we get a temporary file that is just C/C++
 We have to be careful where and how we put our <b>includes</b>.
 </p>
 
-<p>
-<b><b>Tip:</b></b> one of the things we want to do while writing C++ code is to minimize our reliance on the preprocessor. That is, if we are <code>#define</code>-ning macros as constants so that we can use them throughout our program, we might encounter strange errors, because these directives may be treated as not part of the language. As an example, if we write <code>#define A_RATIO 1.18</code> the preprocessor might skip the name and just include the double 1.18. Then if we get, or when we get, an error referring to 1.18, we might not know it, because it was a macro define lost from the preprocessor. Instead we can just use <code>const~s as such: ~const double ARatio = 1.18;</code> Now we know that the compiler will see this variable and we won't bang our head against the wall with unnecessary errors.
-</p>
+</aside>
+
+</section>
+<section >
 
 <p>
-In order to get only the preprocessed file we can run the
-<code>g++ -E hello-world.cpp -o hello-world.ii</code>
-which will produce the <code>hello-world.ii</code> file and then we can look inside of it and find out what it includes.
+<b><b>Tip</b></b>: Prefer using <code>const</code>, <code>enum</code>, and <code>inlines</code> to <code>#define</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span style="color: #c23127;">#define</span> <span style="color: #599cab;">A_RATIO</span> = <span style="color: #33859e; font-weight: bold;">1.18</span>     <span style="color: #245361;">// </span><span style="color: #245361;">bad</span>
+<span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">double</span> <span style="color: #599cab;">ARatio</span> = <span style="color: #33859e; font-weight: bold;">1.18</span> <span style="color: #245361;">// </span><span style="color: #245361;">good</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+<b><b>Tip:</b></b> one of the things we want to do while writing C++ code is to minimize our reliance on the preprocessor. That is, if we are <code>#define</code>-ning macros as constants so that we can use them throughout our program, we might encounter strange errors, because these directives may be treated as not part of the language. As an example, if we write <code>#define A_RATIO 1.18</code> the preprocessor might skip the name and just include the double 1.18. Then if we get, or when we get, an error referring to 1.18, we might not know it, because it was a macro define lost from the preprocessor. Instead we can just use <code>const~s as such: ~const double ARatio = 1.18;</code> Now we know that the compiler will see this variable and we won't bang our head against the wall with unnecessary errors.
 </p>
 
 <p>
@@ -456,8 +486,8 @@ After we have our "pure C++" code (ending with the <code>*.i/*.ii</code>) suffix
 </section>
 </section>
 <section>
-<section id="slide-org5efe118">
-<h3 id="org5efe118">Compilation</h3>
+<section id="slide-org12e8289">
+<h3 id="org12e8289">Compilation</h3>
 <ul>
 <li>Step 1 - Compile</li>
 <li>Step 2 - Assemble</li>
@@ -522,8 +552,8 @@ Once we have the object file we can transform it into special <b>executables</b>
 </section>
 </section>
 <section>
-<section id="slide-org331b708">
-<h3 id="org331b708">Linking</h3>
+<section id="slide-org4367962">
+<h3 id="org4367962">Linking</h3>
 <p>
 The <b><b>linker</b></b> just links all of the object files into one executable file.
 </p>
@@ -570,14 +600,17 @@ This is the last step before we can take the <code>.exe</code> file, load it int
 </section>
 </section>
 <section>
-<section id="slide-orgd067968">
-<h3 id="orgd067968">Conclusion</h3>
-<ul>
-<li>Understanding undefined behavior better</li>
-<li>Understanding errors</li>
-<li>Good grip on how data is represented in C++</li>
-
-</ul>
+<section id="slide-orgb9c1db4">
+<h3 id="orgb9c1db4">Conclusion</h3>
+<p class="fragment roll-in">
+Understanding undefined behavior better
+</p>
+<p class="fragment roll-in">
+Understanding errors
+</p>
+<p class="fragment roll-in">
+Good grip on how data is represented in C++
+</p>
 
 <aside class="notes">
 <p>
@@ -589,19 +622,27 @@ This is the last step before we can take the <code>.exe</code> file, load it int
 </section>
 </section>
 <section>
-<section id="slide-orge2c5a0c">
-<h2 id="orge2c5a0c">Memory management</h2>
+<section id="slide-orge5fa59a">
+<h2 id="orge5fa59a">Memory management</h2>
 <p>
 The memory layout can be divided into <b>five</b> sections:
 </p>
-<ul>
-<li>text</li>
-<li>data</li>
-<li>bss</li>
-<li>heap / free store</li>
-<li>stack</li>
 
-</ul>
+<p class="fragment roll-in">
+text
+</p>
+<p class="fragment roll-in">
+data
+</p>
+<p class="fragment roll-in">
+bss
+</p>
+<p class="fragment roll-in">
+heap / free store
+</p>
+<p class="fragment roll-in">
+stack
+</p>
 
 <aside class="notes">
 <p>
@@ -665,8 +706,8 @@ So when a program is running, the data, bss, and heap segments are aligned into 
 </section>
 </section>
 <section>
-<section id="slide-orgc1a6d59">
-<h3 id="orgc1a6d59">Memory space in C++</h3>
+<section id="slide-orgd20ba26">
+<h3 id="orgd20ba26">Memory space in C++</h3>
 <p>
 This is all the space and data the program needs in order to run properly.
 </p>
@@ -684,8 +725,8 @@ This is all the space and data the program needs in order to run properly.
 </section>
 </section>
 <section>
-<section id="slide-org004341d">
-<h3 id="org004341d">How to handle memory in C++</h3>
+<section id="slide-org8c6ed0e">
+<h3 id="org8c6ed0e">How to handle memory in C++</h3>
 <ul>
 <li>Pointers</li>
 <li>Pass by value</li>
@@ -715,8 +756,8 @@ Lets take this example now:
 </section>
 </section>
 <section>
-<section id="slide-orgc6fac2e">
-<h3 id="orgc6fac2e">Pass by reference in C</h3>
+<section id="slide-orge9017af">
+<h3 id="orge9017af">Pass by reference in C</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"stdio.h"</span>
@@ -752,8 +793,8 @@ Let's look at the same example, but in C++ code.
 </section>
 </section>
 <section>
-<section id="slide-org6361c77">
-<h3 id="org6361c77">Pass by reference in C++</h3>
+<section id="slide-org4e71ae2">
+<h3 id="org4e71ae2">Pass by reference in C++</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span>
@@ -788,68 +829,66 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org064d85a">
-<h2 id="org064d85a">References</h2>
-<div class="outline-text-2" id="text-org064d85a">
+<section id="slide-org9babeba">
+<h2 id="org9babeba">References</h2>
+<div class="outline-text-2" id="text-org9babeba">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org056101a">
-<h3 id="org056101a"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
+<section id="slide-org0d0f6de">
+<h3 id="org0d0f6de"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Object_file">https://en.wikipedia.org/wiki/Object_file</a></li>
-<li><a href="https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation">https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation</a></li>
-<li><a href="http://www.cplusplus.com/doc/tutorial/preprocessor/">http://www.cplusplus.com/doc/tutorial/preprocessor/</a></li>
-<li><a href="https://stackoverflow.com/questions/6264249/how-does-the-compilation-linking-process-work">https://stackoverflow.com/questions/6264249/how-does-the-compilation-linking-process-work</a></li>
-<li><a href="https://stackoverflow.com/questions/12122446/how-does-c-linking-work-in-practice/30507725#30507725">https://stackoverflow.com/questions/12122446/how-does-c-linking-work-in-practice/30507725#30507725</a></li>
-<li><a href="http://www.iecc.com/linker/">http://www.iecc.com/linker/</a></li>
-<li><a href="https://www.airs.com/blog/archives/38">https://www.airs.com/blog/archives/38</a></li>
-<li><a href="http://www.cirosantilli.com/elf-hello-world/">http://www.cirosantilli.com/elf-hello-world/</a></li>
-<li><a href="https://stackoverflow.com/questions/3322911/what-do-linkers-do/33690144#33690144">https://stackoverflow.com/questions/3322911/what-do-linkers-do/33690144#33690144</a></li>
-<li><a href="http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/compile.html">http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/compile.html</a></li>
-<li><a href="https://www.cprogramming.com/compilingandlinking.html">https://www.cprogramming.com/compilingandlinking.html</a></li>
-<li><a href="http://www.cplusplus.com/articles/2v07M4Gy/">http://www.cplusplus.com/articles/2v07M4Gy/</a></li>
-<li><a href="http://www.tenouk.com/ModuleW.html">http://www.tenouk.com/ModuleW.html</a></li>
-<li><a href="http://www.tenouk.com/Bufferoverflowc/Bufferoverflow1.html">http://www.tenouk.com/Bufferoverflowc/Bufferoverflow1.html</a></li>
-<li><a href="http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/">http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/</a></li>
-<li><a href="http://nickdesaulniers.github.io/blog/2016/11/20/static-and-dynamic-libraries/">http://nickdesaulniers.github.io/blog/2016/11/20/static-and-dynamic-libraries/</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Object_file">https://en.wikipedia.org/wiki/Object_file</a></li>
-<li><a href="https://stackoverflow.com/questions/3880924/how-to-view-symbols-in-object-files">https://stackoverflow.com/questions/3880924/how-to-view-symbols-in-object-files</a></li>
-<li><a href="https://stackoverflow.com/questions/69112/what-is-a-symbol-table">https://stackoverflow.com/questions/69112/what-is-a-symbol-table</a></li>
-<li><a href="https://codeyarns.com/2014/08/07/how-to-list-symbols-in-object-file/">https://codeyarns.com/2014/08/07/how-to-list-symbols-in-object-file/</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Object_file">Objects Files</a></li>
+<li><a href="https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation">Understanding compilation in C++</a></li>
+<li><a href="http://www.cplusplus.com/doc/tutorial/preprocessor/">Preprocessor</a></li>
+<li><a href="https://stackoverflow.com/questions/6264249/how-does-the-compilation-linking-process-work">Compilation and Linking</a></li>
+<li><a href="https://stackoverflow.com/questions/12122446/how-does-c-linking-work-in-practice/30507725#30507725">Linking in C</a></li>
+<li><a href="http://www.iecc.com/linker/">Linker</a></li>
+<li><a href="https://www.airs.com/blog/archives/38">Linkers p1</a></li>
+<li><a href="http://www.cirosantilli.com/elf-hello-world/">Working with ELF files</a></li>
+<li><a href="https://stackoverflow.com/questions/3322911/what-do-linkers-do/33690144#33690144">What do linkers do?</a></li>
+<li><a href="http://faculty.cs.niu.edu/~mcmahon/CS241/Notes/compile.html">C++ compilation process</a></li>
+<li><a href="https://www.cprogramming.com/compilingandlinking.html">Compiling and Linking</a></li>
+<li><a href="http://www.cplusplus.com/articles/2v07M4Gy/">Compiling and Linking in C++</a></li>
+<li><a href="http://www.tenouk.com/ModuleW.html">COMPILER, ASSEMBLER, LINKER AND LOADER: A BRIEF STORY</a></li>
+<li><a href="http://www.tenouk.com/Bufferoverflowc/Bufferoverflow1.html">Buffer Overflow</a></li>
+<li><a href="http://nickdesaulniers.github.io/blog/2016/08/13/object-files-and-symbols/">Object files and symbols</a></li>
+<li><a href="http://nickdesaulniers.github.io/blog/2016/11/20/static-and-dynamic-libraries/">Static and dynamic libraries</a></li>
+<li><a href="https://stackoverflow.com/questions/3880924/how-to-view-symbols-in-object-files">How to view symbols in object files</a></li>
+<li><a href="https://stackoverflow.com/questions/69112/what-is-a-symbol-table">What is a symbol table</a></li>
+<li><a href="https://codeyarns.com/2014/08/07/how-to-list-symbols-in-object-file/">How to list symbol tables</a></li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org3b549db">
-<h3 id="org3b549db"><b><b>Memory management</b></b></h3>
+<section id="slide-org19444cb">
+<h3 id="org19444cb"><b><b>Memory management</b></b></h3>
 <ul>
-<li><a href="https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation">https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation</a></li>
-<li><a href="http://www.tenouk.com/ModuleW.html">http://www.tenouk.com/ModuleW.html</a></li>
-<li><a href="https://stackoverflow.com/questions/2229498/passing-by-reference-in-c">https://stackoverflow.com/questions/2229498/passing-by-reference-in-c</a></li>
-<li><a href="https://stackoverflow.com/questions/13654138/what-exactly-is-the-difference-between-pass-by-reference-in-c-and-in-c">https://stackoverflow.com/questions/13654138/what-exactly-is-the-difference-between-pass-by-reference-in-c-and-in-c</a></li>
-<li><a href="http://www.guideforschool.com/625348-memory-address-calculation-in-an-array/">http://www.guideforschool.com/625348-memory-address-calculation-in-an-array/</a></li>
-<li><a href="http://www.gotw.ca/gotw/009.htm">http://www.gotw.ca/gotw/009.htm</a></li>
-<li><a href="http://www-cs-students.stanford.edu/~sjac/c-to-cpp-info/references">http://www-cs-students.stanford.edu/~sjac/c-to-cpp-info/references</a></li>
+<li><a href="https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation">What is memory fragmentation</a></li>
+<li><a href="https://stackoverflow.com/questions/2229498/passing-by-reference-in-c">Pass by reference in C</a></li>
+<li><a href="https://stackoverflow.com/questions/13654138/what-exactly-is-the-difference-between-pass-by-reference-in-c-and-in-c">Difference between pass by reference in C/C++</a></li>
+<li><a href="http://www.guideforschool.com/625348-memory-address-calculation-in-an-array/">Array memory allocation</a></li>
+<li><a href="http://www.gotw.ca/gotw/009.htm">Memory storage in C/C++</a></li>
+<li><a href="http://www-cs-students.stanford.edu/~sjac/c-to-cpp-info/references">References in C/C++</a></li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org1250e2f">
-<h3 id="org1250e2f"><b><b>File Structure</b></b></h3>
+<section id="slide-orgfa0fb83">
+<h3 id="orgfa0fb83"><b><b>File Structure</b></b></h3>
 <ul>
-<li><a href="http://www.cplusplus.com/forum/articles/10627/">http://www.cplusplus.com/forum/articles/10627/</a></li>
-<li><a href="http://www.learncpp.com/cpp-tutorial/19-header-files/">http://www.learncpp.com/cpp-tutorial/19-header-files/</a></li>
-<li><a href="https://stackoverflow.com/questions/333889/why-have-header-files-and-cpp-files">https://stackoverflow.com/questions/333889/why-have-header-files-and-cpp-files</a></li>
-<li><a href="https://www.cprogramming.com/declare_vs_define.html">https://www.cprogramming.com/declare_vs_define.html</a></li>
-<li><a href="https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration">https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration</a></li>
-<li><a href="http://aszt.inf.elte.hu/~gsd/halado_cpp/ch09s03.html">http://aszt.inf.elte.hu/~gsd/halado_cpp/ch09s03.html</a></li>
-<li><a href="https://stackoverflow.com/questions/4757565/what-are-forward-declarations-in-c">https://stackoverflow.com/questions/4757565/what-are-forward-declarations-in-c</a></li>
+<li><a href="http://www.cplusplus.com/forum/articles/10627/">How to use header files</a></li>
+<li><a href="http://www.learncpp.com/cpp-tutorial/19-header-files/">Header files</a></li>
+<li><a href="https://stackoverflow.com/questions/333889/why-have-header-files-and-cpp-files">Why do we have header and cpp files</a></li>
+<li><a href="https://www.cprogramming.com/declare_vs_define.html">Declaration vs Definition</a></li>
+<li><a href="https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration">Difference between declaration and definition</a></li>
+<li><a href="http://aszt.inf.elte.hu/~gsd/halado_cpp/ch09s03.html">The PIMPL idiom</a></li>
+<li><a href="https://stackoverflow.com/questions/4757565/what-are-forward-declarations-in-c">Forward declarations</a></li>
 
 </ul>
 </section>
@@ -873,7 +912,6 @@ rollingLinks: true,
 keyboard: true,
 overview: true,
 width: 1920,
-height: 1080,
 margin: 0.20,
 minScale: 0.50,
 maxScale: 2.50,
