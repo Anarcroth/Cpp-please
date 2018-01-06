@@ -28,27 +28,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-05 пт 13:07</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-06 сб 20:09</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org62f5063">Who am I?</a></li>
-<li><a href="#/slide-orgf01810e">What we are going to cover</a></li>
-<li><a href="#/slide-org620dafd">File structure</a></li>
-<li><a href="#/slide-org74e8778">How does compilation work?</a></li>
-<li><a href="#/slide-orgc4ce7f1">Memory management</a></li>
-<li><a href="#/slide-org16dfda2">References</a></li>
+<li><a href="#/slide-org4922408">Who am I?</a></li>
+<li><a href="#/slide-orgb27ef63">What we are going to cover</a></li>
+<li><a href="#/slide-org5f46e77">File structure</a></li>
+<li><a href="#/slide-org62475fd">How does compilation work?</a></li>
+<li><a href="#/slide-orga394d3e">Memory management</a></li>
+<li><a href="#/slide-orgc4441ca">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org62f5063">
-<h2 id="org62f5063">Who am I?</h2>
+<section id="slide-org4922408">
+<h2 id="org4922408">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -61,8 +61,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org46ddd72">
-<h3 id="org46ddd72">Why I chose to make these small tutorials</h3>
+<section id="slide-orgbf54c3b">
+<h3 id="orgbf54c3b">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -80,8 +80,8 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-org8bde31c">
-<h3 id="org8bde31c">How to look at C++</h3>
+<section id="slide-orgf6027bb">
+<h3 id="orgf6027bb">How to look at C++</h3>
 <p>
 C++ as <b>four</b> sub-languages
 </p>
@@ -111,8 +111,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-orgf01810e">
-<h2 id="orgf01810e">What we are going to cover</h2>
+<section id="slide-orgb27ef63">
+<h2 id="orgb27ef63">What we are going to cover</h2>
 <ul>
 <li>File structure</li>
 <li>Memory management</li>
@@ -126,8 +126,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-org620dafd">
-<h2 id="org620dafd">File structure</h2>
+<section id="slide-org5f46e77">
+<h2 id="org5f46e77">File structure</h2>
 <ul>
 <li>Advantages:
 <ul>
@@ -180,8 +180,8 @@ What's the difference between headers and sources? Apart from the obvious name d
 </section>
 </section>
 <section>
-<section id="slide-orga2eb2b8">
-<h3 id="orga2eb2b8">How to work with headers?</h3>
+<section id="slide-orgc210533">
+<h3 id="orgc210533">How to work with headers?</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">//</span><span style="color: #245361;">header we always include</span>
@@ -222,8 +222,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </section>
 </section>
 <section>
-<section id="slide-org13f9e3a">
-<h3 id="org13f9e3a">Header guards</h3>
+<section id="slide-orgd95fae2">
+<h3 id="orgd95fae2">Header guards</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -266,8 +266,8 @@ Because we are going to be using a lot of headers in our program, we would need 
 </section>
 </section>
 <section>
-<section id="slide-org007d7d7">
-<h3 id="org007d7d7">Declarations vs Definitions</h3>
+<section id="slide-org3ca9380">
+<h3 id="org3ca9380">Declarations vs Definitions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">declarations</span>
@@ -290,7 +290,7 @@ I want to take some time now to revisit two old concepts before we continue - na
 </p>
 
 <p>
-A <b>definition</b> in C++ is when we a define something in its complete form. This means that we need to both declare something and define it at the same time. We actually implement that specific identifier we have declared. When we write functions and give them a function body at the same time, that is a form of definition. When we write <code>int x;</code> we are both declaring and defining the variable <code>x</code>. This means that we are telling the compiler that there is a variable <code>x</code> of type <code>int</code> that is in the global scope in the current source file. It's important to note that giving this variable a value is not necessary in order to define it. But in the examples we have this specific keyword <code>extern</code> that is associated with declarations. What <code>extern</code> does is that it marks the variable and tells the compiler that this is only a definition and that a declaration will be found somewhere else. In general we use <code>extern</code> when we want to declare global variables in header files and <b>define</b> them in some source file.
+A <b>definition</b> in C++ is when we a define something in its complete form. This means that we need to both declare something and define it at the same time. We actually implement that specific identifier we have declared. When we write functions and give them a function body at the same time, that is a form of definition. When we write <code>int x;</code> we are both declaring and defining the variable <code>x</code>. This means that we are telling the compiler that there is a variable <code>x</code> of type <code>int</code> that is in the global scope in the current source file. It's important to note that giving this variable a value is not necessary in order to define it. But in the examples we have this specific keyword <code>extern</code> that is associated with declarations. What <code>extern</code> does is that it marks the variable and tells the compiler that this is only a declaration and that a definition will be found somewhere else. In general we use <code>extern</code> when we want to declare global variables in header files and <b>define</b> them in some source file.
 </p>
 
 <p>
@@ -306,8 +306,8 @@ Okay now let us go back to header files.
 </section>
 </section>
 <section>
-<section id="slide-org27560c1">
-<h3 id="org27560c1">When and how to use headers</h3>
+<section id="slide-orgff522cc">
+<h3 id="orgff522cc">How and when to use headers</h3>
 <p>
 <code>class A</code> ==&gt; (uses) ==&gt; <code>class B</code> 
 </p>
@@ -356,7 +356,11 @@ Okay now let us go back to header files.
 
 <aside class="notes">
 <p>
-Since we will be writing a lot of classes, there will be a lot of dependencies. As an example, a derived class will always be dependent of its parent class, which means that we must be aware of the parent class at compile time, so we can use the derived class. There are two general forms of dependencies - one is, that there will be things that can be <b>forward declared</b>, and the other is, that things need to be <code>#include</code>-ed. Let's take an example with the following. Image we have class <code>A</code>, which uses class <code>B</code>. This makes A dependent on B. To decide if we need to <b>forward declare</b> or to include A depends on what the interaction between the two classes is.
+At this point, after we are revised what declarations and definitions are, we can talk about how to use headers and in which situations this is a viable option. The very short answer is - use header files when you have a class, a grouping of functions that do similar things, or a grouping of global variables. In general this approach is not bad and will frailly well for you, but we shouldn't stop here. That's just the surface of it, to dig deeper we have to understand in which situations we can use header files and when to use forward declarations.
+</p>
+
+<p>
+Let's imagine that we will be writing a lot of classes, where there will be a lot of dependencies. So when we talk about header files and using multiple classes we are also talking about dependencies between classes (this may also mean just a grouping of functions, but for simplicity reasons, we will refer to a header file as being a single class that does one thing). As an example, a derived class will always be dependent of its parent class, which means that we must be aware of the parent class at compile time, so we can use the derived class (such a case will be when we have a <b>public</b> inheritance between two classes). There are two general forms of dependencies - one is, that there will be things that can be <b>forward declared</b>, and the other is, that things need to be <code>#include</code>-ed. Let's take an example with the following. Image we have class <code>A</code>, which uses class <code>B</code>. This makes A dependent on B. To decide if we need to <b>forward declare</b> or to include A depends on what the interaction between the two classes is.
 </p>
 
 <p>
@@ -372,8 +376,8 @@ In general we want to remember this simple rule - prefer forward declarations to
 </section>
 </section>
 <section>
-<section id="slide-orgd094759">
-<h3 id="orgd094759">Circular Dependencies</h3>
+<section id="slide-orge3aa728">
+<h3 id="orge3aa728">Circular Dependencies</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">b.h</span>
@@ -396,8 +400,8 @@ I mentioned at some point about circular dependencies, but they are something th
 </section>
 </section>
 <section>
-<section id="slide-org74e8778">
-<h2 id="org74e8778">How does compilation work?</h2>
+<section id="slide-org62475fd">
+<h2 id="org62475fd">How does compilation work?</h2>
 <p>
 There are 3 steps of compiling C++ code:
 </p>
@@ -423,8 +427,8 @@ When we are trying to run a piece of code (in our case C++), the computer goes t
 </section>
 </section>
 <section>
-<section id="slide-org610d4db">
-<h3 id="org610d4db">Preprocessing</h3>
+<section id="slide-orgfa1e459">
+<h3 id="orgfa1e459">Preprocessing</h3>
 <p class="fragment roll-in">
 In order to get only the preprocessed file we can run the
 </p>
@@ -486,8 +490,8 @@ After we have our "pure C++" code (ending with the <code>*.i/*.ii</code>) suffix
 </section>
 </section>
 <section>
-<section id="slide-orgb7fa6e8">
-<h3 id="orgb7fa6e8">Compilation</h3>
+<section id="slide-org59c8114">
+<h3 id="org59c8114">Compilation</h3>
 <ul>
 <li>Step 1 - Compile</li>
 <li>Step 2 - Assemble</li>
@@ -552,8 +556,8 @@ Once we have the object file we can transform it into special <b>executables</b>
 </section>
 </section>
 <section>
-<section id="slide-org86ecdfe">
-<h3 id="org86ecdfe">Linking</h3>
+<section id="slide-orgdb13317">
+<h3 id="orgdb13317">Linking</h3>
 <p>
 The <b><b>linker</b></b> just links all of the object files into one executable file.
 </p>
@@ -603,8 +607,8 @@ This is the last step before we can take the <code>.exe</code> file, load it int
 </section>
 </section>
 <section>
-<section id="slide-org48fd0aa">
-<h3 id="org48fd0aa">Conclusion</h3>
+<section id="slide-org7b03ff5">
+<h3 id="org7b03ff5">Conclusion</h3>
 <p class="fragment roll-in">
 Understanding undefined behavior better
 </p>
@@ -625,8 +629,8 @@ Good grip on how data is represented in C++
 </section>
 </section>
 <section>
-<section id="slide-orgc4ce7f1">
-<h2 id="orgc4ce7f1">Memory management</h2>
+<section id="slide-orga394d3e">
+<h2 id="orga394d3e">Memory management</h2>
 <p>
 The memory layout can be divided into <b>five</b> sections:
 </p>
@@ -709,8 +713,8 @@ So when a program is running, the data, bss, and heap segments are aligned into 
 </section>
 </section>
 <section>
-<section id="slide-orgb4679ab">
-<h3 id="orgb4679ab">Memory space in C++</h3>
+<section id="slide-org8ab5a50">
+<h3 id="org8ab5a50">Memory space in C++</h3>
 <p>
 This is all the space and data the program needs in order to run properly.
 </p>
@@ -731,8 +735,8 @@ This is all the space and data the program needs in order to run properly.
 </section>
 </section>
 <section>
-<section id="slide-orga92840a">
-<h3 id="orga92840a">How to handle memory in C++</h3>
+<section id="slide-org6f2ddd0">
+<h3 id="org6f2ddd0">How to handle memory in C++</h3>
 <ul>
 <li>Pointers</li>
 <li>Pass by value</li>
@@ -762,8 +766,8 @@ Lets take this example now:
 </section>
 </section>
 <section>
-<section id="slide-orgea07687">
-<h3 id="orgea07687">Pass by reference in C</h3>
+<section id="slide-org317e68a">
+<h3 id="org317e68a">Pass by reference in C</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"stdio.h"</span>
@@ -799,8 +803,8 @@ Let's look at the same example, but in C++ code.
 </section>
 </section>
 <section>
-<section id="slide-orga1b9806">
-<h3 id="orga1b9806">Pass by reference in C++</h3>
+<section id="slide-org4718989">
+<h3 id="org4718989">Pass by reference in C++</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span>
@@ -835,15 +839,15 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org16dfda2">
-<h2 id="org16dfda2">References</h2>
-<div class="outline-text-2" id="text-org16dfda2">
+<section id="slide-orgc4441ca">
+<h2 id="orgc4441ca">References</h2>
+<div class="outline-text-2" id="text-orgc4441ca">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org9761d64">
-<h3 id="org9761d64"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
+<section id="slide-org657a2c0">
+<h3 id="org657a2c0"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Object_file">Objects Files</a></li>
 <li><a href="https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation">Understanding compilation in C++</a></li>
@@ -876,8 +880,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org079f9f8">
-<h3 id="org079f9f8"><b><b>Memory management</b></b></h3>
+<section id="slide-org310fd7f">
+<h3 id="org310fd7f"><b><b>Memory management</b></b></h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation">What is memory fragmentation</a></li>
 <li><a href="https://stackoverflow.com/questions/2229498/passing-by-reference-in-c">Pass by reference in C</a></li>
@@ -891,8 +895,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org0df998f">
-<h3 id="org0df998f"><b><b>File Structure</b></b></h3>
+<section id="slide-org48142d4">
+<h3 id="org48142d4"><b><b>File Structure</b></b></h3>
 <ul>
 <li><a href="http://www.cplusplus.com/forum/articles/10627/">How to use header files</a></li>
 <li><a href="http://www.learncpp.com/cpp-tutorial/19-header-files/">Header files</a></li>
