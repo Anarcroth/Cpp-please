@@ -27,23 +27,24 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 13:34</p>
+<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 17:11</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgcb20081">The ++ in Cpp</a></li>
-<li><a href="#/slide-orgfafab26">Classes and Objects</a></li>
+<li><a href="#/slide-orgd0bb196">The ++ in Cpp</a></li>
+<li><a href="#/slide-org8a05fed">Classes and Objects</a></li>
+<li><a href="#/slide-org4b61e71">Constructors</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orgcb20081">
-<h2 id="orgcb20081">The ++ in Cpp</h2>
+<section id="slide-orgd0bb196">
+<h2 id="orgd0bb196">The ++ in Cpp</h2>
 <ul>
 <li>C with classes
 <ul>
@@ -86,8 +87,8 @@ First we will cover classes. What the classes implement in the background, what 
 </section>
 </section>
 <section>
-<section id="slide-orgfafab26">
-<h2 id="orgfafab26">Classes and Objects</h2>
+<section id="slide-org8a05fed">
+<h2 id="org8a05fed">Classes and Objects</h2>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span>
@@ -132,21 +133,21 @@ This is a basic class. We can see the scopes of the class, what we can have as v
 </section>
 </section>
 <section>
-<section id="slide-orgd84bd50">
-<h3 id="orgd84bd50">Initialization lists</h3>
+<section id="slide-orga53891c">
+<h3 id="orga53891c">Initialization lists</h3>
 <div class="org-src-container">
 
-<pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #d26937;">class</span> <span style="color: #599cab;">Library</span> 
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Library</span> 
 <span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
-<span class="linenr"> 2: </span><span style="color: #33859e; font-weight: bold;">public</span>:
-<span class="linenr"> 3: </span>    ABEntry<span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">std</span>::string&amp; name, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">std</span>::list&lt;Books&gt;&amp; books<span style="color: #33859e;">)</span>;
-<span class="linenr"> 4: </span><span style="color: #33859e; font-weight: bold;">private</span>:
-<span class="linenr"> 5: </span>    std::string theName;
-<span class="linenr"> 6: </span>    std::list&lt;Books&gt; books;
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 3: </span>    ABEntry<span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">name</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">list</span><span style="color: #d26937;">&lt;</span>Books<span style="color: #d26937;">&gt;</span>&amp; <span style="color: #599cab;">books</span><span style="color: #33859e;">)</span>;
+<span class="linenr"> 4: </span><span style="color: #195466; font-weight: bold;">private</span>:
+<span class="linenr"> 5: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">theName</span>;
+<span class="linenr"> 6: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">list</span><span style="color: #33859e;">&lt;</span>Books<span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">books</span>;
 <span class="linenr"> 7: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">addressNum</span>;
 <span class="linenr"> 8: </span><span style="color: #99d1ce;">}</span>;
 <span class="linenr"> 9: </span>
-<span class="linenr">10: </span>Library::Library<span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">std</span>::string&amp; name, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">std</span>::list&lt;Books&gt;&amp; books<span style="color: #99d1ce;">)</span>
+<span class="linenr">10: </span><span style="color: #33859e; font-weight: bold;">Library</span>::<span style="color: #599cab;">Library</span><span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">name</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">list</span><span style="color: #33859e;">&lt;</span>Books<span style="color: #33859e;">&gt;</span>&amp; <span style="color: #599cab;">books</span><span style="color: #99d1ce;">)</span>
 <span class="linenr">11: </span><span style="color: #245361;">// </span><span style="color: #245361;">Initialization start righ here before the opening bracket</span>
 <span class="linenr">12: </span><span style="color: #99d1ce;">{</span>
 <span class="linenr">13: </span>    theName = name; <span style="color: #245361;">// </span><span style="color: #245361;">these are all assignments</span>
@@ -191,28 +192,28 @@ There is one little aspect we must note here and that is - we must write the ord
 </section>
 </section>
 <section>
-<section id="slide-org9e719b0">
-<h3 id="org9e719b0">Static non-local objects defined in different translation units</h3>
+<section id="slide-org471a477">
+<h3 id="org471a477">Static non-local objects defined in different translation units</h3>
 <div class="org-src-container">
 
-<pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">in the filesystem.cpp file</span>
-<span class="linenr"> 1: </span><span style="color: #d26937;">class</span> <span style="color: #599cab;">FileSystem</span>
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">in the filesystem.cpp file</span>
+<span class="linenr"> 1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">FileSystem</span>
 <span class="linenr"> 2: </span><span style="color: #99d1ce;">{</span>
-<span class="linenr"> 3: </span><span style="color: #33859e; font-weight: bold;">public</span>:
-<span class="linenr"> 4: </span>    std::size_t numDisks<span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>;
+<span class="linenr"> 3: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 4: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">size_t</span> <span style="color: #599cab;">numDisks</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>;
 <span class="linenr"> 5: </span><span style="color: #99d1ce;">}</span>;
 <span class="linenr"> 6: </span><span style="color: #195466; font-weight: bold;">extern</span> <span style="color: #d26937;">FileSystem</span> <span style="color: #599cab;">tfs</span>;
 <span class="linenr"> 7: </span>
 <span class="linenr"> 8: </span><span style="color: #245361;">// </span><span style="color: #245361;">in our .cpp file</span>
-<span class="linenr"> 9: </span><span style="color: #d26937;">class</span> <span style="color: #599cab;">Directory</span> 
+<span class="linenr"> 9: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Directory</span> 
 <span class="linenr">10: </span><span style="color: #99d1ce;">{</span>
-<span class="linenr">11: </span><span style="color: #33859e; font-weight: bold;">public</span>:
-<span class="linenr">12: </span>    Directory<span style="color: #33859e;">(</span>params<span style="color: #33859e;">)</span>;
+<span class="linenr">11: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">12: </span>    Directory<span style="color: #33859e;">(</span><span style="color: #599cab;">params</span><span style="color: #33859e;">)</span>;
 <span class="linenr">13: </span><span style="color: #99d1ce;">}</span>;
 <span class="linenr">14: </span>
-<span class="linenr">15: </span>Directory::Directory<span style="color: #99d1ce;">(</span>params<span style="color: #99d1ce;">)</span>
+<span class="linenr">15: </span><span style="color: #33859e; font-weight: bold;">Directory</span>::<span style="color: #599cab;">Directory</span><span style="color: #99d1ce;">(</span>params<span style="color: #99d1ce;">)</span>
 <span class="linenr">16: </span><span style="color: #99d1ce;">{</span>
-<span class="linenr">17: </span>    std::size_t disks = tfs.numDisks<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">we use the tfs object,</span>
+<span class="linenr">17: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">size_t</span> <span style="color: #599cab;">disks</span> = tfs.numDisks<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">we use the tfs object,</span>
 <span class="linenr">18: </span>                                        <span style="color: #245361;">// </span><span style="color: #245361;">but we cannot be sure</span>
 <span class="linenr">19: </span>                                        <span style="color: #245361;">// </span><span style="color: #245361;">that it is initialized</span>
 <span class="linenr">20: </span><span style="color: #99d1ce;">}</span>
@@ -224,8 +225,8 @@ There is one little aspect we must note here and that is - we must write the ord
 </section>
 </section>
 <section>
-<section id="slide-orgf7b58c5">
-<h3 id="orgf7b58c5">Solution</h3>
+<section id="slide-orgb903b74">
+<h3 id="orgb903b74">Solution</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C"><span class="linenr"> 0: </span>FileSystem&amp; tfs<span style="color: #99d1ce;">()</span>         <span style="color: #245361;">// </span><span style="color: #245361;">this replaces the tfs object; it could be</span>
@@ -254,16 +255,60 @@ One final thing that is worth mentioning is the case when we have to initialize 
 
 </aside>
 
-<ul>
-<li>Operators</li>
-<li>Normal Constructors</li>
-<li>Destructors</li>
+</section>
+</section>
+<section>
+<section id="slide-org4b61e71">
+<h2 id="org4b61e71">Constructors</h2>
+<div class="org-src-container">
 
-</ul>
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">Empty class</span>
+<span class="linenr"> 1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">A</span> <span style="color: #99d1ce;">{}</span>;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #245361;">// </span><span style="color: #245361;">Empty class again</span>
+<span class="linenr"> 4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">A</span> 
+<span class="linenr"> 5: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 6: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 7: </span>    <span style="color: #599cab;">A</span><span style="color: #33859e;">()</span> <span style="color: #33859e;">{</span>...<span style="color: #33859e;">}</span>             <span style="color: #245361;">// </span><span style="color: #245361;">constructor</span>
+<span class="linenr"> 8: </span>    <span style="color: #599cab;">A</span><span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">A</span>&amp; <span style="color: #599cab;">rhs</span><span style="color: #33859e;">)</span> <span style="color: #33859e;">{</span>...<span style="color: #33859e;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">copy constructor</span>
+<span class="linenr"> 9: </span>    ~<span style="color: #599cab;">A</span><span style="color: #33859e;">()</span> <span style="color: #33859e;">{</span>...<span style="color: #33859e;">}</span>            <span style="color: #245361;">// </span><span style="color: #245361;">destructor</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>    <span style="color: #d26937;">A</span>&amp; <span style="color: #195466; font-weight: bold;">operator</span><span style="color: #599cab;">=</span><span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">A</span>&amp; <span style="color: #599cab;">rhs</span><span style="color: #33859e;">)</span> <span style="color: #33859e;">{</span>...<span style="color: #33859e;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">copy assingment operator</span>
+<span class="linenr">12: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
 
 <aside class="notes">
 <p>
-I am not going to go through what objects and constructors are, because we should already know this, but I will try to give you some guidelines on how to work with them in an effective and easy way. This will be a sort of list of tips you can use. But before we go into them I just want to make quick pass over the different operators we can have in C++ classes.
+All of the classes we write have at least several constructors in them which will be either user defined or put in the class by the compiler. Sometimes we don't have to explicitly tell C++ what kind of constructors we want, because our program doesn't requite such functionality, but sometimes we have to implement our own constructors and operators (<b>operator overloading</b>). It's a good thing to know that the compiler is implementing instead of us when we are not writing the constructors ourselves.
+</p>
+
+<p>
+Let's take this example for instance. Here we have a class that has nothing in it and we have a class that has four constructors implemented. There is virtually no difference between writing the empty class without constructors and the one with the 3 ctors and one operator implemented. The 3 cotrs and 1 operator that we will always have by default are - a default constructor, default destructor, copy constructor, and a copy assignment operator. In general there isn't much difference between what you will write as an implementation and what the compiler will write for there things, but keep in mind that in some specific cases you will be forced to write your own constructors. This will be the case when you have some constants and/or some references in your class. Why references? Because when you are copying an instance and you have a pointer in it, you would want to copy what the pointer points to (its content) and not the pointer only. And the case for <code>const</code> is that you would want to keep <b>const correctness</b> when copying. This is not a problem if our class has normal data members.
+</p>
+
+</aside>
+
+</section>
+<section >
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span><span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
+<span class="linenr">1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">NamedObject</span>
+<span class="linenr">2: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">3: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">4: </span>    <span style="color: #599cab;">NamedObject</span><span style="color: #33859e;">(</span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">name</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">T</span>&amp; <span style="color: #599cab;">value</span><span style="color: #33859e;">)</span>;
+<span class="linenr">5: </span><span style="color: #195466; font-weight: bold;">private</span>:
+<span class="linenr">6: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">nameValue</span>;
+<span class="linenr">7: </span>    <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">T</span> <span style="color: #599cab;">objectValue</span>;    
+<span class="linenr">8: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+In this case when we have a reference, we just have to make sure that we are implementing a <b>deep</b> copy when we are writing the constructor or operator. But if our class has a <code>const</code> then we are in trouble. Because we cannot change the value of the initial object we want to re-assign, we cannot implement a proper copy assignment operator. In the case with the constant data member, a default copy assignment operator will not be implemented, and if we were to implement one of our own, we would not copy the <code>const</code> data members.
 </p>
 
 </aside>
