@@ -27,24 +27,24 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 17:57</p>
+<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 18:28</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orga7fc52f">The ++ in Cpp</a></li>
-<li><a href="#/slide-orge0763a4">C with classes</a></li>
-<li><a href="#/slide-org20c2dd4">References</a></li>
+<li><a href="#/slide-org35ebb39">The ++ in Cpp</a></li>
+<li><a href="#/slide-org40f9eb9">C with classes</a></li>
+<li><a href="#/slide-org91b6512">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orga7fc52f">
-<h2 id="orga7fc52f">The ++ in Cpp</h2>
+<section id="slide-org35ebb39">
+<h2 id="org35ebb39">The ++ in Cpp</h2>
 <ul>
 <li>C with classes
 <ul>
@@ -86,15 +86,15 @@ First we will cover classes. What the classes implement in the background, what 
 </section>
 </section>
 <section>
-<section id="slide-orge0763a4">
-<h2 id="orge0763a4">C with classes</h2>
-<div class="outline-text-2" id="text-orge0763a4">
+<section id="slide-org40f9eb9">
+<h2 id="org40f9eb9">C with classes</h2>
+<div class="outline-text-2" id="text-org40f9eb9">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgac0d3b2">
-<h3 id="orgac0d3b2">Classes and Objects</h3>
+<section id="slide-org0e86343">
+<h3 id="org0e86343">Classes and Objects</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span>
@@ -139,8 +139,8 @@ This is a basic class. We can see the scopes of the class, what we can have as v
 </section>
 </section>
 <section>
-<section id="slide-org0cb26f7">
-<h4 id="org0cb26f7">Initialization lists</h4>
+<section id="slide-orgfc968fc">
+<h4 id="orgfc968fc">Initialization lists</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Library</span> 
@@ -198,8 +198,8 @@ There is one little aspect we must note here and that is - we must write the ord
 </section>
 </section>
 <section>
-<section id="slide-org86fdca2">
-<h4 id="org86fdca2">Static non-local objects defined in different translation units</h4>
+<section id="slide-org55aaa99">
+<h4 id="org55aaa99">Static non-local objects defined in different translation units</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">in the filesystem.cpp file</span>
@@ -266,8 +266,8 @@ One final thing that is worth mentioning is the case when we have to initialize 
 </section>
 </section>
 <section>
-<section id="slide-orgf32a4dc">
-<h3 id="orgf32a4dc">Constructors and Operators</h3>
+<section id="slide-org0791968">
+<h3 id="org0791968">Constructors and Operators</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">Empty class</span>
@@ -324,21 +324,50 @@ In this case when we have a reference, we just have to make sure that we are imp
 </section>
 </section>
 <section>
-<section id="slide-orge0665c6">
-<h3 id="orge0665c6">Designs</h3>
-<div class="outline-text-3" id="text-orge0665c6">
+<section id="slide-org3aab4df">
+<h3 id="org3aab4df">Designs</h3>
+<div class="outline-text-3" id="text-org3aab4df">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org064c720">
-<h4 id="org064c720">Write OOP classes</h4>
+<section id="slide-org204a905">
+<h4 id="org204a905">Write OOP classes</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">AccessLevels</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 3: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">get_read_only</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e;">{</span> <span style="color: #195466; font-weight: bold;">return</span> readOnly; <span style="color: #33859e;">}</span>
+<span class="linenr"> 4: </span>    <span style="color: #d26937;">void</span> <span style="color: #599cab;">set_read_write</span><span style="color: #33859e;">(</span><span style="color: #d26937;">int</span> <span style="color: #599cab;">value</span><span style="color: #33859e;">)</span> <span style="color: #33859e;">{</span> readWrite = value; <span style="color: #33859e;">}</span>
+<span class="linenr"> 5: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">get_read_write</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e;">{</span> <span style="color: #195466; font-weight: bold;">return</span> readWrite; <span style="color: #33859e;">}</span>
+<span class="linenr"> 6: </span>    <span style="color: #d26937;">void</span> <span style="color: #599cab;">set_write_only</span><span style="color: #33859e;">(</span><span style="color: #d26937;">int</span> <span style="color: #599cab;">value</span><span style="color: #33859e;">)</span> <span style="color: #33859e;">{</span> writeOnly = value; <span style="color: #33859e;">}</span>
+<span class="linenr"> 7: </span><span style="color: #195466; font-weight: bold;">private</span>:
+<span class="linenr"> 8: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">no_access</span>;    <span style="color: #245361;">// </span><span style="color: #245361;">no access to this </span>
+<span class="linenr"> 9: </span>                     <span style="color: #245361;">// </span><span style="color: #245361;">(maybe it's used as an internal constant)</span>
+<span class="linenr">10: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">read_only</span>;    <span style="color: #245361;">// </span><span style="color: #245361;">only read access</span>
+<span class="linenr">11: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">read_write</span>;   <span style="color: #245361;">// </span><span style="color: #245361;">read and write access</span>
+<span class="linenr">12: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">write_only</span>;   <span style="color: #245361;">// </span><span style="color: #245361;">write only access</span>
+<span class="linenr">13: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Although C++ gives us a lot of flexibility with what we can put into a class and under what type of scope, there have been several great designs that usually make our work much easier and allows us to quickly create our classes. This doesn't mean that we have to neglect what we are actually writing, but for most of the time we can follow these conventions.
+</p>
+
+<p>
+First of - declare your data members as private (not even protected). Okay so why do this? First off, by making our data members private we are limiting the access to them, we can only <b>get</b> them and <b>change</b> them only through functions. This allows us for finer control over our data (REGAIN CONTROL OVER YOU DATA) and will also follow some consistency when writing classes. We won't need to bag our heads whether we are chaining something or we are writing to something or whatever. The general rule is - every data member should be hidden, or - show only as much as you need. This means that some of our data members won't even need <code>getters</code> and <code>setters</code>, thus reducing our chances of bugs and lines of code. The last, and biggest, benefit to hide your data is <b>encapsulation</b>. This brings a lot of flexibility of implementation to the table and we should strive to make our classes as flexible and encapsulated as possible. A rule we can remember about this is - the more a class is used, the more it needs to be encapsulated. The same rules apply for <code>protected</code> data members. It might seem that they are encapsulated on first glance, but think about this - if we are to remove a <b>protected</b> data member, we are going to break and <b>undefined</b> amount of inherited classes, which is always more than what we will break if we just had that member as <b>private</b>. Seldom are the situations where <code>protected</code> will save the day.
+</p>
+
+</aside>
 
 </section>
 </section>
 <section>
-<section id="slide-org2e3c7d0">
-<h4 id="org2e3c7d0">Treat class design as type design</h4>
+<section id="slide-org74269c2">
+<h4 id="org74269c2">Treat class design as type design</h4>
 <ul>
 <li class="fragment roll-in">How should objects of your new type be created and destroyed?</li>
 <li class="fragment roll-in">How should object initialization differ from object assignment?</li>
@@ -392,14 +421,14 @@ Writing classes isn't easy, because in C++ we are not creating only a class, but
 </section>
 </section>
 <section>
-<section id="slide-orgf57ff61">
-<h4 id="orgf57ff61">Prefer pass-by-reference-to-const to pass-by-value</h4>
+<section id="slide-org29f99c9">
+<h4 id="org29f99c9">Prefer pass-by-reference-to-const to pass-by-value</h4>
 
 </section>
 </section>
 <section>
-<section id="slide-org20c2dd4">
-<h2 id="org20c2dd4">References</h2>
+<section id="slide-org91b6512">
+<h2 id="org91b6512">References</h2>
 <ul>
 <li><a href="http://www.cplusplus.com/articles/y8hv0pDG/">Copy constructors, assignment operators, and exception safe assignment</a></li>
 <li><a href="http://www.drdobbs.com/the-problem-with-const-data-members/184403306">The Problem with const Data Members</a></li>
