@@ -27,31 +27,29 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 17:15</p>
+<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 17:57</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgf2dacf3">The ++ in Cpp</a></li>
-<li><a href="#/slide-org67716d1">Classes and Objects</a></li>
-<li><a href="#/slide-orge3fb12b">Constructors</a></li>
-<li><a href="#/slide-orgb2ef3e1">References</a></li>
+<li><a href="#/slide-orga7fc52f">The ++ in Cpp</a></li>
+<li><a href="#/slide-orge0763a4">C with classes</a></li>
+<li><a href="#/slide-org20c2dd4">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orgf2dacf3">
-<h2 id="orgf2dacf3">The ++ in Cpp</h2>
+<section id="slide-orga7fc52f">
+<h2 id="orga7fc52f">The ++ in Cpp</h2>
 <ul>
 <li>C with classes
 <ul>
-<li>Constructors</li>
-<li>Destructors</li>
-<li>Operators</li>
+<li>Classes and Objects</li>
+<li>Constructors and Operators</li>
 <li>Designs</li>
 
 </ul></li>
@@ -59,7 +57,7 @@
 <ul>
 <li>Inheritance models</li>
 <li>Multiple Inheritance</li>
-<li>Virtual functions</li>
+<li>Virtual functions and destructors</li>
 
 </ul></li>
 <li>Templates
@@ -88,8 +86,15 @@ First we will cover classes. What the classes implement in the background, what 
 </section>
 </section>
 <section>
-<section id="slide-org67716d1">
-<h2 id="org67716d1">Classes and Objects</h2>
+<section id="slide-orge0763a4">
+<h2 id="orge0763a4">C with classes</h2>
+<div class="outline-text-2" id="text-orge0763a4">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgac0d3b2">
+<h3 id="orgac0d3b2">Classes and Objects</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span>
@@ -134,8 +139,8 @@ This is a basic class. We can see the scopes of the class, what we can have as v
 </section>
 </section>
 <section>
-<section id="slide-org8e0eaf5">
-<h3 id="org8e0eaf5">Initialization lists</h3>
+<section id="slide-org0cb26f7">
+<h4 id="org0cb26f7">Initialization lists</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Library</span> 
@@ -193,8 +198,8 @@ There is one little aspect we must note here and that is - we must write the ord
 </section>
 </section>
 <section>
-<section id="slide-org2a51e20">
-<h3 id="org2a51e20">Static non-local objects defined in different translation units</h3>
+<section id="slide-org86fdca2">
+<h4 id="org86fdca2">Static non-local objects defined in different translation units</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">in the filesystem.cpp file</span>
@@ -224,10 +229,12 @@ There is one little aspect we must note here and that is - we must write the ord
 </div>
 
 </section>
-</section>
-<section>
-<section id="slide-org007c758">
-<h3 id="org007c758">Solution</h3>
+<section >
+
+<p>
+The solution:
+</p>
+
 <div class="org-src-container">
 
 <pre  class="src src-C"><span class="linenr"> 0: </span>FileSystem&amp; tfs<span style="color: #99d1ce;">()</span>         <span style="color: #245361;">// </span><span style="color: #245361;">this replaces the tfs object; it could be</span>
@@ -259,8 +266,8 @@ One final thing that is worth mentioning is the case when we have to initialize 
 </section>
 </section>
 <section>
-<section id="slide-orge3fb12b">
-<h2 id="orge3fb12b">Constructors</h2>
+<section id="slide-orgf32a4dc">
+<h3 id="orgf32a4dc">Constructors and Operators</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">Empty class</span>
@@ -317,8 +324,82 @@ In this case when we have a reference, we just have to make sure that we are imp
 </section>
 </section>
 <section>
-<section id="slide-orgb2ef3e1">
-<h2 id="orgb2ef3e1">References</h2>
+<section id="slide-orge0665c6">
+<h3 id="orge0665c6">Designs</h3>
+<div class="outline-text-3" id="text-orge0665c6">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org064c720">
+<h4 id="org064c720">Write OOP classes</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-org2e3c7d0">
+<h4 id="org2e3c7d0">Treat class design as type design</h4>
+<ul>
+<li class="fragment roll-in">How should objects of your new type be created and destroyed?</li>
+<li class="fragment roll-in">How should object initialization differ from object assignment?</li>
+<li class="fragment roll-in">What are the restrictions on legal values for your new type?</li>
+<li class="fragment roll-in">What operators and functions make sense for the new type?</li>
+<li class="fragment roll-in">What standard functions should be disallowed?</li>
+<li class="fragment roll-in">Who should have access to the members of your new type?</li>
+<li class="fragment roll-in">Is a new type really what you need?</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+One of the things that will happen when you are writing your FDS project is that you won't have an idea what to do in the beginning and how to start. Hence you will hesitate how to build your classes and what to do with them.
+</p>
+
+<p>
+Writing classes isn't easy, because in C++ we are not creating only a class, but we are also creating a <b>user type</b>. This means that we have to take care of what that type must to do and what it must <b>not</b> do. That's why we can ask ourselves the following question in order to get a better grip of the classes we are writing. In consequence we will get a better understanding of the program we are writing.
+</p>
+
+<p>
+<b>How should objects of your new type be created and destroyed?</b> - How this is done influences the design of your class’s constructors and destructor, as well as its memory allocation and deallocation functions.
+</p>
+
+<p>
+<b>How should object intialization differ from object assignment?</b> - The answer to this question determines the behavior of and the differences between your constructors and your assignment operators. It’s important not to confuse initialization with assignment, because they correspond to different function calls.
+</p>
+
+<p>
+<b>What are the restrictions on legal values for your new type?</b> - Usually, only some combinations of values for a class’s data members are valid. Those combinations determine the invariants your class will have to maintain. The invariants determine the error checking you’ll have to do inside your member functions, especially your constructors, assignment operators, and “setter” functions. It may also affect the exceptions your functions throw and, on the off chance you use them, your functions’ exception specifications.
+</p>
+
+<p>
+<b>What operators and functions make sense for the new type?</b> - The answer to this question determines which functions you’ll declare for your class. Some functions will be member functions, but some will not.
+</p>
+
+<p>
+<b>What standard functions should be disallowed?</b> - Those are the ones you’ll need to declare private.
+</p>
+
+<p>
+<b>Who should have access to the members of your new type?</b> - This question helps you determine which members are public, which are protected, and which are private. It also helps you determine which classes and/or functions should be friends, as well as whether it makes sense to nest one class inside another.
+</p>
+
+<p>
+<b>Is a new type really what you need?</b> If you’re defining a new derived class only so you can add functionality to an existing class, perhaps you’d better achieve your goals by simply defining one or more non-member functions or templates.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf57ff61">
+<h4 id="orgf57ff61">Prefer pass-by-reference-to-const to pass-by-value</h4>
+
+</section>
+</section>
+<section>
+<section id="slide-org20c2dd4">
+<h2 id="org20c2dd4">References</h2>
 <ul>
 <li><a href="http://www.cplusplus.com/articles/y8hv0pDG/">Copy constructors, assignment operators, and exception safe assignment</a></li>
 <li><a href="http://www.drdobbs.com/the-problem-with-const-data-members/184403306">The Problem with const Data Members</a></li>
