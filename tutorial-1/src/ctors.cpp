@@ -7,7 +7,7 @@ class MyObject
 {
 public:
      MyObject();
-     MyObject(std::string& v1, T v2);
+     MyObject(std::string& v1, T v2, int n);
 
      MyObject& operator=(const MyObject& rhs);
      MyObject& operator=(MyObject& rhs);
@@ -15,10 +15,11 @@ public:
 //private:
      std::string& value1;
      T value2;
+     const int id; // cannot be used in copy constructors
 };
 
 template<typename T>
-MyObject<T>::MyObject(std::string& v1, T v2) : value1(v1), value2(v2)
+MyObject<T>::MyObject(std::string& v1, T v2, int n) : value1(v1), value2(v2), id(n)
 {}
 
 // Normal copy assignment operator
@@ -46,16 +47,16 @@ int main()
 {
      std::string val1 = "Hello", val2 = "Greetings";
 
-     MyObject<int> V1(val1, 42);
-     MyObject<int> V2(val2, 71);
+     MyObject<int> V1(val1, 42, 3);
+     MyObject<int> V2(val2, 71, 4);
 
-     std::cout << V1.value1 << " " << V1.value2 << std::endl;
-     std::cout << V2.value1 << " " << V2.value2 << std::endl;
+     std::cout << V1.value1 << " " << V1.value2 << " " << V1.id << std::endl;
+     std::cout << V2.value1 << " " << V2.value2 << " " << V2.id << std::endl;
 
      V1 = V2;
 
-     std::cout << V1.value1 << " " << V1.value2 << std::endl;
-     std::cout << V2.value1 << " " << V2.value2 << std::endl;
+     std::cout << V1.value1 << " " << V1.value2 << " " << V1.id << std::endl;
+     std::cout << V2.value1 << " " << V2.value2 << " " << V2.id << std::endl;
 
      return 0;
 }
