@@ -27,24 +27,24 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 18:31</p>
+<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 19:21</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org0c17377">The ++ in Cpp</a></li>
-<li><a href="#/slide-org50f8c54">C with classes</a></li>
-<li><a href="#/slide-orge0a9d7e">References</a></li>
+<li><a href="#/slide-orgf8753bc">The ++ in Cpp</a></li>
+<li><a href="#/slide-orgaedd945">C with classes</a></li>
+<li><a href="#/slide-org90e6f26">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org0c17377">
-<h2 id="org0c17377">The ++ in Cpp</h2>
+<section id="slide-orgf8753bc">
+<h2 id="orgf8753bc">The ++ in Cpp</h2>
 <ul>
 <li>C with classes
 <ul>
@@ -86,15 +86,15 @@ First we will cover classes. What the classes implement in the background, what 
 </section>
 </section>
 <section>
-<section id="slide-org50f8c54">
-<h2 id="org50f8c54">C with classes</h2>
-<div class="outline-text-2" id="text-org50f8c54">
+<section id="slide-orgaedd945">
+<h2 id="orgaedd945">C with classes</h2>
+<div class="outline-text-2" id="text-orgaedd945">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgd65bba7">
-<h3 id="orgd65bba7">Classes and Objects</h3>
+<section id="slide-org9f7170a">
+<h3 id="org9f7170a">Classes and Objects</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span>
@@ -139,8 +139,8 @@ This is a basic class. We can see the scopes of the class, what we can have as v
 </section>
 </section>
 <section>
-<section id="slide-org0200532">
-<h4 id="org0200532">Initialization lists</h4>
+<section id="slide-org3e18e04">
+<h4 id="org3e18e04">Initialization lists</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Library</span> 
@@ -198,8 +198,8 @@ There is one little aspect we must note here and that is - we must write the ord
 </section>
 </section>
 <section>
-<section id="slide-org92e49f5">
-<h4 id="org92e49f5">Static non-local objects defined in different translation units</h4>
+<section id="slide-org4273bba">
+<h4 id="org4273bba">Static non-local objects defined in different translation units</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">in the filesystem.cpp file</span>
@@ -266,8 +266,8 @@ One final thing that is worth mentioning is the case when we have to initialize 
 </section>
 </section>
 <section>
-<section id="slide-org8bacacb">
-<h3 id="org8bacacb">Constructors and Operators</h3>
+<section id="slide-org2a05bd2">
+<h3 id="org2a05bd2">Constructors and Operators</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">Empty class</span>
@@ -324,15 +324,15 @@ In this case when we have a reference, we just have to make sure that we are imp
 </section>
 </section>
 <section>
-<section id="slide-org8fb01b0">
-<h3 id="org8fb01b0">Designs</h3>
-<div class="outline-text-3" id="text-org8fb01b0">
+<section id="slide-org7c57d52">
+<h3 id="org7c57d52">Designs</h3>
+<div class="outline-text-3" id="text-org7c57d52">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org2008acf">
-<h4 id="org2008acf">Write OOP classes</h4>
+<section id="slide-orga79eec0">
+<h4 id="orga79eec0">Write OOP classes</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">AccessLevels</span>
@@ -371,8 +371,8 @@ In order to access are already <code>private</code> variables, we must rely on g
 </section>
 </section>
 <section>
-<section id="slide-orgbd3703f">
-<h4 id="orgbd3703f">Treat class design as type design</h4>
+<section id="slide-org21c2436">
+<h4 id="org21c2436">Treat class design as type design</h4>
 <ul>
 <li class="fragment roll-in">How should objects of your new type be created and destroyed?</li>
 <li class="fragment roll-in">How should object initialization differ from object assignment?</li>
@@ -426,14 +426,59 @@ Writing classes isn't easy, because in C++ we are not creating only a class, but
 </section>
 </section>
 <section>
-<section id="slide-org55d00cc">
-<h4 id="org55d00cc">Prefer pass-by-reference-to-const to pass-by-value</h4>
+<section id="slide-org780f16e">
+<h4 id="org780f16e">Prefer pass-by-reference-to-const to pass-by-value</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Window</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 3: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">name</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>;     <span style="color: #245361;">// </span><span style="color: #245361;">return name of window</span>
+<span class="linenr"> 4: </span>    <span style="color: #195466; font-weight: bold;">virtual</span> <span style="color: #d26937;">void</span> <span style="color: #599cab;">display</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>; <span style="color: #245361;">// </span><span style="color: #245361;">draw window and contents</span>
+<span class="linenr"> 5: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">WindowWithScrollBars</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">Window</span>
+<span class="linenr"> 8: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 9: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">10: </span>    <span style="color: #195466; font-weight: bold;">virtual</span> <span style="color: #d26937;">void</span> <span style="color: #599cab;">display</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>;
+<span class="linenr">11: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #245361;">// </span><span style="color: #245361;">the bad functoin</span>
+<span class="linenr">14: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">printNameAndDisplay</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">Window</span> <span style="color: #599cab;">w</span><span style="color: #99d1ce;">)</span> <span style="color: #245361;">// </span><span style="color: #245361;">Bad! Parameter might be sliced!</span>
+<span class="linenr">15: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">16: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; w.name<span style="color: #33859e;">()</span>;
+<span class="linenr">17: </span>    w.display<span style="color: #33859e;">()</span>;
+<span class="linenr">18: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">19: </span>
+<span class="linenr">20: </span><span style="color: #245361;">// </span><span style="color: #245361;">the correct function</span>
+<span class="linenr">21: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">printNameAndDisplay</span><span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">Window</span>&amp; <span style="color: #599cab;">w</span><span style="color: #99d1ce;">)</span> <span style="color: #245361;">// </span><span style="color: #245361;">Correct! Parameter won't be sliced!</span>
+<span class="linenr">22: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">23: </span><span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; w.name<span style="color: #33859e;">()</span>;
+<span class="linenr">24: </span>w.display<span style="color: #33859e;">()</span>;
+<span class="linenr">25: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">26: </span>
+<span class="linenr">27: </span><span style="color: #245361;">// </span><span style="color: #245361;">the call</span>
+<span class="linenr">28: </span><span style="color: #d26937;">WindowWithScrollBars</span> <span style="color: #599cab;">wwsb</span>;
+<span class="linenr">29: </span>printNameAndDisplay<span style="color: #99d1ce;">(</span>wwsb<span style="color: #99d1ce;">)</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Most of you are aware of what <b>pass-by-value</b> and <b>pass-by-reference</b> is, but here we will just discuss a few more advantages to using passing of references to <code>const</code>. One thing that happens when we are passing objects (and more specifically, <b>inherited</b> / <b>derived</b> objects from a base class) by value is that we are at the risk of <b>slicing</b> off the derived part of the object in the function call. What this means is that if we have a <code>class A</code> which inherits <code>class B</code>, and we pass an object of <code>type A</code> to a function by value (the function parameter accepts <code>type B</code>), the <b>A</b> part of that object will not be passed, and only the <b>B</b> part will remain. Okay maybe that sounds too complicated, let's revise. By passing something by value we are copying it and the function is using the copy. In the case of inherited classes, when we are passing a derived object by value the <b>copy constructor</b> of the class is called to make a copy - naturally. But when the object has a base class, the base class is copied first. If the parameter of the function is of the base class type, only the base class during the copying will be left, and the derived part will be omitted. That is why it's a better idea to pass-by-reference-to-const.
+</p>
+
+<p>
+Under the compiler, <b>references</b> are passed as pointers, so we are technically just passing a pointer. That is why if we have a build-in type like <code>int</code> it is more efficient to pass by value. Also we can say that the STL <b>iterators</b> and <b>function objects</b> are also good to pass-by-value, because they have been specifically build to be more optimal to copy than to be passed as a reference (as a pointer).
+</p>
+
+</aside>
 
 </section>
 </section>
 <section>
-<section id="slide-orge0a9d7e">
-<h2 id="orge0a9d7e">References</h2>
+<section id="slide-org90e6f26">
+<h2 id="org90e6f26">References</h2>
 <ul>
 <li><a href="http://www.cplusplus.com/articles/y8hv0pDG/">Copy constructors, assignment operators, and exception safe assignment</a></li>
 <li><a href="http://www.drdobbs.com/the-problem-with-const-data-members/184403306">The Problem with const Data Members</a></li>
