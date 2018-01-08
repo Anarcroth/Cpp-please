@@ -28,27 +28,27 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-06 сб 20:09</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 18:03</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org4922408">Who am I?</a></li>
-<li><a href="#/slide-orgb27ef63">What we are going to cover</a></li>
-<li><a href="#/slide-org5f46e77">File structure</a></li>
-<li><a href="#/slide-org62475fd">How does compilation work?</a></li>
-<li><a href="#/slide-orga394d3e">Memory management</a></li>
-<li><a href="#/slide-orgc4441ca">References</a></li>
+<li><a href="#/slide-orgc5f5614">Who am I?</a></li>
+<li><a href="#/slide-orgace8a16">What we are going to cover</a></li>
+<li><a href="#/slide-org5e64728">File structure</a></li>
+<li><a href="#/slide-orgbad118e">How does compilation work?</a></li>
+<li><a href="#/slide-org560a799">Memory management</a></li>
+<li><a href="#/slide-orge55969e">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org4922408">
-<h2 id="org4922408">Who am I?</h2>
+<section id="slide-orgc5f5614">
+<h2 id="orgc5f5614">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -61,8 +61,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgbf54c3b">
-<h3 id="orgbf54c3b">Why I chose to make these small tutorials</h3>
+<section id="slide-org23a83ec">
+<h3 id="org23a83ec">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -80,8 +80,8 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-orgf6027bb">
-<h3 id="orgf6027bb">How to look at C++</h3>
+<section id="slide-orge68c5c8">
+<h3 id="orge68c5c8">How to look at C++</h3>
 <p>
 C++ as <b>four</b> sub-languages
 </p>
@@ -111,8 +111,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-orgb27ef63">
-<h2 id="orgb27ef63">What we are going to cover</h2>
+<section id="slide-orgace8a16">
+<h2 id="orgace8a16">What we are going to cover</h2>
 <ul>
 <li>File structure</li>
 <li>Memory management</li>
@@ -126,8 +126,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-org5f46e77">
-<h2 id="org5f46e77">File structure</h2>
+<section id="slide-org5e64728">
+<h2 id="org5e64728">File structure</h2>
 <ul>
 <li>Advantages:
 <ul>
@@ -180,8 +180,8 @@ What's the difference between headers and sources? Apart from the obvious name d
 </section>
 </section>
 <section>
-<section id="slide-orgc210533">
-<h3 id="orgc210533">How to work with headers?</h3>
+<section id="slide-org9b878f2">
+<h3 id="org9b878f2">How to work with headers?</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">//</span><span style="color: #245361;">header we always include</span>
@@ -222,8 +222,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </section>
 </section>
 <section>
-<section id="slide-orgd95fae2">
-<h3 id="orgd95fae2">Header guards</h3>
+<section id="slide-org4b17c53">
+<h3 id="org4b17c53">Header guards</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -266,8 +266,8 @@ Because we are going to be using a lot of headers in our program, we would need 
 </section>
 </section>
 <section>
-<section id="slide-org3ca9380">
-<h3 id="org3ca9380">Declarations vs Definitions</h3>
+<section id="slide-org69a3b11">
+<h3 id="org69a3b11">Declarations vs Definitions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">declarations</span>
@@ -306,8 +306,8 @@ Okay now let us go back to header files.
 </section>
 </section>
 <section>
-<section id="slide-orgff522cc">
-<h3 id="orgff522cc">How and when to use headers</h3>
+<section id="slide-org7115cdc">
+<h3 id="org7115cdc">How and when to use headers</h3>
 <p>
 <code>class A</code> ==&gt; (uses) ==&gt; <code>class B</code> 
 </p>
@@ -376,8 +376,8 @@ In general we want to remember this simple rule - prefer forward declarations to
 </section>
 </section>
 <section>
-<section id="slide-orge3aa728">
-<h3 id="orge3aa728">Circular Dependencies</h3>
+<section id="slide-orge6ccafb">
+<h3 id="orge6ccafb">Circular Dependencies</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">b.h</span>
@@ -400,8 +400,8 @@ I mentioned at some point about circular dependencies, but they are something th
 </section>
 </section>
 <section>
-<section id="slide-org62475fd">
-<h2 id="org62475fd">How does compilation work?</h2>
+<section id="slide-orgbad118e">
+<h2 id="orgbad118e">How does compilation work?</h2>
 <p>
 There are 3 steps of compiling C++ code:
 </p>
@@ -427,19 +427,19 @@ When we are trying to run a piece of code (in our case C++), the computer goes t
 </section>
 </section>
 <section>
-<section id="slide-orgfa1e459">
-<h3 id="orgfa1e459">Preprocessing</h3>
-<p class="fragment roll-in">
+<section id="slide-orgf1c69d0">
+<h3 id="orgf1c69d0">Preprocessing</h3>
+<p class="fragment (roll-in)">
 In order to get only the preprocessed file we can run the
 </p>
 
 <div class="org-src-container">
 
-<pre  class="fragment roll-in">g++ -E hello-world.cpp -o hello-world.ii
+<pre  class="fragment (roll-in)">g++ -E hello-world.cpp -o hello-world.ii
 </pre>
 </div>
 
-<p class="fragment roll-in">
+<p class="fragment (roll-in)">
 which will produce the <code>hello-world.ii</code> file and then we can look inside of it and find out what it includes.
 </p>
 
@@ -490,8 +490,8 @@ After we have our "pure C++" code (ending with the <code>*.i/*.ii</code>) suffix
 </section>
 </section>
 <section>
-<section id="slide-org59c8114">
-<h3 id="org59c8114">Compilation</h3>
+<section id="slide-org33bb876">
+<h3 id="org33bb876">Compilation</h3>
 <ul>
 <li>Step 1 - Compile</li>
 <li>Step 2 - Assemble</li>
@@ -556,8 +556,8 @@ Once we have the object file we can transform it into special <b>executables</b>
 </section>
 </section>
 <section>
-<section id="slide-orgdb13317">
-<h3 id="orgdb13317">Linking</h3>
+<section id="slide-orga3cb7f3">
+<h3 id="orga3cb7f3">Linking</h3>
 <p>
 The <b><b>linker</b></b> just links all of the object files into one executable file.
 </p>
@@ -607,17 +607,14 @@ This is the last step before we can take the <code>.exe</code> file, load it int
 </section>
 </section>
 <section>
-<section id="slide-org7b03ff5">
-<h3 id="org7b03ff5">Conclusion</h3>
-<p class="fragment roll-in">
-Understanding undefined behavior better
-</p>
-<p class="fragment roll-in">
-Understanding errors
-</p>
-<p class="fragment roll-in">
-Good grip on how data is represented in C++
-</p>
+<section id="slide-org1b9e312">
+<h3 id="org1b9e312">Conclusion</h3>
+<ul>
+<li class="fragment roll-in">Understanding undefined behavior better</li>
+<li class="fragment roll-in">Understanding errors</li>
+<li class="fragment roll-in">Good grip on how data is represented in C++</li>
+
+</ul>
 
 <aside class="notes">
 <p>
@@ -629,27 +626,20 @@ Good grip on how data is represented in C++
 </section>
 </section>
 <section>
-<section id="slide-orga394d3e">
-<h2 id="orga394d3e">Memory management</h2>
+<section id="slide-org560a799">
+<h2 id="org560a799">Memory management</h2>
 <p>
 The memory layout can be divided into <b>five</b> sections:
 </p>
 
-<p class="fragment roll-in">
-text
-</p>
-<p class="fragment roll-in">
-data
-</p>
-<p class="fragment roll-in">
-bss
-</p>
-<p class="fragment roll-in">
-heap / free store
-</p>
-<p class="fragment roll-in">
-stack
-</p>
+<ul>
+<li class="fragment roll-in">text</li>
+<li class="fragment roll-in">data</li>
+<li class="fragment roll-in">bss</li>
+<li class="fragment roll-in">heap / free store</li>
+<li class="fragment roll-in">stack</li>
+
+</ul>
 
 <aside class="notes">
 <p>
@@ -713,8 +703,8 @@ So when a program is running, the data, bss, and heap segments are aligned into 
 </section>
 </section>
 <section>
-<section id="slide-org8ab5a50">
-<h3 id="org8ab5a50">Memory space in C++</h3>
+<section id="slide-org8e07fd6">
+<h3 id="org8e07fd6">Memory space in C++</h3>
 <p>
 This is all the space and data the program needs in order to run properly.
 </p>
@@ -735,8 +725,8 @@ This is all the space and data the program needs in order to run properly.
 </section>
 </section>
 <section>
-<section id="slide-org6f2ddd0">
-<h3 id="org6f2ddd0">How to handle memory in C++</h3>
+<section id="slide-org1d81147">
+<h3 id="org1d81147">How to handle memory in C++</h3>
 <ul>
 <li>Pointers</li>
 <li>Pass by value</li>
@@ -766,8 +756,8 @@ Lets take this example now:
 </section>
 </section>
 <section>
-<section id="slide-org317e68a">
-<h3 id="org317e68a">Pass by reference in C</h3>
+<section id="slide-org78c0ca6">
+<h3 id="org78c0ca6">Pass by reference in C</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"stdio.h"</span>
@@ -803,8 +793,8 @@ Let's look at the same example, but in C++ code.
 </section>
 </section>
 <section>
-<section id="slide-org4718989">
-<h3 id="org4718989">Pass by reference in C++</h3>
+<section id="slide-orgdfbbb81">
+<h3 id="orgdfbbb81">Pass by reference in C++</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span>
@@ -839,15 +829,15 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-orgc4441ca">
-<h2 id="orgc4441ca">References</h2>
-<div class="outline-text-2" id="text-orgc4441ca">
+<section id="slide-orge55969e">
+<h2 id="orge55969e">References</h2>
+<div class="outline-text-2" id="text-orge55969e">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org657a2c0">
-<h3 id="org657a2c0"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
+<section id="slide-orgaeb749c">
+<h3 id="orgaeb749c"><b><b>Preprocessing, Compilation, and Linking</b></b></h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Object_file">Objects Files</a></li>
 <li><a href="https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation">Understanding compilation in C++</a></li>
@@ -880,8 +870,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org310fd7f">
-<h3 id="org310fd7f"><b><b>Memory management</b></b></h3>
+<section id="slide-org41f3751">
+<h3 id="org41f3751"><b><b>Memory management</b></b></h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/3770457/what-is-memory-fragmentation">What is memory fragmentation</a></li>
 <li><a href="https://stackoverflow.com/questions/2229498/passing-by-reference-in-c">Pass by reference in C</a></li>
@@ -895,8 +885,8 @@ Hopefully this cleared some things about pointers, but the question now is: when
 </section>
 </section>
 <section>
-<section id="slide-org48142d4">
-<h3 id="org48142d4"><b><b>File Structure</b></b></h3>
+<section id="slide-org3b56a5e">
+<h3 id="org3b56a5e"><b><b>File Structure</b></b></h3>
 <ul>
 <li><a href="http://www.cplusplus.com/forum/articles/10627/">How to use header files</a></li>
 <li><a href="http://www.learncpp.com/cpp-tutorial/19-header-files/">Header files</a></li>
