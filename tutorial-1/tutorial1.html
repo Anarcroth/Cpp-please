@@ -27,32 +27,58 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-05 пт 21:30</p>
+<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 13:34</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgf0d6fb8">The ++ in Cpp</a></li>
-<li><a href="#/slide-org7bd37ec">Objects and Classes</a></li>
+<li><a href="#/slide-orgcb20081">The ++ in Cpp</a></li>
+<li><a href="#/slide-orgfafab26">Classes and Objects</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orgf0d6fb8">
-<h2 id="orgf0d6fb8">The ++ in Cpp</h2>
+<section id="slide-orgcb20081">
+<h2 id="orgcb20081">The ++ in Cpp</h2>
 <ul>
-<li>C with classes</li>
-<li>Inheritance</li>
+<li>C with classes
+<ul>
+<li>Constructors</li>
+<li>Destructors</li>
+<li>Operators</li>
+<li>Designs</li>
+
+</ul></li>
+<li>Inheritance
+<ul>
+<li>Inheritance models</li>
+<li>Multiple Inheritance</li>
+<li>Virtual functions</li>
+
+</ul></li>
+<li>Templates
+<ul>
+<li>Understanding typename</li>
+<li>Meta programming</li>
+
+</ul></li>
+<li>Resource Management</li>
+<li>Good practices</li>
+<li>STL</li>
 
 </ul>
 
 <aside class="notes">
 <p>
-When C++ first came out it wasn't all that different from C. Apart from having standard object orientation functionalities and inheritance capabilities, the two languages were more or less the same. But overtime C and C++ grew to become very different. In the previous tutorial we looked into how to structure out program in terms of files and how it executes. Now we will dive into the world of OOP in C++, we will revise what was though in the C++ and will try to build upon that material by giving examples, running code, and talking about practices for writing better C++. Most of you have shared that the concept of OOP and Inheritance alludes you, that's why we will try to go over constructors, destructors, encapsulation, inheritance, polymorphism, virtual functions, dynamic binding, etc.
+When C++ first came out it wasn't all that different from C. Apart from having standard object orientation functionalities and inheritance capabilities, the two languages were more or less the same. But overtime C and C++ grew to become very different. In the previous tutorial we looked into how to structure out program in terms of files and how it executes. Now we will dive into the world of OOP in C++, we will revise what was though in the C++ course and will try to build upon that material by giving examples, by running code, and talking about practices for writing better C++. 
+</p>
+
+<p>
+First we will cover classes. What the classes implement in the background, what to do with constructors, destructors, and operators. We will look over some designs on how to build our classes for maximum utility and efficiency. Then we will go over inheritance and polymorphism, with discussions over the different models, how to use multiple inheritance, what virtual tables are, how to use virtual functions, and so on.
 </p>
 
 </aside>
@@ -60,8 +86,174 @@ When C++ first came out it wasn't all that different from C. Apart from having s
 </section>
 </section>
 <section>
-<section id="slide-org7bd37ec">
-<h2 id="org7bd37ec">Objects and Classes</h2>
+<section id="slide-orgfafab26">
+<h2 id="orgfafab26">Classes and Objects</h2>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">private</span>: <span style="color: #245361;">// </span><span style="color: #245361;">(Used by default if not specified explicitly) No one can see in here</span>
+<span class="linenr"> 3: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">age</span>;
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">name</span>;
+<span class="linenr"> 6: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">job</span>;
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span>    <span style="color: #195466; font-weight: bold;">static</span> <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">Doctor</span> *<span style="color: #599cab;">d</span>;
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span>    <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">void</span> <span style="color: #599cab;">wave</span><span style="color: #33859e;">()</span>;
+<span class="linenr">11: </span>
+<span class="linenr">12: </span><span style="color: #195466; font-weight: bold;">protected</span>: <span style="color: #245361;">// </span><span style="color: #245361;">Can be seen only by class that is a child</span>
+<span class="linenr">13: </span>           <span style="color: #245361;">// </span><span style="color: #245361;">Usually we don't have a use case for protected</span>
+<span class="linenr">14: </span>    <span style="color: #d26937;">bool</span> <span style="color: #599cab;">is_married</span>;
+<span class="linenr">15: </span>
+<span class="linenr">16: </span><span style="color: #195466; font-weight: bold;">public</span>: <span style="color: #245361;">// </span><span style="color: #245361;">Everyone can see this part</span>
+<span class="linenr">17: </span>    <span style="color: #599cab;">Person</span><span style="color: #33859e;">()</span>;
+<span class="linenr">18: </span>    <span style="color: #599cab;">Person</span><span style="color: #33859e;">(</span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">name</span><span style="color: #33859e;">)</span>;
+<span class="linenr">19: </span>    ~<span style="color: #599cab;">Person</span><span style="color: #33859e;">()</span>;
+<span class="linenr">20: </span>
+<span class="linenr">21: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">get_name</span><span style="color: #33859e;">()</span>;
+<span class="linenr">22: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">get_job</span><span style="color: #33859e;">()</span>;
+<span class="linenr">23: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">get_age</span><span style="color: #33859e;">()</span>;
+<span class="linenr">24: </span>
+<span class="linenr">25: </span>    <span style="color: #d26937;">double</span> <span style="color: #599cab;">calculate_salary</span><span style="color: #33859e;">()</span>;
+<span class="linenr">26: </span>
+<span class="linenr">27: </span>    <span style="color: #d26937;">bool</span> <span style="color: #599cab;">get_occupation</span><span style="color: #33859e;">()</span> <span style="color: #33859e;">{</span> <span style="color: #195466; font-weight: bold;">return</span> is_married; <span style="color: #33859e;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">implicit inline function</span>
+<span class="linenr">28: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+This is a basic class. We can see the scopes of the class, what we can have as variables and functions. A quick note here - although we have 3 scopes, the ones we use the most are <code>private</code> and <code>public</code>, while <code>protected</code> is used in seldom cases, so we need not worry about it that much.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd84bd50">
+<h3 id="orgd84bd50">Initialization lists</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #d26937;">class</span> <span style="color: #599cab;">Library</span> 
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #33859e; font-weight: bold;">public</span>:
+<span class="linenr"> 3: </span>    ABEntry<span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">std</span>::string&amp; name, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">std</span>::list&lt;Books&gt;&amp; books<span style="color: #33859e;">)</span>;
+<span class="linenr"> 4: </span><span style="color: #33859e; font-weight: bold;">private</span>:
+<span class="linenr"> 5: </span>    std::string theName;
+<span class="linenr"> 6: </span>    std::list&lt;Books&gt; books;
+<span class="linenr"> 7: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">addressNum</span>;
+<span class="linenr"> 8: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span>Library::Library<span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">std</span>::string&amp; name, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">std</span>::list&lt;Books&gt;&amp; books<span style="color: #99d1ce;">)</span>
+<span class="linenr">11: </span><span style="color: #245361;">// </span><span style="color: #245361;">Initialization start righ here before the opening bracket</span>
+<span class="linenr">12: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">13: </span>    theName = name; <span style="color: #245361;">// </span><span style="color: #245361;">these are all assignments</span>
+<span class="linenr">14: </span>    theBooks = books;
+<span class="linenr">15: </span>    addressNum = <span style="color: #33859e; font-weight: bold;">0</span>;
+<span class="linenr">16: </span><span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">This is OK but can be done better</span>
+</pre>
+</div>
+
+</section>
+<section >
+
+<div class="org-src-container">
+
+<pre  class="src src-C"><span class="linenr">0: </span>Library::Library<span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">std</span>::string&amp; name, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">std</span>::list&lt;Books&gt;&amp; books<span style="color: #99d1ce;">)</span>
+<span class="linenr">1: </span>: theName<span style="color: #99d1ce;">(</span>name<span style="color: #99d1ce;">)</span>, <span style="color: #245361;">// </span><span style="color: #245361;">These are all now initialized</span>
+<span class="linenr">2: </span>  theBooks<span style="color: #99d1ce;">(</span>books<span style="color: #99d1ce;">)</span>, 
+<span class="linenr">3: </span>  addressNum<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">0</span><span style="color: #99d1ce;">)</span>
+<span class="linenr">4: </span><span style="color: #99d1ce;">{</span> <span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">Empty constructor body</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+When we are initializing this object, we would write <code>Person p1</code>, but what would happen with its data members. Will they be initialized to zero or not? We can never be sure about this and sometimes they might be zero, sometimes they might be left <b>uninitialized</b>. If we take the risk and read something that is uninitialized, then we will get an undefined behavior. There are rules to remember when something is initialized to zero and when something is left uninitialized, but this all depends if you are writing the C part of C++ or the STL part and things just get way to complex. That is why we can take the safe approach and just <b>always</b> initialize our object when we create them. If we are just working with normal variables in a function, this would be like writing <code>int x = 0; double b; std::cin &gt;&gt; b; char* x = "pointer intialization"</code> and so on. For object, however, this tasks is left to the constructor. The rule is simple - make sure that everything is initialized when an object is created.
+</p>
+
+<p>
+In the example we can see that the Library constructor makes 3 assignments to the data members. In C++, the <b>initialization</b> takes place <b>right before</b> we get into the constructor body! This means that in order to make sure that the variables are initialized, we have to put them into an <b>initialization list</b> (how intuitive!). There are several advantages to this approach. First we make sure that we won't have uninitialized data members and will avoid undefined behavior. Secondly, because we are assigning objects (the <code>string</code> and <code>list</code> members) we are avoiding calling their assignment constructors. In the previous code, where we assigned the variables, first we had to initialize the <code>string</code> and <code>list</code> variables, then we had to assign them the new values by calling a copy assignment operator. That's way too much work. But with the initialization list, not such thing needs to happen. The name and the phone are <b>copy-constructed</b> from the passed parameters. This means that only a copy constructor of the <code>string</code> and <code>list</code> is called in order to initialize the data members, and this operations (the copy constructor) is much more efficient than the previous code.
+</p>
+
+<p>
+If we want to initialize the data members to nothing or we don't have any parameters to pass to the constructor, we can just call the initialization list and leave the brackets empty.
+</p>
+
+<p>
+There is one little aspect we must note here and that is - we must write the order of our initialization list in the same order we declared our data members in our class. This is just hoe C++ works, we must first initialize <code>theName</code> and then <code>theBooks</code> and the <code>addressNum</code>. If we don't do that we will get an error and undefined behavior.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org9e719b0">
+<h3 id="org9e719b0">Static non-local objects defined in different translation units</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">in the filesystem.cpp file</span>
+<span class="linenr"> 1: </span><span style="color: #d26937;">class</span> <span style="color: #599cab;">FileSystem</span>
+<span class="linenr"> 2: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 3: </span><span style="color: #33859e; font-weight: bold;">public</span>:
+<span class="linenr"> 4: </span>    std::size_t numDisks<span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>;
+<span class="linenr"> 5: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 6: </span><span style="color: #195466; font-weight: bold;">extern</span> <span style="color: #d26937;">FileSystem</span> <span style="color: #599cab;">tfs</span>;
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #245361;">// </span><span style="color: #245361;">in our .cpp file</span>
+<span class="linenr"> 9: </span><span style="color: #d26937;">class</span> <span style="color: #599cab;">Directory</span> 
+<span class="linenr">10: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">11: </span><span style="color: #33859e; font-weight: bold;">public</span>:
+<span class="linenr">12: </span>    Directory<span style="color: #33859e;">(</span>params<span style="color: #33859e;">)</span>;
+<span class="linenr">13: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr">14: </span>
+<span class="linenr">15: </span>Directory::Directory<span style="color: #99d1ce;">(</span>params<span style="color: #99d1ce;">)</span>
+<span class="linenr">16: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">17: </span>    std::size_t disks = tfs.numDisks<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">we use the tfs object,</span>
+<span class="linenr">18: </span>                                        <span style="color: #245361;">// </span><span style="color: #245361;">but we cannot be sure</span>
+<span class="linenr">19: </span>                                        <span style="color: #245361;">// </span><span style="color: #245361;">that it is initialized</span>
+<span class="linenr">20: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">21: </span>
+<span class="linenr">22: </span><span style="color: #d26937;">Directory</span> <span style="color: #599cab;">tempDir</span><span style="color: #99d1ce;">(</span>params<span style="color: #99d1ce;">)</span>;
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-orgf7b58c5">
+<h3 id="orgf7b58c5">Solution</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C"><span class="linenr"> 0: </span>FileSystem&amp; tfs<span style="color: #99d1ce;">()</span>         <span style="color: #245361;">// </span><span style="color: #245361;">this replaces the tfs object; it could be</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>                         <span style="color: #245361;">// </span><span style="color: #245361;">static in the FileSystem class</span>
+<span class="linenr"> 2: </span>    <span style="color: #195466; font-weight: bold;">static</span> <span style="color: #d26937;">FileSystem</span> <span style="color: #599cab;">fs</span>; <span style="color: #245361;">// </span><span style="color: #245361;">define and initialize a local static object</span>
+<span class="linenr"> 3: </span>    <span style="color: #195466; font-weight: bold;">return</span> fs;            <span style="color: #245361;">// </span><span style="color: #245361;">return a reference to it</span>
+<span class="linenr"> 4: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr"> 5: </span><span style="color: #d26937;">class</span> <span style="color: #599cab;">Directory</span> <span style="color: #99d1ce;">{</span> ... <span style="color: #99d1ce;">}</span>;                  <span style="color: #245361;">// </span><span style="color: #245361;">as before</span>
+<span class="linenr"> 6: </span>Directory::Directory<span style="color: #99d1ce;">(</span> params <span style="color: #99d1ce;">)</span>            <span style="color: #245361;">// </span><span style="color: #245361;">as before, except references</span>
+<span class="linenr"> 7: </span><span style="color: #99d1ce;">{</span>                                         <span style="color: #245361;">// </span><span style="color: #245361;">to tfs are</span>
+<span class="linenr"> 8: </span>    std::size_t disks = tfs<span style="color: #33859e;">()</span>.numDisks<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">now to tfs()</span>
+<span class="linenr"> 9: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>Directory&amp; tempDir<span style="color: #99d1ce;">()</span>               <span style="color: #245361;">// </span><span style="color: #245361;">this replaces the tempDir object; it</span>
+<span class="linenr">12: </span><span style="color: #99d1ce;">{</span>                                  <span style="color: #245361;">// </span><span style="color: #245361;">could be static in the Directory class</span>
+<span class="linenr">13: </span>    <span style="color: #195466; font-weight: bold;">static</span> <span style="color: #d26937;">Directory</span> <span style="color: #599cab;">td</span><span style="color: #33859e;">(</span> params <span style="color: #33859e;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">define/initialize local static object</span>
+<span class="linenr">14: </span>    <span style="color: #195466; font-weight: bold;">return</span> td;                     <span style="color: #245361;">// </span><span style="color: #245361;">return reference to it</span>
+<span class="linenr">15: </span><span style="color: #99d1ce;">}</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+One final thing that is worth mentioning is the case when we have to initialize non-local static objects from different translation units. What that jumble of words means is that - if we have a static object (an object that has a duration from the beginning of its initialization till the end of the program) and if that object is non-local (it's in the global scope, namespace scope, or in the scope of an other class) and if it's in a translation unit (basically it's a single source file) how do we initialize it? The problem here is that if we use such a static non-local object, we can never ever be sure when it is initialized properly and we are down the road of undefined behavior. The way to overcome such situations is by writing a function that makes that static non-local object a static local object (basically implementing the <b>Singleton</b> design pattern. . . almost). We just need to write a small function in our code, where we define and initialize a static local object of what we need and return a reference to it. This way we make sure that every time the function to get the object is called, the object will <b>always</b> be initialized.
+</p>
+
+</aside>
+
 <ul>
 <li>Operators</li>
 <li>Normal Constructors</li>
