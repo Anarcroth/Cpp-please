@@ -27,24 +27,25 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 17:11</p>
+<section id="sec-title-slide"><h1 class="title">OOP and Inheritance in C++</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 17:15</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgd0bb196">The ++ in Cpp</a></li>
-<li><a href="#/slide-org8a05fed">Classes and Objects</a></li>
-<li><a href="#/slide-org4b61e71">Constructors</a></li>
+<li><a href="#/slide-orgf2dacf3">The ++ in Cpp</a></li>
+<li><a href="#/slide-org67716d1">Classes and Objects</a></li>
+<li><a href="#/slide-orge3fb12b">Constructors</a></li>
+<li><a href="#/slide-orgb2ef3e1">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orgd0bb196">
-<h2 id="orgd0bb196">The ++ in Cpp</h2>
+<section id="slide-orgf2dacf3">
+<h2 id="orgf2dacf3">The ++ in Cpp</h2>
 <ul>
 <li>C with classes
 <ul>
@@ -87,8 +88,8 @@ First we will cover classes. What the classes implement in the background, what 
 </section>
 </section>
 <section>
-<section id="slide-org8a05fed">
-<h2 id="org8a05fed">Classes and Objects</h2>
+<section id="slide-org67716d1">
+<h2 id="org67716d1">Classes and Objects</h2>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span>
@@ -133,8 +134,8 @@ This is a basic class. We can see the scopes of the class, what we can have as v
 </section>
 </section>
 <section>
-<section id="slide-orga53891c">
-<h3 id="orga53891c">Initialization lists</h3>
+<section id="slide-org8e0eaf5">
+<h3 id="org8e0eaf5">Initialization lists</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Library</span> 
@@ -192,8 +193,8 @@ There is one little aspect we must note here and that is - we must write the ord
 </section>
 </section>
 <section>
-<section id="slide-org471a477">
-<h3 id="org471a477">Static non-local objects defined in different translation units</h3>
+<section id="slide-org2a51e20">
+<h3 id="org2a51e20">Static non-local objects defined in different translation units</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">in the filesystem.cpp file</span>
@@ -225,8 +226,8 @@ There is one little aspect we must note here and that is - we must write the ord
 </section>
 </section>
 <section>
-<section id="slide-orgb903b74">
-<h3 id="orgb903b74">Solution</h3>
+<section id="slide-org007c758">
+<h3 id="org007c758">Solution</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C"><span class="linenr"> 0: </span>FileSystem&amp; tfs<span style="color: #99d1ce;">()</span>         <span style="color: #245361;">// </span><span style="color: #245361;">this replaces the tfs object; it could be</span>
@@ -258,8 +259,8 @@ One final thing that is worth mentioning is the case when we have to initialize 
 </section>
 </section>
 <section>
-<section id="slide-org4b61e71">
-<h2 id="org4b61e71">Constructors</h2>
+<section id="slide-orge3fb12b">
+<h2 id="orge3fb12b">Constructors</h2>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">Empty class</span>
@@ -301,7 +302,7 @@ Let's take this example for instance. Here we have a class that has nothing in i
 <span class="linenr">4: </span>    <span style="color: #599cab;">NamedObject</span><span style="color: #33859e;">(</span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">name</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">T</span>&amp; <span style="color: #599cab;">value</span><span style="color: #33859e;">)</span>;
 <span class="linenr">5: </span><span style="color: #195466; font-weight: bold;">private</span>:
 <span class="linenr">6: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">nameValue</span>;
-<span class="linenr">7: </span>    <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">T</span> <span style="color: #599cab;">objectValue</span>;    
+<span class="linenr">7: </span>    <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">T</span> <span style="color: #599cab;">objectValue</span>;
 <span class="linenr">8: </span><span style="color: #99d1ce;">}</span>;
 </pre>
 </div>
@@ -312,6 +313,18 @@ In this case when we have a reference, we just have to make sure that we are imp
 </p>
 
 </aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb2ef3e1">
+<h2 id="orgb2ef3e1">References</h2>
+<ul>
+<li><a href="http://www.cplusplus.com/articles/y8hv0pDG/">Copy constructors, assignment operators, and exception safe assignment</a></li>
+<li><a href="http://www.drdobbs.com/the-problem-with-const-data-members/184403306">The Problem with const Data Members</a></li>
+<li><a href="http://en.cppreference.com/w/cpp/language/copy_assignment">Copy assignment</a></li>
+
+</ul>
 </section>
 </section>
 </div>
