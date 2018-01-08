@@ -27,29 +27,29 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 19:34</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 19:35</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org4fa0bb5">Who am I?</a></li>
-<li><a href="#/slide-orgf53b9f0">What we are going to cover</a></li>
-<li><a href="#/slide-orgfe359c9">File structure</a></li>
-<li><a href="#/slide-org31aaedd">The ++ in Cpp</a></li>
-<li><a href="#/slide-orge2e180c">C with classes</a></li>
-<li><a href="#/slide-org46d23d4">Inheritance</a></li>
-<li><a href="#/slide-org9a30a27">Templates</a></li>
-<li><a href="#/slide-org83f6e0a">References</a></li>
+<li><a href="#/slide-org336b508">Who am I?</a></li>
+<li><a href="#/slide-org4fd467c">What we are going to cover</a></li>
+<li><a href="#/slide-org640a6d0">File structure</a></li>
+<li><a href="#/slide-org4c994e7">The ++ in Cpp</a></li>
+<li><a href="#/slide-org39c99cd">C with classes</a></li>
+<li><a href="#/slide-orga5d4beb">Inheritance</a></li>
+<li><a href="#/slide-org76a48e4">Templates</a></li>
+<li><a href="#/slide-org52deb73">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org4fa0bb5">
-<h2 id="org4fa0bb5">Who am I?</h2>
+<section id="slide-org336b508">
+<h2 id="org336b508">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -62,8 +62,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org188a4e8">
-<h3 id="org188a4e8">Why I chose to make these small tutorials</h3>
+<section id="slide-org11b8a90">
+<h3 id="org11b8a90">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -81,8 +81,8 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-org1df11a5">
-<h3 id="org1df11a5">How to look at C++</h3>
+<section id="slide-orge52ee8d">
+<h3 id="orge52ee8d">How to look at C++</h3>
 <p>
 C++ as <b>four</b> sub-languages
 </p>
@@ -112,8 +112,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-orgf53b9f0">
-<h2 id="orgf53b9f0">What we are going to cover</h2>
+<section id="slide-org4fd467c">
+<h2 id="org4fd467c">What we are going to cover</h2>
 <ul>
 <li>File structure</li>
 <li>OOP</li>
@@ -125,8 +125,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-orgfe359c9">
-<h2 id="orgfe359c9">File structure</h2>
+<section id="slide-org640a6d0">
+<h2 id="org640a6d0">File structure</h2>
 <ul>
 <li>Advantages:
 <ul>
@@ -179,8 +179,8 @@ What's the difference between headers and sources? Apart from the obvious name d
 </section>
 </section>
 <section>
-<section id="slide-org64ae36b">
-<h3 id="org64ae36b">How to work with headers?</h3>
+<section id="slide-orgcf96fdc">
+<h3 id="orgcf96fdc">How to work with headers?</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">//</span><span style="color: #245361;">header we always include</span>
@@ -221,8 +221,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </section>
 </section>
 <section>
-<section id="slide-org570cd63">
-<h3 id="org570cd63">Header guards</h3>
+<section id="slide-org0c9cba6">
+<h3 id="org0c9cba6">Header guards</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -265,8 +265,8 @@ Because we are going to be using a lot of headers in our program, we would need 
 </section>
 </section>
 <section>
-<section id="slide-orga10c202">
-<h3 id="orga10c202">Declarations vs Definitions</h3>
+<section id="slide-org1a3b384">
+<h3 id="org1a3b384">Declarations vs Definitions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">declarations</span>
@@ -305,8 +305,8 @@ Okay now let us go back to header files.
 </section>
 </section>
 <section>
-<section id="slide-orgb55db6c">
-<h3 id="orgb55db6c">How and when to use headers</h3>
+<section id="slide-org5e0b222">
+<h3 id="org5e0b222">How and when to use headers</h3>
 <p>
 <code>class A</code> ==&gt; (uses) ==&gt; <code>class B</code> 
 </p>
@@ -375,8 +375,8 @@ In general we want to remember this simple rule - prefer forward declarations to
 </section>
 </section>
 <section>
-<section id="slide-org4136503">
-<h3 id="org4136503">Circular Dependencies</h3>
+<section id="slide-orgb1fdb0f">
+<h3 id="orgb1fdb0f">Circular Dependencies</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">b.h</span>
@@ -399,8 +399,8 @@ I mentioned at some point about circular dependencies, but they are something th
 </section>
 </section>
 <section>
-<section id="slide-org31aaedd">
-<h2 id="org31aaedd">The ++ in Cpp</h2>
+<section id="slide-org4c994e7">
+<h2 id="org4c994e7">The ++ in Cpp</h2>
 <ul>
 <li>C with classes
 <ul>
@@ -442,15 +442,15 @@ First we will cover classes. What the classes implement in the background, what 
 </section>
 </section>
 <section>
-<section id="slide-orge2e180c">
-<h2 id="orge2e180c">C with classes</h2>
-<div class="outline-text-2" id="text-orge2e180c">
+<section id="slide-org39c99cd">
+<h2 id="org39c99cd">C with classes</h2>
+<div class="outline-text-2" id="text-org39c99cd">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgf6dd43c">
-<h3 id="orgf6dd43c">Classes and Objects</h3>
+<section id="slide-orge3b2851">
+<h3 id="orge3b2851">Classes and Objects</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span>
@@ -495,8 +495,8 @@ This is a basic class. We can see the scopes of the class, what we can have as v
 </section>
 </section>
 <section>
-<section id="slide-org07f1479">
-<h4 id="org07f1479">Initialization lists</h4>
+<section id="slide-org3e15ff3">
+<h4 id="org3e15ff3">Initialization lists</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Library</span> 
@@ -554,8 +554,8 @@ There is one little aspect we must note here and that is - we must write the ord
 </section>
 </section>
 <section>
-<section id="slide-orgedf08ba">
-<h4 id="orgedf08ba">Static non-local objects defined in different translation units</h4>
+<section id="slide-orga0e30f4">
+<h4 id="orga0e30f4">Static non-local objects defined in different translation units</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">in the filesystem.cpp file</span>
@@ -622,8 +622,8 @@ One final thing that is worth mentioning is the case when we have to initialize 
 </section>
 </section>
 <section>
-<section id="slide-org348a5f2">
-<h3 id="org348a5f2">Constructors and Operators</h3>
+<section id="slide-orgeaf0ec5">
+<h3 id="orgeaf0ec5">Constructors and Operators</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">Empty class</span>
@@ -680,15 +680,15 @@ In this case when we have a reference, we just have to make sure that we are imp
 </section>
 </section>
 <section>
-<section id="slide-orgefdbc06">
-<h3 id="orgefdbc06">Designs</h3>
-<div class="outline-text-3" id="text-orgefdbc06">
+<section id="slide-org1920fcc">
+<h3 id="org1920fcc">Designs</h3>
+<div class="outline-text-3" id="text-org1920fcc">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org780ae74">
-<h4 id="org780ae74">Write OOP classes</h4>
+<section id="slide-org8d0b6d4">
+<h4 id="org8d0b6d4">Write OOP classes</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">AccessLevels</span>
@@ -727,8 +727,8 @@ In order to access are already <code>private</code> variables, we must rely on g
 </section>
 </section>
 <section>
-<section id="slide-org9a96f47">
-<h4 id="org9a96f47">Treat class design as type design</h4>
+<section id="slide-orgb3d8786">
+<h4 id="orgb3d8786">Treat class design as type design</h4>
 <ul>
 <li class="fragment roll-in">How should objects of your new type be created and destroyed?</li>
 <li class="fragment roll-in">How should object initialization differ from object assignment?</li>
@@ -782,8 +782,8 @@ Writing classes isn't easy, because in C++ we are not creating only a class, but
 </section>
 </section>
 <section>
-<section id="slide-org2b70936">
-<h4 id="org2b70936">Prefer pass-by-reference-to-const to pass-by-value</h4>
+<section id="slide-orgbeeb651">
+<h4 id="orgbeeb651">Prefer pass-by-reference-to-const to pass-by-value</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Window</span>
@@ -833,18 +833,41 @@ Under the compiler, <b>references</b> are passed as pointers, so we are technica
 </section>
 </section>
 <section>
-<section id="slide-org46d23d4">
-<h2 id="org46d23d4">Inheritance</h2>
+<section id="slide-orga5d4beb">
+<h2 id="orga5d4beb">Inheritance</h2>
 </section>
 </section>
 <section>
-<section id="slide-org9a30a27">
-<h2 id="org9a30a27">Templates</h2>
+<section id="slide-org76a48e4">
+<h2 id="org76a48e4">Templates</h2>
 </section>
 </section>
 <section>
-<section id="slide-org83f6e0a">
-<h2 id="org83f6e0a">References</h2>
+<section id="slide-org52deb73">
+<h2 id="org52deb73">References</h2>
+<div class="outline-text-2" id="text-org52deb73">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org9ecc1c9">
+<h3 id="org9ecc1c9">File Structure</h3>
+<ul>
+<li><a href="http://www.cplusplus.com/forum/articles/10627/">How to use header files</a></li>
+<li><a href="http://www.learncpp.com/cpp-tutorial/19-header-files/">Header files</a></li>
+<li><a href="https://stackoverflow.com/questions/333889/why-have-header-files-and-cpp-files">Why do we have header and cpp files</a></li>
+<li><a href="https://www.cprogramming.com/declare_vs_define.html">Declaration vs Definition</a></li>
+<li><a href="https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration">Difference between declaration and definition</a></li>
+<li><a href="http://aszt.inf.elte.hu/~gsd/halado_cpp/ch09s03.html">The PIMPL idiom</a></li>
+<li><a href="https://stackoverflow.com/questions/4757565/what-are-forward-declarations-in-c">Forward declarations</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org43a5c87">
+<h3 id="org43a5c87">Classes and Objects</h3>
 <ul>
 <li><a href="http://www.cplusplus.com/articles/y8hv0pDG/">Copy constructors, assignment operators, and exception safe assignment</a></li>
 <li><a href="http://www.drdobbs.com/the-problem-with-const-data-members/184403306">The Problem with const Data Members</a></li>
