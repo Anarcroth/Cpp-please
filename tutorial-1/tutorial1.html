@@ -27,29 +27,29 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-08 пн 19:35</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-09 вт 13:23</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org336b508">Who am I?</a></li>
-<li><a href="#/slide-org4fd467c">What we are going to cover</a></li>
-<li><a href="#/slide-org640a6d0">File structure</a></li>
-<li><a href="#/slide-org4c994e7">The ++ in Cpp</a></li>
-<li><a href="#/slide-org39c99cd">C with classes</a></li>
-<li><a href="#/slide-orga5d4beb">Inheritance</a></li>
-<li><a href="#/slide-org76a48e4">Templates</a></li>
-<li><a href="#/slide-org52deb73">References</a></li>
+<li><a href="#/slide-org48f7575">Who am I?</a></li>
+<li><a href="#/slide-org9d82f19">What we are going to cover</a></li>
+<li><a href="#/slide-org8d4ccb3">File structure</a></li>
+<li><a href="#/slide-org79f89a4">The ++ in Cpp</a></li>
+<li><a href="#/slide-orgf9261b0">C with classes</a></li>
+<li><a href="#/slide-orgcb7ec7c">Inheritance</a></li>
+<li><a href="#/slide-org7fc10c2">Templates</a></li>
+<li><a href="#/slide-orgd153fe3">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org336b508">
-<h2 id="org336b508">Who am I?</h2>
+<section id="slide-org48f7575">
+<h2 id="org48f7575">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -62,8 +62,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org11b8a90">
-<h3 id="org11b8a90">Why I chose to make these small tutorials</h3>
+<section id="slide-orgb869c23">
+<h3 id="orgb869c23">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -81,8 +81,8 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-orge52ee8d">
-<h3 id="orge52ee8d">How to look at C++</h3>
+<section id="slide-org3352d70">
+<h3 id="org3352d70">How to look at C++</h3>
 <p>
 C++ as <b>four</b> sub-languages
 </p>
@@ -112,8 +112,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-org4fd467c">
-<h2 id="org4fd467c">What we are going to cover</h2>
+<section id="slide-org9d82f19">
+<h2 id="org9d82f19">What we are going to cover</h2>
 <ul>
 <li>File structure</li>
 <li>OOP</li>
@@ -125,8 +125,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-org640a6d0">
-<h2 id="org640a6d0">File structure</h2>
+<section id="slide-org8d4ccb3">
+<h2 id="org8d4ccb3">File structure</h2>
 <ul>
 <li>Advantages:
 <ul>
@@ -179,8 +179,8 @@ What's the difference between headers and sources? Apart from the obvious name d
 </section>
 </section>
 <section>
-<section id="slide-orgcf96fdc">
-<h3 id="orgcf96fdc">How to work with headers?</h3>
+<section id="slide-org4d878c1">
+<h3 id="org4d878c1">How to work with headers?</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">//</span><span style="color: #245361;">header we always include</span>
@@ -221,8 +221,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </section>
 </section>
 <section>
-<section id="slide-org0c9cba6">
-<h3 id="org0c9cba6">Header guards</h3>
+<section id="slide-org7f00fc5">
+<h3 id="org7f00fc5">Header guards</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -265,8 +265,8 @@ Because we are going to be using a lot of headers in our program, we would need 
 </section>
 </section>
 <section>
-<section id="slide-org1a3b384">
-<h3 id="org1a3b384">Declarations vs Definitions</h3>
+<section id="slide-org0057195">
+<h3 id="org0057195">Declarations vs Definitions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">declarations</span>
@@ -305,8 +305,8 @@ Okay now let us go back to header files.
 </section>
 </section>
 <section>
-<section id="slide-org5e0b222">
-<h3 id="org5e0b222">How and when to use headers</h3>
+<section id="slide-orgdad0729">
+<h3 id="orgdad0729">How and when to use headers</h3>
 <p>
 <code>class A</code> ==&gt; (uses) ==&gt; <code>class B</code> 
 </p>
@@ -375,8 +375,8 @@ In general we want to remember this simple rule - prefer forward declarations to
 </section>
 </section>
 <section>
-<section id="slide-orgb1fdb0f">
-<h3 id="orgb1fdb0f">Circular Dependencies</h3>
+<section id="slide-org50288d9">
+<h3 id="org50288d9">Circular Dependencies</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">b.h</span>
@@ -399,8 +399,8 @@ I mentioned at some point about circular dependencies, but they are something th
 </section>
 </section>
 <section>
-<section id="slide-org4c994e7">
-<h2 id="org4c994e7">The ++ in Cpp</h2>
+<section id="slide-org79f89a4">
+<h2 id="org79f89a4">The ++ in Cpp</h2>
 <ul>
 <li>C with classes
 <ul>
@@ -442,15 +442,15 @@ First we will cover classes. What the classes implement in the background, what 
 </section>
 </section>
 <section>
-<section id="slide-org39c99cd">
-<h2 id="org39c99cd">C with classes</h2>
-<div class="outline-text-2" id="text-org39c99cd">
+<section id="slide-orgf9261b0">
+<h2 id="orgf9261b0">C with classes</h2>
+<div class="outline-text-2" id="text-orgf9261b0">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orge3b2851">
-<h3 id="orge3b2851">Classes and Objects</h3>
+<section id="slide-org7823fe9">
+<h3 id="org7823fe9">Classes and Objects</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span>
@@ -487,7 +487,7 @@ First we will cover classes. What the classes implement in the background, what 
 
 <aside class="notes">
 <p>
-This is a basic class. We can see the scopes of the class, what we can have as variables and functions. A quick note here - although we have 3 scopes, the ones we use the most are <code>private</code> and <code>public</code>, while <code>protected</code> is used in seldom cases, so we need not worry about it that much.
+This is a basic class. We can see the scopes of the class and what we can have as variables and functions in the different places. A quick note here - although we have 3 scopes, the ones we use the most are <code>private</code> and <code>public</code>, while <code>protected</code> is used in seldom cases, so we need not worry about it that much.
 </p>
 
 </aside>
@@ -495,14 +495,14 @@ This is a basic class. We can see the scopes of the class, what we can have as v
 </section>
 </section>
 <section>
-<section id="slide-org3e15ff3">
-<h4 id="org3e15ff3">Initialization lists</h4>
+<section id="slide-org63ef706">
+<h4 id="org63ef706">Initialization lists</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Library</span> 
 <span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
 <span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">public</span>:
-<span class="linenr"> 3: </span>    ABEntry<span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">name</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">list</span><span style="color: #d26937;">&lt;</span>Books<span style="color: #d26937;">&gt;</span>&amp; <span style="color: #599cab;">books</span><span style="color: #33859e;">)</span>;
+<span class="linenr"> 3: </span>    <span style="color: #599cab;">Library</span><span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">name</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">list</span><span style="color: #d26937;">&lt;</span>Books<span style="color: #d26937;">&gt;</span>&amp; <span style="color: #599cab;">books</span><span style="color: #33859e;">)</span>;
 <span class="linenr"> 4: </span><span style="color: #195466; font-weight: bold;">private</span>:
 <span class="linenr"> 5: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">theName</span>;
 <span class="linenr"> 6: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">list</span><span style="color: #33859e;">&lt;</span>Books<span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">books</span>;
@@ -510,7 +510,7 @@ This is a basic class. We can see the scopes of the class, what we can have as v
 <span class="linenr"> 8: </span><span style="color: #99d1ce;">}</span>;
 <span class="linenr"> 9: </span>
 <span class="linenr">10: </span><span style="color: #33859e; font-weight: bold;">Library</span>::<span style="color: #599cab;">Library</span><span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">name</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">list</span><span style="color: #33859e;">&lt;</span>Books<span style="color: #33859e;">&gt;</span>&amp; <span style="color: #599cab;">books</span><span style="color: #99d1ce;">)</span>
-<span class="linenr">11: </span><span style="color: #245361;">// </span><span style="color: #245361;">Initialization start righ here before the opening bracket</span>
+<span class="linenr">11: </span><span style="color: #245361;">// </span><span style="color: #245361;">&lt;- Initialization start right here before the opening bracket</span>
 <span class="linenr">12: </span><span style="color: #99d1ce;">{</span>
 <span class="linenr">13: </span>    theName = name; <span style="color: #245361;">// </span><span style="color: #245361;">these are all assignments</span>
 <span class="linenr">14: </span>    theBooks = books;
@@ -521,6 +521,10 @@ This is a basic class. We can see the scopes of the class, what we can have as v
 
 </section>
 <section >
+
+<p>
+Constructor with initialization list
+</p>
 
 <div class="org-src-container">
 
@@ -534,7 +538,7 @@ This is a basic class. We can see the scopes of the class, what we can have as v
 
 <aside class="notes">
 <p>
-When we are initializing this object, we would write <code>Person p1</code>, but what would happen with its data members. Will they be initialized to zero or not? We can never be sure about this and sometimes they might be zero, sometimes they might be left <b>uninitialized</b>. If we take the risk and read something that is uninitialized, then we will get an undefined behavior. There are rules to remember when something is initialized to zero and when something is left uninitialized, but this all depends if you are writing the C part of C++ or the STL part and things just get way to complex. That is why we can take the safe approach and just <b>always</b> initialize our object when we create them. If we are just working with normal variables in a function, this would be like writing <code>int x = 0; double b; std::cin &gt;&gt; b; char* x = "pointer intialization"</code> and so on. For object, however, this tasks is left to the constructor. The rule is simple - make sure that everything is initialized when an object is created.
+When we are initializing this object, we would write <code>Person p1;</code>, but what would happen with its data members. Will they be initialized to zero or not? We can never be sure about this and sometimes they might be <b>zero</b>, sometimes they might be left <b>uninitialized</b>. If we take the risk and read something that is uninitialized, then we will get undefined behavior. There are rules to remember when something is initialized to zero and when something is left uninitialized, but this all depends if you are writing the C part of C++ or the STL part, and things just get way to complicated. That is why we can take the safe approach and just <b>always</b> initialize our object when we create them. If we are just working with normal variables in a function, this would be like writing <code>int x = 0; double b; std::cin &gt;&gt; b; char* x = "pointer intialization"</code> and so on. For objects, however, this tasks is left to the constructor. The rule is simple - make sure that everything is initialized when an object is created.
 </p>
 
 <p>
@@ -546,7 +550,7 @@ If we want to initialize the data members to nothing or we don't have any parame
 </p>
 
 <p>
-There is one little aspect we must note here and that is - we must write the order of our initialization list in the same order we declared our data members in our class. This is just hoe C++ works, we must first initialize <code>theName</code> and then <code>theBooks</code> and the <code>addressNum</code>. If we don't do that we will get an error and undefined behavior.
+There is one little aspect we must note here and that is - we must write the order of our initialization list in the <b>same order</b> we declared our data members in our class. This is just how C++ works, we must first initialize <code>theName</code> and then <code>theBooks</code> and then <code>addressNum</code>. If we don't do that we will get an error.
 </p>
 
 </aside>
@@ -554,8 +558,8 @@ There is one little aspect we must note here and that is - we must write the ord
 </section>
 </section>
 <section>
-<section id="slide-orga0e30f4">
-<h4 id="orga0e30f4">Static non-local objects defined in different translation units</h4>
+<section id="slide-org684c1ff">
+<h4 id="org684c1ff">Static non-local objects defined in different translation units</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">in the filesystem.cpp file</span>
@@ -598,23 +602,25 @@ The solution:
 <span class="linenr"> 2: </span>    <span style="color: #195466; font-weight: bold;">static</span> <span style="color: #d26937;">FileSystem</span> <span style="color: #599cab;">fs</span>; <span style="color: #245361;">// </span><span style="color: #245361;">define and initialize a local static object</span>
 <span class="linenr"> 3: </span>    <span style="color: #195466; font-weight: bold;">return</span> fs;            <span style="color: #245361;">// </span><span style="color: #245361;">return a reference to it</span>
 <span class="linenr"> 4: </span><span style="color: #99d1ce;">}</span>
-<span class="linenr"> 5: </span><span style="color: #d26937;">class</span> <span style="color: #599cab;">Directory</span> <span style="color: #99d1ce;">{</span> ... <span style="color: #99d1ce;">}</span>;                  <span style="color: #245361;">// </span><span style="color: #245361;">as before</span>
-<span class="linenr"> 6: </span>Directory::Directory<span style="color: #99d1ce;">(</span> params <span style="color: #99d1ce;">)</span>            <span style="color: #245361;">// </span><span style="color: #245361;">as before, except references</span>
-<span class="linenr"> 7: </span><span style="color: #99d1ce;">{</span>                                         <span style="color: #245361;">// </span><span style="color: #245361;">to tfs are</span>
-<span class="linenr"> 8: </span>    std::size_t disks = tfs<span style="color: #33859e;">()</span>.numDisks<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">now to tfs()</span>
-<span class="linenr"> 9: </span><span style="color: #99d1ce;">}</span>
-<span class="linenr">10: </span>
-<span class="linenr">11: </span>Directory&amp; tempDir<span style="color: #99d1ce;">()</span>               <span style="color: #245361;">// </span><span style="color: #245361;">this replaces the tempDir object; it</span>
-<span class="linenr">12: </span><span style="color: #99d1ce;">{</span>                                  <span style="color: #245361;">// </span><span style="color: #245361;">could be static in the Directory class</span>
-<span class="linenr">13: </span>    <span style="color: #195466; font-weight: bold;">static</span> <span style="color: #d26937;">Directory</span> <span style="color: #599cab;">td</span><span style="color: #33859e;">(</span> params <span style="color: #33859e;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">define/initialize local static object</span>
-<span class="linenr">14: </span>    <span style="color: #195466; font-weight: bold;">return</span> td;                     <span style="color: #245361;">// </span><span style="color: #245361;">return reference to it</span>
-<span class="linenr">15: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #d26937;">class</span> <span style="color: #599cab;">Directory</span> <span style="color: #99d1ce;">{</span> ... <span style="color: #99d1ce;">}</span>;  
+<span class="linenr"> 7: </span>                <span style="color: #245361;">// </span><span style="color: #245361;">as before</span>
+<span class="linenr"> 8: </span>Directory::Directory<span style="color: #99d1ce;">(</span>params<span style="color: #99d1ce;">)</span>              <span style="color: #245361;">// </span><span style="color: #245361;">as before, except references</span>
+<span class="linenr"> 9: </span><span style="color: #99d1ce;">{</span>                                         <span style="color: #245361;">// </span><span style="color: #245361;">to tfs are</span>
+<span class="linenr">10: </span>    std::size_t disks = tfs<span style="color: #33859e;">()</span>.numDisks<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">now to tfs()</span>
+<span class="linenr">11: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">12: </span>
+<span class="linenr">13: </span>Directory&amp; tempDir<span style="color: #99d1ce;">()</span>               <span style="color: #245361;">// </span><span style="color: #245361;">this replaces the tempDir object; it</span>
+<span class="linenr">14: </span><span style="color: #99d1ce;">{</span>                                  <span style="color: #245361;">// </span><span style="color: #245361;">could be static in the Directory class</span>
+<span class="linenr">15: </span>    <span style="color: #195466; font-weight: bold;">static</span> <span style="color: #d26937;">Directory</span> <span style="color: #599cab;">td</span><span style="color: #33859e;">(</span> params <span style="color: #33859e;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">define/initialize local static object</span>
+<span class="linenr">16: </span>    <span style="color: #195466; font-weight: bold;">return</span> td;                     <span style="color: #245361;">// </span><span style="color: #245361;">return reference to it</span>
+<span class="linenr">17: </span><span style="color: #99d1ce;">}</span>
 </pre>
 </div>
 
 <aside class="notes">
 <p>
-One final thing that is worth mentioning is the case when we have to initialize non-local static objects from different translation units. What that jumble of words means is that - if we have a static object (an object that has a duration from the beginning of its initialization till the end of the program) and if that object is non-local (it's in the global scope, namespace scope, or in the scope of an other class) and if it's in a translation unit (basically it's a single source file) how do we initialize it? The problem here is that if we use such a static non-local object, we can never ever be sure when it is initialized properly and we are down the road of undefined behavior. The way to overcome such situations is by writing a function that makes that static non-local object a static local object (basically implementing the <b>Singleton</b> design pattern. . . almost). We just need to write a small function in our code, where we define and initialize a static local object of what we need and return a reference to it. This way we make sure that every time the function to get the object is called, the object will <b>always</b> be initialized.
+One final thing that is worth mentioning is the case when we have to <b>initialize non-local static objects from different translation units</b>. What that jumble of words means is that - if we have a <b>static object</b> (an object that has a duration from the beginning of its initialization till the end of the program) and if that object is <b>non-local</b> (it's in the global scope, namespace scope, or in the scope of an other class) and if it's in a <b>translation unit</b> (basically it's a single source file) how do we initialize it? The problem here is that if we use such a static non-local object, we can <b>never ever</b> be sure when it is initialized properly and we are down the road of undefined behavior. The way to overcome such situations is by writing a function that makes that static non-local object a static local object (basically implementing the <b>Singleton</b> design pattern. . . almost). We just need to write a small function in our code, where we define and initialize a static local object of what we need and return a reference to it. This way we make sure that every time the function to get the object is called, the object will <b>always</b> be initialized.
 </p>
 
 </aside>
@@ -622,8 +628,8 @@ One final thing that is worth mentioning is the case when we have to initialize 
 </section>
 </section>
 <section>
-<section id="slide-orgeaf0ec5">
-<h3 id="orgeaf0ec5">Constructors and Operators</h3>
+<section id="slide-orge21d236">
+<h3 id="orge21d236">Constructors and Operators</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">Empty class</span>
@@ -644,7 +650,7 @@ One final thing that is worth mentioning is the case when we have to initialize 
 
 <aside class="notes">
 <p>
-All of the classes we write have at least several constructors in them which will be either user defined or put in the class by the compiler. Sometimes we don't have to explicitly tell C++ what kind of constructors we want, because our program doesn't requite such functionality, but sometimes we have to implement our own constructors and operators (<b>operator overloading</b>). It's a good thing to know that the compiler is implementing instead of us when we are not writing the constructors ourselves.
+All of the classes we write have at least several constructors in them which will be either user defined or put in the class by the compiler. Sometimes we don't have to explicitly tell C++ what kind of constructors we want, because our program doesn't requite such functionality, but sometimes we have to implement our own constructors and operators (<b>operator overloading</b>). It's a good thing to know what the compiler is implementing instead of us when we are not writing the constructors ourselves.
 </p>
 
 <p>
@@ -680,15 +686,15 @@ In this case when we have a reference, we just have to make sure that we are imp
 </section>
 </section>
 <section>
-<section id="slide-org1920fcc">
-<h3 id="org1920fcc">Designs</h3>
-<div class="outline-text-3" id="text-org1920fcc">
+<section id="slide-org3cab326">
+<h3 id="org3cab326">Designs</h3>
+<div class="outline-text-3" id="text-org3cab326">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org8d0b6d4">
-<h4 id="org8d0b6d4">Write OOP classes</h4>
+<section id="slide-org014985c">
+<h4 id="org014985c">Write OOP classes</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">AccessLevels</span>
@@ -701,7 +707,7 @@ In this case when we have a reference, we just have to make sure that we are imp
 <span class="linenr"> 7: </span>    <span style="color: #d26937;">void</span> <span style="color: #599cab;">set_write_only</span><span style="color: #33859e;">(</span><span style="color: #d26937;">int</span> <span style="color: #599cab;">value</span><span style="color: #33859e;">)</span> <span style="color: #33859e;">{</span> writeOnly = value; <span style="color: #33859e;">}</span>
 <span class="linenr"> 8: </span><span style="color: #195466; font-weight: bold;">private</span>:
 <span class="linenr"> 9: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">no_access</span>;    <span style="color: #245361;">// </span><span style="color: #245361;">no access to this </span>
-<span class="linenr">10: </span>                     <span style="color: #245361;">// </span><span style="color: #245361;">(maybe it's used as an internal constant)</span>
+<span class="linenr">10: </span>                      <span style="color: #245361;">// </span><span style="color: #245361;">(maybe it's used as an internal constant)</span>
 <span class="linenr">11: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">read_only</span>;    <span style="color: #245361;">// </span><span style="color: #245361;">only read access</span>
 <span class="linenr">12: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">read_write</span>;   <span style="color: #245361;">// </span><span style="color: #245361;">read and write access</span>
 <span class="linenr">13: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">write_only</span>;   <span style="color: #245361;">// </span><span style="color: #245361;">write only access</span>
@@ -722,13 +728,17 @@ First of - declare your data members as private (not even protected). Okay so wh
 In order to access are already <code>private</code> variables, we must rely on getters and setters. These are small and fast functions that do what their name suggests. It's usually a good practice to make you getters <code>const</code>, this way you are ensuring yourself that the variable won't change upon retrieval. As a reminder - not all data members need such functions to them!
 </p>
 
+<p>
+Another thing that is worth mentioning about how to write classes is - do not over complicate them with functions that they <b>don't</b> necessarily need. This means that if a class needs helper functions, it's not necessary to put those functions as class methods. Although our intuition tells us that we need to encapsulate everything, this doesn't always mean - put everything into a class. Let's take a this source file for instance (<code>./src/robot_and_mines.cpp</code>). This is a little robot that goes through a maze, based on commands given by the user. To load the maze we use a function that reads a text file. The question is - since we are loading something specific that the robot will do, i.e. go through a maze, should that loading function be part of the robot class? Well maybe, it's not wrong to think that a robot might have the functionality to load its course. But at the same time maybe it's not such a good idea, because this increases the <b>size</b> of our class, we have another state to worry about, and if we were to extend this program even further, we might need to remove this function, since it will be getting in the way. So instead of making this function a class method or a friend function, just use it as a standalone thing that just helps the class. If we have multiple functions that are not really class specific, but are very helpful, we can just put them in a standalone <code>header</code> file or a <code>namespace</code> and used them from there. The takeaway is this - prefer to write non-member and non-friend functions to member functions (do not bloat your classes).
+</p>
+
 </aside>
 
 </section>
 </section>
 <section>
-<section id="slide-orgb3d8786">
-<h4 id="orgb3d8786">Treat class design as type design</h4>
+<section id="slide-orgfa6934d">
+<h4 id="orgfa6934d">Treat class design as type design</h4>
 <ul>
 <li class="fragment roll-in">How should objects of your new type be created and destroyed?</li>
 <li class="fragment roll-in">How should object initialization differ from object assignment?</li>
@@ -782,8 +792,8 @@ Writing classes isn't easy, because in C++ we are not creating only a class, but
 </section>
 </section>
 <section>
-<section id="slide-orgbeeb651">
-<h4 id="orgbeeb651">Prefer pass-by-reference-to-const to pass-by-value</h4>
+<section id="slide-orge496c4b">
+<h4 id="orge496c4b">Prefer pass-by-reference-to-const to pass-by-value</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Window</span>
@@ -833,25 +843,25 @@ Under the compiler, <b>references</b> are passed as pointers, so we are technica
 </section>
 </section>
 <section>
-<section id="slide-orga5d4beb">
-<h2 id="orga5d4beb">Inheritance</h2>
+<section id="slide-orgcb7ec7c">
+<h2 id="orgcb7ec7c">Inheritance</h2>
 </section>
 </section>
 <section>
-<section id="slide-org76a48e4">
-<h2 id="org76a48e4">Templates</h2>
+<section id="slide-org7fc10c2">
+<h2 id="org7fc10c2">Templates</h2>
 </section>
 </section>
 <section>
-<section id="slide-org52deb73">
-<h2 id="org52deb73">References</h2>
-<div class="outline-text-2" id="text-org52deb73">
+<section id="slide-orgd153fe3">
+<h2 id="orgd153fe3">References</h2>
+<div class="outline-text-2" id="text-orgd153fe3">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org9ecc1c9">
-<h3 id="org9ecc1c9">File Structure</h3>
+<section id="slide-orgc4b1a42">
+<h3 id="orgc4b1a42">File Structure</h3>
 <ul>
 <li><a href="http://www.cplusplus.com/forum/articles/10627/">How to use header files</a></li>
 <li><a href="http://www.learncpp.com/cpp-tutorial/19-header-files/">Header files</a></li>
@@ -866,8 +876,8 @@ Under the compiler, <b>references</b> are passed as pointers, so we are technica
 </section>
 </section>
 <section>
-<section id="slide-org43a5c87">
-<h3 id="org43a5c87">Classes and Objects</h3>
+<section id="slide-org2684148">
+<h3 id="org2684148">Classes and Objects</h3>
 <ul>
 <li><a href="http://www.cplusplus.com/articles/y8hv0pDG/">Copy constructors, assignment operators, and exception safe assignment</a></li>
 <li><a href="http://www.drdobbs.com/the-problem-with-const-data-members/184403306">The Problem with const Data Members</a></li>
