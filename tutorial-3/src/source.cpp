@@ -2,6 +2,6 @@
 
 int main()
 {
-     help();
-     return 0;
+    help();
+    return 0;
 }
