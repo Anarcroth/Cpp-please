@@ -27,28 +27,29 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-18 чт 10:18</p>
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-18 чт 11:48</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org3d6d1b5">Who am I?</a></li>
-<li><a href="#/slide-org9d2ab7a">What we are going to cover</a></li>
-<li><a href="#/slide-org6bb303e">File structure</a></li>
-<li><a href="#/slide-org3d1bdeb">The ++ in Cpp</a></li>
-<li><a href="#/slide-org0e7cb5f">C with classes</a></li>
-<li><a href="#/slide-orgfb8d3fa">Virtuals and Inheritance</a></li>
-<li><a href="#/slide-orgd4cebea">References</a></li>
+<li><a href="#/slide-org577e492">Who am I?</a></li>
+<li><a href="#/slide-org1f490c5">What we are going to cover</a></li>
+<li><a href="#/slide-org2444786">File structure</a></li>
+<li><a href="#/slide-org0d62036">The ++ in Cpp</a></li>
+<li><a href="#/slide-org119e292">C with classes</a></li>
+<li><a href="#/slide-org4d0223f">Virtuals and Inheritance</a></li>
+<li><a href="#/slide-org37924f3">Exercises</a></li>
+<li><a href="#/slide-org8b92f74">References</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org3d6d1b5">
-<h2 id="org3d6d1b5">Who am I?</h2>
+<section id="slide-org577e492">
+<h2 id="org577e492">Who am I?</h2>
 <ul>
 <li>Martin Nestorov</li>
 <li>Junior 2nd sem.</li>
@@ -61,8 +62,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org3916aac">
-<h3 id="org3916aac">Why I chose to make these small tutorials</h3>
+<section id="slide-org217b635">
+<h3 id="org217b635">Why I chose to make these small tutorials</h3>
 <ul>
 <li>People seem to have some problems with the transition from C++ to FDS.</li>
 <li>I want to help!</li>
@@ -80,8 +81,8 @@ Over the course of the past several years I found a certain love for C++, but in
 </section>
 </section>
 <section>
-<section id="slide-orgdedef04">
-<h3 id="orgdedef04">How to look at C++</h3>
+<section id="slide-org68dc41c">
+<h3 id="org68dc41c">How to look at C++</h3>
 <p>
 C++ as <b>four</b> sub-languages
 </p>
@@ -111,8 +112,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-org9d2ab7a">
-<h2 id="org9d2ab7a">What we are going to cover</h2>
+<section id="slide-org1f490c5">
+<h2 id="org1f490c5">What we are going to cover</h2>
 <ul>
 <li>File structure</li>
 <li>OOP</li>
@@ -128,8 +129,8 @@ C++ can be generally divided into four sub-categories or sub-languages. It's a d
 </section>
 </section>
 <section>
-<section id="slide-org6bb303e">
-<h2 id="org6bb303e">File structure</h2>
+<section id="slide-org2444786">
+<h2 id="org2444786">File structure</h2>
 <ul>
 <li>Advantages:
 <ul>
@@ -173,8 +174,8 @@ First things first. What's the difference between headers and sources? Apart fro
 </section>
 </section>
 <section>
-<section id="slide-org99b6428">
-<h3 id="org99b6428">How to work with headers?</h3>
+<section id="slide-orga90a893">
+<h3 id="orga90a893">How to work with headers?</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">//</span><span style="color: #245361;">header we always include</span>
@@ -215,8 +216,8 @@ Header files, usually ending with the <code>*.h</code> file extension (can be al
 </section>
 </section>
 <section>
-<section id="slide-org4cbafe2">
-<h3 id="org4cbafe2">Header guards</h3>
+<section id="slide-org491523e">
+<h3 id="org491523e">Header guards</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
@@ -259,8 +260,8 @@ Because we are going to be using a lot of headers in our program, we would need 
 </section>
 </section>
 <section>
-<section id="slide-orgd472005">
-<h3 id="orgd472005">Declarations vs Definitions</h3>
+<section id="slide-orgef94f97">
+<h3 id="orgef94f97">Declarations vs Definitions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">declarations</span>
@@ -299,8 +300,8 @@ Okay now let us go back to header files.
 </section>
 </section>
 <section>
-<section id="slide-org9f59898">
-<h3 id="org9f59898">How and when to use headers</h3>
+<section id="slide-org3edd195">
+<h3 id="org3edd195">How and when to use headers</h3>
 <p>
 <code>class A</code> &gt; (uses) &gt; <code>class B</code> 
 </p>
@@ -369,8 +370,8 @@ In general we want to remember this simple rule - prefer forward declarations to
 </section>
 </section>
 <section>
-<section id="slide-orgeda089f">
-<h3 id="orgeda089f">Circular Dependencies</h3>
+<section id="slide-org705cf14">
+<h3 id="org705cf14">Circular Dependencies</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">b.h</span>
@@ -393,8 +394,8 @@ I mentioned at some point about circular dependencies, but they are something th
 </section>
 </section>
 <section>
-<section id="slide-org3d1bdeb">
-<h2 id="org3d1bdeb">The ++ in Cpp</h2>
+<section id="slide-org0d62036">
+<h2 id="org0d62036">The ++ in Cpp</h2>
 <ul>
 <li>C with classes
 <ul>
@@ -427,15 +428,15 @@ First we will cover classes. What the classes implement in the background, what 
 </section>
 </section>
 <section>
-<section id="slide-org0e7cb5f">
-<h2 id="org0e7cb5f">C with classes</h2>
-<div class="outline-text-2" id="text-org0e7cb5f">
+<section id="slide-org119e292">
+<h2 id="org119e292">C with classes</h2>
+<div class="outline-text-2" id="text-org119e292">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org4e1dcbb">
-<h3 id="org4e1dcbb">Classes and Objects</h3>
+<section id="slide-orgc8ba0c0">
+<h3 id="orgc8ba0c0">Classes and Objects</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span>
@@ -480,8 +481,8 @@ This is a basic class. We can see the scopes of the class and what we can have a
 </section>
 </section>
 <section>
-<section id="slide-org8ba11a7">
-<h4 id="org8ba11a7">Initialization lists</h4>
+<section id="slide-org7458bc4">
+<h4 id="org7458bc4">Initialization lists</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Library</span> 
@@ -543,8 +544,8 @@ There is one little aspect we must note here and that is - we must write the ord
 </section>
 </section>
 <section>
-<section id="slide-orga433aae">
-<h4 id="orga433aae">Static non-local objects defined in different translation units</h4>
+<section id="slide-orgbf47a89">
+<h4 id="orgbf47a89">Static non-local objects defined in different translation units</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">in the filesystem.cpp file</span>
@@ -613,8 +614,8 @@ One final thing that is worth mentioning is the case when we have to <b>initiali
 </section>
 </section>
 <section>
-<section id="slide-orgd0361d6">
-<h3 id="orgd0361d6">Constructors and Operators</h3>
+<section id="slide-orgbf218a4">
+<h3 id="orgbf218a4">Constructors and Operators</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">Empty class</span>
@@ -671,15 +672,15 @@ In this case when we have a reference, we just have to make sure that we are imp
 </section>
 </section>
 <section>
-<section id="slide-orgd017aee">
-<h3 id="orgd017aee">Designs</h3>
-<div class="outline-text-3" id="text-orgd017aee">
+<section id="slide-orga2de795">
+<h3 id="orga2de795">Designs</h3>
+<div class="outline-text-3" id="text-orga2de795">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org13a0bef">
-<h4 id="org13a0bef">Write OOP classes</h4>
+<section id="slide-org8c8b40b">
+<h4 id="org8c8b40b">Write OOP classes</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">AccessLevels</span>
@@ -763,8 +764,8 @@ Okay so when should we use inline functions? Well the thing is that the compiler
 </section>
 </section>
 <section>
-<section id="slide-org436b958">
-<h4 id="org436b958">Treat class design as type design</h4>
+<section id="slide-orgda64ce0">
+<h4 id="orgda64ce0">Treat class design as type design</h4>
 <ul>
 <li class="fragment roll-in">How should objects of your new type be created and destroyed?</li>
 <li class="fragment roll-in">How should object initialization differ from object assignment?</li>
@@ -818,8 +819,8 @@ Writing classes isn't easy, because in C++ we are not creating only a class, but
 </section>
 </section>
 <section>
-<section id="slide-org0e9617c">
-<h4 id="org0e9617c">Prefer pass-by-reference-to-const to pass-by-value</h4>
+<section id="slide-orge99701f">
+<h4 id="orge99701f">Prefer pass-by-reference-to-const to pass-by-value</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Window</span>
@@ -869,8 +870,8 @@ Under the compiler, <b>references</b> are passed as pointers, so we are technica
 </section>
 </section>
 <section>
-<section id="slide-orgfb8d3fa">
-<h2 id="orgfb8d3fa">Virtuals and Inheritance</h2>
+<section id="slide-org4d0223f">
+<h2 id="org4d0223f">Virtuals and Inheritance</h2>
 <ul>
 <li>Multiple inheritance</li>
 <li>Virtual functions and destructors</li>
@@ -892,8 +893,8 @@ But first we have to be sure what virtualization means in C++ and how to use <b>
 </section>
 </section>
 <section>
-<section id="slide-orgffb5041">
-<h3 id="orgffb5041">Dealing with multiple inheritance</h3>
+<section id="slide-org2daa678">
+<h3 id="org2daa678">Dealing with multiple inheritance</h3>
 <aside class="notes">
 <p>
 We already know how inheritance works, and although we know that there are several ways to do it, it's better to get an idea about multiple inheritance as well from the start. As we can see from the two pictures, we have an inheritance hierarchy.
@@ -984,8 +985,8 @@ This means that when we have MI where the child class can have several paths to 
 </section>
 </section>
 <section>
-<section id="slide-org67c1b50">
-<h3 id="org67c1b50">Virtual functions and destructors</h3>
+<section id="slide-orgb6e0b64">
+<h3 id="orgb6e0b64">Virtual functions and destructors</h3>
 <aside class="notes">
 <p>
 We looked how virtual inheritance looks like, now let's go over virtualization and bindings in C++. Now we have two types of function binding in the language - <b>static</b> and <b>dynamic</b>. <b>Static</b> binding means that when a function is called, the compiler knows which functions was called and jumps to it. This is the default behavior of C++. This, in consequence, allows us to have <b>function overloading</b>. Even though there are two or more functions with the same name, the compiler uniquely identifies each function depending on the parameters passed to those function. On the other hand, <b>dynamic</b> binding tells the compiler to match a function call during <b>runtime</b>. This is achieved through <b>virtual functions</b>. A base class pointer points to the derived class object. And a functions is declared virtual in the vase class. Then the matching function is defined at run-time using a virtual table entry.
@@ -1000,8 +1001,8 @@ The virtual table is an interesting concept that allows us to have virtualizatio
 </section>
 </section>
 <section>
-<section id="slide-org6f4d883">
-<h4 id="org6f4d883">Virtual Destructors</h4>
+<section id="slide-org3ff2fd2">
+<h4 id="org3ff2fd2">Virtual Destructors</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">TimeKeeper</span> 
@@ -1061,8 +1062,8 @@ In the example we can see how we have multiple inheritance of a base class for t
 </section>
 </section>
 <section>
-<section id="slide-orgcf7b726">
-<h3 id="orgcf7b726">Inheritance models</h3>
+<section id="slide-org0154e60">
+<h3 id="org0154e60">Inheritance models</h3>
 <ul>
 <li class="fragment roll-in">is-a</li>
 <li class="fragment roll-in">Composition
@@ -1077,8 +1078,8 @@ In the example we can see how we have multiple inheritance of a base class for t
 </section>
 </section>
 <section>
-<section id="slide-org5280d2f">
-<h4 id="org5280d2f">is-a model</h4>
+<section id="slide-org7ef8d6a">
+<h4 id="org7ef8d6a">is-a model</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span> <span style="color: #99d1ce;">{</span> <span style="color: #99d1ce;">}</span>;
@@ -1160,8 +1161,8 @@ Here we fix the problem&#x2026; kind of. OK but what if the program we are writi
 </section>
 </section>
 <section>
-<section id="slide-org31af7f4">
-<h4 id="org31af7f4">Inheritance of interface and implementation</h4>
+<section id="slide-org955174c">
+<h4 id="org955174c">Inheritance of interface and implementation</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Shape</span> 
@@ -1203,8 +1204,8 @@ Finally we have the normal method that is getting the <code>id</code> of the obj
 </section>
 </section>
 <section>
-<section id="slide-orgbc4a31d">
-<h4 id="orgbc4a31d">Composition models</h4>
+<section id="slide-org05bae96">
+<h4 id="org05bae96">Composition models</h4>
 <aside class="notes">
 <p>
 Now the last two models we should look at are the <code>has-a</code> and <code>is-implemented-in-terms-of</code> models. But they are somewhat different than <b>"simple"</b> public inheritance, and they mean totally different things. In short - <b>composition</b> is the relationship between types that arises when objects of one type have objects from another type. That is, we are modeling something that is <b>composed</b> of something else. The two models both use composition, but have different meanings in terms of the modeling part.
@@ -1219,8 +1220,8 @@ Now the last two models we should look at are the <code>has-a</code> and <code>i
 </section>
 </section>
 <section>
-<section id="slide-org10c9d52">
-<h4 id="org10c9d52">has-a</h4>
+<section id="slide-orgb4b92ef">
+<h4 id="orgb4b92ef">has-a</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Address</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
@@ -1248,8 +1249,8 @@ Here are modeling something from the real world, where a <code>Person</code> <b>
 </section>
 </section>
 <section>
-<section id="slide-orgf4ac010">
-<h4 id="orgf4ac010">is-implemented-in-terms-of</h4>
+<section id="slide-orgf06134c">
+<h4 id="orgf06134c">is-implemented-in-terms-of</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
@@ -1283,15 +1284,28 @@ Now the question is this - when should we use <code>private</code> inheritance a
 </section>
 </section>
 <section>
-<section id="slide-orgd4cebea">
-<h2 id="orgd4cebea">References</h2>
-<div class="outline-text-2" id="text-orgd4cebea">
+<section id="slide-org37924f3">
+<h2 id="org37924f3">Exercises</h2>
+<ul>
+<li><a href="https://www.reddit.com/r/dailyprogrammer/comments/7d4yoe/20171114_challenge_340_intermediate_walk_in_a/">Walk in minefield</a></li>
+<li><a href="https://www.reddit.com/r/dailyprogrammer/comments/39ws1x/20150615_challenge_218_easy_todo_list_part_1/">Todo list part 1</a></li>
+<li><a href="https://www.reddit.com/r/dailyprogrammer/comments/364hq/20150617_challenge_219_intermediate_todo_list/">Todo list part 2</a></li>
+<li><a href="https://www.reddit.com/r/dailyprogrammer/comments/2vkwgb/20150211_challenge_201_practical_exercise_get/">Get your priorities straight</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org8b92f74">
+<h2 id="org8b92f74">References</h2>
+<div class="outline-text-2" id="text-org8b92f74">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org320963e">
-<h3 id="org320963e">File Structure</h3>
+<section id="slide-org991ac9c">
+<h3 id="org991ac9c">File Structure</h3>
 <ul>
 <li><a href="http://www.cplusplus.com/forum/articles/10627/">How to use header files</a></li>
 <li><a href="http://www.learncpp.com/cpp-tutorial/19-header-files/">Header files</a></li>
@@ -1306,8 +1320,8 @@ Now the question is this - when should we use <code>private</code> inheritance a
 </section>
 </section>
 <section>
-<section id="slide-org78f42e3">
-<h3 id="org78f42e3">Classes and Objects</h3>
+<section id="slide-org2cb0663">
+<h3 id="org2cb0663">Classes and Objects</h3>
 <ul>
 <li><a href="http://www.cplusplus.com/articles/y8hv0pDG/">Copy constructors, assignment operators, and exception safe assignment</a></li>
 <li><a href="http://www.drdobbs.com/the-problem-with-const-data-members/184403306">The Problem with const Data Members</a></li>
@@ -1319,8 +1333,8 @@ Now the question is this - when should we use <code>private</code> inheritance a
 </section>
 </section>
 <section>
-<section id="slide-org3b3e5f6">
-<h3 id="org3b3e5f6">Inheritance</h3>
+<section id="slide-org0885cf1">
+<h3 id="org0885cf1">Inheritance</h3>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Multiple_inheritance">Multiple Inheritance</a></li>
 <li><a href="https://stackoverflow.com/questions/137282/how-can-i-avoid-the-diamond-of-death-when-using-multiple-inheritance">Deadly MI Diamond</a></li>
