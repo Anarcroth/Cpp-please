@@ -10,7 +10,7 @@ The `html`s also have a corresponding `pdf` version, in which all of the notes a
 
 ## Topics
 
-[tutorial 1](./tutorial-1/tutorial1.html#/sec-title-slide)
+[tutorial 1](./tutorial-1/tutorial1.html)
 - File management
 - OOP
 - Inheritance
@@ -23,5 +23,5 @@ The `html`s also have a corresponding `pdf` version, in which all of the notes a
 - Resource Management
 - Good practices
 
-[tutorial 4](./tutorial-4/tutorial4.html#/sec-title-slide)
+[tutorial 4](./tutorial-4/tutorial4.html)
 - Compilation
