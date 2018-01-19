@@ -27,26 +27,26 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-18 чт 18:58</p>
+<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-19 пт 19:03</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org4477f43">Generics in C++</a></li>
-<li><a href="#/slide-orgc7c93dd">Template programming</a></li>
-<li><a href="#/slide-org6265f6b">The STL</a></li>
-<li><a href="#/slide-orgd1c09c8">Exercises</a></li>
-<li><a href="#/slide-org28344e4">Resources</a></li>
+<li><a href="#/slide-org3e05bc3">Generics in C++</a></li>
+<li><a href="#/slide-org4f3c069">Template programming</a></li>
+<li><a href="#/slide-org72b4ee9">The STL</a></li>
+<li><a href="#/slide-org5d58153">Exercises</a></li>
+<li><a href="#/slide-org4487cbe">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org4477f43">
-<h2 id="org4477f43">Generics in C++</h2>
+<section id="slide-org3e05bc3">
+<h2 id="org3e05bc3">Generics in C++</h2>
 <aside class="notes">
 <p>
 One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it independent from types! The C++ template mechanism was also Turing complete (you can compute any computable value with it), which led to template meta programming. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
@@ -57,8 +57,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-orgc7c93dd">
-<h2 id="orgc7c93dd">Template programming</h2>
+<section id="slide-org4f3c069">
+<h2 id="org4f3c069">Template programming</h2>
 <ul>
 <li class="fragment roll-in">Templates</li>
 <li class="fragment roll-in">Compile-time polymorphism</li>
@@ -70,14 +70,14 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org2153ada">
-<h3 id="org2153ada">Templates</h3>
+<section id="slide-org5111028">
+<h3 id="org5111028">Templates</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
-<span class="linenr">1: </span><span style="color: #d26937;">T</span> <span style="color: #599cab;">GetMax</span> <span style="color: #99d1ce;">(</span><span style="color: #d26937;">T</span> <span style="color: #599cab;">a</span>, <span style="color: #d26937;">Y</span> <span style="color: #599cab;">b</span><span style="color: #99d1ce;">)</span>
+<span class="linenr">1: </span><span style="color: #d26937;">T</span> <span style="color: #599cab;">GetMax</span> <span style="color: #99d1ce;">(</span><span style="color: #d26937;">T</span> <span style="color: #599cab;">a</span>, <span style="color: #d26937;">T</span> <span style="color: #599cab;">b</span><span style="color: #99d1ce;">)</span>
 <span class="linenr">2: </span><span style="color: #99d1ce;">{</span>
-<span class="linenr">3: </span>    <span style="color: #195466; font-weight: bold;">return</span> <span style="color: #33859e;">(</span>a &gt; b ? a : b<span style="color: #33859e;">)</span>;x
+<span class="linenr">3: </span>    <span style="color: #195466; font-weight: bold;">return</span> <span style="color: #33859e;">(</span>a &gt; b ? a : b<span style="color: #33859e;">)</span>;
 <span class="linenr">4: </span><span style="color: #99d1ce;">}</span>
 </pre>
 </div>
@@ -90,7 +90,7 @@ One of the things that C++ manages to do very well is to provide generic program
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span><span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
 <span class="linenr">1: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">doProcessing</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">T</span>&amp; <span style="color: #599cab;">w</span><span style="color: #99d1ce;">)</span>
 <span class="linenr">2: </span><span style="color: #99d1ce;">{</span>
-<span class="linenr">3: </span>    <span style="color: #195466; font-weight: bold;">if</span> <span style="color: #33859e;">(</span>w.size<span style="color: #d26937;">()</span> &gt; <span style="color: #33859e; font-weight: bold;">10</span> &amp;&amp; w != someNastyWidget<span style="color: #33859e;">)</span>
+<span class="linenr">3: </span>    <span style="color: #195466; font-weight: bold;">if</span> <span style="color: #33859e;">(</span>w.size<span style="color: #d26937;">()</span> &gt; <span style="color: #33859e; font-weight: bold;">10</span> &amp;&amp; w != someObject<span style="color: #33859e;">)</span>
 <span class="linenr">4: </span>    <span style="color: #33859e;">{</span>
 <span class="linenr">5: </span>        <span style="color: #d26937;">T</span> <span style="color: #599cab;">temp</span><span style="color: #d26937;">(</span>w<span style="color: #d26937;">)</span>;
 <span class="linenr">6: </span>        temp.normalize<span style="color: #d26937;">()</span>;
@@ -110,23 +110,15 @@ Okay so let's look at a template.
 </p>
 
 <p>
-In the first piece of code, we have a template function that returns the larger of the two types. These types can be literally anything - they can by <code>int</code>, <code>double</code>, <code>char</code>, <code>someobject</code>, etc. As long as the type <code>T</code> has an implementation of <code>&gt;</code>, this will compile and this will run. In the second example we can see even clearer when we say that some template must support something. We are passing <code>w</code> by reference (so maybe it's an object). The parameter uses the <code>size()</code>, <code>normalize()</code>, and <code>swap()</code> functions (okay, it's an object). We also have the operator <code>!=</code> in use, and we also have a copy constructor. If we were to just substitute <code>T&amp; w</code> with <code>SpecificObject&amp; w</code>, we would not worry that <code>w</code> supports all of these functionalities, because we have explicitly stated what we are passing. But since we are using a template, we are <b>expecting</b> that <code>T</code> supports them. This is the meaning of an <b>implicit</b> interface. Writing templates means that we are dealing with implicit interfaces in the first place.
+In the first piece of code, we have a template function that returns the larger of the two types. These types can be literally anything - they can by <code>int</code>, <code>double</code>, <code>char</code>, <code>someObject</code>, etc. As long as the type <code>T</code> has an implementation of <code>&gt;</code>, this will compile and this will run. In the second example we can see even clearer when we say that some template must support something. We are passing <code>w</code> by reference (so maybe it's an object). The parameter uses the <code>size()</code>, <code>normalize()</code>, and <code>swap()</code> functions (okay, it's an object). We also have the operator <code>!=</code> in use, and we also have a copy constructor. If we were to just substitute <code>T&amp; w</code> with <code>SpecificObject&amp; w</code>, we would not worry that <code>w</code> supports all of these functionalities, because we have explicitly stated what we are passing. But since we are using a template, we are <b>expecting</b> that <code>T</code> supports them. This is the meaning of an <b>implicit</b> interface. Writing templates means that we are dealing with implicit interfaces in the first place.
 </p>
 
 <p>
 It's okay not to stress it that much when we are writing generic functions, which are designed to handle build-in types (such as <code>int</code> and <code>double</code>), but when we are working with user defined types, we have to be careful what the function is actually doing, and does it support the interface.
 </p>
 
-</aside>
-
-</section>
-</section>
-<section>
-<section id="slide-org776b5fd">
-<h3 id="org776b5fd">Compile-time polymoprhism</h3>
-<aside class="notes">
 <p>
-
+One thing to consider when dealing with implicit interfaces is that it's not important whether what the function we are using does what it has to do. This means that when we call <code>w.size()</code>, this might return some integer indicating the size of <code>w</code>, but it might not, it might not ever return a number! As long as the function call returns something that can be used with the <code>&gt;</code> operator, this code will compile! Maybe the function is defined in some base class where it is inherited, everything is valid as long as the next operator runs. The same is true for the <code>!=</code> operator. It can take a type <code>X</code> and a type <code>Y</code> and as long as <b><b>T</b></b> is convertable to <b><b>X</b></b> and <b><b>someObject</b></b> to <b><b>Y</b></b>, the statement will run. So we can say that implicit interfaces are just a set of valid expressions, which impose some constraints. So the constraint of the whole expression doesn't really matter of the types used in it as long as the final yielded result is compatible with <code>bool</code>.
 </p>
 
 </aside>
@@ -134,8 +126,20 @@ It's okay not to stress it that much when we are writing generic functions, whic
 </section>
 </section>
 <section>
-<section id="slide-org6265f6b">
-<h2 id="org6265f6b">The STL</h2>
+<section id="slide-orgb4a858e">
+<h3 id="orgb4a858e">Compile-time polymoprhism</h3>
+<aside class="notes">
+<p>
+Okay we get what an implicit interface is. But next to this there is another very important aspect of templates and that is <b><b>compile-time polymorphism</b></b>. Sounds scary, it's not.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org72b4ee9">
+<h2 id="org72b4ee9">The STL</h2>
 <ul>
 <li class="fragment roll-in">Vectors and strings</li>
 <li class="fragment roll-in">Maps and sets</li>
@@ -148,14 +152,26 @@ It's okay not to stress it that much when we are writing generic functions, whic
 </section>
 </section>
 <section>
-<section id="slide-orgd1c09c8">
-<h2 id="orgd1c09c8">Exercises</h2>
+<section id="slide-org5d58153">
+<h2 id="org5d58153">Exercises</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-org28344e4">
-<h2 id="org28344e4">Resources</h2>
+<section id="slide-org4487cbe">
+<h2 id="org4487cbe">Resources</h2>
+<div class="outline-text-2" id="text-org4487cbe">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org4f1cd68">
+<h3 id="org4f1cd68">Templates</h3>
+<ul>
+<li><a href="https://stackoverflow.com/questions/29298212/what-is-an-implicit-interface">Implicit Interface</a></li>
+<li></li>
+
+</ul>
 </section>
 </section>
 </div>
