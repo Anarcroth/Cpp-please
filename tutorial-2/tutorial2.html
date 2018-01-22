@@ -27,26 +27,26 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-19 пт 22:25</p>
+<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-22 пн 10:56</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org15e3fbb">Generics in C++</a></li>
-<li><a href="#/slide-org347ff71">Template programming</a></li>
-<li><a href="#/slide-orgdff3cf9">The STL</a></li>
-<li><a href="#/slide-org23b24af">Exercises</a></li>
-<li><a href="#/slide-orga16a0f3">Resources</a></li>
+<li><a href="#/slide-orgd5bde7d">Generics in C++</a></li>
+<li><a href="#/slide-orgfdec57e">Template programming</a></li>
+<li><a href="#/slide-org692f782">The STL</a></li>
+<li><a href="#/slide-org907ffcd">Exercises</a></li>
+<li><a href="#/slide-orge34f783">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org15e3fbb">
-<h2 id="org15e3fbb">Generics in C++</h2>
+<section id="slide-orgd5bde7d">
+<h2 id="orgd5bde7d">Generics in C++</h2>
 <aside class="notes">
 <p>
 One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it independent from types! The C++ template mechanism was also Turing complete (you can compute any computable value with it), which led to template meta programming. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
@@ -57,8 +57,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org347ff71">
-<h2 id="org347ff71">Template programming</h2>
+<section id="slide-orgfdec57e">
+<h2 id="orgfdec57e">Template programming</h2>
 <ul>
 <li class="fragment roll-in">Templates</li>
 <li class="fragment roll-in">Compile-time polymorphism</li>
@@ -70,8 +70,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org1157cb0">
-<h3 id="org1157cb0">Templates</h3>
+<section id="slide-orge393266">
+<h3 id="orge393266">Templates</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -126,8 +126,8 @@ One thing to consider when dealing with implicit interfaces is that it's not imp
 </section>
 </section>
 <section>
-<section id="slide-orga6fe709">
-<h3 id="orga6fe709">Compile-time polymoprhism</h3>
+<section id="slide-orgfb6253f">
+<h3 id="orgfb6253f">Compile-time polymoprhism</h3>
 <aside class="notes">
 <p>
 Okay we get what an implicit interface is. But next to this there is another very important aspect of templates and that is <b><b>compile-time polymorphism</b></b>. Sounds scary, it's not. You've most probably have used this and in the world of normal functions this is also known as <b>function overloading</b>. There is a debate whether this should also be referred to as polymorphism, but it is what it is. Now where do templates come along in this? Much similar to overloading, when we are declaring multiple templates, we can specify at some point in our code what the template will be (i.e. what type). Since we are telling the compiler the type, during compile time, the type of the template used will be mapped in the object file and will resolve at that time. In contrast to dynamic binding, where during runtime it is decided which function is called, the compiler knows based on the types we use what to substituted for when a function is called.
@@ -136,10 +136,111 @@ Okay we get what an implicit interface is. But next to this there is another ver
 </aside>
 
 </section>
+<section >
+
+</section>
 </section>
 <section>
-<section id="slide-orgdff3cf9">
-<h2 id="orgdff3cf9">The STL</h2>
+<section id="slide-orge8d0ed7">
+<h4 id="orge8d0ed7">The Mixin model</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
+<span class="linenr">1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">MixinClass</span> : <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">T</span>
+<span class="linenr">2: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">3: </span>    <span style="color: #245361;">// </span><span style="color: #245361;">code</span>
+<span class="linenr">4: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">MixinBase</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">public</span> :
+<span class="linenr"> 3: </span>    <span style="color: #d26937;">void</span> <span style="color: #599cab;">f</span><span style="color: #33859e;">()</span> <span style="color: #33859e;">{</span> <span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa889;">"HELLO"</span> &lt;&lt; <span style="color: #33859e; font-weight: bold;">std</span>::endl; <span style="color: #33859e;">}</span>;
+<span class="linenr"> 4: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
+<span class="linenr"> 7: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Mixin</span> : <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">T</span>
+<span class="linenr"> 8: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 9: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">10: </span>    <span style="color: #d26937;">void</span> <span style="color: #599cab;">f</span><span style="color: #33859e;">()</span> 
+<span class="linenr">11: </span>    <span style="color: #33859e;">{</span>
+<span class="linenr">12: </span>        <span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa889;">"call from mixin f method"</span> &lt;&lt; <span style="color: #33859e; font-weight: bold;">std</span>::endl;
+<span class="linenr">13: </span>        <span style="color: #33859e; font-weight: bold;">T</span>::f<span style="color: #d26937;">()</span>;
+<span class="linenr">14: </span>    <span style="color: #33859e;">}</span>
+<span class="linenr">15: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
+<span class="linenr">18: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Mixin2</span> : <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">T</span>
+<span class="linenr">19: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">20: </span><span style="color: #195466; font-weight: bold;">public</span> :
+<span class="linenr">21: </span>    <span style="color: #d26937;">void</span> <span style="color: #599cab;">g</span><span style="color: #33859e;">()</span> 
+<span class="linenr">22: </span>    <span style="color: #33859e;">{</span>
+<span class="linenr">23: </span>        <span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa889;">"call from mixin2 g method"</span> &lt;&lt; <span style="color: #33859e; font-weight: bold;">std</span>::endl;
+<span class="linenr">24: </span>        <span style="color: #33859e; font-weight: bold;">T</span>::f<span style="color: #d26937;">()</span>;
+<span class="linenr">25: </span>    <span style="color: #33859e;">}</span>
+<span class="linenr">26: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr">27: </span>
+<span class="linenr">28: </span><span style="color: #d26937;">int</span> <span style="color: #599cab;">main</span><span style="color: #99d1ce;">()</span>
+<span class="linenr">29: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">30: </span>    <span style="color: #d26937;">Mixin2</span><span style="color: #33859e;">&lt;</span><span style="color: #d26937;">Mixin</span> <span style="color: #d26937;">&lt;</span><span style="color: #d26937;">MixinBase</span><span style="color: #d26937;">&gt;</span> <span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">mix</span>;
+<span class="linenr">31: </span>    mix.g<span style="color: #33859e;">()</span>;
+<span class="linenr">32: </span>
+<span class="linenr">33: </span>    <span style="color: #195466; font-weight: bold;">return</span> <span style="color: #33859e; font-weight: bold;">0</span>;
+<span class="linenr">34: </span><span style="color: #99d1ce;">}</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Now that we know about implicit interfaces and the fact that template must support the interface in the method body, we can talk about one of the most useful concepts in C++, which is the <b><b>Mixin</b></b>.
+</p>
+
+<p>
+Mixins are a great way to reuse code and overcome come implementational problems that <b>composition and delegation</b> and <b>inheritance-based-reuse</b> bring. From a syntactic point of view this is a <code>mixin</code>. This is a template class that inherits from the type of the template. Simple enough, but why is this important? Well, mixins are like putting all of the reusable code in the derived class (instead of the conventional way of putting the reusable code in the base class). Basically, mixins are small classes that implement a very specific functionality for another class, through a specified class that provides the specific features the functionality needs.More abstractly speaking, mixins are small fragments of a class that are intended to be composed with other classes. Let's say we are trying to model something, we start writing our code and implement all of our classes and hierarchies normally as we know, at which point we have several classes, orthogonal to each other (<code>decoupled</code>). We might have some common interface between those classes and at that point we inherit from that interface. We writing our explicit implementation of what we have inherited. Everything seems fine, but the problem with this design is that we do not have an easy way to combine our modeled classes with each other. This is where mixins come in play. They allow us to create primitive classes that are used as building blocks. We can plug in any class we want into them and get the functionality we desire, while keeping the classes orthogonal to each other.
+</p>
+
+<p>
+From the example we can see how a mixin can be used to <b>"plug-in"</b> classes together and get some functionality out of them. The code works like this - we create an object that is combined from a base class that just outputs a string and two other mixin classes. At this point we can see how we are usgin multiple inheritance, i.e. inhereting from the template class. We can simply traverse the output of the program and see how using the <code>g()</code> method we get the output of the <code>Mixin2</code> class, which, then using the template <code>T</code> calls the <code>f()</code> method. Since that <code>T</code> is of type <code>Mixin</code>, we go to that class and execute <code>f()</code>. In that method call we also have another <code>f()</code>, but this time the <code>T</code> of the template is of type <code>MixinBase</code>. Sort of a long traversal, but nothing too complicated. This is how we use mixins in the simplest form. Now let's look at a more practical example.
+</p>
+
+<p>
+Remember, don't use mixins unless your programs needs them. Although their versatility, they bring complexity to the whole structure.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org32e1b5b">
+<h3 id="org32e1b5b"><code>typename</code>, <code>class</code>, <code>typedef</code></h3>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcb15bdb">
+<h3 id="orgcb15bdb">Meta Programming</h3>
+<aside class="notes">
+<p>
+
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org692f782">
+<h2 id="org692f782">The STL</h2>
 <ul>
 <li class="fragment roll-in">Vectors and strings</li>
 <li class="fragment roll-in">Maps and sets</li>
@@ -150,21 +251,21 @@ Okay we get what an implicit interface is. But next to this there is another ver
 </section>
 </section>
 <section>
-<section id="slide-org23b24af">
-<h2 id="org23b24af">Exercises</h2>
+<section id="slide-org907ffcd">
+<h2 id="org907ffcd">Exercises</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-orga16a0f3">
-<h2 id="orga16a0f3">Resources</h2>
-<div class="outline-text-2" id="text-orga16a0f3">
+<section id="slide-orge34f783">
+<h2 id="orge34f783">Resources</h2>
+<div class="outline-text-2" id="text-orge34f783">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org53dea6d">
-<h3 id="org53dea6d">Templates</h3>
+<section id="slide-orgdbc6c71">
+<h3 id="orgdbc6c71">Templates</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/29298212/what-is-an-implicit-interface">Implicit Interface</a></li>
 <li><a href="https://stackoverflow.com/questions/1881468/what-is-compile-time-polymorphism-and-why-does-it-only-apply-to-functions">Compile-time polymorphism</a></li>
