@@ -27,26 +27,26 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-22 пн 10:56</p>
+<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-22 пн 11:12</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgd5bde7d">Generics in C++</a></li>
-<li><a href="#/slide-orgfdec57e">Template programming</a></li>
-<li><a href="#/slide-org692f782">The STL</a></li>
-<li><a href="#/slide-org907ffcd">Exercises</a></li>
-<li><a href="#/slide-orge34f783">Resources</a></li>
+<li><a href="#/slide-org3b421ed">Generics in C++</a></li>
+<li><a href="#/slide-org680ecb1">Template programming</a></li>
+<li><a href="#/slide-org4d37b48">The STL</a></li>
+<li><a href="#/slide-orgb6e407d">Exercises</a></li>
+<li><a href="#/slide-org9ee2aeb">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orgd5bde7d">
-<h2 id="orgd5bde7d">Generics in C++</h2>
+<section id="slide-org3b421ed">
+<h2 id="org3b421ed">Generics in C++</h2>
 <aside class="notes">
 <p>
 One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it independent from types! The C++ template mechanism was also Turing complete (you can compute any computable value with it), which led to template meta programming. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
@@ -57,8 +57,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-orgfdec57e">
-<h2 id="orgfdec57e">Template programming</h2>
+<section id="slide-org680ecb1">
+<h2 id="org680ecb1">Template programming</h2>
 <ul>
 <li class="fragment roll-in">Templates</li>
 <li class="fragment roll-in">Compile-time polymorphism</li>
@@ -70,8 +70,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-orge393266">
-<h3 id="orge393266">Templates</h3>
+<section id="slide-org940e54c">
+<h3 id="org940e54c">Templates</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -126,8 +126,8 @@ One thing to consider when dealing with implicit interfaces is that it's not imp
 </section>
 </section>
 <section>
-<section id="slide-orgfb6253f">
-<h3 id="orgfb6253f">Compile-time polymoprhism</h3>
+<section id="slide-org6f4299e">
+<h3 id="org6f4299e">Compile-time polymoprhism</h3>
 <aside class="notes">
 <p>
 Okay we get what an implicit interface is. But next to this there is another very important aspect of templates and that is <b><b>compile-time polymorphism</b></b>. Sounds scary, it's not. You've most probably have used this and in the world of normal functions this is also known as <b>function overloading</b>. There is a debate whether this should also be referred to as polymorphism, but it is what it is. Now where do templates come along in this? Much similar to overloading, when we are declaring multiple templates, we can specify at some point in our code what the template will be (i.e. what type). Since we are telling the compiler the type, during compile time, the type of the template used will be mapped in the object file and will resolve at that time. In contrast to dynamic binding, where during runtime it is decided which function is called, the compiler knows based on the types we use what to substituted for when a function is called.
@@ -141,8 +141,8 @@ Okay we get what an implicit interface is. But next to this there is another ver
 </section>
 </section>
 <section>
-<section id="slide-orge8d0ed7">
-<h4 id="orge8d0ed7">The Mixin model</h4>
+<section id="slide-org38e4e20">
+<h4 id="org38e4e20">The Mixin idiom</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -215,8 +215,8 @@ Remember, don't use mixins unless your programs needs them. Although their versa
 </section>
 </section>
 <section>
-<section id="slide-org32e1b5b">
-<h3 id="org32e1b5b"><code>typename</code>, <code>class</code>, <code>typedef</code></h3>
+<section id="slide-org653aae4">
+<h3 id="org653aae4"><code>typename</code>, <code>class</code>, <code>typedef</code></h3>
 <aside class="notes">
 <p>
 
@@ -227,8 +227,8 @@ Remember, don't use mixins unless your programs needs them. Although their versa
 </section>
 </section>
 <section>
-<section id="slide-orgcb15bdb">
-<h3 id="orgcb15bdb">Meta Programming</h3>
+<section id="slide-org95d4fdc">
+<h3 id="org95d4fdc">Meta Programming</h3>
 <aside class="notes">
 <p>
 
@@ -239,8 +239,8 @@ Remember, don't use mixins unless your programs needs them. Although their versa
 </section>
 </section>
 <section>
-<section id="slide-org692f782">
-<h2 id="org692f782">The STL</h2>
+<section id="slide-org4d37b48">
+<h2 id="org4d37b48">The STL</h2>
 <ul>
 <li class="fragment roll-in">Vectors and strings</li>
 <li class="fragment roll-in">Maps and sets</li>
@@ -251,26 +251,31 @@ Remember, don't use mixins unless your programs needs them. Although their versa
 </section>
 </section>
 <section>
-<section id="slide-org907ffcd">
-<h2 id="org907ffcd">Exercises</h2>
+<section id="slide-orgb6e407d">
+<h2 id="orgb6e407d">Exercises</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-orge34f783">
-<h2 id="orge34f783">Resources</h2>
-<div class="outline-text-2" id="text-orge34f783">
+<section id="slide-org9ee2aeb">
+<h2 id="org9ee2aeb">Resources</h2>
+<div class="outline-text-2" id="text-org9ee2aeb">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgdbc6c71">
-<h3 id="orgdbc6c71">Templates</h3>
+<section id="slide-orgc1e0a5e">
+<h3 id="orgc1e0a5e">Templates</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/29298212/what-is-an-implicit-interface">Implicit Interface</a></li>
 <li><a href="https://stackoverflow.com/questions/1881468/what-is-compile-time-polymorphism-and-why-does-it-only-apply-to-functions">Compile-time polymorphism</a></li>
 <li><a href="http://advancedcpp.livejournal.com/728.html">Compile-time polymorphism 2</a></li>
 <li><a href="https://michael-afanasiev.github.io/2016/08/03/Combining-Static-and-Dynamic-Polymorphism-with-C++-Template-Mixins.html">Mixins</a></li>
+<li><a href="https://stackoverflow.com/questions/18773367/what-are-mixins-as-a-concept">Mixins 2</a></li>
+<li><a href="https://stackoverflow.com/questions/7085265/what-is-c-mixin-style">Mixins 3</a></li>
+<li><a href="https://en.wikibooks.org/wiki/More_C++_Idioms/Curiously_Recurring_Template_Pattern">Mixins 4</a></li>
+<li><a href="http://www.thinkbottomup.com.au/site/blog/C%20%20_Mixins_-_Reuse_through_inheritance_is_good">Mixins 5</a></li>
+<li><a href="https://yanniss.github.io/practical-fmtd.pdf">Mixins 6</a></li>
 
 </ul>
 </section>
