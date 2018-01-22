@@ -27,26 +27,26 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-22 пн 16:31</p>
+<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-22 пн 17:35</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org6f36f16">Generics in C++</a></li>
-<li><a href="#/slide-orgd1893c1">Template programming</a></li>
-<li><a href="#/slide-orgff3d82d">The STL</a></li>
-<li><a href="#/slide-org273bb82">Exercises</a></li>
-<li><a href="#/slide-orgd55a8a1">Resources</a></li>
+<li><a href="#/slide-org446bd67">Generics in C++</a></li>
+<li><a href="#/slide-orge2bf4ef">Template programming</a></li>
+<li><a href="#/slide-orgac7e3a2">The STL</a></li>
+<li><a href="#/slide-org37d4db6">Exercises</a></li>
+<li><a href="#/slide-org9a04607">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org6f36f16">
-<h2 id="org6f36f16">Generics in C++</h2>
+<section id="slide-org446bd67">
+<h2 id="org446bd67">Generics in C++</h2>
 <aside class="notes">
 <p>
 One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it independent from types! The C++ template mechanism was also Turing complete (you can compute any computable value with it), which led to template meta programming. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
@@ -57,21 +57,20 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-orgd1893c1">
-<h2 id="orgd1893c1">Template programming</h2>
+<section id="slide-orge2bf4ef">
+<h2 id="orge2bf4ef">Template programming</h2>
 <ul>
 <li class="fragment roll-in">Templates</li>
 <li class="fragment roll-in">Compile-time polymorphism</li>
 <li class="fragment roll-in"><code>typename</code> or <code>class</code></li>
-<li class="fragment roll-in">Template Meta Programming</li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org8cf37a5">
-<h3 id="org8cf37a5">Templates</h3>
+<section id="slide-org3eb135f">
+<h3 id="org3eb135f">Templates</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -126,8 +125,8 @@ One thing to consider when dealing with implicit interfaces is that it's not imp
 </section>
 </section>
 <section>
-<section id="slide-org15fe34a">
-<h3 id="org15fe34a">Compile-time polymoprhism</h3>
+<section id="slide-orgb31d452">
+<h3 id="orgb31d452">Compile-time polymoprhism</h3>
 <aside class="notes">
 <p>
 Okay we get what an implicit interface is. But next to this there is another very important aspect of templates and that is <b><b>compile-time polymorphism</b></b>. Sounds scary, it's not. You've most probably have used this and in the world of normal functions this is also known as <b>function overloading</b>. There is a debate whether this should also be referred to as polymorphism, but it is what it is. Now where do templates come along in this? Much similar to overloading, when we are declaring multiple templates, we can specify at some point in our code what the template will be (i.e. what type). Since we are telling the compiler the type, during compile time, the type of the template used will be mapped in the object file and will resolve at that time. In contrast to dynamic binding, where during runtime it is decided which function is called, the compiler knows based on the types we use what to substituted for when a function is called.
@@ -141,8 +140,8 @@ Okay we get what an implicit interface is. But next to this there is another ver
 </section>
 </section>
 <section>
-<section id="slide-org3dadf9b">
-<h4 id="org3dadf9b">The Mixin idiom</h4>
+<section id="slide-org91f76e9">
+<h4 id="org91f76e9">The Mixin idiom</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -215,8 +214,8 @@ Remember, don't use mixins unless your programs needs them. Although their versa
 </section>
 </section>
 <section>
-<section id="slide-orgf075bac">
-<h3 id="orgf075bac"><code>typename</code> or <code>class</code></h3>
+<section id="slide-org34e05c1">
+<h3 id="org34e05c1"><code>typename</code> or <code>class</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Thing</span>;
@@ -273,23 +272,12 @@ For <b>class</b> - The other edge case is when we have a <b>template template pa
 
 </aside>
 
-</section>
-</section>
-<section>
-<section id="slide-orgaa08f80">
-<h3 id="orgaa08f80">Meta Programming</h3>
-<aside class="notes">
-<p>
-
-</p>
-
-</aside>
 
 </section>
 </section>
 <section>
-<section id="slide-orgff3d82d">
-<h2 id="orgff3d82d">The STL</h2>
+<section id="slide-orgac7e3a2">
+<h2 id="orgac7e3a2">The STL</h2>
 <ul>
 <li class="fragment roll-in">Vectors and strings</li>
 <li class="fragment roll-in">Maps and sets</li>
@@ -300,21 +288,21 @@ For <b>class</b> - The other edge case is when we have a <b>template template pa
 </section>
 </section>
 <section>
-<section id="slide-org273bb82">
-<h2 id="org273bb82">Exercises</h2>
+<section id="slide-org37d4db6">
+<h2 id="org37d4db6">Exercises</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-orgd55a8a1">
-<h2 id="orgd55a8a1">Resources</h2>
-<div class="outline-text-2" id="text-orgd55a8a1">
+<section id="slide-org9a04607">
+<h2 id="org9a04607">Resources</h2>
+<div class="outline-text-2" id="text-org9a04607">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orga9ed2bd">
-<h3 id="orga9ed2bd">Templates</h3>
+<section id="slide-orge97da7a">
+<h3 id="orge97da7a">Templates</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/29298212/what-is-an-implicit-interface">Implicit Interface</a></li>
 <li><a href="https://stackoverflow.com/questions/1881468/what-is-compile-time-polymorphism-and-why-does-it-only-apply-to-functions">Compile-time polymorphism</a></li>
@@ -325,6 +313,9 @@ For <b>class</b> - The other edge case is when we have a <b>template template pa
 <li><a href="https://en.wikibooks.org/wiki/More_C++_Idioms/Curiously_Recurring_Template_Pattern">Mixins 4</a></li>
 <li><a href="http://www.thinkbottomup.com.au/site/blog/C%20%20_Mixins_-_Reuse_through_inheritance_is_good">Mixins 5</a></li>
 <li><a href="https://yanniss.github.io/practical-fmtd.pdf">Mixins 6</a></li>
+<li><a href="https://web.archive.org/web/20060619131004/http://blogs.msdn.com/slippman/archive/2004/08/11/212768.aspx">Typename why do we have it</a></li>
+<li><a href="https://stackoverflow.com/questions/2023977/difference-of-keywords-typename-and-class-in-templates">Typename and class</a></li>
+<li><a href="https://stackoverflow.com/questions/2023977/difference-of-keywords-typename-and-class-in-templates">Difference between typename and class</a></li>
 
 </ul>
 </section>
