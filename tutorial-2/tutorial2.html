@@ -27,26 +27,26 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-23 вт 20:11</p>
+<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-23 вт 20:17</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org38f42b4">Generics in C++</a></li>
-<li><a href="#/slide-org44f767a">Template programming</a></li>
-<li><a href="#/slide-org4749866">The STL</a></li>
-<li><a href="#/slide-org49eae88">Exercises</a></li>
-<li><a href="#/slide-org1bd0a89">Resources</a></li>
+<li><a href="#/slide-org968c88a">Generics in C++</a></li>
+<li><a href="#/slide-orge631d35">Template programming</a></li>
+<li><a href="#/slide-org53cafc0">The STL</a></li>
+<li><a href="#/slide-org1642350">Exercises</a></li>
+<li><a href="#/slide-orgc28630d">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org38f42b4">
-<h2 id="org38f42b4">Generics in C++</h2>
+<section id="slide-org968c88a">
+<h2 id="org968c88a">Generics in C++</h2>
 <aside class="notes">
 <p>
 One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it independent from types! The C++ template mechanism was also Turing complete (you can compute any computable value with it), which led to template meta programming. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
@@ -57,8 +57,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org44f767a">
-<h2 id="org44f767a">Template programming</h2>
+<section id="slide-orge631d35">
+<h2 id="orge631d35">Template programming</h2>
 <ul>
 <li class="fragment roll-in">Templates</li>
 <li class="fragment roll-in">Compile-time polymorphism</li>
@@ -69,8 +69,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-orgc150bd3">
-<h3 id="orgc150bd3">Templates</h3>
+<section id="slide-org8da0b29">
+<h3 id="org8da0b29">Templates</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -125,8 +125,8 @@ One thing to consider when dealing with implicit interfaces is that it's not imp
 </section>
 </section>
 <section>
-<section id="slide-org6193b02">
-<h3 id="org6193b02">Compile-time polymoprhism</h3>
+<section id="slide-org4684252">
+<h3 id="org4684252">Compile-time polymoprhism</h3>
 <ul>
 <li>In old C++ - function overloading</li>
 <li>In template C++ - almost the same, but with unknown types</li>
@@ -143,8 +143,8 @@ Okay we get what an implicit interface is. But next to this there is another ver
 </section>
 </section>
 <section>
-<section id="slide-orgb18e307">
-<h4 id="orgb18e307">The Mixin idiom</h4>
+<section id="slide-org2c72970">
+<h4 id="org2c72970">The Mixin idiom</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -220,8 +220,8 @@ Remember, don't use mixins unless your programs needs them. Although their versa
 </section>
 </section>
 <section>
-<section id="slide-orgc4eae55">
-<h3 id="orgc4eae55"><code>typename</code> or <code>class</code></h3>
+<section id="slide-orgd0c60c5">
+<h3 id="orgd0c60c5"><code>typename</code> or <code>class</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Thing</span>;
@@ -281,8 +281,8 @@ For <b>class</b> - The other edge case is when we have a <b>template template pa
 </section>
 </section>
 <section>
-<section id="slide-org4749866">
-<h2 id="org4749866">The STL</h2>
+<section id="slide-org53cafc0">
+<h2 id="org53cafc0">The STL</h2>
 <ul>
 <li class="fragment roll-in">Containers</li>
 <li class="fragment roll-in">Vectors, strings, maps, and sets</li>
@@ -301,8 +301,8 @@ Now that we have a good grasp of what templates are, we can concentrate on one o
 </section>
 </section>
 <section>
-<section id="slide-org1ad4974">
-<h3 id="org1ad4974">Containers</h3>
+<section id="slide-org8797641">
+<h3 id="org8797641">Containers</h3>
 <ul>
 <li class="fragment roll-in">Sequence containers</li>
 <li class="fragment roll-in">Associative containers</li>
@@ -496,21 +496,21 @@ What about if we have a conditional?
 </section>
 </section>
 <section>
-<section id="slide-org49eae88">
-<h2 id="org49eae88">Exercises</h2>
+<section id="slide-org1642350">
+<h2 id="org1642350">Exercises</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-org1bd0a89">
-<h2 id="org1bd0a89">Resources</h2>
-<div class="outline-text-2" id="text-org1bd0a89">
+<section id="slide-orgc28630d">
+<h2 id="orgc28630d">Resources</h2>
+<div class="outline-text-2" id="text-orgc28630d">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org2e884ec">
-<h3 id="org2e884ec">Templates</h3>
+<section id="slide-orgd3fb011">
+<h3 id="orgd3fb011">Templates</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/29298212/what-is-an-implicit-interface">Implicit Interface</a></li>
 <li><a href="https://stackoverflow.com/questions/1881468/what-is-compile-time-polymorphism-and-why-does-it-only-apply-to-functions">Compile-time polymorphism</a></li>
@@ -524,6 +524,24 @@ What about if we have a conditional?
 <li><a href="https://web.archive.org/web/20060619131004/http://blogs.msdn.com/slippman/archive/2004/08/11/212768.aspx">Typename why do we have it</a></li>
 <li><a href="https://stackoverflow.com/questions/2023977/difference-of-keywords-typename-and-class-in-templates">Typename and class</a></li>
 <li><a href="https://stackoverflow.com/questions/2023977/difference-of-keywords-typename-and-class-in-templates">Difference between typename and class</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd422a0d">
+<h3 id="orgd422a0d">STL</h3>
+<ul>
+<li><a href="http://www.cplusplus.com/reference/stl/">Containers</a></li>
+<li><a href="http://en.cppreference.com/w/cpp/container">Containers 2</a></li>
+<li><a href="https://www.cs.helsinki.fi/u/tpkarkka/alglib/k06/lectures/containers.html">Containers 3</a></li>
+<li><a href="https://eli.thegreenplace.net/2012/06/20/c11-using-unique_ptr-with-standard-library-containers">Smart pointers</a></li>
+<li><a href="https://jonasdevlieghere.com/containers-of-unique-pointers/">Unique pointer</a></li>
+<li><a href="https://stackoverflow.com/questions/17753442/dealing-with-unique-ptr-in-containers">How to use unique pointers in containers</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Erase%E2%80%93remove_idiom">Erase-remove idiom</a></li>
+<li><a href="https://en.wikibooks.org/wiki/More_C++_Idioms/Erase-Remove">Erase-remove idiom 2</a></li>
+<li><a href="https://stackoverflow.com/questions/347441/erasing-elements-from-a-vector">Erase elements from a vector</a></li>
 
 </ul>
 </section>
