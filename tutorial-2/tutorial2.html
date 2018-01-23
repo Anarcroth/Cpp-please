@@ -27,26 +27,26 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-22 пн 17:35</p>
+<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-23 вт 20:11</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org446bd67">Generics in C++</a></li>
-<li><a href="#/slide-orge2bf4ef">Template programming</a></li>
-<li><a href="#/slide-orgac7e3a2">The STL</a></li>
-<li><a href="#/slide-org37d4db6">Exercises</a></li>
-<li><a href="#/slide-org9a04607">Resources</a></li>
+<li><a href="#/slide-org38f42b4">Generics in C++</a></li>
+<li><a href="#/slide-org44f767a">Template programming</a></li>
+<li><a href="#/slide-org4749866">The STL</a></li>
+<li><a href="#/slide-org49eae88">Exercises</a></li>
+<li><a href="#/slide-org1bd0a89">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org446bd67">
-<h2 id="org446bd67">Generics in C++</h2>
+<section id="slide-org38f42b4">
+<h2 id="org38f42b4">Generics in C++</h2>
 <aside class="notes">
 <p>
 One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it independent from types! The C++ template mechanism was also Turing complete (you can compute any computable value with it), which led to template meta programming. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
@@ -57,8 +57,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-orge2bf4ef">
-<h2 id="orge2bf4ef">Template programming</h2>
+<section id="slide-org44f767a">
+<h2 id="org44f767a">Template programming</h2>
 <ul>
 <li class="fragment roll-in">Templates</li>
 <li class="fragment roll-in">Compile-time polymorphism</li>
@@ -69,8 +69,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org3eb135f">
-<h3 id="org3eb135f">Templates</h3>
+<section id="slide-orgc150bd3">
+<h3 id="orgc150bd3">Templates</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -125,8 +125,14 @@ One thing to consider when dealing with implicit interfaces is that it's not imp
 </section>
 </section>
 <section>
-<section id="slide-orgb31d452">
-<h3 id="orgb31d452">Compile-time polymoprhism</h3>
+<section id="slide-org6193b02">
+<h3 id="org6193b02">Compile-time polymoprhism</h3>
+<ul>
+<li>In old C++ - function overloading</li>
+<li>In template C++ - almost the same, but with unknown types</li>
+
+</ul>
+
 <aside class="notes">
 <p>
 Okay we get what an implicit interface is. But next to this there is another very important aspect of templates and that is <b><b>compile-time polymorphism</b></b>. Sounds scary, it's not. You've most probably have used this and in the world of normal functions this is also known as <b>function overloading</b>. There is a debate whether this should also be referred to as polymorphism, but it is what it is. Now where do templates come along in this? Much similar to overloading, when we are declaring multiple templates, we can specify at some point in our code what the template will be (i.e. what type). Since we are telling the compiler the type, during compile time, the type of the template used will be mapped in the object file and will resolve at that time. In contrast to dynamic binding, where during runtime it is decided which function is called, the compiler knows based on the types we use what to substituted for when a function is called.
@@ -135,13 +141,10 @@ Okay we get what an implicit interface is. But next to this there is another ver
 </aside>
 
 </section>
-<section >
-
-</section>
 </section>
 <section>
-<section id="slide-org91f76e9">
-<h4 id="org91f76e9">The Mixin idiom</h4>
+<section id="slide-orgb18e307">
+<h4 id="orgb18e307">The Mixin idiom</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -151,6 +154,9 @@ Okay we get what an implicit interface is. But next to this there is another ver
 <span class="linenr">4: </span><span style="color: #99d1ce;">}</span>;
 </pre>
 </div>
+
+</section>
+<section >
 
 <div class="org-src-container">
 
@@ -214,8 +220,8 @@ Remember, don't use mixins unless your programs needs them. Although their versa
 </section>
 </section>
 <section>
-<section id="slide-org34e05c1">
-<h3 id="org34e05c1"><code>typename</code> or <code>class</code></h3>
+<section id="slide-orgc4eae55">
+<h3 id="orgc4eae55"><code>typename</code> or <code>class</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Thing</span>;
@@ -272,37 +278,239 @@ For <b>class</b> - The other edge case is when we have a <b>template template pa
 
 </aside>
 
-
 </section>
 </section>
 <section>
-<section id="slide-orgac7e3a2">
-<h2 id="orgac7e3a2">The STL</h2>
+<section id="slide-org4749866">
+<h2 id="org4749866">The STL</h2>
 <ul>
-<li class="fragment roll-in">Vectors and strings</li>
-<li class="fragment roll-in">Maps and sets</li>
+<li class="fragment roll-in">Containers</li>
+<li class="fragment roll-in">Vectors, strings, maps, and sets</li>
+<li class="fragment roll-in">Iterators</li>
 <li class="fragment roll-in">Lambda functions</li>
 
 </ul>
 
-</section>
-</section>
-<section>
-<section id="slide-org37d4db6">
-<h2 id="org37d4db6">Exercises</h2>
+<aside class="notes">
+<p>
+Now that we have a good grasp of what templates are, we can concentrate on one of the best things in C++ - the STL (<b>The Standard template Library</b>). The STL is an arrangement of containers that allows us to manipulate our data in easy and intuitive ways. Although there is a whole other book specifically for how to use the STL in an effective manner. We can't cover all of those items here, so we will just look over some of the most useful things (or at least to my perception). Nevertheless, after this section you should feel comfortable to dive deep into the world of STL, it's both fun and it makes C++ much much easier (if done right).
+</p>
+
+</aside>
 
 </section>
 </section>
 <section>
-<section id="slide-org9a04607">
-<h2 id="org9a04607">Resources</h2>
-<div class="outline-text-2" id="text-org9a04607">
+<section id="slide-org1ad4974">
+<h3 id="org1ad4974">Containers</h3>
+<ul>
+<li class="fragment roll-in">Sequence containers</li>
+<li class="fragment roll-in">Associative containers</li>
+<li class="fragment roll-in">Unordered associative containers</li>
+<li class="fragment roll-in">Container adapters</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+The containers of C++ are the fundamentals of how the STL works. These are collections of the same object, where they hold/own the elements in them. Containers are very flexible due to their <b>template</b> implementation. We have three general forms of containers. <b>Sequence</b> containers  control the order in which elements are stored (<code>vector</code>, <code>array</code>, <code>list</code>, <code>deque</code>). The order in which we insert our data is the order we are going to get it. <b>Associative</b> containers control the position of the elements (<code>set</code>, <code>map</code>, <code>multimap</code>, <code>multiset</code>). In this case the elements are not inserted based to the position they have, but on their value. Finally we have <b>Unordered</b> associative containers, which holds the position of the elements through a hash to each element (<code>unordered_set</code>, <code>unordered_map</code>). There are also the so called <b>container adapters</b>, which are not full blown containers, but are used to hold some other container in them (<code>stack</code>, <code>queue</code>, <code>priority_queue</code>). These adapters hold the other container and through the adapter do we access the elements. Of course there are many more types of containers, but these are the basics and should get you going.
+</p>
+
+</aside>
+
+</section>
+<section >
+
+<p>
+To <code>size()</code> or to <code>empty()</code>?
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">if</span> <span style="color: #99d1ce;">(</span>cont.size<span style="color: #33859e;">()</span> == <span style="color: #33859e; font-weight: bold;">0</span><span style="color: #99d1ce;">)</span> <span style="color: #245361;">// </span><span style="color: #245361;">same lines</span>
+<span class="linenr">1: </span><span style="color: #195466; font-weight: bold;">if</span> <span style="color: #99d1ce;">(</span>cont.empty<span style="color: #33859e;">()</span><span style="color: #99d1ce;">)</span>     <span style="color: #245361;">// </span><span style="color: #245361;">of code</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Now let's talk about some implementations we can use with containers, which are going to make our lives easier. One this is that we will often, when using containers, see if it's empty or not. We have to ways of doing that, wither through <code>cont.size() == 0</code> or <code>cont.empty()</code>. Which one is the better way? The latter is. Because, when we are calling the <code>size()</code> function, we are telling the container to traverse through the whole construct to see what is the actual size. The problem here is that, size cannot be implemented to return in constant time. Since new elements have to change the size of the container, this puts the implementer in a conundrum, how to make size return in constant time, and different container implementations make different choices. To overcome this, just use <code>empty()</code>, because this method will always return in constant time.
+</p>
+
+</aside>
+
+</section>
+<section >
+
+<p>
+Prefer range member functions to for loops
+</p>
+
+<div class="org-src-container">
+
+<pre  class="fragment (roll-in)"><span class="linenr">0: </span>v1.assign<span style="color: #99d1ce;">(</span>v2.begin<span style="color: #33859e;">()</span> + v2.size<span style="color: #33859e;">()</span> / <span style="color: #33859e; font-weight: bold;">2</span>, v2.end<span style="color: #33859e;">()</span><span style="color: #99d1ce;">)</span>;
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre  class="fragment (roll-in)"><span class="linenr">0: </span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">vector</span><span style="color: #99d1ce;">&lt;</span>Obj<span style="color: #99d1ce;">&gt;</span> <span style="color: #599cab;">v1</span>,<span style="color: #599cab;">v2</span>;
+<span class="linenr">1: </span>
+<span class="linenr">2: </span><span style="color: #245361;">// </span><span style="color: #245361;">code thingies</span>
+<span class="linenr">3: </span>
+<span class="linenr">4: </span>v1.clear<span style="color: #99d1ce;">()</span>;
+<span class="linenr">5: </span><span style="color: #195466; font-weight: bold;">for</span> <span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">auto</span> &amp;<span style="color: #599cab;">v</span> : v2.begin<span style="color: #33859e;">()</span> + v2.size<span style="color: #33859e;">()</span> / <span style="color: #33859e; font-weight: bold;">2</span><span style="color: #99d1ce;">)</span>
+<span class="linenr">6: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">7: </span>    v1.push_back<span style="color: #33859e;">(</span>v<span style="color: #33859e;">)</span>;
+<span class="linenr">8: </span><span style="color: #99d1ce;">}</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+One of the best things about the containers is that they come with built in awesome member functions that will do a lot of work for us with the added benefit of making the code base clearer and smaller. The problem is that we don't always know that the containers we are using have such awesome functions that come along with them. Specifically, if you like writing for loops for containers, then maybe it's time to look over what that specific data structure can do for you. Let's take this example. We have two vectors <code>v1</code> and <code>v2</code>. We want to make <code>v1</code> be the same as the second half of <code>v2</code>, what's the easiest way? Answer : <code>v1.assign(v2.begin() + v2.size() / 2, v2.end());</code>. Here we are achieving a few things. First we are making our code much smaller and clearer, combining everything we want into just a few characters. Second, we are not using some form of looping logic we wrote, because look at how we would have to write it if we were to make it ourselves. The best way to overcome such problems is to ask yourself before you try to use a loop - "What do I want to achieve with this loop and can I use something from the containers method set?". This will both decrease the code you write and will increase your knowledge of the STL, because most of these range based members are in the majority of containers.
+</p>
+
+</aside>
+
+</section>
+<section >
+
+<p>
+Delete <code>new</code> ed objects in containers
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">awesomeFunction</span><span style="color: #99d1ce;">()</span>
+<span class="linenr">1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">2: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">vector</span><span style="color: #33859e;">&lt;</span><span style="color: #d26937;">Obj</span>*<span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">v_obj</span>;
+<span class="linenr">3: </span>    <span style="color: #195466; font-weight: bold;">for</span> <span style="color: #33859e;">(</span><span style="color: #d26937;">int</span> <span style="color: #599cab;">i</span> = <span style="color: #33859e; font-weight: bold;">0</span>; i &lt; <span style="color: #33859e; font-weight: bold;">42</span>; i++<span style="color: #33859e;">)</span>
+<span class="linenr">4: </span>    <span style="color: #33859e;">{</span>
+<span class="linenr">5: </span>        v_obj.push_back<span style="color: #d26937;">(</span><span style="color: #195466; font-weight: bold;">new</span> <span style="color: #d26937;">Obj</span><span style="color: #d26937;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">ticking timebomb</span>
+<span class="linenr">6: </span>        <span style="color: #245361;">// </span><span style="color: #245361;">more code...</span>
+<span class="linenr">7: </span>    <span style="color: #33859e;">}</span>
+<span class="linenr">8: </span><span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">memory leak happens here!</span>
+</pre>
+</div>
+
+</section>
+<section >
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">awesomeFunction</span><span style="color: #99d1ce;">()</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #245361;">// </span><span style="color: #245361;">.. same code as before</span>
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span>    <span style="color: #195466; font-weight: bold;">for</span> <span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">auto</span> &amp;<span style="color: #599cab;">v</span> : v_obj<span style="color: #33859e;">)</span>
+<span class="linenr"> 5: </span>    <span style="color: #33859e;">{</span>
+<span class="linenr"> 6: </span>        <span style="color: #195466; font-weight: bold;">delete</span> v;
+<span class="linenr"> 7: </span>    <span style="color: #33859e;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">no memory leaks!</span>
+<span class="linenr"> 8: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #245361;">// </span><span style="color: #245361;">or</span>
+<span class="linenr">11: </span>
+<span class="linenr">12: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">manageFlights</span><span style="color: #99d1ce;">()</span>
+<span class="linenr">13: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">14: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">vector</span><span style="color: #33859e;">&lt;</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">unique_ptr</span><span style="color: #d26937;">&lt;</span>Plane<span style="color: #d26937;">&gt;</span> <span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">airport</span>;
+<span class="linenr">15: </span>    <span style="color: #195466; font-weight: bold;">for</span> <span style="color: #33859e;">(</span><span style="color: #d26937;">int</span> <span style="color: #599cab;">i</span> = <span style="color: #33859e; font-weight: bold;">0</span>; i &lt; <span style="color: #33859e; font-weight: bold;">10</span>; i++<span style="color: #33859e;">)</span>
+<span class="linenr">16: </span>    <span style="color: #33859e;">{</span>
+<span class="linenr">17: </span>        airport.push_back<span style="color: #d26937;">(</span><span style="color: #33859e; font-weight: bold;">std</span>::make_unique<span style="color: #888ca6;">&lt;</span>Plane<span style="color: #888ca6;">&gt;()</span><span style="color: #d26937;">)</span>;
+<span class="linenr">18: </span>        airport.at<span style="color: #d26937;">(</span>i<span style="color: #d26937;">)</span>-&gt;fuel = <span style="color: #33859e; font-weight: bold;">4000</span>;
+<span class="linenr">19: </span>        <span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; airport.at<span style="color: #d26937;">(</span>i<span style="color: #d26937;">)</span>-&gt;fuel &lt;&lt; <span style="color: #33859e; font-weight: bold;">std</span>::endl;
+<span class="linenr">20: </span>    <span style="color: #33859e;">}</span>
+<span class="linenr">21: </span><span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">No memory leaks!</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+More often than not, you will be creating objects on the <code>heap</code> regularly and you will be using your containers as usual. So you will, naturally, combine both your new objects in the containers, but there is a small problem here. Containers by themselves do handle their own memory and they do delete themselves once their are of no need, but that doesn't mean that they will handle data on the <code>heap</code>. That's why if you have collections that are filled with such objects, you have to manually delete them. Now there is some wiggle room and that is that we can use <b>smart pointer</b> to our advantage and not worry about memory allocation and deletion. Now there is some clearing up to do. Before <b>C++ 11</b>, we had only one type of smart pointer and that is the <code>auto_ptr</code>. Since then <code>auto_ptr</code> isn't all that smart and caused a lot of troubles. One of which is the fact that we couldn't use it with any container. It was so bad that the C++ standards committee actually forced a rule where the compiler will not allow the program to have an <code>auto_ptr</code> in any container. But after C++ 11, things changed and we have <code>uniquq_ptr</code>, which should be your default <b>goto</b> when dealing with smart pointers. Let's get back to our example. Now we have to general approaches to fix our code leak. One is to manually go over the container with a <code>for loop</code> and delete by hand what we have created. Or the other is to use the magical <code>unique_ptr</code> and let that handle everything. Generally, use the smart pointers that are at our disposal.
+</p>
+
+</aside>
+
+</section>
+<section >
+
+<p>
+How to <b><b>really</b></b> erase things from a container
+</p>
+
+<ul>
+<li>dependent on specific container</li>
+<li>erase-remove idiom</li>
+<li>normal remove</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">removes all elements with the value 5 from a vector</span>
+<span class="linenr">1: </span>v.erase<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">std</span>::remove<span style="color: #33859e;">(</span>v.begin<span style="color: #d26937;">()</span>, v.end<span style="color: #d26937;">()</span>, <span style="color: #33859e; font-weight: bold;">5</span><span style="color: #33859e;">)</span>, v.end<span style="color: #33859e;">()</span><span style="color: #99d1ce;">)</span>;
+<span class="linenr">2: </span><span style="color: #245361;">// </span><span style="color: #245361;">remove all elements with the value 42 from a list</span>
+<span class="linenr">3: </span>c.remove<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">42</span><span style="color: #99d1ce;">)</span>;
+<span class="linenr">4: </span><span style="color: #245361;">// </span><span style="color: #245361;">remove all elements with the value 68.9 from a map</span>
+<span class="linenr">5: </span>m.erase<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">68.9</span><span style="color: #99d1ce;">)</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Why do we need to know that there are 3 types of containers? Many reasons, but one of them is, because this will help us utilize the removal of items in an efficient manner. Every type of container has it's own way to remove elements and there is not general approach, but here are some guidelines. If you have a <code>string</code>, <code>vector</code>, or a <code>deque</code> (i.e. a sequential container), then use the <b>erase-remove-idiom</b>. What is the <b>erase-remove-idiom</b>? It's a popular technique for these types of containers where we call the two methods <code>erase()</code> and <code>remove()</code> to delete something. We can see from the example how to use it. <b>Note</b>: that in order to use <code>remove()</code> we must include the <code>&lt;algorithm&gt;</code> library in our code, since the sequential containers don't have such a method.
+</p>
+
+<p>
+For <b>lists</b>, the situation is different. Although the above will work, there is a better way. You should just use the built in <code>remove</code> method in the list class. In general here is another <b>rule as a bonus</b>: prefer the class specific methods of containers to the same methods in the <code>algorithm</code> file. This is much more efficient.
+</p>
+
+<p>
+For <b>associative containers</b> however things are different. We should never use anything that has the word <b>remove</b> as a way to delete elements from the container. This will probably lead to data corruption and in-proper element removal. Also such container don't even have a method called <code>remove()</code>. Instead we should use the <code>erase()</code> method and it will work just fine.
+</p>
+
+<p>
+In general the <b>erase-remove idiom</b> should work for most things, but with little experimenting you will get the hang of things.
+</p>
+
+</aside>
+
+</section>
+<section >
+
+<p>
+What about if we have a conditional?
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">removes all elements with the value 5 from a vector</span>
+<span class="linenr">1: </span>v.erase<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">std</span>::remove<span style="color: #33859e;">(</span>v.begin<span style="color: #d26937;">()</span>, v.end<span style="color: #d26937;">()</span>, <span style="color: #33859e; font-weight: bold;">5</span><span style="color: #33859e;">)</span>, v.end<span style="color: #33859e;">()</span><span style="color: #99d1ce;">)</span>;
+<span class="linenr">2: </span><span style="color: #245361;">// </span><span style="color: #245361;">remove all elements with the value 42 from a list</span>
+<span class="linenr">3: </span>c.remove<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">42</span><span style="color: #99d1ce;">)</span>;
+<span class="linenr">4: </span><span style="color: #245361;">// </span><span style="color: #245361;">remove all elements with the value 68.9 from a map</span>
+<span class="linenr">5: </span>m.erase<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">68.9</span><span style="color: #99d1ce;">)</span>;
+</pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org49eae88">
+<h2 id="org49eae88">Exercises</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org1bd0a89">
+<h2 id="org1bd0a89">Resources</h2>
+<div class="outline-text-2" id="text-org1bd0a89">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orge97da7a">
-<h3 id="orge97da7a">Templates</h3>
+<section id="slide-org2e884ec">
+<h3 id="org2e884ec">Templates</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/29298212/what-is-an-implicit-interface">Implicit Interface</a></li>
 <li><a href="https://stackoverflow.com/questions/1881468/what-is-compile-time-polymorphism-and-why-does-it-only-apply-to-functions">Compile-time polymorphism</a></li>
