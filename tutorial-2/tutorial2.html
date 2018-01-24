@@ -27,26 +27,26 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-23 вт 20:17</p>
+<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-24 ср 11:32</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org968c88a">Generics in C++</a></li>
-<li><a href="#/slide-orge631d35">Template programming</a></li>
-<li><a href="#/slide-org53cafc0">The STL</a></li>
-<li><a href="#/slide-org1642350">Exercises</a></li>
-<li><a href="#/slide-orgc28630d">Resources</a></li>
+<li><a href="#/slide-org220a481">Generics in C++</a></li>
+<li><a href="#/slide-org4a98d2b">Template programming</a></li>
+<li><a href="#/slide-org63bf3ba">The STL</a></li>
+<li><a href="#/slide-orgd94c861">Exercises</a></li>
+<li><a href="#/slide-org76c5b9f">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org968c88a">
-<h2 id="org968c88a">Generics in C++</h2>
+<section id="slide-org220a481">
+<h2 id="org220a481">Generics in C++</h2>
 <aside class="notes">
 <p>
 One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it independent from types! The C++ template mechanism was also Turing complete (you can compute any computable value with it), which led to template meta programming. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
@@ -57,8 +57,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-orge631d35">
-<h2 id="orge631d35">Template programming</h2>
+<section id="slide-org4a98d2b">
+<h2 id="org4a98d2b">Template programming</h2>
 <ul>
 <li class="fragment roll-in">Templates</li>
 <li class="fragment roll-in">Compile-time polymorphism</li>
@@ -69,8 +69,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org8da0b29">
-<h3 id="org8da0b29">Templates</h3>
+<section id="slide-orgaa128da">
+<h3 id="orgaa128da">Templates</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -125,8 +125,8 @@ One thing to consider when dealing with implicit interfaces is that it's not imp
 </section>
 </section>
 <section>
-<section id="slide-org4684252">
-<h3 id="org4684252">Compile-time polymoprhism</h3>
+<section id="slide-org4c4cae4">
+<h3 id="org4c4cae4">Compile-time polymoprhism</h3>
 <ul>
 <li>In old C++ - function overloading</li>
 <li>In template C++ - almost the same, but with unknown types</li>
@@ -143,8 +143,8 @@ Okay we get what an implicit interface is. But next to this there is another ver
 </section>
 </section>
 <section>
-<section id="slide-org2c72970">
-<h4 id="org2c72970">The Mixin idiom</h4>
+<section id="slide-org1232b0f">
+<h4 id="org1232b0f">The Mixin idiom</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -220,8 +220,8 @@ Remember, don't use mixins unless your programs needs them. Although their versa
 </section>
 </section>
 <section>
-<section id="slide-orgd0c60c5">
-<h3 id="orgd0c60c5"><code>typename</code> or <code>class</code></h3>
+<section id="slide-orgc24d09f">
+<h3 id="orgc24d09f"><code>typename</code> or <code>class</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Thing</span>;
@@ -281,8 +281,8 @@ For <b>class</b> - The other edge case is when we have a <b>template template pa
 </section>
 </section>
 <section>
-<section id="slide-org53cafc0">
-<h2 id="org53cafc0">The STL</h2>
+<section id="slide-org63bf3ba">
+<h2 id="org63bf3ba">The STL</h2>
 <ul>
 <li class="fragment roll-in">Containers</li>
 <li class="fragment roll-in">Vectors, strings, maps, and sets</li>
@@ -301,8 +301,8 @@ Now that we have a good grasp of what templates are, we can concentrate on one o
 </section>
 </section>
 <section>
-<section id="slide-org8797641">
-<h3 id="org8797641">Containers</h3>
+<section id="slide-org3f3e663">
+<h3 id="org3f3e663">Containers</h3>
 <ul>
 <li class="fragment roll-in">Sequence containers</li>
 <li class="fragment roll-in">Associative containers</li>
@@ -449,10 +449,12 @@ How to <b><b>really</b></b> erase things from a container
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">removes all elements with the value 5 from a vector</span>
 <span class="linenr">1: </span>v.erase<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">std</span>::remove<span style="color: #33859e;">(</span>v.begin<span style="color: #d26937;">()</span>, v.end<span style="color: #d26937;">()</span>, <span style="color: #33859e; font-weight: bold;">5</span><span style="color: #33859e;">)</span>, v.end<span style="color: #33859e;">()</span><span style="color: #99d1ce;">)</span>;
-<span class="linenr">2: </span><span style="color: #245361;">// </span><span style="color: #245361;">remove all elements with the value 42 from a list</span>
-<span class="linenr">3: </span>c.remove<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">42</span><span style="color: #99d1ce;">)</span>;
-<span class="linenr">4: </span><span style="color: #245361;">// </span><span style="color: #245361;">remove all elements with the value 68.9 from a map</span>
-<span class="linenr">5: </span>m.erase<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">68.9</span><span style="color: #99d1ce;">)</span>;
+<span class="linenr">2: </span>
+<span class="linenr">3: </span><span style="color: #245361;">// </span><span style="color: #245361;">remove all elements with the value 42 from a list</span>
+<span class="linenr">4: </span>c.remove<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">42</span><span style="color: #99d1ce;">)</span>;
+<span class="linenr">5: </span>
+<span class="linenr">6: </span><span style="color: #245361;">// </span><span style="color: #245361;">remove all elements with the value 68.9 from a map</span>
+<span class="linenr">7: </span>m.erase<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">68.9</span><span style="color: #99d1ce;">)</span>;
 </pre>
 </div>
 
@@ -484,33 +486,66 @@ What about if we have a conditional?
 
 <div class="org-src-container">
 
-<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">removes all elements with the value 5 from a vector</span>
-<span class="linenr">1: </span>v.erase<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">std</span>::remove<span style="color: #33859e;">(</span>v.begin<span style="color: #d26937;">()</span>, v.end<span style="color: #d26937;">()</span>, <span style="color: #33859e; font-weight: bold;">5</span><span style="color: #33859e;">)</span>, v.end<span style="color: #33859e;">()</span><span style="color: #99d1ce;">)</span>;
-<span class="linenr">2: </span><span style="color: #245361;">// </span><span style="color: #245361;">remove all elements with the value 42 from a list</span>
-<span class="linenr">3: </span>c.remove<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">42</span><span style="color: #99d1ce;">)</span>;
-<span class="linenr">4: </span><span style="color: #245361;">// </span><span style="color: #245361;">remove all elements with the value 68.9 from a map</span>
-<span class="linenr">5: </span>m.erase<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">68.9</span><span style="color: #99d1ce;">)</span>;
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #d26937;">bool</span> <span style="color: #599cab;">bad_val</span><span style="color: #99d1ce;">(</span>x<span style="color: #99d1ce;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">returns whether or not x is a bad value</span>
+<span class="linenr"> 1: </span>
+<span class="linenr"> 2: </span><span style="color: #245361;">// </span><span style="color: #245361;">removes bad_val if it returns true</span>
+<span class="linenr"> 3: </span>some_list.erase<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">std</span>::remove_if<span style="color: #33859e;">(</span>some_list.begin<span style="color: #d26937;">()</span>, some_list.end<span style="color: #d26937;">()</span>, bad_val<span style="color: #33859e;">)</span>, some_list.end<span style="color: #33859e;">()</span><span style="color: #99d1ce;">)</span>;
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #245361;">// </span><span style="color: #245361;">same as previous line but for lists specifically</span>
+<span class="linenr"> 6: </span>c.remove_if<span style="color: #99d1ce;">(</span>bad_val<span style="color: #99d1ce;">)</span>;
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #245361;">// </span><span style="color: #245361;">bad way</span>
+<span class="linenr"> 9: </span><span style="color: #195466; font-weight: bold;">for</span> <span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">AssocContainer</span><span style="color: #33859e;">&lt;</span><span style="color: #d26937;">int</span><span style="color: #33859e;">&gt;</span>::<span style="color: #d26937;">iterator</span> <span style="color: #599cab;">i</span> = c.begin<span style="color: #33859e;">()</span>; i!= c.end<span style="color: #33859e;">()</span>; ++i<span style="color: #99d1ce;">)</span>
+<span class="linenr">10: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">11: </span>   <span style="color: #195466; font-weight: bold;">if</span> <span style="color: #33859e;">(</span>bad_val<span style="color: #d26937;">(</span>*i<span style="color: #d26937;">)</span><span style="color: #33859e;">)</span> c.erase<span style="color: #33859e;">(</span>i<span style="color: #33859e;">)</span>; 
+<span class="linenr">12: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span style="color: #245361;">// </span><span style="color: #245361;">good way</span>
+<span class="linenr">15: </span><span style="color: #195466; font-weight: bold;">for</span> <span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">AssocContainer</span><span style="color: #33859e;">&lt;</span><span style="color: #d26937;">int</span><span style="color: #33859e;">&gt;</span>::<span style="color: #d26937;">iterator</span> <span style="color: #599cab;">i</span> = c.begin<span style="color: #33859e;">()</span>; i!= c.end<span style="color: #33859e;">()</span>;<span style="color: #99d1ce;">)</span>
+<span class="linenr">16: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">17: </span>   <span style="color: #195466; font-weight: bold;">if</span> <span style="color: #33859e;">(</span>bad_val<span style="color: #d26937;">(</span>*i<span style="color: #d26937;">)</span><span style="color: #33859e;">)</span> c.erase<span style="color: #33859e;">(</span>i++<span style="color: #33859e;">)</span>;
+<span class="linenr">18: </span>   <span style="color: #195466; font-weight: bold;">else</span> ++i;
+<span class="linenr">19: </span><span style="color: #99d1ce;">}</span>
 </pre>
 </div>
 
-</section>
-</section>
-<section>
-<section id="slide-org1642350">
-<h2 id="org1642350">Exercises</h2>
+<aside class="notes">
+<p>
+The previous example was if we wanted to remove all elements with a specific value. But if we are to use a conditional statement, under which we want to remove something, we can go about in a similar way. Again we will see how to remove items in the different types of containers.
+</p>
+
+<p>
+For sequential containers (<code>vector</code>, <code>string</code>, <code>deque</code>, and <code>list</code>) is very similar to the previous method. If we have a <b>list</b> specifically, we can use the built in method <code>remove_if()</code>.
+</p>
+
+<p>
+This is pretty familiar, but there is a catch when we reach the associative containers. There is not method to do what we want to do, which means that we have to write our own loop. That's not a problem, because the logic is easy to implement, but we might fall into a trap. Looking at the two examples, we can see almost similar code. The first snippet seems pretty intuitive, and it is, but it will yield <b><b>undefined</b></b> behavior. Because we are erasing <code>i</code> at the time we find the <code>bad_val</code>, that erasure will make all iterators that point to the value <b>invalid</b>. This means that once that piece of code runs, the returned <code>i</code> will be invalid, making the code <b>undefined</b> since we are then using <code>i</code> again to increment. To overcome this we have to keep in mind the position of <code>i</code> in order to never <b>invalidate</b> it. Thus, we remove the incrementation from the <code>for</code> statement, and handle it in the <code>if</code> statement. Once we reach the bad value, just before we erase the value, we pass the old <b>unincremented</b> value of <code>i</code> and return the new <b>incremented</b> one. We do this with the postfix notation. If don't have a bad value, then we just increment normally <code>i</code>.
+</p>
+
+<p>
+From my perspective, this is one of those moments where C++ isn't as consistent as we want, because we are doing the same thing for different containers with different code. It's not that bad and once we start writing the code we will get the hang of it, but we still have to remember what are the optimal way to do this job.
+</p>
+
+</aside>
 
 </section>
 </section>
 <section>
-<section id="slide-orgc28630d">
-<h2 id="orgc28630d">Resources</h2>
-<div class="outline-text-2" id="text-orgc28630d">
+<section id="slide-orgd94c861">
+<h2 id="orgd94c861">Exercises</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org76c5b9f">
+<h2 id="org76c5b9f">Resources</h2>
+<div class="outline-text-2" id="text-org76c5b9f">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgd3fb011">
-<h3 id="orgd3fb011">Templates</h3>
+<section id="slide-org439100c">
+<h3 id="org439100c">Templates</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/29298212/what-is-an-implicit-interface">Implicit Interface</a></li>
 <li><a href="https://stackoverflow.com/questions/1881468/what-is-compile-time-polymorphism-and-why-does-it-only-apply-to-functions">Compile-time polymorphism</a></li>
@@ -530,8 +565,8 @@ What about if we have a conditional?
 </section>
 </section>
 <section>
-<section id="slide-orgd422a0d">
-<h3 id="orgd422a0d">STL</h3>
+<section id="slide-orgdf8b749">
+<h3 id="orgdf8b749">STL</h3>
 <ul>
 <li><a href="http://www.cplusplus.com/reference/stl/">Containers</a></li>
 <li><a href="http://en.cppreference.com/w/cpp/container">Containers 2</a></li>
