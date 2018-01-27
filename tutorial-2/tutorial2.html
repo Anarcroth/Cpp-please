@@ -7,9 +7,9 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="file:///home/mdn/reveal.js-3.6.0/css/reveal.css"/>
+<link rel="stylesheet" href="../css/reveal.css"/>
 
-<link rel="stylesheet" href="file:///home/mdn/reveal.js-3.6.0/css/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="../css//moon.css" id="theme"/>
 
 <link rel="stylesheet" href="./presentation.css"/>
 
@@ -19,7 +19,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'file:///home/mdn/reveal.js-3.6.0/css/print/pdf.css';
+        link.href = '../css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -27,26 +27,26 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-25 чт 16:21</p>
+<section id="sec-title-slide"><h1 class="title">Templates and STL</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-27 сб 21:21</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org0b1cb10">Generics in C++</a></li>
-<li><a href="#/slide-org163e099">Template programming</a></li>
-<li><a href="#/slide-org47a879b">The STL</a></li>
-<li><a href="#/slide-org3f3f6f3">Exercises</a></li>
-<li><a href="#/slide-orgd443361">Resources</a></li>
+<li><a href="#/slide-orgf4e0e10">Generics in C++</a></li>
+<li><a href="#/slide-org097b2d1">Template programming</a></li>
+<li><a href="#/slide-org2ef1265">The STL</a></li>
+<li><a href="#/slide-org1ebaa7a">Exercises</a></li>
+<li><a href="#/slide-orgcda6fdf">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org0b1cb10">
-<h2 id="org0b1cb10">Generics in C++</h2>
+<section id="slide-orgf4e0e10">
+<h2 id="orgf4e0e10">Generics in C++</h2>
 <aside class="notes">
 <p>
 One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it independent from types! The C++ template mechanism was also Turing complete (you can compute any computable value with it), which led to template meta programming. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
@@ -57,8 +57,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org163e099">
-<h2 id="org163e099">Template programming</h2>
+<section id="slide-org097b2d1">
+<h2 id="org097b2d1">Template programming</h2>
 <ul>
 <li class="fragment roll-in">Templates</li>
 <li class="fragment roll-in">Compile-time polymorphism</li>
@@ -69,8 +69,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-orga096ba4">
-<h3 id="orga096ba4">Templates</h3>
+<section id="slide-orgf20a2a2">
+<h3 id="orgf20a2a2">Templates</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -125,8 +125,8 @@ One thing to consider when dealing with implicit interfaces is that it's not imp
 </section>
 </section>
 <section>
-<section id="slide-orged06658">
-<h3 id="orged06658">Compile-time polymoprhism</h3>
+<section id="slide-orgda649a1">
+<h3 id="orgda649a1">Compile-time polymoprhism</h3>
 <ul>
 <li>In old C++ - function overloading</li>
 <li>In template C++ - almost the same, but with unknown types</li>
@@ -143,8 +143,8 @@ Okay we get what an implicit interface is. But next to this there is another ver
 </section>
 </section>
 <section>
-<section id="slide-org46eeda9">
-<h4 id="org46eeda9">The Mixin idiom</h4>
+<section id="slide-orgf1fce1d">
+<h4 id="orgf1fce1d">The Mixin idiom</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -220,8 +220,8 @@ Remember, don't use mixins unless your programs needs them. Although their versa
 </section>
 </section>
 <section>
-<section id="slide-orgc7e1c58">
-<h3 id="orgc7e1c58"><code>typename</code> or <code>class</code></h3>
+<section id="slide-orgf5b4270">
+<h3 id="orgf5b4270"><code>typename</code> or <code>class</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Thing</span>;
@@ -281,13 +281,13 @@ For <b>class</b> - The other edge case is when we have a <b>template template pa
 </section>
 </section>
 <section>
-<section id="slide-org47a879b">
-<h2 id="org47a879b">The STL</h2>
+<section id="slide-org2ef1265">
+<h2 id="org2ef1265">The STL</h2>
 <ul>
 <li class="fragment roll-in">Containers</li>
 <li class="fragment roll-in">Vectors, strings, maps, and sets</li>
 <li class="fragment roll-in">Iterators</li>
-<li class="fragment roll-in">Lambda functions</li>
+<li class="fragment roll-in">Lambda expressions</li>
 
 </ul>
 
@@ -301,8 +301,8 @@ Now that we have a good grasp of what templates are, we can concentrate on one o
 </section>
 </section>
 <section>
-<section id="slide-orge7ede1a">
-<h3 id="orge7ede1a">Containers</h3>
+<section id="slide-orge08bcf1">
+<h3 id="orge08bcf1">Containers</h3>
 <ul>
 <li class="fragment roll-in">Sequence containers</li>
 <li class="fragment roll-in">Associative containers</li>
@@ -531,8 +531,8 @@ From my perspective, this is one of those moments where C++ isn't as consistent 
 </section>
 </section>
 <section>
-<section id="slide-orge9ff591">
-<h3 id="orge9ff591">Vectors, strings, maps, and sets</h3>
+<section id="slide-org8e0f609">
+<h3 id="org8e0f609">Vectors, strings, maps, and sets</h3>
 <aside class="notes">
 <p>
 Until now, we just talked about the general idea about containers and how to work with them. Every container has a specific job it does best, and most containers have some general use. These four are the most popular. We can't cover all of the containers in a single swoop, but having an idea of the most popular and useful ones will give you courage to experiment and dig deeper into the STL. Now let's get this out of the way, don't use <code>array</code> or <code>char*</code>. Using those two things will bring you a lot of headaces and will just make you have C++. When I started learning C++ all I did was use arrays of different types and it was just a paint - you have no dynamic memory allocation, you had to be careful when you are indexing and reading/writing elements, the syntax is annoying, etc. Instead you should adopt the use of <code>vectors</code> and <code>strings</code> anywhere you have a sequence of elements or a sequence of characters. Underneath both of these structures do use arrays and char pointers, but we don't want to deal with that. I encourage everyone to just look over the specifications of <code>vector</code> and <code>string</code> and to get familiar with the methods. Here we will look over some ways to utilize these STLs as best as we can.
@@ -622,8 +622,8 @@ Here is another cool little trick. Imagine that you have a very large vector tha
 </section>
 </section>
 <section>
-<section id="slide-orgbe8ff21">
-<h3 id="orgbe8ff21">Iterators</h3>
+<section id="slide-org8d4bb87">
+<h3 id="org8d4bb87">Iterators</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">ifstream</span> <span style="color: #599cab;">inputFile</span><span style="color: #99d1ce;">(</span><span style="color: #2aa889;">"interestingData.txt"</span><span style="color: #99d1ce;">)</span>;
@@ -654,27 +654,65 @@ Aside from the general use of iterators I want to mention something that is most
 </section>
 </section>
 <section>
-<section id="slide-org719bfb4">
-<h3 id="org719bfb4">Lambda functions</h3>
+<section id="slide-orgcca0d92">
+<h3 id="orgcca0d92">Lambda expressions</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #99d1ce;">[]()</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">empty lambda function</span>
+<span class="linenr"> 1: </span><span style="color: #245361;">// </span><span style="color: #245361;">or </span>
+<span class="linenr"> 2: </span><span style="color: #99d1ce;">[]</span> <span style="color: #99d1ce;">()</span> <span style="color: #195466; font-weight: bold;">mutable</span> -&gt; T <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">T is a return type</span>
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #99d1ce;">[]</span> <span style="color: #245361;">// </span><span style="color: #245361;">capture list</span>
+<span class="linenr"> 5: </span><span style="color: #99d1ce;">()</span> <span style="color: #245361;">// </span><span style="color: #245361;">argument list</span>
+<span class="linenr"> 6: </span><span style="color: #99d1ce;">{}</span> <span style="color: #245361;">// </span><span style="color: #245361;">function body</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #245361;">// </span><span style="color: #245361;">capture list options</span>
+<span class="linenr"> 9: </span><span style="color: #99d1ce;">[</span>x<span style="color: #99d1ce;">]</span>  <span style="color: #245361;">// </span><span style="color: #245361;">a value</span>
+<span class="linenr">10: </span><span style="color: #99d1ce;">[</span>&amp;x<span style="color: #99d1ce;">]</span> <span style="color: #245361;">// </span><span style="color: #245361;">a reference</span>
+<span class="linenr">11: </span><span style="color: #99d1ce;">[</span>&amp;<span style="color: #99d1ce;">]</span>  <span style="color: #245361;">// </span><span style="color: #245361;">any var in the scope by the reference</span>
+<span class="linenr">12: </span><span style="color: #99d1ce;">[</span>=<span style="color: #99d1ce;">]</span>  <span style="color: #245361;">// </span><span style="color: #245361;">any var in the scope by the value</span>
+<span class="linenr">13: </span><span style="color: #99d1ce;">[</span>x, &amp;y<span style="color: #99d1ce;">]</span> <span style="color: #245361;">// </span><span style="color: #245361;">mix them together</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Since C++ 11, we have this neat thing called <b>lambda functions</b>. If you come from a background of <b>Java</b> or <b>C#</b>, these might sound familiar to you. So what are they and what kind of problems do they help us to solve? In some simple terms, <b>lambda functions</b> are small snippets of code, also typically called an anonymous function objects, that are never going to be reused and are not worth bothering to name and define. This means that if we want to make some operation over a container, instead of creating a separate <code>namespace</code> or <code>struct</code> or a <code>class</code> where we will have this lonely <b>one-time-use</b> function, we can just use a lambda function and be done with it. Here is the basic syntax of a lambda function. We have three parts of a lambda function - the <b>capture list</b>, the <b>argument list</b>, and the <b>function body</b>. The argument list and the function body work like any other function so we don't need to explain them, but the capture list is pretty interesting. It defines <b>what</b> from the outside of the lambda function can be used inside it and <b>how</b>. There are several ways we can use the capture list - we can specify a <b>value</b> -&gt; <code>[&amp;]</code>, a <b>reference</b> -&gt; <code>[&amp;x]</code>, <b>any variable currently in the scope by the reference</b> -&gt; <code>[&amp;]</code>, <b>any variable currently in the scope by the value</b> -&gt; <code>[=]</code>. Of course you can mix all of these together with a comma separator.
+</p>
+
+</aside>
 
 </section>
 </section>
 <section>
-<section id="slide-org3f3f6f3">
-<h2 id="org3f3f6f3">Exercises</h2>
+<section id="slide-org1ebaa7a">
+<h2 id="org1ebaa7a">Exercises</h2>
+<ul>
+<li><a href="https://www.reddit.com/r/dailyprogrammer/">Reddit - Daily programmer</a></li>
+<li><a href="https://drive.google.com/open?id=1jREN-VuC4sa8QE6E5n71oJ2C9Vp3ciJ1">189 Programming questions</a></li>
+<li><a href="https://github.com/Anarcroth/daily-code-challenges">My coding challenges</a></li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Instead of just listing a ton of links to challenges and exercises, here are a few links that will provide much more. One is a sub-reddit, specifically dedicated to solving coding challenges. Most of them are doable in just a few hours. My advice here is to do the easy ones, because they will <b>"force"</b> in one way or another to experiment with the <b>STL</b> or with object orientation. Although the harder challenges are very fun, they are more about concept, where as the easier ones a just to use some basic algorithm, where the STL is the perfect place for such practice. The pdf is a famous book filled with coding tasks that you might see in an interview, think of them as small tasks about specific topics in each chapter. Whether you have chosen the pdf or the reddit board, just force yourself to experiment with new concepts and new STL features. The best way to learn a language is to practice, practice, practice. Finally I have also shared my personal <b>github</b> repository where I occasionally solve such tasks. By no means are they well solved or optimal, but at least you can see somebody else's code and can learn from my mistakes.
+</p>
+
+</aside>
 
 </section>
 </section>
 <section>
-<section id="slide-orgd443361">
-<h2 id="orgd443361">Resources</h2>
-<div class="outline-text-2" id="text-orgd443361">
+<section id="slide-orgcda6fdf">
+<h2 id="orgcda6fdf">Resources</h2>
+<div class="outline-text-2" id="text-orgcda6fdf">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org65e6c11">
-<h3 id="org65e6c11">Templates</h3>
+<section id="slide-org901935f">
+<h3 id="org901935f">Templates</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/29298212/what-is-an-implicit-interface">Implicit Interface</a></li>
 <li><a href="https://stackoverflow.com/questions/1881468/what-is-compile-time-polymorphism-and-why-does-it-only-apply-to-functions">Compile-time polymorphism</a></li>
@@ -694,8 +732,8 @@ Aside from the general use of iterators I want to mention something that is most
 </section>
 </section>
 <section>
-<section id="slide-org48fba85">
-<h3 id="org48fba85">STL</h3>
+<section id="slide-org55d3d72">
+<h3 id="org55d3d72">STL</h3>
 <ul>
 <li><a href="http://www.cplusplus.com/reference/stl/">Containers</a></li>
 <li><a href="http://en.cppreference.com/w/cpp/container">Containers 2</a></li>
@@ -706,14 +744,21 @@ Aside from the general use of iterators I want to mention something that is most
 <li><a href="https://en.wikipedia.org/wiki/Erase%E2%80%93remove_idiom">Erase-remove idiom</a></li>
 <li><a href="https://en.wikibooks.org/wiki/More_C++_Idioms/Erase-Remove">Erase-remove idiom 2</a></li>
 <li><a href="https://stackoverflow.com/questions/347441/erasing-elements-from-a-vector">Erase elements from a vector</a></li>
+<li><a href="http://www.cplusplus.com/reference/iterator/">Iterators</a></li>
+<li><a href="https://stackoverflow.com/questions/131241/why-use-iterators-instead-of-array-indices">Why use iterators</a></li>
+<li><a href="http://en.cppreference.com/w/cpp/language/lambda">Lambdas</a></li>
+<li><a href="https://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-in-c11">What is a lambda expression</a></li>
+<li><a href="https://stackoverflow.com/questions/356950/c-functors-and-their-uses">Functors</a></li>
+<li><a href="http://www.bogotobogo.com/cplusplus/functors.php">Function Objects</a></li>
+<li><a href="https://stackoverflow.com/questions/7852101/c-lambda-with-captures-as-a-function-pointer">Lambda with captures</a></li>
 
 </ul>
 </section>
 </section>
 </div>
 </div>
-<script src="file:///home/mdn/reveal.js-3.6.0/lib/js/head.min.js"></script>
-<script src="file:///home/mdn/reveal.js-3.6.0/js/reveal.js"></script>
+<script src="../js/head.min.js"></script>
+<script src="../js/reveal.js"></script>
 
 <script>
 // Full list of configuration options available here:
@@ -744,11 +789,11 @@ multiplex: {
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
- { src: 'file:///home/mdn/reveal.js-3.6.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+ { src: '../js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../js/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
 });
 </script>
 </body>
