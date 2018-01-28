@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Resource Management and Good practices</title>
+<meta name="author" content="(Martin Nestorov)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:///home/mdn/reveal.js-3.6.0/css/reveal.css"/>
+
+<link rel="stylesheet" href="file:///home/mdn/reveal.js-3.6.0/css/theme/moon.css" id="theme"/>
+
+<link rel="stylesheet" href="./presentation.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:///home/mdn/reveal.js-3.6.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Resource Management and Good practices</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-01-28 нд 22:28</p>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-org2ea85c6">How to manage memory</a></li>
+<li><a href="#/slide-org052fb1d">General good practices</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-org2ea85c6">
+<h2 id="org2ea85c6">How to manage memory</h2>
+<div class="outline-text-2" id="text-org2ea85c6">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orge35c8ac">
+<h3 id="orge35c8ac">When to use <code>new</code> and <code>delete</code></h3>
+</section>
+</section>
+<section>
+<section id="slide-orgfab0e58">
+<h3 id="orgfab0e58">Using the STL to our advantage</h3>
+</section>
+</section>
+<section>
+<section id="slide-orga105fe0">
+<h3 id="orga105fe0">How to store objects in smart pointers</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-org052fb1d">
+<h2 id="org052fb1d">General good practices</h2>
+<div class="outline-text-2" id="text-org052fb1d">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org287a5ea">
+<h3 id="org287a5ea">Use <code>const</code>, <code>enums</code>, and <code>inline</code></h3>
+</section>
+</section>
+<section>
+<section id="slide-org70e6898">
+<h3 id="org70e6898">Make full copies of objects</h3>
+</section>
+</section>
+<section>
+<section id="slide-orgfcd6a09">
+<h3 id="orgfcd6a09">Postpone variable definitions</h3>
+</section>
+</section>
+</div>
+</div>
+<script src="file:///home/mdn/reveal.js-3.6.0/lib/js/head.min.js"></script>
+<script src="file:///home/mdn/reveal.js-3.6.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1920,
+height: 1080,
+margin: 0.00,
+maxScale: 2.00,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'file:///home/mdn/reveal.js-3.6.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
