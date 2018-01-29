@@ -9,7 +9,7 @@
 </style>
 <link rel="stylesheet" href="../css/reveal.css"/>
 
-<link rel="stylesheet" href="../css//moon.css" id="theme"/>
+<link rel="stylesheet" href="../css/moon.css" id="theme"/>
 
 <link rel="stylesheet" href="./presentation.css"/>
 
@@ -19,7 +19,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = '../css/print/pdf.css';
+        link.href = '../css/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -34,19 +34,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgf4e0e10">Generics in C++</a></li>
-<li><a href="#/slide-org097b2d1">Template programming</a></li>
-<li><a href="#/slide-org2ef1265">The STL</a></li>
-<li><a href="#/slide-org1ebaa7a">Exercises</a></li>
-<li><a href="#/slide-orgcda6fdf">Resources</a></li>
+<li><a href="#/slide-orgdf18390">Generics in C++</a></li>
+<li><a href="#/slide-org8901d45">Template programming</a></li>
+<li><a href="#/slide-org0c4701d">The STL</a></li>
+<li><a href="#/slide-org265df74">Exercises</a></li>
+<li><a href="#/slide-orgbd8bf1a">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orgf4e0e10">
-<h2 id="orgf4e0e10">Generics in C++</h2>
+<section id="slide-orgdf18390">
+<h2 id="orgdf18390">Generics in C++</h2>
 <aside class="notes">
 <p>
 One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it independent from types! The C++ template mechanism was also Turing complete (you can compute any computable value with it), which led to template meta programming. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
@@ -57,8 +57,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org097b2d1">
-<h2 id="org097b2d1">Template programming</h2>
+<section id="slide-org8901d45">
+<h2 id="org8901d45">Template programming</h2>
 <ul>
 <li class="fragment roll-in">Templates</li>
 <li class="fragment roll-in">Compile-time polymorphism</li>
@@ -69,8 +69,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-orgf20a2a2">
-<h3 id="orgf20a2a2">Templates</h3>
+<section id="slide-org35e4e6d">
+<h3 id="org35e4e6d">Templates</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -125,8 +125,8 @@ One thing to consider when dealing with implicit interfaces is that it's not imp
 </section>
 </section>
 <section>
-<section id="slide-orgda649a1">
-<h3 id="orgda649a1">Compile-time polymoprhism</h3>
+<section id="slide-org3bc3ddd">
+<h3 id="org3bc3ddd">Compile-time polymoprhism</h3>
 <ul>
 <li>In old C++ - function overloading</li>
 <li>In template C++ - almost the same, but with unknown types</li>
@@ -143,8 +143,8 @@ Okay we get what an implicit interface is. But next to this there is another ver
 </section>
 </section>
 <section>
-<section id="slide-orgf1fce1d">
-<h4 id="orgf1fce1d">The Mixin idiom</h4>
+<section id="slide-org14715ca">
+<h4 id="org14715ca">The Mixin idiom</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -220,8 +220,8 @@ Remember, don't use mixins unless your programs needs them. Although their versa
 </section>
 </section>
 <section>
-<section id="slide-orgf5b4270">
-<h3 id="orgf5b4270"><code>typename</code> or <code>class</code></h3>
+<section id="slide-org7dfa3f7">
+<h3 id="org7dfa3f7"><code>typename</code> or <code>class</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Thing</span>;
@@ -281,8 +281,8 @@ For <b>class</b> - The other edge case is when we have a <b>template template pa
 </section>
 </section>
 <section>
-<section id="slide-org2ef1265">
-<h2 id="org2ef1265">The STL</h2>
+<section id="slide-org0c4701d">
+<h2 id="org0c4701d">The STL</h2>
 <ul>
 <li class="fragment roll-in">Containers</li>
 <li class="fragment roll-in">Vectors, strings, maps, and sets</li>
@@ -301,8 +301,8 @@ Now that we have a good grasp of what templates are, we can concentrate on one o
 </section>
 </section>
 <section>
-<section id="slide-orge08bcf1">
-<h3 id="orge08bcf1">Containers</h3>
+<section id="slide-orgff9f721">
+<h3 id="orgff9f721">Containers</h3>
 <ul>
 <li class="fragment roll-in">Sequence containers</li>
 <li class="fragment roll-in">Associative containers</li>
@@ -531,8 +531,8 @@ From my perspective, this is one of those moments where C++ isn't as consistent 
 </section>
 </section>
 <section>
-<section id="slide-org8e0f609">
-<h3 id="org8e0f609">Vectors, strings, maps, and sets</h3>
+<section id="slide-org88fba52">
+<h3 id="org88fba52">Vectors, strings, maps, and sets</h3>
 <aside class="notes">
 <p>
 Until now, we just talked about the general idea about containers and how to work with them. Every container has a specific job it does best, and most containers have some general use. These four are the most popular. We can't cover all of the containers in a single swoop, but having an idea of the most popular and useful ones will give you courage to experiment and dig deeper into the STL. Now let's get this out of the way, don't use <code>array</code> or <code>char*</code>. Using those two things will bring you a lot of headaces and will just make you have C++. When I started learning C++ all I did was use arrays of different types and it was just a paint - you have no dynamic memory allocation, you had to be careful when you are indexing and reading/writing elements, the syntax is annoying, etc. Instead you should adopt the use of <code>vectors</code> and <code>strings</code> anywhere you have a sequence of elements or a sequence of characters. Underneath both of these structures do use arrays and char pointers, but we don't want to deal with that. I encourage everyone to just look over the specifications of <code>vector</code> and <code>string</code> and to get familiar with the methods. Here we will look over some ways to utilize these STLs as best as we can.
@@ -622,8 +622,8 @@ Here is another cool little trick. Imagine that you have a very large vector tha
 </section>
 </section>
 <section>
-<section id="slide-org8d4bb87">
-<h3 id="org8d4bb87">Iterators</h3>
+<section id="slide-org827413f">
+<h3 id="org827413f">Iterators</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">ifstream</span> <span style="color: #599cab;">inputFile</span><span style="color: #99d1ce;">(</span><span style="color: #2aa889;">"interestingData.txt"</span><span style="color: #99d1ce;">)</span>;
@@ -654,8 +654,8 @@ Aside from the general use of iterators I want to mention something that is most
 </section>
 </section>
 <section>
-<section id="slide-orgcca0d92">
-<h3 id="orgcca0d92">Lambda expressions</h3>
+<section id="slide-org8eaa724">
+<h3 id="org8eaa724">Lambda expressions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #99d1ce;">[]()</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">empty lambda function</span>
@@ -667,17 +667,26 @@ Aside from the general use of iterators I want to mention something that is most
 <span class="linenr"> 6: </span><span style="color: #99d1ce;">{}</span> <span style="color: #245361;">// </span><span style="color: #245361;">function body</span>
 <span class="linenr"> 7: </span>
 <span class="linenr"> 8: </span><span style="color: #245361;">// </span><span style="color: #245361;">capture list options</span>
-<span class="linenr"> 9: </span><span style="color: #99d1ce;">[</span>x<span style="color: #99d1ce;">]</span>  <span style="color: #245361;">// </span><span style="color: #245361;">a value</span>
-<span class="linenr">10: </span><span style="color: #99d1ce;">[</span>&amp;x<span style="color: #99d1ce;">]</span> <span style="color: #245361;">// </span><span style="color: #245361;">a reference</span>
-<span class="linenr">11: </span><span style="color: #99d1ce;">[</span>&amp;<span style="color: #99d1ce;">]</span>  <span style="color: #245361;">// </span><span style="color: #245361;">any var in the scope by the reference</span>
-<span class="linenr">12: </span><span style="color: #99d1ce;">[</span>=<span style="color: #99d1ce;">]</span>  <span style="color: #245361;">// </span><span style="color: #245361;">any var in the scope by the value</span>
-<span class="linenr">13: </span><span style="color: #99d1ce;">[</span>x, &amp;y<span style="color: #99d1ce;">]</span> <span style="color: #245361;">// </span><span style="color: #245361;">mix them together</span>
+<span class="linenr"> 9: </span><span style="color: #99d1ce;">[]</span>   <span style="color: #245361;">// </span><span style="color: #245361;">empty list, no access from locals</span>
+<span class="linenr">10: </span><span style="color: #99d1ce;">[</span>x<span style="color: #99d1ce;">]</span>  <span style="color: #245361;">// </span><span style="color: #245361;">access to locals by value</span>
+<span class="linenr">11: </span><span style="color: #99d1ce;">[</span>&amp;x<span style="color: #99d1ce;">]</span> <span style="color: #245361;">// </span><span style="color: #245361;">access to locals by ref</span>
+<span class="linenr">12: </span><span style="color: #99d1ce;">[</span>&amp;<span style="color: #99d1ce;">]</span>  <span style="color: #245361;">// </span><span style="color: #245361;">access to any local var by the reference</span>
+<span class="linenr">13: </span><span style="color: #99d1ce;">[</span>=<span style="color: #99d1ce;">]</span>  <span style="color: #245361;">// </span><span style="color: #245361;">access to any local var by the value</span>
+<span class="linenr">14: </span><span style="color: #99d1ce;">[</span>=, &amp;y<span style="color: #99d1ce;">]</span> <span style="color: #245361;">// </span><span style="color: #245361;">mix them together</span>
 </pre>
 </div>
 
 <aside class="notes">
 <p>
-Since C++ 11, we have this neat thing called <b>lambda functions</b>. If you come from a background of <b>Java</b> or <b>C#</b>, these might sound familiar to you. So what are they and what kind of problems do they help us to solve? In some simple terms, <b>lambda functions</b> are small snippets of code, also typically called an anonymous function objects, that are never going to be reused and are not worth bothering to name and define. This means that if we want to make some operation over a container, instead of creating a separate <code>namespace</code> or <code>struct</code> or a <code>class</code> where we will have this lonely <b>one-time-use</b> function, we can just use a lambda function and be done with it. Here is the basic syntax of a lambda function. We have three parts of a lambda function - the <b>capture list</b>, the <b>argument list</b>, and the <b>function body</b>. The argument list and the function body work like any other function so we don't need to explain them, but the capture list is pretty interesting. It defines <b>what</b> from the outside of the lambda function can be used inside it and <b>how</b>. There are several ways we can use the capture list - we can specify a <b>value</b> -&gt; <code>[&amp;]</code>, a <b>reference</b> -&gt; <code>[&amp;x]</code>, <b>any variable currently in the scope by the reference</b> -&gt; <code>[&amp;]</code>, <b>any variable currently in the scope by the value</b> -&gt; <code>[=]</code>. Of course you can mix all of these together with a comma separator.
+Since C++ 11, we have this neat thing called <b>lambda functions</b> or <b>lambda expressions</b>. If you come from a background of <b>Java</b> or <b>C#</b>, these might sound familiar to you. So what are they and what kind of problems do they help us to solve? In some simple terms, <b>lambda functions</b> are small snippets of code, also typically called an anonymous function objects, that are never going to be reused and are not worth bothering to name and define. This means that if we want to make some operation over a container, instead of creating a separate <code>namespace</code> or <code>struct</code> or a <code>class</code> where we will have this lonely <b>one-time-use</b> function, we can just use a lambda function and be done with it. They can be used instead of a named class with an <code>operator()</code>. Here is the basic syntax of a lambda function. We have three parts of a lambda function - the <b>capture list</b>, the <b>argument list</b>, an optional <b>mutable</b> specifier, an optional <b>return type</b> <code>-&gt;</code>, and the <b>function body</b>. The argument list and the function body work like any other function so we don't need to explain them, but the capture list and mutable specifier are pretty interesting. The capture defines <b>what</b> from the outside of the lambda function can be used inside it and <b>how</b> (either to be passed by reference or by value). There are several ways we can use the capture list - we can specify an empty list <code>[]</code>, which tell us that no local names from the surrounding context can be used inside the function body. For such a list, data is taken from the passed arguments or from non-local variables. We can use <code>[&amp;]</code>, which tells us that we can use all local variables <b>by-reference</b>. We can also have an implicit capture by value with <code>[=]</code>, where all local variables can be used as copied (<b>by-value</b>). We can have an explicit capture list like <code>[capture-list]</code>, where we specify the names of the local variables we want to use. Here if we use the <code>&amp;</code> sign we tell C++ that the captured variables are to be used with a <b>reference</b>. This can be expanded to be like <code>[&amp;, capture-list]</code>, where we specify that all local variables are to be used with a <b>reference</b>, except the specified ones in the list, which are to be used by value. With the same logic we can have <code>[=, capture-list]</code>, and you can guess what this means (all local variables are to be used by value, except the ones in the capture list, which are to be used with a reference). Of course you can mix all of these together with a comma separator.
+</p>
+
+<p>
+Now what does the <code>mutable</code> keyword do in this situation? Well this allows us to modify the whole lambda expression in the function body, i.e. change the lambda's copies of variables that are captured by value. Usually we don't want to do this, so by default this option is turned <b>off</b>. This comes in handy not all that often, but what it allows us ot do, is to change variables in the scope of the lambda body when the variables are passed by value. Because underneath, function objects with <code>operator()()</code> are implemented with a <code>const</code> member function, this is why the default behavior of the lambda function is to also use variables as a constant. If we wanted to change a variable (that is passed by value) and not use the <code>mutable</code> keyword, we would get a compilation error.
+</p>
+
+<p>
+So what about return types? Well, like any other function, we can specify the lambda to have either an implicit return type or an explicit one. Sometimes the function can deduce what we want on its own. For instance, if we lack the <code>return</code> keyword, the function will return <code>void</code>. If we have, as an example, <code>return x+y;</code>, the lambda will be of that return type. But sometimes, we will have a complex situation, where C++ cannot deduce what we are going to return, that's why we can use the optional form <code>-&gt;</code> to tell it what it should expect. Let's say we have this sitation - <code>auto f = [b]() -&gt;int { if (b) return 1: else return 2; };</code> . In this case we have to explicitly tell C++ what to expect, since the body is too complicated.
 </p>
 
 </aside>
@@ -685,8 +694,8 @@ Since C++ 11, we have this neat thing called <b>lambda functions</b>. If you com
 </section>
 </section>
 <section>
-<section id="slide-org1ebaa7a">
-<h2 id="org1ebaa7a">Exercises</h2>
+<section id="slide-org265df74">
+<h2 id="org265df74">Exercises</h2>
 <ul>
 <li><a href="https://www.reddit.com/r/dailyprogrammer/">Reddit - Daily programmer</a></li>
 <li><a href="https://drive.google.com/open?id=1jREN-VuC4sa8QE6E5n71oJ2C9Vp3ciJ1">189 Programming questions</a></li>
@@ -704,15 +713,15 @@ Instead of just listing a ton of links to challenges and exercises, here are a f
 </section>
 </section>
 <section>
-<section id="slide-orgcda6fdf">
-<h2 id="orgcda6fdf">Resources</h2>
-<div class="outline-text-2" id="text-orgcda6fdf">
+<section id="slide-orgbd8bf1a">
+<h2 id="orgbd8bf1a">Resources</h2>
+<div class="outline-text-2" id="text-orgbd8bf1a">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org901935f">
-<h3 id="org901935f">Templates</h3>
+<section id="slide-orgb9a0ab4">
+<h3 id="orgb9a0ab4">Templates</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/29298212/what-is-an-implicit-interface">Implicit Interface</a></li>
 <li><a href="https://stackoverflow.com/questions/1881468/what-is-compile-time-polymorphism-and-why-does-it-only-apply-to-functions">Compile-time polymorphism</a></li>
@@ -732,8 +741,8 @@ Instead of just listing a ton of links to challenges and exercises, here are a f
 </section>
 </section>
 <section>
-<section id="slide-org55d3d72">
-<h3 id="org55d3d72">STL</h3>
+<section id="slide-org84733ac">
+<h3 id="org84733ac">STL</h3>
 <ul>
 <li><a href="http://www.cplusplus.com/reference/stl/">Containers</a></li>
 <li><a href="http://en.cppreference.com/w/cpp/container">Containers 2</a></li>
@@ -746,7 +755,20 @@ Instead of just listing a ton of links to challenges and exercises, here are a f
 <li><a href="https://stackoverflow.com/questions/347441/erasing-elements-from-a-vector">Erase elements from a vector</a></li>
 <li><a href="http://www.cplusplus.com/reference/iterator/">Iterators</a></li>
 <li><a href="https://stackoverflow.com/questions/131241/why-use-iterators-instead-of-array-indices">Why use iterators</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga2494a0">
+<h3 id="orga2494a0">Lambdas</h3>
+<ul>
+<li><a href="https://stackoverflow.com/questions/5501959/why-does-c0xs-lambda-require-mutable-keyword-for-capture-by-value-by-defau">Mutable</a></li>
+<li><a href="https://stackoverflow.com/questions/12765442/c-lambda-expression-anonymous-function?noredirect=1&amp;lq=1">Anonymous functions</a></li>
 <li><a href="http://en.cppreference.com/w/cpp/language/lambda">Lambdas</a></li>
+<li><a href="https://stackoverflow.com/questions/15559658/c11-lambdas-and-the-square-brackets?noredirect=1&amp;lq=1">Lambdas 2</a></li>
+<li><a href="https://stackoverflow.com/questions/31494188/what-does-the-code-mean-in-c?noredirect=1&amp;lq=1">Lambdas 3</a></li>
 <li><a href="https://stackoverflow.com/questions/7627098/what-is-a-lambda-expression-in-c11">What is a lambda expression</a></li>
 <li><a href="https://stackoverflow.com/questions/356950/c-functors-and-their-uses">Functors</a></li>
 <li><a href="http://www.bogotobogo.com/cplusplus/functors.php">Function Objects</a></li>
@@ -761,40 +783,40 @@ Instead of just listing a ton of links to challenges and exercises, here are a f
 <script src="../js/reveal.js"></script>
 
 <script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
+ // Full list of configuration options available here:
+ // https://github.com/hakimel/reveal.js#configuration
+ Reveal.initialize({
 
-controls: true,
-progress: true,
-history: true,
-center: true,
-slideNumber: 'c',
-rollingLinks: true,
-keyboard: true,
-overview: true,
-width: 1920,
-height: 1080,
-margin: 0.00,
-maxScale: 2.00,
+     controls: true,
+     progress: true,
+     history: true,
+     center: true,
+     slideNumber: 'c',
+     rollingLinks: true,
+     keyboard: true,
+     overview: true,
+     width: 1920,
+     height: 1080,
+     margin: 0.00,
+     maxScale: 2.00,
 
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
+     theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+     transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+     transitionSpeed: 'default',
+     multiplex: {
+         secret: '', // null if client
+         id: '', // id, obtained from socket.io server
+         url: '' // Location of socket.io server
+     },
 
-// Optional libraries used to extend on reveal.js
-dependencies: [
- { src: '../js/classList.js', condition: function() { return !document.body.classList; } },
- { src: '../js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: '../js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: '../js/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
-});
+     // Optional libraries used to extend on reveal.js
+     dependencies: [
+         { src: '../js/classList.js', condition: function() { return !document.body.classList; } },
+         { src: '../js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+         { src: '../js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+         { src: '../js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+         { src: '../js/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+ });
 </script>
 </body>
 </html>
