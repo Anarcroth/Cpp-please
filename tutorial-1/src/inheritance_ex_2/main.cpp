@@ -6,12 +6,12 @@
 
 int main()
 {
-//    E b;
-//    b.q();
-
     E b;
-    D *a=&b;
-    a->q();
+    b.q();
+
+    //E b;
+    //D *a=&b;
+    //a->q();
 
     return 0;
 }

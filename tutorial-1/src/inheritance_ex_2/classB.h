@@ -27,11 +27,11 @@ public:
 
         if(a)
         {
-            std::cout << "Mama:\t";
+            std::cout << "\nMama:\t";
         }
         else
         {
-            std::cout << "Dady:\t";
+            std::cout << "\nDady:\t";
         }
 
         std::cout << c << "\n";

@@ -31,7 +31,7 @@ public:
     virtual void print()
     {
         t();
-        std::cout << "Dady\n";
+        std::cout << "\nDady\n";
     }
 
 protected:
