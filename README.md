@@ -11,22 +11,22 @@ The `html`s also have a corresponding `pdf` version, in which all of the notes a
 ## Topics
 
 [Tutorial 1](./tutorial-1/tutorial1.html)
-[T1 pdf] (./tutorial-1/tutorial1.pdf)
+[T1 pdf](./tutorial-1/tutorial1.pdf)
 - File management
 - OOP
 - Inheritance
 
 [Tutorial 2](./tutorial-2/tutorial2.html)
-[T2 pdf] (./tutorial-2/tutorial2.pdf)
+[T2 pdf](./tutorial-2/tutorial2.pdf)
 - Templates
 - STL
 
 [Tutorial 3](./tutorial-3/tutorial3.html)
-[T3 pdf] (./tutorial-3/tutorial3.pdf)
+[T3 pdf](./tutorial-3/tutorial3.pdf)
 - Resource Management
 - Good practices
 
 [Tutorial 4](./tutorial-4/tutorial4.html)
-[T4 pdf] (./tutorial-4/tutorial4.pdf)
+[T4 pdf](./tutorial-4/tutorial4.pdf)
 - Compilation
 - Linking
