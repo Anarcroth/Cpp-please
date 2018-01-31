@@ -20,7 +20,7 @@ int main()
 
     for (auto &v : airport)
     {
-        std::cout << (v?"not null":"null") << std::endl;
+        std::cout << (v ? "not null" : "null") << std::endl;
     }
 
     airport.clear();
