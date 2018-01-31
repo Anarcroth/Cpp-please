@@ -3,6 +3,8 @@
 #include "inheritance_ex_1_classB.h"
 #include "inheritance_ex_1_classC.h"
 
+#include <vector>
+
 int main()
 {
     C c_obj;
@@ -23,5 +25,6 @@ int main()
     a_ptr->DD(90, 50, 10);
     c_obj.print();
 
+    std::vector<int> grades.
     return 0;
 }
