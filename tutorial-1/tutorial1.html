@@ -381,11 +381,12 @@ In general we want to remember this simple rule - prefer forward declarations to
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">b.h</span>
 <span class="linenr">1: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"a.h"</span>
-<span class="linenr">2: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">B</span> <span style="color: #99d1ce;">{</span> <span style="color: #d26937;">A</span>* <span style="color: #599cab;">a</span>; <span style="color: #99d1ce;">}</span>;
+<span class="linenr">2: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">B</span> <span style="color: #99d1ce;">{</span> <span style="color: #d26937;">A</span> <span style="color: #599cab;">a</span>; <span style="color: #99d1ce;">}</span>;
 <span class="linenr">3: </span>
 <span class="linenr">4: </span><span style="color: #245361;">// </span><span style="color: #245361;">a.h</span>
 <span class="linenr">5: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"b.h"</span>
-<span class="linenr">6: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">B</span> <span style="color: #99d1ce;">{</span> <span style="color: #d26937;">B</span>* <span style="color: #599cab;">b</span>; <span style="color: #99d1ce;">}</span>;
+<span class="linenr">6: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">A</span> <span style="color: #99d1ce;">{</span> <span style="color: #d26937;">B</span> <span style="color: #599cab;">b</span>; <span style="color: #99d1ce;">}</span>;
+<span class="linenr">7: </span><span style="color: #245361;">// </span><span style="color: #245361;">problem! circular dependecies</span>
 </pre>
 </div>
 
