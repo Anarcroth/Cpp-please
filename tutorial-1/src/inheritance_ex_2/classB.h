@@ -34,7 +34,7 @@ public:
             std::cout << "\nDady:\t";
         }
 
-        std::cout << c << "\n";
+        std::cout << b << " -- " << c << "\n";
     }
 
     friend class D;

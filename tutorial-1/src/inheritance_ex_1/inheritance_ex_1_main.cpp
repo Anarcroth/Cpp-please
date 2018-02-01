@@ -25,6 +25,5 @@ int main()
     a_ptr->DD(90, 50, 10);
     c_obj.print();
 
-    std::vector<int> grades.
     return 0;
 }
