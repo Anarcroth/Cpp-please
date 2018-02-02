@@ -13,6 +13,8 @@ int main()
     Mitko mitak("Math", 50, 20, 10);
     Georgi gosho("Art", 20, 30, 40);
 
+    Student stud;
+
     std::vector<Student*> school;
     school.reserve(3);
 

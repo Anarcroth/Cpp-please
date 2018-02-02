@@ -53,7 +53,9 @@ int main()
     std::cout << V1.value1 << " " << V1.value2 << " " << V1.id << std::endl;
     std::cout << V2.value1 << " " << V2.value2 << " " << V2.id << std::endl;
 
-    V1 = V2;
+    V1 = V2; // copy assignment
+
+    std::cout << "swapped!" << std::endl;
 
     std::cout << V1.value1 << " " << V1.value2 << " " << V1.id << std::endl;
     std::cout << V2.value1 << " " << V2.value2 << " " << V2.id << std::endl;
