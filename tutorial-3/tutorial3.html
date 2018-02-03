@@ -27,77 +27,125 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Resource Management and Good practices</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-02-02 Fri 21:47</p>
+<section id="sec-title-slide"><h1 class="title">Resource Management and Good practices</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-02-03 Sat 20:02</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org0a4d325">How to manage memory</a></li>
-<li><a href="#/slide-orgc2cf082">General good practices</a></li>
-<li><a href="#/slide-orge16ae80">Exercises</a></li>
-<li><a href="#/slide-org68e3641">Resources</a></li>
+<li><a href="#/slide-org541f069">How to manage memory</a></li>
+<li><a href="#/slide-org0a7b4d2">General good practices</a></li>
+<li><a href="#/slide-orgf525199">Exercises</a></li>
+<li><a href="#/slide-orgc1b8cf5">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org0a4d325">
-<h2 id="org0a4d325">How to manage memory</h2>
-<div class="outline-text-2" id="text-org0a4d325">
+<section id="slide-org541f069">
+<h2 id="org541f069">How to manage memory</h2>
+<aside class="notes">
+<p>
+When we first learn C++ for the first time we have way too many things going on so we are usually told not to worry about memory management (or we are not even aware that such a thing exists in the language). This is normal, since the language itself is hard enough to learn so we push thins topic for another time. But that time usually comes way too late and we don't have the discipline to think in therms of memory management. Luckily for us, we are writing modern C++, which means that there are a lot of tools deisgn to help us out with this task and to make it much more easy, than it was back in '89.
+</p>
+
+<p>
+In C++ we have several resources we can manage, where we are not only limited to some dynamically allocated object. We care for files, database connections, mutexes, GUIs, sockets, etc. This means that having memory leaks is just one of our problems, but being unable to connect to a databse, or corrupt the contents of a file, because we are not careful enough is a whole other story. Here we will try to look at how we can use the STL to our advantage and manage resources manually.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgebec9bf">
+<h3 id="orgebec9bf">When to use <code>new</code> and <code>delete</code></h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #d26937;">int</span> * <span style="color: #599cab;">ipt</span> = <span style="color: #195466; font-weight: bold;">new</span> <span style="color: #d26937;">int</span>;
+<span class="linenr"> 1: </span>
+<span class="linenr"> 2: </span><span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa889;">"ipt = "</span> &lt;&lt; ipt &lt;&lt; <span style="color: #33859e; font-weight: bold;">std</span>::endl;
+<span class="linenr"> 3: </span><span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa889;">"*ipt = "</span> &lt;&lt; *ipt &lt;&lt; <span style="color: #33859e; font-weight: bold;">std</span>::endl;
+<span class="linenr"> 4: </span>*ipt = <span style="color: #33859e; font-weight: bold;">1000</span>;
+<span class="linenr"> 5: </span><span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa889;">"*ipt = "</span> &lt;&lt; *ipt &lt;&lt; <span style="color: #33859e; font-weight: bold;">std</span>::endl;
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #195466; font-weight: bold;">delete</span> ipt;
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa889;">"ipt = "</span> &lt;&lt; ipt &lt;&lt; <span style="color: #33859e; font-weight: bold;">std</span>::endl;
+<span class="linenr">10: </span><span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; <span style="color: #2aa889;">"*ipt = "</span> &lt;&lt; *ipt &lt;&lt; <span style="color: #33859e; font-weight: bold;">std</span>::endl
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+When do we actually have to use <code>new</code> and <code>delete</code>? It's so tempting to just say <b>never</b> and move on to the rest of the topics, but this is not exactly true. It's <b>almost</b> true. First let's look at what <code>new</code> and <code>delete</code> do. <code>new</code> is the keyword we use in C++ that allocates a piece of memory in the <b>local store</b> and has a pointer to that piece of anonymous data. <code>delete</code> on the other hand does the opposite and removes the contents of a cell of memory. So let's look at an example. Here we just allocate an integer to the free store and then we read the pointer address and the address contents. The question is what would happen after the <code>delete</code> call? Would we have to same contents or would we get the same number again? The answer is - we would get <b><b>undefined</b></b> behavior. After you call delete, you can still use the pointer for other things, but never ever try to see what it points to, since we will go down the valley of <b>undefined</b> behavior.
+</p>
+
+<p>
+So using <code>new</code> and <code>delete</code> can lead to peril if we are not careful, so what are our other options?
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org7b3132d">
+<h3 id="org7b3132d">RAII</h3>
+<aside class="notes">
+<p>
+In C++ we have this magical idiom called <b><b>RAII</b></b>, or Resource Acquisition Is Initialization. This binds the life cycle of a resource that must be acquired before use, to the lifetime of an object. Again, we are not just talking about pieces of memory, but sockets, database connections, file descriptors, mutexes, things that are considered as a resources are bounded to an object. Then function are able to access that resource (through the object), use it, and when it is no longer needed, the object manages the state of the resource, and closes it appropriately. You might also see this idiom as <b>Scope-Bound Resource Management</b>. The important thing here is that even when we get an exception during some constructor, the already created base objects are also released in reverse order of initialization. We are both managing resource leaks and exception safety!!
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc1f2768">
+<h3 id="orgc1f2768">Using the STL to our advantage</h3>
+</section>
+</section>
+<section>
+<section id="slide-orgefcd64b">
+<h3 id="orgefcd64b">How to store objectes in smart pointers</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-org0a7b4d2">
+<h2 id="org0a7b4d2">General good practices</h2>
+<div class="outline-text-2" id="text-org0a7b4d2">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org5370221">
-<h3 id="org5370221">When to use <code>new</code> and <code>delete</code></h3>
+<section id="slide-org94ea94f">
+<h3 id="org94ea94f">Use <code>const</code>, <code>enums</code>, and <code>inline</code></h3>
 </section>
 </section>
 <section>
-<section id="slide-org32600ea">
-<h3 id="org32600ea">Using the STL to our advantage</h3>
+<section id="slide-org85b155e">
+<h3 id="org85b155e">Make full copies of objects</h3>
 </section>
 </section>
 <section>
-<section id="slide-org2f3e90e">
-<h3 id="org2f3e90e">How to store objects in smart pointers</h3>
+<section id="slide-orge35357c">
+<h3 id="orge35357c">Postpone variable definitions</h3>
 
 </section>
 </section>
 <section>
-<section id="slide-orgc2cf082">
-<h2 id="orgc2cf082">General good practices</h2>
-<div class="outline-text-2" id="text-orgc2cf082">
-</div>
-</section>
-</section>
-<section>
-<section id="slide-orgf7a0722">
-<h3 id="orgf7a0722">Use <code>const</code>, <code>enums</code>, and <code>inline</code></h3>
-</section>
-</section>
-<section>
-<section id="slide-org39589e0">
-<h3 id="org39589e0">Make full copies of objects</h3>
-</section>
-</section>
-<section>
-<section id="slide-org8347ba2">
-<h3 id="org8347ba2">Postpone variable definitions</h3>
+<section id="slide-orgf525199">
+<h2 id="orgf525199">Exercises</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-orge16ae80">
-<h2 id="orge16ae80">Exercises</h2>
-
-</section>
-</section>
-<section>
-<section id="slide-org68e3641">
-<h2 id="org68e3641">Resources</h2>
+<section id="slide-orgc1b8cf5">
+<h2 id="orgc1b8cf5">Resources</h2>
 </section>
 </section>
 </div>
