@@ -2,7 +2,7 @@
 
 int main()
 {
-    int * ipt = new int;
+    int *ipt = new int;
 
     std::cout << "ipt = " << ipt << std::endl;
     std::cout << "*ipt = " << *ipt << std::endl;
