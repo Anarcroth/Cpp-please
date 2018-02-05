@@ -34,22 +34,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgdf18390">Generics in C++</a></li>
-<li><a href="#/slide-org8901d45">Template programming</a></li>
-<li><a href="#/slide-org0c4701d">The STL</a></li>
-<li><a href="#/slide-org265df74">Exercises</a></li>
-<li><a href="#/slide-orgbd8bf1a">Resources</a></li>
+<li><a href="#/slide-org207bde5">Generics in C++</a></li>
+<li><a href="#/slide-orgc4df587">Template programming</a></li>
+<li><a href="#/slide-orgc710924">The STL</a></li>
+<li><a href="#/slide-orgeff9b3f">Exercises</a></li>
+<li><a href="#/slide-orgee22a42">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orgdf18390">
-<h2 id="orgdf18390">Generics in C++</h2>
+<section id="slide-org207bde5">
+<h2 id="org207bde5">Generics in C++</h2>
 <aside class="notes">
 <p>
-One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it independent from types! The C++ template mechanism was also Turing complete (you can compute any computable value with it), which led to template meta programming. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
+One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it <b>independent</b> from types! The C++ template mechanism was also <b>Turing complete</b> (you can compute any computable value with it), which led to <b>template meta programming</b>. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
 </p>
 
 </aside>
@@ -57,8 +57,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org8901d45">
-<h2 id="org8901d45">Template programming</h2>
+<section id="slide-orgc4df587">
+<h2 id="orgc4df587">Template programming</h2>
 <ul>
 <li class="fragment roll-in">Templates</li>
 <li class="fragment roll-in">Compile-time polymorphism</li>
@@ -69,8 +69,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org35e4e6d">
-<h3 id="org35e4e6d">Templates</h3>
+<section id="slide-org1e1094b">
+<h3 id="org1e1094b">Templates</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -80,6 +80,13 @@ One of the things that C++ manages to do very well is to provide generic program
 <span class="linenr">4: </span><span style="color: #99d1ce;">}</span>
 </pre>
 </div>
+
+<aside class="notes">
+<p>
+There is a good chance that you will not be dealing with a lot of template code in C++ and that's okay. But it is still a good idea to be able to understand and write templates. In fact, compared to <b>Java</b> or <b>C#</b>, <b>C++</b> has more flexibility when it comes to writing such code (although this isn't always good). So what are templates? They are just something that can be substituted for something else during run-time. It allows us to greatly reuse code, abstracts us from dealing with types, but at the same time, it makes executables larger, and sometimes <b>slower</b>.
+</p>
+
+</aside>
 
 </section>
 <section >
@@ -101,15 +108,11 @@ One of the things that C++ manages to do very well is to provide generic program
 
 <aside class="notes">
 <p>
-There is a good chance that you will not be dealing with a lot of template code in C++ and that's okay. But it is still a good idea to be able to understand and write templates in C++. In fact, compared to Java or C#, C++ has more flexibility when it comes to writing such code (although this isn't always good). So what are templates? They are just something that can be substituted for something else during run-time. It allows us to greatly reuse code, abstracts us from dealing with types, but at the same time, it makes executables larger, and sometimes slower.
-</p>
-
-<p>
 Okay so let's look at a template.
 </p>
 
 <p>
-In the first piece of code, we have a template function that returns the larger of the two types. These types can be literally anything - they can by <code>int</code>, <code>double</code>, <code>char</code>, <code>someObject</code>, etc. As long as the type <code>T</code> has an implementation of <code>&gt;</code>, this will compile and this will run. In the second example we can see even clearer when we say that some template must support something. We are passing <code>w</code> by reference (so maybe it's an object). The parameter uses the <code>size()</code>, <code>normalize()</code>, and <code>swap()</code> functions (okay, it's an object). We also have the operator <code>!=</code> in use, and we also have a copy constructor. If we were to just substitute <code>T&amp; w</code> with <code>SpecificObject&amp; w</code>, we would not worry that <code>w</code> supports all of these functionalities, because we have explicitly stated what we are passing. But since we are using a template, we are <b>expecting</b> that <code>T</code> supports them. This is the meaning of an <b>implicit</b> interface. Writing templates means that we are dealing with implicit interfaces in the first place.
+In the first piece of code, we have a template function that returns the larger of the two types. These types can be literally anything - they can by <code>int</code>, <code>double</code>, <code>char</code>, <code>someObject</code>, etc. As long as the type <code>T</code> has an implementation of the <code>&gt;</code> operator, this will compile and run. In the second example we can see even clearer when we say, that some template must support something. We are passing <code>w</code> by reference (so maybe it's an object). The parameter uses the <code>size()</code>, <code>normalize()</code>, and <code>swap()</code> functions (okay, so it's an object). We also have the operator <code>!=</code> in use, and we also have a copy constructor. If we were to just substitute <code>T&amp; w</code> with <code>SpecificObject&amp; w</code>, we would not worry, that <code>w</code> supports all of these functionalities, because we have explicitly stated what we are passing. But since we are using a template, we are <b><b>expecting</b></b> that <code>T</code> supports them. This is the meaning of an <b>implicit</b> interface. Writing templates means that we are dealing with implicit interfaces in the first place.
 </p>
 
 <p>
@@ -125,8 +128,8 @@ One thing to consider when dealing with implicit interfaces is that it's not imp
 </section>
 </section>
 <section>
-<section id="slide-org3bc3ddd">
-<h3 id="org3bc3ddd">Compile-time polymoprhism</h3>
+<section id="slide-org6b5a885">
+<h3 id="org6b5a885">Compile-time polymoprhism</h3>
 <ul>
 <li>In old C++ - function overloading</li>
 <li>In template C++ - almost the same, but with unknown types</li>
@@ -143,8 +146,8 @@ Okay we get what an implicit interface is. But next to this there is another ver
 </section>
 </section>
 <section>
-<section id="slide-org14715ca">
-<h4 id="org14715ca">The Mixin idiom</h4>
+<section id="slide-org5003087">
+<h4 id="org5003087">The Mixin idiom</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -220,8 +223,8 @@ Remember, don't use mixins unless your programs needs them. Although their versa
 </section>
 </section>
 <section>
-<section id="slide-org7dfa3f7">
-<h3 id="org7dfa3f7"><code>typename</code> or <code>class</code></h3>
+<section id="slide-org33b76cc">
+<h3 id="org33b76cc"><code>typename</code> or <code>class</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Thing</span>;
@@ -281,8 +284,8 @@ For <b>class</b> - The other edge case is when we have a <b>template template pa
 </section>
 </section>
 <section>
-<section id="slide-org0c4701d">
-<h2 id="org0c4701d">The STL</h2>
+<section id="slide-orgc710924">
+<h2 id="orgc710924">The STL</h2>
 <ul>
 <li class="fragment roll-in">Containers</li>
 <li class="fragment roll-in">Vectors, strings, maps, and sets</li>
@@ -301,8 +304,8 @@ Now that we have a good grasp of what templates are, we can concentrate on one o
 </section>
 </section>
 <section>
-<section id="slide-orgff9f721">
-<h3 id="orgff9f721">Containers</h3>
+<section id="slide-orga8943c4">
+<h3 id="orga8943c4">Containers</h3>
 <ul>
 <li class="fragment roll-in">Sequence containers</li>
 <li class="fragment roll-in">Associative containers</li>
@@ -531,8 +534,8 @@ From my perspective, this is one of those moments where C++ isn't as consistent 
 </section>
 </section>
 <section>
-<section id="slide-org88fba52">
-<h3 id="org88fba52">Vectors, strings, maps, and sets</h3>
+<section id="slide-org5483bea">
+<h3 id="org5483bea">Vectors, strings, maps, and sets</h3>
 <aside class="notes">
 <p>
 Until now, we just talked about the general idea about containers and how to work with them. Every container has a specific job it does best, and most containers have some general use. These four are the most popular. We can't cover all of the containers in a single swoop, but having an idea of the most popular and useful ones will give you courage to experiment and dig deeper into the STL. Now let's get this out of the way, don't use <code>array</code> or <code>char*</code>. Using those two things will bring you a lot of headaces and will just make you have C++. When I started learning C++ all I did was use arrays of different types and it was just a paint - you have no dynamic memory allocation, you had to be careful when you are indexing and reading/writing elements, the syntax is annoying, etc. Instead you should adopt the use of <code>vectors</code> and <code>strings</code> anywhere you have a sequence of elements or a sequence of characters. Underneath both of these structures do use arrays and char pointers, but we don't want to deal with that. I encourage everyone to just look over the specifications of <code>vector</code> and <code>string</code> and to get familiar with the methods. Here we will look over some ways to utilize these STLs as best as we can.
@@ -622,8 +625,8 @@ Here is another cool little trick. Imagine that you have a very large vector tha
 </section>
 </section>
 <section>
-<section id="slide-org827413f">
-<h3 id="org827413f">Iterators</h3>
+<section id="slide-orgd64c3a5">
+<h3 id="orgd64c3a5">Iterators</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">ifstream</span> <span style="color: #599cab;">inputFile</span><span style="color: #99d1ce;">(</span><span style="color: #2aa889;">"interestingData.txt"</span><span style="color: #99d1ce;">)</span>;
@@ -654,8 +657,8 @@ Aside from the general use of iterators I want to mention something that is most
 </section>
 </section>
 <section>
-<section id="slide-org8eaa724">
-<h3 id="org8eaa724">Lambda expressions</h3>
+<section id="slide-orge5b484b">
+<h3 id="orge5b484b">Lambda expressions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #99d1ce;">[]()</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">empty lambda function</span>
@@ -694,8 +697,8 @@ So what about return types? Well, like any other function, we can specify the la
 </section>
 </section>
 <section>
-<section id="slide-org265df74">
-<h2 id="org265df74">Exercises</h2>
+<section id="slide-orgeff9b3f">
+<h2 id="orgeff9b3f">Exercises</h2>
 <ul>
 <li><a href="https://www.reddit.com/r/dailyprogrammer/">Reddit - Daily programmer</a></li>
 <li><a href="https://drive.google.com/open?id=1jREN-VuC4sa8QE6E5n71oJ2C9Vp3ciJ1">189 Programming questions</a></li>
@@ -713,15 +716,15 @@ Instead of just listing a ton of links to challenges and exercises, here are a f
 </section>
 </section>
 <section>
-<section id="slide-orgbd8bf1a">
-<h2 id="orgbd8bf1a">Resources</h2>
-<div class="outline-text-2" id="text-orgbd8bf1a">
+<section id="slide-orgee22a42">
+<h2 id="orgee22a42">Resources</h2>
+<div class="outline-text-2" id="text-orgee22a42">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgb9a0ab4">
-<h3 id="orgb9a0ab4">Templates</h3>
+<section id="slide-org843e1f3">
+<h3 id="org843e1f3">Templates</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/29298212/what-is-an-implicit-interface">Implicit Interface</a></li>
 <li><a href="https://stackoverflow.com/questions/1881468/what-is-compile-time-polymorphism-and-why-does-it-only-apply-to-functions">Compile-time polymorphism</a></li>
@@ -741,8 +744,8 @@ Instead of just listing a ton of links to challenges and exercises, here are a f
 </section>
 </section>
 <section>
-<section id="slide-org84733ac">
-<h3 id="org84733ac">STL</h3>
+<section id="slide-org72d6bbd">
+<h3 id="org72d6bbd">STL</h3>
 <ul>
 <li><a href="http://www.cplusplus.com/reference/stl/">Containers</a></li>
 <li><a href="http://en.cppreference.com/w/cpp/container">Containers 2</a></li>
@@ -761,8 +764,8 @@ Instead of just listing a ton of links to challenges and exercises, here are a f
 </section>
 </section>
 <section>
-<section id="slide-orga2494a0">
-<h3 id="orga2494a0">Lambdas</h3>
+<section id="slide-org2d68a6b">
+<h3 id="org2d68a6b">Lambdas</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/5501959/why-does-c0xs-lambda-require-mutable-keyword-for-capture-by-value-by-defau">Mutable</a></li>
 <li><a href="https://stackoverflow.com/questions/12765442/c-lambda-expression-anonymous-function?noredirect=1&amp;lq=1">Anonymous functions</a></li>
@@ -783,40 +786,40 @@ Instead of just listing a ton of links to challenges and exercises, here are a f
 <script src="../js/reveal.js"></script>
 
 <script>
- // Full list of configuration options available here:
- // https://github.com/hakimel/reveal.js#configuration
- Reveal.initialize({
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
 
-     controls: true,
-     progress: true,
-     history: true,
-     center: true,
-     slideNumber: 'c',
-     rollingLinks: true,
-     keyboard: true,
-     overview: true,
-     width: 1920,
-     height: 1080,
-     margin: 0.00,
-     maxScale: 2.00,
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1920,
+height: 1080,
+margin: 0.00,
+maxScale: 2.00,
 
-     theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-     transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
-     transitionSpeed: 'default',
-     multiplex: {
-         secret: '', // null if client
-         id: '', // id, obtained from socket.io server
-         url: '' // Location of socket.io server
-     },
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
 
-     // Optional libraries used to extend on reveal.js
-     dependencies: [
-         { src: '../js/classList.js', condition: function() { return !document.body.classList; } },
-         { src: '../js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-         { src: '../js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-         { src: '../js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-         { src: '../js/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
- });
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../js/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
 </script>
 </body>
 </html>
