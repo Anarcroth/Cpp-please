@@ -13,7 +13,7 @@ class SomethingSmart
 public:
     std::string comment_a_thing()
     {
-        return "The addition of a potential term to Schrodinger's equation sometimes leads to the occurrence of eigenvalues.  As an example, we now study the quantum-mechanical harmonic oscillator equation in one dimension, which in appropriate units is: -iut=uxx-x2u ";
+        return "The addition of a potential term to Schrodinger's equation sometimes leads to the occurrence of eigenvalues.  As an example, we now study the quantum-mechanical harmonic oscillator equation in one dimension, which in appropriate units is: -iut=uxx-x2u\n";
     }
 };
 
@@ -22,7 +22,7 @@ class SomethingStupid
 public:
     std::string comment_a_thing()
     {
-        return "";
+        return "Gee-gosh that new art installation sure is beautiful! Shiny!!\n";
     }
 };
 
@@ -42,7 +42,7 @@ class Cutoff: public T
 public:
     std::string comment_a_thing()
     {
-        return "";
+        return "shh\n";
     }
 };
 
@@ -77,6 +77,7 @@ int main() {
     for (auto &animal : animals)
     {
         animal->speak();
+        std::cout << std::endl;
     }
 
     return 0;

@@ -3,7 +3,7 @@
 int main()
 {
 	double grade = 2.9; // local variable
-	
+
 	// capture local var by value, but don't mutate it
 	// will result in an error
 	//auto y = [=]() { grade += 0.6; std::cout << "the grade is " << grade << std::endl; };
