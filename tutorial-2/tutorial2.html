@@ -34,19 +34,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orgff7bd56">Generics in C++</a></li>
-<li><a href="#/slide-org381e610">Template programming</a></li>
-<li><a href="#/slide-org6639b8c">The STL</a></li>
-<li><a href="#/slide-org92ac39b">Exercises</a></li>
-<li><a href="#/slide-orgbaf3e46">Resources</a></li>
+<li><a href="#/slide-org6b75475">Generics in C++</a></li>
+<li><a href="#/slide-org76b791e">Template programming</a></li>
+<li><a href="#/slide-orgd90c310">The STL</a></li>
+<li><a href="#/slide-org9fcb03a">Exercises</a></li>
+<li><a href="#/slide-orga3e8742">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orgff7bd56">
-<h2 id="orgff7bd56">Generics in C++</h2>
+<section id="slide-org6b75475">
+<h2 id="org6b75475">Generics in C++</h2>
 <aside class="notes">
 <p>
 One of the things that C++ manages to do very well is to provide generic programming to us. The <b>STL</b> is one of the best functionalities that have been ever made in the language. <code>Vectors</code>, <code>lists</code>, <code>for_each</code>, and many many more containers are available to use to shorten our code, make it more understandable, and make it <b>independent</b> from types! The C++ template mechanism is also <b>Turing complete</b> (you can compute any computable value with it), which led to <b>template meta programming</b>. With this tutorial we will go over what templates can do, how we can use them (and when) and then we will concentrate on the STL.
@@ -57,8 +57,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org381e610">
-<h2 id="org381e610">Template programming</h2>
+<section id="slide-org76b791e">
+<h2 id="org76b791e">Template programming</h2>
 <ul>
 <li class="fragment roll-in">Templates</li>
 <li class="fragment roll-in">Compile-time polymorphism</li>
@@ -69,8 +69,8 @@ One of the things that C++ manages to do very well is to provide generic program
 </section>
 </section>
 <section>
-<section id="slide-org0b7280e">
-<h3 id="org0b7280e">Templates</h3>
+<section id="slide-org2a6813b">
+<h3 id="org2a6813b">Templates</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -128,8 +128,8 @@ One thing to consider when dealing with implicit interfaces is that, it's not im
 </section>
 </section>
 <section>
-<section id="slide-org46c3ea7">
-<h3 id="org46c3ea7">Compile-time polymoprhism</h3>
+<section id="slide-org9230dfb">
+<h3 id="org9230dfb">Compile-time polymoprhism</h3>
 <ul>
 <li>In old C++ - function overloading</li>
 <li>In template C++ - almost the same, but with unknown types</li>
@@ -146,8 +146,8 @@ Okay we get what an implicit interface is. But next to this is another very impo
 </section>
 </section>
 <section>
-<section id="slide-org16f7fc9">
-<h4 id="org16f7fc9">The Mixin idiom</h4>
+<section id="slide-orgfdec821">
+<h4 id="orgfdec821">The Mixin idiom</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
@@ -223,8 +223,8 @@ The general rule to remember is - don't use mixins unless your programs needs th
 </section>
 </section>
 <section>
-<section id="slide-orgdd99c43">
-<h3 id="orgdd99c43"><code>typename</code> or <code>class</code></h3>
+<section id="slide-org8ee8854">
+<h3 id="org8ee8854"><code>typename</code> or <code>class</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Thing</span>;
@@ -284,8 +284,8 @@ For <b>class</b> - The other edge case is when we have a <b>template template pa
 </section>
 </section>
 <section>
-<section id="slide-org6639b8c">
-<h2 id="org6639b8c">The STL</h2>
+<section id="slide-orgd90c310">
+<h2 id="orgd90c310">The STL</h2>
 <ul>
 <li class="fragment roll-in">Containers</li>
 <li class="fragment roll-in">Vectors, strings, maps, and sets</li>
@@ -304,8 +304,8 @@ Now that we have a good grasp of what templates are, we can concentrate on one o
 </section>
 </section>
 <section>
-<section id="slide-org328ca6c">
-<h3 id="org328ca6c">Containers</h3>
+<section id="slide-org4124916">
+<h3 id="org4124916">Containers</h3>
 <ul>
 <li class="fragment roll-in">Sequence containers</li>
 <li class="fragment roll-in">Associative containers</li>
@@ -522,7 +522,7 @@ For sequential containers (<code>vector</code>, <code>string</code>, <code>deque
 </p>
 
 <p>
-This is pretty familiar, but there is a catch when we reach the associative containers. There is not method to do what we want to do, which means that we have to write our own loop. That's not a problem, because the logic is easy to implement, but we might fall into a trap. Looking at the two examples, we can see almost similar code. The first snippet seems pretty intuitive, and it is, but it will yield <b><b>undefined</b></b> behavior. Because we are erasing <code>i</code> at the time we find the <code>bad_val</code>, that erasure will make all iterators that point to the value <b>invalid</b>. This means that once that piece of code runs, the returned <code>i</code> will be invalid, making the code <b>undefined</b> since we are then using <code>i</code> again to increment. To overcome this we have to keep in mind the position of <code>i</code> in order to never <b>invalidate</b> it. Thus, we remove the incrementation from the <code>for</code> statement, and handle it in the <code>if</code> statement. Once we reach the bad value, just before we erase the value, we pass the old <b>unincremented</b> value of <code>i</code> and return the new <b>incremented</b> one. We do this with the postfix notation. If don't have a bad value, then we just increment normally <code>i</code>.
+This is pretty familiar, but there is a catch when we reach the associative containers. There is not method to do what we want to do, which means that we have to write our own loop. That's not a problem, because the logic is easy to implement, but we might fall into a trap. Looking at the two examples, we can see almost similar code. The first snippet seems pretty intuitive, and it is, but it will yield <b><b>undefined</b></b> behavior. Because we are erasing <code>i</code> at the time we find the <code>bad_val</code>, that erasure will make all iterators that point to the value <b>invalid</b>. This means that once that piece of code runs, the returned <code>i</code> will be invalid, making the code <b>undefined</b> since we are then using <code>i</code> again to increment. To overcome this we have to keep in mind the position of <code>i</code> in order to never <b>invalidate</b> it. Thus, we remove the incrementation from the <code>for</code> statement, and handle it in the <code>if</code> statement. Once we reach the bad value, just before we erase the value, we pass the old <b>unincremented</b> value of <code>i</code> and return the new <b>incremented</b> one. We do this with the postfix notation. If we don't have a bad value, then we just increment normally <code>i</code>.
 </p>
 
 <p>
@@ -534,15 +534,15 @@ From my perspective, this is one of those moments where C++ isn't as consistent 
 </section>
 </section>
 <section>
-<section id="slide-orgd2dfd2a">
-<h3 id="orgd2dfd2a">Vectors, strings, maps, and sets</h3>
+<section id="slide-org84f5bc4">
+<h3 id="org84f5bc4">Vectors, strings, maps, and sets</h3>
 <aside class="notes">
 <p>
-Until now, we just talked about the general idea about containers and how to work with them. Every container has a specific job it does best, and most containers have some general use. These four are the most popular. We can't cover all of the containers in a single swoop, but having an idea of the most popular and useful ones will give you courage to experiment and dig deeper into the STL. Now let's get this out of the way, don't use <code>array</code> or <code>char*</code>. Using those two things will bring you a lot of headaces and will just make you have C++. When I started learning C++ all I did was use arrays of different types and it was just a paint - you have no dynamic memory allocation, you had to be careful when you are indexing and reading/writing elements, the syntax is annoying, etc. Instead you should adopt the use of <code>vectors</code> and <code>strings</code> anywhere you have a sequence of elements or a sequence of characters. Underneath both of these structures do use arrays and char pointers, but we don't want to deal with that. I encourage everyone to just look over the specifications of <code>vector</code> and <code>string</code> and to get familiar with the methods. Here we will look over some ways to utilize these STLs as best as we can.
+Until now, we just talked about the general idea about containers and how to work with them. Every container has a specific job it does best, and most containers have some general use. These four are the most popular. We can't cover all of the containers in a single swoop, but having an idea of the most popular and useful ones will give you courage to experiment and dig deeper into the STL. Now let's get this out of the way, don't use <code>array</code> or <code>char*</code>. Using those two things will bring you a lot of headaces and will just leave you with resentment towards C++. When I started learning C++ all I did was use arrays of different types and it was just a paint - you have no dynamic memory allocation, you had to be careful when you are indexing and reading/writing elements, the syntax is annoying, etc. Instead you should adopt the use of <code>vector</code> and <code>string</code> anywhere you have a sequence of elements or a sequence of characters. Underneath, both of these structures do use arrays and char pointers, but we don't want to deal with that. I encourage everyone to just look over the specifications of <code>vector</code> and <code>string</code> and to get familiar with the methods. Here we will look over some ways to utilize these STLs as best as we can.
 </p>
 
 <p>
-In order to really drive the point home, here is what happens, when we are using normal arrays in our code. We have to remember to delete everything in the array that we have put, then we must use the correct form of delete (<code>delete</code> or <code>delete []</code>), then we must make sure that we delete the elements only once. Even if we are not making an array of a type <code>T</code> (let's say we are using <code>int</code>), we still encounter the problem of having to know in advance how much space we need, let alone the situation when we have to iterate over the elements to do some trivial thing. So anytime you decide to write <code>new T[..]</code>, this about if you can't use <code>vector</code> instead.
+In order to really drive the point home, here is what happens, when we are using normal arrays in our code. We have to remember to delete everything in the array that we have put, then we must use the correct form of delete (<code>delete</code> or <code>delete []</code>), then we must make sure that we delete the elements only once. Even if we are not making an array of a type <code>T</code> (let's say we are using <code>int</code>), we still encounter the problem of having to know in advance how much space we need, let alone the situation when we have to iterate over the elements to do some trivial thing. So anytime you decide to write <code>new T[..]</code>, think about if you can't use <code>vector</code> instead.
 </p>
 
 </aside>
@@ -565,11 +565,11 @@ Reserve space for optimization
 
 <aside class="notes">
 <p>
-All of this is great, but we can further increase the usefulness of the STL in order to minimize unnecessary operations and save us some trouble. First of which is this - when we are declaring vector object, we have several way to populate the vector - through <b>initialization lists</b>, through <code>push_back()</code>, and so on. Although vector can handle it's own dynamic allocation, there is still a way to optimize things. Because vector calls the underlying <code>realloc()</code> C function, it goes through a 4 step process - <b>1.</b> Allocate new memory that is a multiple of the previous size of the container. <b>2.</b> Then copy all of the previous elements of the previous memory to the new memory. <b>3.</b> Destroy the objects of the old memory. <b>4.</b> Deallocate the old memory. If we are increasing the size of our vector in excess, we will call all of these steps, which will naturally lead to a slower running program. Minimizing this behavior will be a great thing. Another striking thing is that every time such an operation is executed, every pointer, reference, and iterators will be invalidated. This is an even better reason for us to make sure that we optimize these processes.
+So let's talk about how can populate collections. We can further increase the usefulness of the STL in order to minimize unnecessary operations and save us some trouble. First of which is this - when we are declaring vector object, we have several way to populate the vector - through <b>initialization lists</b>, through <code>push_back()</code>, and so on. Although vector can handle it's own dynamic allocation, there is still a way to optimize things. Because vector calls the underlying <code>realloc()</code> function, found in <b>C</b>, it goes through a 4 step process - <b>1.</b> Allocate new memory that is a multiple of the previous size of the container. <b>2.</b> Then copy all of the previous elements of the previous memory to the new memory. <b>3.</b> Destroy the objects of the old memory. <b>4.</b> Deallocate the old memory. If we are increasing the size of our vector in excess, we will call all of these steps, which will naturally lead to a slower running program. Minimizing this behavior will be a great thing. Another striking thing is that <b>every</b> time such an operation is executed, <b><b>every</b></b> pointer, reference, and iterator will be invalidated. This is an even better reason for us to make sure that we optimize these processes.
 </p>
 
 <p>
-Now before we do that let's just go over the function that <code>vector</code> supports about memory. <code>size()</code> just tells us how may elements there are currently in the container. <code>capacity()</code> tells us how many elements can be inserted with the already allocated memory. <code>resize(size_t n)</code> just resizes the number of elements the container has. If the new number is less than the previous size, then the last elements are deleted and removed, if the new number is greater than the previous size, the remaining empty objects are called with a default initialization. If the new number if larger than the current capacity, there will be a reallocation operation in order to make space for the new elements, before they are inserted. <code>reserve(size_t n)</code> forces the container to change to <code>n</code> given than <code>n</code> is no less than the current size of the container. This typically forces a reallocation, since we want to increase the seize, but of we are to shrink the size, the call is almost always ignored.
+Now before we do that, let's just go over the function that <code>vector</code> supports about memory. <code>size()</code> just tells us how may elements there are currently in the container. <code>capacity()</code> tells us how many elements can be inserted with the already allocated memory. <code>resize(size_t n)</code> just resizes the number of elements the container has. If the new number is less than the previous size, then the last elements are deleted and removed, if the new number is greater than the previous size, the remaining empty objects are called with a default initialization. If the new number is larger than the current capacity, there will be a reallocation operation in order to make space for the new elements, before they are inserted. <code>reserve(size_t n)</code> forces the container to change to <code>n</code> given than <code>n</code> is no less than the current size of the container. This typically forces a reallocation, since we want to increase the seize, but if we are to shrink the size, the call is almost always ignored.
 </p>
 
 </aside>
@@ -592,7 +592,7 @@ Now before we do that let's just go over the function that <code>vector</code> s
 
 <aside class="notes">
 <p>
-So instead of doing meaningless re-allocations, object constructions, destructions, and so on, we can use the power of <code>reserve</code> to tell C++ in advance what we will need for now. So if we are to push, let's say 1000 integers into a vector, we might right a simple code that does that. The first piece of code will do around <b>2</b> to <b>10</b> re-allocations, since each time a reallocation is needed, most compilers increase the size of the container by a factor of the previous size. But if we are to use the reserve method we would do <b>0</b> re-allocations. Of course this can be translated if we are using objects which would cause even more time saving.
+So instead of doing meaningless re-allocations, object constructions, destructions, and so on, we can use the power of <code>reserve</code> to tell C++ in advance what we will need. So if we are to push, let's say 1000 integers into a vector, we might write a simple code that does that. The first piece of code will do around <b>2</b> to <b>10</b> re-allocations, since each time a re-allocation is needed, most compilers increase the size of the container by a factor of the previous size. But if we are to use the reserve method we would do <b>0</b> re-allocations. Of course this can be translated if we are using objects which would cause even more time saving.
 </p>
 
 </aside>
@@ -625,8 +625,8 @@ Here is another cool little trick. Imagine that you have a very large vector tha
 </section>
 </section>
 <section>
-<section id="slide-orgdbc1727">
-<h3 id="orgdbc1727">Iterators</h3>
+<section id="slide-orgca00e14">
+<h3 id="orgca00e14">Iterators</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">ifstream</span> <span style="color: #599cab;">inputFile</span><span style="color: #99d1ce;">(</span><span style="color: #2aa889;">"interestingData.txt"</span><span style="color: #99d1ce;">)</span>;
@@ -649,7 +649,7 @@ Apart from the normal data structures that the STL has to offer, we have also on
 </p>
 
 <p>
-Aside from the general use of iterators I want to mention something that is mostly looked over and should be used more often. It has made my life much easier when it comes to command line user input and that is the <code>istreambuf_iterator</code>. Until know we are used to getting input from the console by using the <code>std::cin &lt;&lt;</code> operator. This is a fine until we realize that the operator omits white spaces, and the moment we need to use a blank space we hit a wall. One way to overcome this is to disable the option to skip white spaces through the <code>ios</code> namespace. But since that approach is kind if slow (maybe even up to 40%) slower. That's why we can just use the <code>istreambuf_iterator</code> which is much more intuitive to use.
+Aside from the general use of iterators I want to mention something that is mostly looked over and should be used more often. It has made my life much easier when it comes to command line user input and that is the <code>istreambuf_iterator</code>. Until now we are used to getting input from the console by using the <code>std::cin &lt;&lt;</code> operator. This is fine until we realize that the operator omits white spaces, and the moment we need to use a blank space, we hit a wall. One way to overcome this is to disable the option to skip white spaces through the <code>ios</code> namespace. But since that approach is kind if slow (maybe even up to 40%) slower. That's why we can just use the <code>istreambuf_iterator</code> which is much more intuitive to use.
 </p>
 
 </aside>
@@ -657,8 +657,8 @@ Aside from the general use of iterators I want to mention something that is most
 </section>
 </section>
 <section>
-<section id="slide-orgf8d8b60">
-<h3 id="orgf8d8b60">Lambda expressions</h3>
+<section id="slide-org8895ea2">
+<h3 id="org8895ea2">Lambda expressions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #99d1ce;">[]()</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">empty lambda function</span>
@@ -681,11 +681,11 @@ Aside from the general use of iterators I want to mention something that is most
 
 <aside class="notes">
 <p>
-Since C++ 11, we have this neat thing called <b>lambda functions</b> or <b>lambda expressions</b>. If you come from a background of <b>Java</b> or <b>C#</b>, these might sound familiar to you. So what are they and what kind of problems do they help us to solve? In some simple terms, <b>lambda functions</b> are small snippets of code, also typically called an anonymous function objects, that are never going to be reused and are not worth bothering to name and define. This means that if we want to make some operation over a container, instead of creating a separate <code>namespace</code> or <code>struct</code> or a <code>class</code> where we will have this lonely <b>one-time-use</b> function, we can just use a lambda function and be done with it. They can be used instead of a named class with an <code>operator()</code>. Here is the basic syntax of a lambda function. We have three parts of a lambda function - the <b>capture list</b>, the <b>argument list</b>, an optional <b>mutable</b> specifier, an optional <b>return type</b> <code>-&gt;</code>, and the <b>function body</b>. The argument list and the function body work like any other function so we don't need to explain them, but the capture list and mutable specifier are pretty interesting. The capture defines <b>what</b> from the outside of the lambda function can be used inside it and <b>how</b> (either to be passed by reference or by value). There are several ways we can use the capture list - we can specify an empty list <code>[]</code>, which tell us that no local names from the surrounding context can be used inside the function body. For such a list, data is taken from the passed arguments or from non-local variables. We can use <code>[&amp;]</code>, which tells us that we can use all local variables <b>by-reference</b>. We can also have an implicit capture by value with <code>[=]</code>, where all local variables can be used as copied (<b>by-value</b>). We can have an explicit capture list like <code>[capture-list]</code>, where we specify the names of the local variables we want to use. Here if we use the <code>&amp;</code> sign we tell C++ that the captured variables are to be used with a <b>reference</b>. This can be expanded to be like <code>[&amp;, capture-list]</code>, where we specify that all local variables are to be used with a <b>reference</b>, except the specified ones in the list, which are to be used by value. With the same logic we can have <code>[=, capture-list]</code>, and you can guess what this means (all local variables are to be used by value, except the ones in the capture list, which are to be used with a reference). Of course you can mix all of these together with a comma separator.
+Since C++ 11, we have this neat thing called <b>lambda functions</b> or <b>lambda expressions</b>. If you come from a background of <b>Java</b> or <b>C#</b>, these might sound familiar to you. So what are they and what kind of problems do they help us to solve? In some simple terms, <b>lambda functions</b> are small snippets of code, also typically called an anonymous function object, that are never going to be reused and are not worth bothering to name and define. This means that if we want to make some operation over a container, instead of creating a separate <code>namespace</code> or <code>struct</code> or a <code>class</code> where we will have this lonely <b>one-time-use</b> function, we can just use a lambda function and be done with it. They can be used instead of a named class with an <code>operator()</code>. Here is the basic syntax of a lambda function. We have several parts of a lambda function - the <b>capture list</b>, the <b>argument list</b>, an optional <b>mutable</b> specifier, an optional <b>return type</b> <code>-&gt;</code>, and the <b>function body</b>. The argument list and the function body work like any other function so we don't need to explain them, but the capture list and mutable specifier are pretty interesting. The capture defines <b>what</b> from the outside of the lambda function can be used inside it and <b>how</b> (either to be passed by reference or by value). There are several ways we can use the capture list - we can specify an empty list <code>[]</code>, which tell us that no local names from the surrounding context can be used inside the function body. For such a list, data is taken from the passed arguments or from non-local variables. We can use <code>[&amp;]</code>, which tells us that we can use all local variables <b>by-reference</b>. We can also have an implicit capture by value with <code>[=]</code>, where all local variables can be used as copies (<b>by-value</b>). We can have an explicit capture list like <code>[capture-list]</code>, where we specify the names of the local variables we want to use. Here if we use the <code>&amp;</code> sign we tell C++ that the captured variables are to be used with a <b>reference</b>. This can be expanded to be like <code>[&amp;, capture-list]</code>, where we specify that all local variables are to be used with a <b>reference</b>, except the specified ones in the list, which are to be used by value. With the same logic we can have <code>[=, capture-list]</code>, and you can guess what this means (all local variables are to be used by value, except the ones in the capture list, which are to be used with a reference). Of course you can mix all of these together with a <b>comma separator</b>.
 </p>
 
 <p>
-Now what does the <code>mutable</code> keyword do in this situation? Well this allows us to modify the whole lambda expression in the function body, i.e. change the lambda's copies of variables that are captured by value. Usually we don't want to do this, so by default this option is turned <b>off</b>. This comes in handy not all that often, but what it allows us ot do, is to change variables in the scope of the lambda body when the variables are passed by value. Because underneath, function objects with <code>operator()()</code> are implemented with a <code>const</code> member function, this is why the default behavior of the lambda function is to also use variables as a constant. If we wanted to change a variable (that is passed by value) and not use the <code>mutable</code> keyword, we would get a compilation error.
+Now what does the <code>mutable</code> keyword do in this situation? Well this allows us to modify the whole lambda expression in the function body, i.e. change the lambda's copies of variables that are captured by value. Usually we don't want to do this, so by default this option is turned <b><b>off</b></b>. This comes in handy not all that often, but what it allows us to do, is to change variables in the scope of the lambda body when the variables are passed by value. Because underneath, function objects with <code>operator()()</code> are implemented with a <code>const</code> member function, this is why the default behavior of the lambda function is to also use variables as a constant. If we wanted to change a variable (that is passed by value) and not use the <code>mutable</code> keyword, we would get a compilation error.
 </p>
 
 <p>
@@ -697,8 +697,8 @@ So what about return types? Well, like any other function, we can specify the la
 </section>
 </section>
 <section>
-<section id="slide-org92ac39b">
-<h2 id="org92ac39b">Exercises</h2>
+<section id="slide-org9fcb03a">
+<h2 id="org9fcb03a">Exercises</h2>
 <ul>
 <li><a href="https://www.reddit.com/r/dailyprogrammer/">Reddit - Daily programmer</a></li>
 <li><a href="https://drive.google.com/open?id=1jREN-VuC4sa8QE6E5n71oJ2C9Vp3ciJ1">189 Programming questions</a></li>
@@ -716,15 +716,15 @@ Instead of just listing a ton of links to challenges and exercises, here are a f
 </section>
 </section>
 <section>
-<section id="slide-orgbaf3e46">
-<h2 id="orgbaf3e46">Resources</h2>
-<div class="outline-text-2" id="text-orgbaf3e46">
+<section id="slide-orga3e8742">
+<h2 id="orga3e8742">Resources</h2>
+<div class="outline-text-2" id="text-orga3e8742">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgdb0f31b">
-<h3 id="orgdb0f31b">Templates</h3>
+<section id="slide-orgb9902d6">
+<h3 id="orgb9902d6">Templates</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/29298212/what-is-an-implicit-interface">Implicit Interface</a></li>
 <li><a href="https://stackoverflow.com/questions/1881468/what-is-compile-time-polymorphism-and-why-does-it-only-apply-to-functions">Compile-time polymorphism</a></li>
@@ -744,8 +744,8 @@ Instead of just listing a ton of links to challenges and exercises, here are a f
 </section>
 </section>
 <section>
-<section id="slide-org41edf2e">
-<h3 id="org41edf2e">STL</h3>
+<section id="slide-org3a5baf2">
+<h3 id="org3a5baf2">STL</h3>
 <ul>
 <li><a href="http://www.cplusplus.com/reference/stl/">Containers</a></li>
 <li><a href="http://en.cppreference.com/w/cpp/container">Containers 2</a></li>
@@ -764,8 +764,8 @@ Instead of just listing a ton of links to challenges and exercises, here are a f
 </section>
 </section>
 <section>
-<section id="slide-orgb86b0b1">
-<h3 id="orgb86b0b1">Lambdas</h3>
+<section id="slide-org64b71d1">
+<h3 id="org64b71d1">Lambdas</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/5501959/why-does-c0xs-lambda-require-mutable-keyword-for-capture-by-value-by-defau">Mutable</a></li>
 <li><a href="https://stackoverflow.com/questions/12765442/c-lambda-expression-anonymous-function?noredirect=1&amp;lq=1">Anonymous functions</a></li>
