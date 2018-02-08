@@ -351,12 +351,6 @@ Prefer range member functions to for loops
 
 <div class="org-src-container">
 
-<pre  class="fragment (roll-in)"><span class="linenr">0: </span>v1.assign<span style="color: #99d1ce;">(</span>v2.begin<span style="color: #33859e;">()</span> + v2.size<span style="color: #33859e;">()</span> / <span style="color: #33859e; font-weight: bold;">2</span>, v2.end<span style="color: #33859e;">()</span><span style="color: #99d1ce;">)</span>;
-</pre>
-</div>
-
-<div class="org-src-container">
-
 <pre  class="fragment (roll-in)"><span class="linenr">0: </span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">vector</span><span style="color: #99d1ce;">&lt;</span>Obj<span style="color: #99d1ce;">&gt;</span> <span style="color: #599cab;">v1</span>,<span style="color: #599cab;">v2</span>;
 <span class="linenr">1: </span>
 <span class="linenr">2: </span><span style="color: #245361;">// </span><span style="color: #245361;">code thingies</span>
@@ -367,6 +361,12 @@ Prefer range member functions to for loops
 <span class="linenr">7: </span>    v1.push_back<span style="color: #33859e;">(</span>v<span style="color: #33859e;">)</span>;
 <span class="linenr">8: </span><span style="color: #99d1ce;">}</span>
 </pre>
+</div>
+
+<div class="org-src-container">
+
+    <pre  class="fragment (roll-in)"><span class="linenr">0: </span>v1.assign<span style="color: #99d1ce;">(</span>v2.begin<span style="color: #33859e;">()</span> + v2.size<span style="color: #33859e;">()</span> / <span style="color: #33859e; font-weight: bold;">2</span>, v2.end<span style="color: #33859e;">()</span><span style="color: #99d1ce;">)</span>;
+    </pre>
 </div>
 
 <aside class="notes">
