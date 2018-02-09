@@ -27,25 +27,25 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Resource Management and Good practices</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-02-09 Fri 20:54</p>
+<section id="sec-title-slide"><h1 class="title">Resource Management and Good practices</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-02-09 Fri 20:59</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org3e9b73a">How to manage memory</a></li>
-<li><a href="#/slide-orga47df00">General good practices</a></li>
-<li><a href="#/slide-org37871c6">Exercises</a></li>
-<li><a href="#/slide-org6bd46e6">Resources</a></li>
+<li><a href="#/slide-orgfc5fa83">How to manage memory</a></li>
+<li><a href="#/slide-orgf0289bd">General good practices</a></li>
+<li><a href="#/slide-org5114fe9">Exercises</a></li>
+<li><a href="#/slide-orge701b8a">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org3e9b73a">
-<h2 id="org3e9b73a">How to manage memory</h2>
+<section id="slide-orgfc5fa83">
+<h2 id="orgfc5fa83">How to manage memory</h2>
 <aside class="notes">
 <p>
 When we first learn C++ for the first time we have way too many things going on so we are usually told not to worry about memory management (or we are not even aware that such a thing exists in the language). This is normal, since the language itself is hard enough to learn so we push thins topic for another time. But that time usually comes way too late and we don't have the discipline to think in therms of memory management. Luckily for us, we are writing modern C++, which means that there are a lot of tools deisgn to help us out with this task and to make it much more easy, than it was back in '89.
@@ -60,8 +60,8 @@ In C++ we have several resources we can manage, where we are not only limited to
 </section>
 </section>
 <section>
-<section id="slide-orgf438e36">
-<h3 id="orgf438e36">RAII</h3>
+<section id="slide-org119170c">
+<h3 id="org119170c">RAII</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">without RAII</span>
@@ -94,8 +94,8 @@ In C++ we have this magical idiom called <b><b>RAII</b></b>, or <b>Resource Acqu
 </section>
 </section>
 <section>
-<section id="slide-org265c4a2">
-<h3 id="org265c4a2">When to use <code>new</code> and <code>delete</code></h3>
+<section id="slide-org1c0e464">
+<h3 id="org1c0e464">When to use <code>new</code> and <code>delete</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #d26937;">int</span> * <span style="color: #599cab;">ipt</span> = <span style="color: #195466; font-weight: bold;">new</span> <span style="color: #d26937;">int</span>;
@@ -126,8 +126,8 @@ So using <code>new</code> and <code>delete</code> can lead to peril if we are no
 </section>
 </section>
 <section>
-<section id="slide-org961b411">
-<h3 id="org961b411">A pass by over garbage collection</h3>
+<section id="slide-org3d491b8">
+<h3 id="org3d491b8">A pass by over garbage collection</h3>
 <ul>
 <li class="fragment roll-in">Weak references</li>
 <li class="fragment roll-in">Reference counting</li>
@@ -218,8 +218,8 @@ And finally let's talk about the <b>rule of five</b>. These are just a set of ru
 </section>
 </section>
 <section>
-<section id="slide-org909dd52">
-<h3 id="org909dd52">Using the STL to our advantage</h3>
+<section id="slide-orgbb6f817">
+<h3 id="orgbb6f817">Using the STL to our advantage</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">memory</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">// </span><span style="color: #245361;">holds smart pointers</span>
@@ -243,44 +243,44 @@ So how does a <code>unique_ptr</code> look like? Well, it's basically using any 
 </section>
 </section>
 <section>
-<section id="slide-orga47df00">
-<h2 id="orga47df00">General good practices</h2>
-<div class="outline-text-2" id="text-orga47df00">
+<section id="slide-orgf0289bd">
+<h2 id="orgf0289bd">General good practices</h2>
+<div class="outline-text-2" id="text-orgf0289bd">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orga60e8df">
-<h3 id="orga60e8df">Use <code>const</code>, <code>enums</code>, and <code>inline</code></h3>
+<section id="slide-orgc5934e4">
+<h3 id="orgc5934e4">Use <code>const</code>, <code>enums</code>, and <code>inline</code></h3>
 </section>
 </section>
 <section>
-<section id="slide-orgb8e6507">
-<h3 id="orgb8e6507">Make full copies of objects</h3>
+<section id="slide-orgdc4836b">
+<h3 id="orgdc4836b">Make full copies of objects</h3>
 </section>
 </section>
 <section>
-<section id="slide-org5796185">
-<h3 id="org5796185">Postpone variable definitions</h3>
+<section id="slide-org807f082">
+<h3 id="org807f082">Postpone variable definitions</h3>
 
 </section>
 </section>
 <section>
-<section id="slide-org37871c6">
-<h2 id="org37871c6">Exercises</h2>
+<section id="slide-org5114fe9">
+<h2 id="org5114fe9">Exercises</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-org6bd46e6">
-<h2 id="org6bd46e6">Resources</h2>
-<div class="outline-text-2" id="text-org6bd46e6">
+<section id="slide-orge701b8a">
+<h2 id="orge701b8a">Resources</h2>
+<div class="outline-text-2" id="text-orge701b8a">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgb48a601">
-<h3 id="orgb48a601">Memory Management</h3>
+<section id="slide-orgab2b0c2">
+<h3 id="orgab2b0c2">Memory Management</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/2321511/what-is-meant-by-resource-acquisition-is-initialization-raii">RAII</a></li>
 <li><a href="http://en.cppreference.com/w/cpp/language/raii">RAII 2</a></li>
@@ -290,6 +290,14 @@ So how does a <code>unique_ptr</code> look like? Well, it's basically using any 
 <li><a href="http://hboehm.info/gc/">Garbage collector for C++</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Reference_counting#reference_cycle">Reference counting</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Weak_reference">Weak references</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Rule_of_three_(C++_programming)">Rule of 3</a></li>
+<li><a href="https://cpppatterns.com/patterns/rule-of-five.html">Rule of 5</a></li>
+<li><a href="http://en.cppreference.com/w/cpp/language/rule_of_three">Rule of 3/5/0</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/dd293665.aspx">Move constructor and assignment operator</a></li>
+<li><a href="https://blog.smartbear.com/c-plus-plus/c11-tutorial-introducing-the-move-constructor-and-the-move-assignment-operator/">C++ 11 move</a></li>
+<li><a href="http://en.cppreference.com/w/cpp/language/move_constructor">Move constructors</a></li>
+<li><a href="https://visualstudiomagazine.com/articles/2012/10/19/circular-references.aspx">Circular references</a></li>
+<li><a href="https://mortoray.com/2012/01/08/what-is-reference-counting/">What is reference counting</a></li>
 
 </ul>
 </section>
