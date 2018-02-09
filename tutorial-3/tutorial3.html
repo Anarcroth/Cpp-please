@@ -27,25 +27,25 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Resource Management and Good practices</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-02-07 Wed 18:13</p>
+<section id="sec-title-slide"><h1 class="title">Resource Management and Good practices</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-02-09 Fri 20:43</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org3d4ce4a">How to manage memory</a></li>
-<li><a href="#/slide-orgbf77806">General good practices</a></li>
-<li><a href="#/slide-org8e151aa">Exercises</a></li>
-<li><a href="#/slide-orgac05237">Resources</a></li>
+<li><a href="#/slide-org3c59314">How to manage memory</a></li>
+<li><a href="#/slide-org7bea762">General good practices</a></li>
+<li><a href="#/slide-org2eff77f">Exercises</a></li>
+<li><a href="#/slide-orge1533f1">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org3d4ce4a">
-<h2 id="org3d4ce4a">How to manage memory</h2>
+<section id="slide-org3c59314">
+<h2 id="org3c59314">How to manage memory</h2>
 <aside class="notes">
 <p>
 When we first learn C++ for the first time we have way too many things going on so we are usually told not to worry about memory management (or we are not even aware that such a thing exists in the language). This is normal, since the language itself is hard enough to learn so we push thins topic for another time. But that time usually comes way too late and we don't have the discipline to think in therms of memory management. Luckily for us, we are writing modern C++, which means that there are a lot of tools deisgn to help us out with this task and to make it much more easy, than it was back in '89.
@@ -60,8 +60,8 @@ In C++ we have several resources we can manage, where we are not only limited to
 </section>
 </section>
 <section>
-<section id="slide-org024c1d0">
-<h3 id="org024c1d0">When to use <code>new</code> and <code>delete</code></h3>
+<section id="slide-orgd2ce758">
+<h3 id="orgd2ce758">When to use <code>new</code> and <code>delete</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #d26937;">int</span> * <span style="color: #599cab;">ipt</span> = <span style="color: #195466; font-weight: bold;">new</span> <span style="color: #d26937;">int</span>;
@@ -92,13 +92,12 @@ So using <code>new</code> and <code>delete</code> can lead to peril if we are no
 </section>
 </section>
 <section>
-<section id="slide-org4229bbe">
-<h3 id="org4229bbe">A pass by over garbage collection</h3>
+<section id="slide-org25c9206">
+<h3 id="org25c9206">A pass by over garbage collection</h3>
 <ul>
 <li class="fragment roll-in">Weak references</li>
 <li class="fragment roll-in">Reference counting</li>
-<li class="fragment roll-in">Smart pointers</li>
-<li class="fragment roll-in">Rule of three (or 5)</li>
+<li class="fragment roll-in">Rule of five</li>
 
 </ul>
 
@@ -120,7 +119,7 @@ Now <b><b>reference counting</b></b> is a technique where we count the number of
 </p>
 
 <p>
-Okay now let's talk about some smart pointers. In general they are some abstract data type that provide the functionality to de-allocate memory for us and to release resources.
+And finally let's talk about the <b>rule of five</b>. These are just a set of rules for building <b>exception safe</b> and <b>resource managing</b> code in C++. The first three rules can be summed up like this. If a class needs to have a user-defined destructor, or copy constructor, or copy assignment operator, then it most probably needs all three. Because we are handling resources in our classes, we will be working with references and pointers, which means that the default implementations of the constructors and destructor will not suffice for us, and we will need to implement them on our own (tutorial 1 covers briefly the topic of writing such custom implementations). The last two rules are also related to this. If we have these custom implementations in our code base, we must also implement a <b><b>move</b></b> constructor and a <b><b>move assignment operator</b></b>. Now we must acknowledge what a <b>move</b> constructor and <b>move assignment operator</b> is. Well basically, they are two new additions we have since <b>C++ 11</b>. They allow us to perform move semantics in C++ in a more efficient way (there are links to references for <b>move</b> s for those who are interested).
 </p>
 
 </aside>
@@ -128,8 +127,8 @@ Okay now let's talk about some smart pointers. In general they are some abstract
 </section>
 </section>
 <section>
-<section id="slide-org50fa750">
-<h3 id="org50fa750">RAII</h3>
+<section id="slide-org7aecf7d">
+<h3 id="org7aecf7d">RAII</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">without RAII</span>
@@ -162,11 +161,24 @@ In C++ we have this magical idiom called <b><b>RAII</b></b>, or <b>Resource Acqu
 </section>
 </section>
 <section>
-<section id="slide-orga5cf0ec">
-<h3 id="orga5cf0ec">Using the STL to our advantage</h3>
+<section id="slide-orgb4b03bc">
+<h3 id="orgb4b03bc">Using the STL to our advantage</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">memory</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">// </span><span style="color: #245361;">holds smart pointers</span>
+<span class="linenr">1: </span>
+<span class="linenr">2: </span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">unique_ptr</span><span style="color: #99d1ce;">&lt;</span>Object<span style="color: #99d1ce;">&gt;</span> <span style="color: #599cab;">obj</span>; <span style="color: #245361;">// </span><span style="color: #245361;">holds a pointer to var obj</span>
+<span class="linenr">3: </span>
+</pre>
+</div>
+
 <aside class="notes">
 <p>
 In the previous section I mentioned that we can use smart pointers to our advantage to handle heap memory and resources. Before we had to write out own memory management classes that worked likes smart pointers, when C++ 11 first came out, we had <code>auto_ptr</code>, which tried to do that. But it was somewhat impaired to several functionalities like copying and assigning. Since then, <code>auto_ptr</code> is deprecated and we use either <code>unique_ptr</code> or <code>share_ptr</code>. Now I want to get this out of the way, when working with smart pointers, <b>unique</b> is the standard and <b>shared</b> is the exception.
+</p>
+
+<p>
+So how does a <code>unique_ptr</code> look like? Well, it's basically using any other STL container, where we define what we want inside of it and then we declare our variable.
 </p>
 
 </aside>
@@ -174,50 +186,44 @@ In the previous section I mentioned that we can use smart pointers to our advant
 </section>
 </section>
 <section>
-<section id="slide-orgc85c87c">
-<h3 id="orgc85c87c">How to store objectes in smart pointers</h3>
-
-</section>
-</section>
-<section>
-<section id="slide-orgbf77806">
-<h2 id="orgbf77806">General good practices</h2>
-<div class="outline-text-2" id="text-orgbf77806">
+<section id="slide-org7bea762">
+<h2 id="org7bea762">General good practices</h2>
+<div class="outline-text-2" id="text-org7bea762">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orge4d22aa">
-<h3 id="orge4d22aa">Use <code>const</code>, <code>enums</code>, and <code>inline</code></h3>
+<section id="slide-org6d2d63c">
+<h3 id="org6d2d63c">Use <code>const</code>, <code>enums</code>, and <code>inline</code></h3>
 </section>
 </section>
 <section>
-<section id="slide-orgabfe6dd">
-<h3 id="orgabfe6dd">Make full copies of objects</h3>
+<section id="slide-org224fa21">
+<h3 id="org224fa21">Make full copies of objects</h3>
 </section>
 </section>
 <section>
-<section id="slide-orgbfda228">
-<h3 id="orgbfda228">Postpone variable definitions</h3>
+<section id="slide-org67a66d2">
+<h3 id="org67a66d2">Postpone variable definitions</h3>
 
 </section>
 </section>
 <section>
-<section id="slide-org8e151aa">
-<h2 id="org8e151aa">Exercises</h2>
+<section id="slide-org2eff77f">
+<h2 id="org2eff77f">Exercises</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-orgac05237">
-<h2 id="orgac05237">Resources</h2>
-<div class="outline-text-2" id="text-orgac05237">
+<section id="slide-orge1533f1">
+<h2 id="orge1533f1">Resources</h2>
+<div class="outline-text-2" id="text-orge1533f1">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org3860e95">
-<h3 id="org3860e95">Memory Management</h3>
+<section id="slide-org2050c87">
+<h3 id="org2050c87">Memory Management</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/2321511/what-is-meant-by-resource-acquisition-is-initialization-raii">RAII</a></li>
 <li><a href="http://en.cppreference.com/w/cpp/language/raii">RAII 2</a></li>
