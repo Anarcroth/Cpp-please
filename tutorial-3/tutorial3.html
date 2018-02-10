@@ -7,9 +7,9 @@
 <style type="text/css">
 .underline { text-decoration: underline; }
 </style>
-<link rel="stylesheet" href="file:///home/mdn/reveal.js-3.6.0/css/reveal.css"/>
+<link rel="stylesheet" href="../css/reveal.css"/>
 
-<link rel="stylesheet" href="file:///home/mdn/reveal.js-3.6.0/css/theme/moon.css" id="theme"/>
+<link rel="stylesheet" href="../css/moon.css" id="theme"/>
 
 <link rel="stylesheet" href="./presentation.css"/>
 
@@ -19,7 +19,7 @@
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'file:///home/mdn/reveal.js-3.6.0/css/print/pdf.css';
+        link.href = '../css/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
     }
 </script>
@@ -27,7 +27,7 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Resource Management and Good practices</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-02-09 Fri 20:59</p>
+<section id="sec-title-slide"><h1 class="title">Resource Management and Good practices</h1><h2 class="author">Martin Nestorov</h2>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
@@ -304,44 +304,44 @@ So how does a <code>unique_ptr</code> look like? Well, it's basically using any 
 </section>
 </div>
 </div>
-<script src="file:///home/mdn/reveal.js-3.6.0/lib/js/head.min.js"></script>
-<script src="file:///home/mdn/reveal.js-3.6.0/js/reveal.js"></script>
+<script src="../js/head.min.js"></script>
+<script src="../js/reveal.js"></script>
 
 <script>
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
+ // Full list of configuration options available here:
+ // https://github.com/hakimel/reveal.js#configuration
+ Reveal.initialize({
 
-controls: true,
-progress: true,
-history: true,
-center: true,
-slideNumber: 'c',
-rollingLinks: true,
-keyboard: true,
-overview: true,
-width: 1920,
-height: 1080,
-margin: 0.00,
-maxScale: 2.00,
+     controls: true,
+     progress: true,
+     history: true,
+     center: true,
+     slideNumber: 'c',
+     rollingLinks: true,
+     keyboard: true,
+     overview: true,
+     width: 1920,
+     height: 1080,
+     margin: 0.00,
+     maxScale: 2.00,
 
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
-transitionSpeed: 'default',
-multiplex: {
-    secret: '', // null if client
-    id: '', // id, obtained from socket.io server
-    url: '' // Location of socket.io server
-},
+     theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+     transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+     transitionSpeed: 'default',
+     multiplex: {
+         secret: '', // null if client
+         id: '', // id, obtained from socket.io server
+         url: '' // Location of socket.io server
+     },
 
-// Optional libraries used to extend on reveal.js
-dependencies: [
- { src: 'file:///home/mdn/reveal.js-3.6.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
- { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
- { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
- { src: 'file:///home/mdn/reveal.js-3.6.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
-});
+     // Optional libraries used to extend on reveal.js
+     dependencies: [
+         { src: '../js/classList.js', condition: function() { return !document.body.classList; } },
+         { src: '../js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+         { src: '../js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+         { src: '../js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+         { src: '../js/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+ });
 </script>
 </body>
 </html>
