@@ -27,25 +27,25 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Resource Management and Good practices</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-02-13 Tue 18:53</p>
+<section id="sec-title-slide"><h1 class="title">Resource Management and Good practices</h1><h2 class="author">Martin Nestorov</h2><p class="date">Created: 2018-02-13 Tue 19:46</p>
 </section>
 <section id="table-of-contents">
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-org6ee00a8">How to manage memory</a></li>
-<li><a href="#/slide-orgf9efd91">General good practices</a></li>
-<li><a href="#/slide-orgae45c1c">Exercises</a></li>
-<li><a href="#/slide-org6c3c921">Resources</a></li>
+<li><a href="#/slide-org2d327ac">How to manage memory</a></li>
+<li><a href="#/slide-org410309a">General good practices</a></li>
+<li><a href="#/slide-org8da210e">Exercises</a></li>
+<li><a href="#/slide-orgbf7a6d8">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-org6ee00a8">
-<h2 id="org6ee00a8">How to manage memory</h2>
+<section id="slide-org2d327ac">
+<h2 id="org2d327ac">How to manage memory</h2>
 <aside class="notes">
 <p>
 When we first learn C++ for the first time we have way too many things going on so we are usually told not to worry about memory management (or we are not even aware that such a thing exists in the language). This is normal, since the language itself is hard enough to learn so we push thins topic for another time. But that time usually comes way too late and we don't have the discipline to think in therms of memory management. Luckily for us, we are writing modern C++, which means that there are a lot of tools deisgn to help us out with this task and to make it much more easy, than it was back in '89.
@@ -60,8 +60,8 @@ In C++ we have several resources we can manage, where we are not only limited to
 </section>
 </section>
 <section>
-<section id="slide-org7a66bb8">
-<h3 id="org7a66bb8">RAII</h3>
+<section id="slide-org0e740ca">
+<h3 id="org0e740ca">RAII</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">without RAII</span>
@@ -94,8 +94,8 @@ In C++ we have this magical idiom called <b><b>RAII</b></b>, or <b>Resource Acqu
 </section>
 </section>
 <section>
-<section id="slide-org790dee9">
-<h3 id="org790dee9">When to use <code>new</code> and <code>delete</code></h3>
+<section id="slide-org8f892a6">
+<h3 id="org8f892a6">When to use <code>new</code> and <code>delete</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #d26937;">int</span> * <span style="color: #599cab;">ipt</span> = <span style="color: #195466; font-weight: bold;">new</span> <span style="color: #d26937;">int</span>;
@@ -126,8 +126,8 @@ So using <code>new</code> and <code>delete</code> can lead to peril if we are no
 </section>
 </section>
 <section>
-<section id="slide-org7c6a959">
-<h3 id="org7c6a959">A pass by over garbage collection</h3>
+<section id="slide-org2e00b9c">
+<h3 id="org2e00b9c">A pass by over garbage collection</h3>
 <ul>
 <li class="fragment roll-in">Weak references</li>
 <li class="fragment roll-in">Reference counting</li>
@@ -138,8 +138,8 @@ So using <code>new</code> and <code>delete</code> can lead to peril if we are no
 </section>
 </section>
 <section>
-<section id="slide-org4c3d20a">
-<h4 id="org4c3d20a">Weak references</h4>
+<section id="slide-orgdeafe91">
+<h4 id="orgdeafe91">Weak references</h4>
 <aside class="notes">
 <p>
 Let's just go over some interesting and important notes about garbage collection and memory management before we continue with the main topics. Why doesn't C++ have a garbage collector like <code>Java</code> or <code>C#</code> or some other languages? Well it's not impossible and there are some implementations of a C++ garbage collector, but it's not something that is used widely in the C++ sphere. There are a lot of reasons why this is so, time constraints, agreements between the C++ implementation group, implementation problems in general, etc. The thing with garbage collection is that it's a pretty heavy process and it isn't as simple as pushing everything into smart pointers and calling it a day. C++ is above all efficient, it gives us a lot of room to make whatever we like. The garbage collection we have is the explicit one we can achieve through smart pointers, but there isn't a thing like the <code>Java</code> or <code>C#</code> collector (an implicit GC) (As a side note, I have included a link to a <b>C++ GC</b> if you still want to try it out). So the question here is - how do smart pointers work in C++. Everybody is talking about them, they do have great functionalities, but how are they actually helpful?
@@ -154,8 +154,8 @@ In order to understand these concept we need to cover several topics. Let's star
 </section>
 </section>
 <section>
-<section id="slide-org56546cd">
-<h4 id="org56546cd">Reference counting</h4>
+<section id="slide-orgad2927c">
+<h4 id="orgad2927c">Reference counting</h4>
 <aside class="notes">
 <p>
 Now <b><b>reference counting</b></b> is a technique where we count the number of references, handlers, and pointers to a certain object, memory block, file, and in general - any resource. Once the number of references reaches <b>0</b>, that resource is collected and destroyed. An interesting aspect of this is that when we destroy an object that is no longer referenced by anything, if that object holds a references to another object, after the destruction of the de-referenced object, the other referenced object have their reference count decremented. So there is also a technique where we can add the no longer referenced objects to a list, which we regularly (and by we I mean the GC) visit and destroy some objects from it. All of these processes require constant updating. There are several advantages to this technique, although it being simple - for one, it's very responsive as it doesn't waste any time in de-allocating space for us, thus making it adequate for systems with limited memory. Also the performance of this doesn't go down as the memory is freed. The problem to all of this is that this algorithm takes up memory spaces for the counts, it is not the most efficient method, that is why it's so simple, and it also can't prevent <b>reference cycles</b>. A <b>reference cycle</b> is just an object that refers to itself <b>directly</b> or <b>indirectly</b>. This means that their reference count is going to be always above zero. Here <b>weak references</b> come in handy since they can break such a chain.
@@ -170,8 +170,8 @@ Now <b><b>reference counting</b></b> is a technique where we count the number of
 </section>
 </section>
 <section>
-<section id="slide-orgc6632ef">
-<h4 id="orgc6632ef">Rule of five</h4>
+<section id="slide-org88ad850">
+<h4 id="org88ad850">Rule of five</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">utility</span><span style="color: #99d1ce;">&gt;</span>
@@ -243,24 +243,93 @@ And finally let's talk about the <b>rule of five</b>. These are just a set of ru
 </section>
 </section>
 <section>
-<section id="slide-org3de3797">
-<h3 id="org3de3797">Using the STL to our advantage</h3>
+<section id="slide-org53008df">
+<h3 id="org53008df">Using the STL to our advantage</h3>
+<ul>
+<li class="fragment roll-in"><code>unique_ptr</code></li>
+<li class="fragment roll-in"><code>shared_ptr</code></li>
+<li class="fragment roll-in"><code>weak_ptr</code></li>
+
+</ul>
+
+</section>
+<section >
+
+<p>
+<code>unique_ptr</code>
+</p>
+
 <div class="org-src-container">
 
-<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">memory</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">// </span><span style="color: #245361;">holds smart pointers</span>
-<span class="linenr">1: </span>
-<span class="linenr">2: </span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">unique_ptr</span><span style="color: #99d1ce;">&lt;</span>Object<span style="color: #99d1ce;">&gt;</span> <span style="color: #599cab;">obj</span>; <span style="color: #245361;">// </span><span style="color: #245361;">holds a pointer to var obj</span>
-<span class="linenr">3: </span>
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">foo</span> <span style="color: #99d1ce;">()</span>
+<span class="linenr">1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">2: </span>    <span style="color: #d26937;">unique_ptr</span><span style="color: #33859e;">&lt;</span>Thing<span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">p</span><span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">new</span> <span style="color: #d26937;">Thing</span><span style="color: #d26937;">()</span><span style="color: #33859e;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">p owns the Thing</span>
+<span class="linenr">3: </span>    p-&gt;do_something<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">tell the thing to do something</span>
+<span class="linenr">4: </span>    defrangulate<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">might throw an exception</span>
+<span class="linenr">5: </span><span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">p gets destroyed; destructor deletes the Thing</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #d26937;">unique_ptr</span><span style="color: #99d1ce;">&lt;</span>Thing<span style="color: #99d1ce;">&gt;</span> <span style="color: #599cab;">p1</span> <span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">new</span> <span style="color: #d26937;">Thing</span><span style="color: #99d1ce;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">p1 owns the Thing</span>
+<span class="linenr">1: </span><span style="color: #d26937;">unique_ptr</span><span style="color: #99d1ce;">&lt;</span>Thing<span style="color: #99d1ce;">&gt;</span> <span style="color: #599cab;">p2</span><span style="color: #99d1ce;">(</span>p1<span style="color: #99d1ce;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">error - copy construction is not allowed.</span>
+<span class="linenr">2: </span><span style="color: #d26937;">unique_ptr</span><span style="color: #99d1ce;">&lt;</span>Thing<span style="color: #99d1ce;">&gt;</span> <span style="color: #599cab;">p3</span>; <span style="color: #245361;">// </span><span style="color: #245361;">an empty unique_ptr;</span>
+<span class="linenr">3: </span>p3 = p1; <span style="color: #245361;">// </span><span style="color: #245361;">error, copy assignment is not allowed</span>
 </pre>
 </div>
 
 <aside class="notes">
 <p>
-In the previous section I mentioned that we can use smart pointers to our advantage to handle heap memory and resources. Before we had to write out own memory management classes that worked likes smart pointers, when C++ 11 first came out, we had <code>auto_ptr</code>, which tried to do that. But it was somewhat impaired to several functionalities like copying and assigning. Since then, <code>auto_ptr</code> is deprecated and we use either <code>unique_ptr</code> or <code>share_ptr</code>. Now I want to get this out of the way, when working with smart pointers, <b>unique</b> is the standard and <b>shared</b> is the exception.
+In the previous section I mentioned that we can use smart pointers to our advantage to handle heap memory and resources. Before we had to write out own memory management classes that worked likes smart pointers, when C++ 11 first came out, we had <code>auto_ptr</code>, which tried to do that. But it was somewhat impaired to several functionalities like copying and assigning. Since then, <code>auto_ptr</code> is deprecated and instead we have 3 other types of smart pointers - <code>unique_ptr</code>, <code>weak_ptr</code>, or <code>share_ptr</code>. Now I want to get this out of the way, when working with smart pointers, <b>unique</b> is the standard and <b>shared</b> is the exception. Because these two smart pointers are the most common ones, we can take a look at how they work.
 </p>
 
 <p>
-So how does a <code>unique_ptr</code> look like? Well, it's basically using any other STL container, where we define what we want inside of it and then we declare our variable.
+So how does a <code>unique_ptr</code> look like? Well, it's basically using any other STL container, where we define what we want inside of it and then we declare our variable. There are several big advantages to using this pointer. First, it has <b>zero</b> overhead. Because it has the <code>T*</code> implementation, taking in anything, which means that it points to anything and the moment that pointer goes out of scope, the pointer and the pointed data gets destroyed. <code>unique_ptr</code> allows us to manage resources without worrying about how they get released and how they get deleted when the time comes. The syntax is the same as using a normal pointer, so we don't have to worry about that. Also, the word <b>"unique"</b> is arbitrary. This pointer can <b>"own"</b> only one object, which means that we can avoid collisions, where multiple pointers can access one piece of data and leave it dangling. This means that we cannot copy nor assign one unique pointer to another (this like copy constructors and assignment operators are disallowed for this type).
+</p>
+
+</aside>
+
+</section>
+<section >
+
+<p>
+<code>shared_ptr</code>
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">foo</span><span style="color: #99d1ce;">()</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #245361;">// </span><span style="color: #245361;">the new is in the shared_ptr constructor expression:</span>
+<span class="linenr"> 3: </span>    <span style="color: #d26937;">shared_ptr</span><span style="color: #33859e;">&lt;</span>Thing<span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">p1</span><span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">new</span> <span style="color: #d26937;">Thing</span><span style="color: #33859e;">)</span>;
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span>    <span style="color: #d26937;">shared_ptr</span><span style="color: #33859e;">&lt;</span>Thing<span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">p2</span> = p1; <span style="color: #245361;">// </span><span style="color: #245361;">p1 and p2 now share ownership of the Thing</span>
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span>    <span style="color: #d26937;">shared_ptr</span><span style="color: #33859e;">&lt;</span>Thing<span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">p3</span><span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">new</span> <span style="color: #d26937;">Thing</span><span style="color: #33859e;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">another Thing</span>
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span>    p1 = find_some_thing<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">p1 may no longer point to first Thing</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>    do_something_with<span style="color: #33859e;">(</span>p2<span style="color: #33859e;">)</span>;
+<span class="linenr">12: </span>
+<span class="linenr">13: </span>    p3-&gt;defrangulate<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">call a member function like built-in pointer</span>
+<span class="linenr">14: </span>
+<span class="linenr">15: </span>    cout &lt;&lt; *p2 &lt;&lt; endl; <span style="color: #245361;">// </span><span style="color: #245361;">dereference like built-in pointer</span>
+<span class="linenr">16: </span>
+<span class="linenr">17: </span>    <span style="color: #245361;">// </span><span style="color: #245361;">reset with a member function or assignment to nullptr:</span>
+<span class="linenr">18: </span>    p1.reset<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">decrement count, delete if last</span>
+<span class="linenr">19: </span>    p2 = <span style="color: #33859e; font-weight: bold;">nullptr</span>; <span style="color: #245361;">// </span><span style="color: #245361;">convert nullptr to an empty shared_ptr, and decrement count;</span>
+<span class="linenr">20: </span><span style="color: #99d1ce;">}</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Now that we know what so unique about <code>unique_ptr</code>, we can talk about shared pointers. The syntax and basic functionality of a <code>shared_ptr</code> are the same as any other smart pointer, but there are some implementations differences. For one, we can have multiple pointers that share the same object on the free store (hence the name <b>shared</b>). Using the powers of reference counting, depending on how many references there are to the specific object, C++ can determine when to delete that memory space. This is how it works - once a pointer get out of scope or gets assigned to a <code>nullptr</code>, the total reference count gets decremented. If the number reaches <b>zero</b>, the object gets deleted. If we are to get into the situation of a <b>reference cycle</b>, the smart <code>shared_ptr</code> got us covered by using the so called <code>weak_ptr</code>. These weak pointers are used only as observers to the actual object and <b>do not</b> affect its lifetime. Because of this, the shared state between the objects is known to C++, the reference counts don't get confused and we get proper object deletion when the count is at 0.
+</p>
+
+<p>
+From the above code we can trace how the shared pointer managed and shares the resource it points to. We can decrement the counter manually or through <code>nullptr</code> assignment.
 </p>
 
 </aside>
@@ -268,15 +337,15 @@ So how does a <code>unique_ptr</code> look like? Well, it's basically using any 
 </section>
 </section>
 <section>
-<section id="slide-orgf9efd91">
-<h2 id="orgf9efd91">General good practices</h2>
-<div class="outline-text-2" id="text-orgf9efd91">
+<section id="slide-org410309a">
+<h2 id="org410309a">General good practices</h2>
+<div class="outline-text-2" id="text-org410309a">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgb44115f">
-<h3 id="orgb44115f">Use <code>const</code> whenever possible</h3>
+<section id="slide-org9eba90f">
+<h3 id="org9eba90f">Use <code>const</code> whenever possible</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #d26937;">char</span> <span style="color: #599cab;">greeting</span><span style="color: #99d1ce;">[]</span> = <span style="color: #2aa889;">"Hello"</span>; <span style="color: #245361;">// </span><span style="color: #245361;">basic C string</span>
@@ -403,8 +472,8 @@ Let's take this example - we want to cache the length of the string we have, whi
 </section>
 </section>
 <section>
-<section id="slide-org22626a2">
-<h3 id="org22626a2">Postpone variable definitions</h3>
+<section id="slide-orgc90570c">
+<h3 id="orgc90570c">Postpone variable definitions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">encryptPassword</span><span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">password</span><span style="color: #99d1ce;">)</span>
@@ -516,22 +585,24 @@ But what about this case, where we have loops. Should we define the variable out
 </section>
 </section>
 <section>
-<section id="slide-orgae45c1c">
-<h2 id="orgae45c1c">Exercises</h2>
+<section id="slide-org8da210e">
+<h2 id="org8da210e">Exercises</h2>
 
 </section>
 </section>
 <section>
-<section id="slide-org6c3c921">
-<h2 id="org6c3c921">Resources</h2>
-<div class="outline-text-2" id="text-org6c3c921">
+<section id="slide-orgbf7a6d8">
+<h2 id="orgbf7a6d8">Resources</h2>
+<div class="outline-text-2" id="text-orgbf7a6d8">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org0f1bdf0">
-<h3 id="org0f1bdf0">Memory Management</h3>
+<section id="slide-org6c4b100">
+<h3 id="org6c4b100">Memory Management</h3>
 <ul>
+<li><a href="https://stackoverflow.com/questions/26423270/why-use-new-and-delete-at-all">Why use new and delete</a></li>
+<li><a href="https://stackoverflow.com/questions/11603005/what-does-delete-command-really-do-for-memory-for-pointers-in-c">What does delete do</a></li>
 <li><a href="https://stackoverflow.com/questions/2321511/what-is-meant-by-resource-acquisition-is-initialization-raii">RAII</a></li>
 <li><a href="http://en.cppreference.com/w/cpp/language/raii">RAII 2</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Resource_acquisition_is_initialization">Wiki RAII</a></li>
