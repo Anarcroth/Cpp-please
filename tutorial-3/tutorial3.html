@@ -34,17 +34,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#/slide-orga84648e">How to manage memory</a></li>
-<li><a href="#/slide-org52da2c1">General good practices</a></li>
-<li><a href="#/slide-org524ebfc">Resources</a></li>
+<li><a href="#/slide-org795da9f">How to manage memory</a></li>
+<li><a href="#/slide-org177f71a">General good practices</a></li>
+<li><a href="#/slide-org1e728db">Resources</a></li>
 </ul>
 </div>
 </div>
 </section>
 
 <section>
-<section id="slide-orga84648e">
-<h2 id="orga84648e">How to manage memory</h2>
+<section id="slide-org795da9f">
+<h2 id="org795da9f">How to manage memory</h2>
 <aside class="notes">
 <p>
 When we learn C++ for the first time we have way too many things going on, so we are usually told not to worry about memory management (or we are not even aware that such a thing exists in the language). This is normal, since the language itself is hard enough to learn so we push this topic for another time. But that time usually comes way too late and we don't have the discipline to think in therms of memory management. Luckily for us, we are writing modern C++, which means that there are a lot of tools designed to help us out with this task and to make it easier, than it was back in '89.
@@ -59,8 +59,8 @@ In C++ we have several resources we can manage, where we are not only limited to
 </section>
 </section>
 <section>
-<section id="slide-orgc6229df">
-<h3 id="orgc6229df">RAII</h3>
+<section id="slide-org26c5a3d">
+<h3 id="org26c5a3d">RAII</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">without RAII</span>
@@ -93,8 +93,8 @@ In C++ we have this magical idiom called <b><b>RAII</b></b>, or <b>Resource Acqu
 </section>
 </section>
 <section>
-<section id="slide-org70a5c0b">
-<h3 id="org70a5c0b">When to use <code>new</code> and <code>delete</code></h3>
+<section id="slide-orgade2b19">
+<h3 id="orgade2b19">When to use <code>new</code> and <code>delete</code></h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span style="color: #d26937;">int</span> * <span style="color: #599cab;">ipt</span> = <span style="color: #195466; font-weight: bold;">new</span> <span style="color: #d26937;">int</span>;
@@ -125,8 +125,8 @@ So using <code>new</code> and <code>delete</code> can lead to peril if we are no
 </section>
 </section>
 <section>
-<section id="slide-orgc81cc4e">
-<h3 id="orgc81cc4e">A pass by over garbage collection</h3>
+<section id="slide-orgeaacbd8">
+<h3 id="orgeaacbd8">A pass by over garbage collection</h3>
 <ul>
 <li class="fragment roll-in">Weak references</li>
 <li class="fragment roll-in">Reference counting</li>
@@ -144,17 +144,17 @@ Let's just go over some interesting and important notes about <b>garbage collect
 </section>
 </section>
 <section>
-<section id="slide-orgbc56d50">
-<h4 id="orgbc56d50">Weak references</h4>
+<section id="slide-orgd5c49b9">
+<h4 id="orgd5c49b9">Weak references</h4>
 
 <div class="figure">
-<p><img src="./pics/ptr1.gif" alt="ptr1.gif" />
+<p><img src="./pics/ptr1.gif" alt="ptr1.gif" height="40%," width="40%" />
 </p>
 </div>
 
 
 <div class="figure">
-<p><img src="./pics/ptr2.gif" alt="ptr2.gif" />
+<p><img src="./pics/ptr2.gif" alt="ptr2.gif" height="40%," width="40%" />
 </p>
 </div>
 
@@ -168,11 +168,11 @@ In order to understand these concept we need to cover several topics. Let's star
 </section>
 </section>
 <section>
-<section id="slide-org26d6e97">
-<h4 id="org26d6e97">Reference counting</h4>
+<section id="slide-orge67e66c">
+<h4 id="orge67e66c">Reference counting</h4>
 
 <div class="figure">
-<p><img src="./pics/ptr4.gif" alt="ptr4.gif" />
+<p><img src="./pics/ptr4.gif" alt="ptr4.gif" height="40%," width="40%" />
 </p>
 </div>
 
@@ -190,8 +190,8 @@ Now <b><b>reference counting</b></b> is a technique where we count the <b>number
 </section>
 </section>
 <section>
-<section id="slide-orgb0fac96">
-<h4 id="orgb0fac96">Rule of five</h4>
+<section id="slide-org1497f8e">
+<h4 id="org1497f8e">Rule of five</h4>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">utility</span><span style="color: #99d1ce;">&gt;</span>
@@ -263,8 +263,8 @@ And finally let's talk about the <b>rule of five</b>. These are just a set of ru
 </section>
 </section>
 <section>
-<section id="slide-org6e2dd07">
-<h3 id="org6e2dd07">Using the STL to our advantage</h3>
+<section id="slide-org1cadcb6">
+<h3 id="org1cadcb6">Using the STL to our advantage</h3>
 <ul>
 <li class="fragment roll-in"><code>unique_ptr</code></li>
 <li class="fragment roll-in"><code>shared_ptr</code></li>
@@ -361,15 +361,15 @@ From the above code we can trace how the shared pointer managed and shares the r
 </section>
 </section>
 <section>
-<section id="slide-org52da2c1">
-<h2 id="org52da2c1">General good practices</h2>
-<div class="outline-text-2" id="text-org52da2c1">
+<section id="slide-org177f71a">
+<h2 id="org177f71a">General good practices</h2>
+<div class="outline-text-2" id="text-org177f71a">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org44b32d8">
-<h3 id="org44b32d8">Use <code>const</code> whenever possible</h3>
+<section id="slide-orgbb22dea">
+<h3 id="orgbb22dea">Use <code>const</code> whenever possible</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #d26937;">char</span> <span style="color: #599cab;">greeting</span><span style="color: #99d1ce;">[]</span> = <span style="color: #2aa889;">"Hello"</span>; <span style="color: #245361;">// </span><span style="color: #245361;">basic C string</span>
@@ -502,8 +502,8 @@ Let's take this example - we want to cache the length of the string we have, whi
 </section>
 </section>
 <section>
-<section id="slide-org575b070">
-<h3 id="org575b070">Postpone variable definitions</h3>
+<section id="slide-orgd2fa891">
+<h3 id="orgd2fa891">Postpone variable definitions</h3>
 <div class="org-src-container">
 
 <pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">encryptPassword</span><span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">password</span><span style="color: #99d1ce;">)</span>
@@ -615,15 +615,15 @@ But what about this case, where we have loops. Should we define the variable out
 </section>
 </section>
 <section>
-<section id="slide-org524ebfc">
-<h2 id="org524ebfc">Resources</h2>
-<div class="outline-text-2" id="text-org524ebfc">
+<section id="slide-org1e728db">
+<h2 id="org1e728db">Resources</h2>
+<div class="outline-text-2" id="text-org1e728db">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-orgb02df4e">
-<h3 id="orgb02df4e">Memory Management</h3>
+<section id="slide-org8cfb354">
+<h3 id="org8cfb354">Memory Management</h3>
 <ul>
 <li><a href="https://stackoverflow.com/questions/26423270/why-use-new-and-delete-at-all">Why use new and delete</a></li>
 <li><a href="https://stackoverflow.com/questions/11603005/what-does-delete-command-really-do-for-memory-for-pointers-in-c">What does delete do</a></li>
@@ -647,8 +647,8 @@ But what about this case, where we have loops. Should we define the variable out
 </section>
 </section>
 <section>
-<section id="slide-orgf156b57">
-<h3 id="orgf156b57">Pointers</h3>
+<section id="slide-orge73c369">
+<h3 id="orge73c369">Pointers</h3>
 <ul>
 <li><a href="https://visualstudiomagazine.com/articles/2012/10/19/circular-references.aspx">Circular references</a></li>
 <li><a href="https://mortoray.com/2012/01/08/what-is-reference-counting/">What is reference counting</a></li>
