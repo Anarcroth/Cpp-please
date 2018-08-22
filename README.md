@@ -1,6 +1,5 @@
 ![Cpp-please](cpp-please.png)
 
-## Overview
 Hi!
 
 You've stumbled upon my repository of C++ topics. Here I talk about topics like *"How to structure your program, How compilation works, What are some good practices when writing C++"*, etc. Although the list of topics is way too big, I do try to cover as much as possible in it. The purpose of all of this is to help students who are starting off with the language, or either have some basic experience, in order to help them minimize their C++ suffering. The topics I've chosen are the ones which are most commonly confusing when writing C++.
@@ -9,11 +8,11 @@ The resources I've gathered and used to write all of these tutorials is mentione
 
 The slides also have a corresponding `pdf` version, where all of the notes are available for reading.
 
-## Topics
+### Topics
 
 [Tutorial 1](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-1/tutorial1.html)
 
-[T1 pdf](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-1/tutorial1.pdf)
+[T1 pdf](https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-1/tutorial1.pdf)
 - File management
 - Program structure
 
@@ -21,7 +20,7 @@ The slides also have a corresponding `pdf` version, where all of the notes are a
 
 [Tutorial 2](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-2/tutorial2.html)
 
-[T2 pdf](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-2/tutorial2.pdf)
+[T2 pdf](https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-2/tutorial2.pdf)
 - OOP
 - Inheritance
 
@@ -29,7 +28,7 @@ The slides also have a corresponding `pdf` version, where all of the notes are a
 
 [Tutorial 3](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-3/tutorial3.html)
 
-[T3 pdf](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-3/tutorial3.pdf)
+[T3 pdf](https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-3/tutorial3.pdf)
 - Templates
 - STL
 
@@ -37,7 +36,7 @@ The slides also have a corresponding `pdf` version, where all of the notes are a
 
 [Tutorial 4](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-4/tutorial4.html)
 
-[T4 pdf](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-4/tutorial4.pdf)
+[T4 pdf](https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-4/tutorial4.pdf)
 - Resource Management
 - Good practices
 
@@ -45,6 +44,6 @@ The slides also have a corresponding `pdf` version, where all of the notes are a
 
 [Tutorial 5](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-5/tutorial5.html)
 
-[T5 pdf](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-5/tutorial5.pdf)
+[T5 pdf](https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-5/tutorial5.pdf)
 - Compilation
 - Linking
