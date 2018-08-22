@@ -1,0 +1,47 @@
+#+REVEAL_ROOT: file:///home/anarcroth/reveal.js
+#+REVEAL_THEME: moon
+#+REVEAL_TRANS: zoom
+#+REVEAL_SPEED: 0.5
+#+Title: C++, Please
+#+Author: Martin Nestorov
+#+Email: mdn150@aubg.edu
+#+OPTIONS: reveal_slide_number:h/v num:nil
+
+* How to look at C++
+
+~C++~ as four sub-languages
+
+- C
+- OOP
+- STL
+- Templates
+
+#+REVEAL: split
+
+*"C++ would make a decent teaching language if we could teach the ++ part without the C part."* - Michael B. Feldman.
+
+*"In C++ it's harder to shoot yourself in the foot, but when you do, you blow off your whole leg."* - Bjarne Stroustrup.
+
+#+BEGIN_NOTES
+C++ can sometimes be very annoying, because we have absolutely no idea how it works and what it does. The fact that having very similar syntax for wildly different things doesn't help either. So instead of just banging our heads until bleeding sets in, we can try to understand a little bit better what is happening with this language and (hopefully) try to minimize *undefined* behavior. In fact C++ is that special language where if you don't know what you are doing, the language *re-enforces* that by acting in a way where it doesn't know what it might do. That's pretty scary. That's why I will try to minimize this effect with these tutorials and help you make better C++ programs and to introduce effective methods for writing C++ code.
+#+END_NOTES
+
+* About me
+
+- email: mdn150@aubg.edu
+- Twitter: @mnestorov
+- Typing enthusiast
+
+* What we are going to cover
+
+- File Structures
+- OOP
+- Inheritance
+- Templates
+- STL
+- Resource Management
+- Good Practices
+- Compiling
+- Linking
+
+* File Structure
