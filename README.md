@@ -12,7 +12,8 @@ The slides also have a corresponding `pdf` version, where all of the notes are a
 
 ### Topics
 
-[Tutorial 1](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-1/tutorial1.html) / [pdf](https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-1/tutorial1.pdf)
+[Tutorial 1](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-1/tutorial1.html) (**WIP**) /
+[pdf](https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-1/tutorial1.pdf)
 - File management
 - Program structure
 
@@ -28,6 +29,6 @@ The slides also have a corresponding `pdf` version, where all of the notes are a
 - Resource Management
 - Good practices
 
-[Tutorial 5](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-5/tutorial5.html) / [pdf](https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-5/tutorial5.pdf)
+[Tutorial 5](http://htmlpreview.github.io/?https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-5/tutorial5.html) / [pdf](https://github.com/Anarcroth/cpp-tutorials/blob/master/tutorial-5/tutorial5.pdf) (**WIP**)
 - Compilation
 - Linking
