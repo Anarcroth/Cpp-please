@@ -1,5 +1,2 @@
-#gitignore for org files
-*.org
 *.tex
 *.css
-*.md
