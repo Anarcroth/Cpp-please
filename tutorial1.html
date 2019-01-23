@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>C++ a more in depth look into the language</title>
+<meta name="author" content="(Martin Nestorov)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../css/reveal.css"/>
+
+<link rel="stylesheet" href="../css/moon.css" id="theme"/>
+
+<link rel="stylesheet" href="./presentation.css"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../css/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">C++ a more in depth look into the language</h1><h2 class="author">Martin Nestorov</h2>
+</section>
+<section id="table-of-contents">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#/slide-orga3e3dc6">Who am I?</a></li>
+<li><a href="#/slide-org8898cc4">What we are going to cover</a></li>
+<li><a href="#/slide-org6892b83">File structure</a></li>
+<li><a href="#/slide-org8ac62f5">The ++ in Cpp</a></li>
+<li><a href="#/slide-orgeef51fa">C with classes</a></li>
+<li><a href="#/slide-org21d76df">Virtuals and Inheritance</a></li>
+<li><a href="#/slide-orgffd708b">Exercises</a></li>
+<li><a href="#/slide-org1231aa0">References</a></li>
+</ul>
+</div>
+</div>
+</section>
+
+<section>
+<section id="slide-orga3e3dc6">
+<h2 id="orga3e3dc6">Who am I?</h2>
+<ul>
+<li>Martin Nestorov</li>
+<li>Junior 2nd sem.</li>
+<li>I like to type . . . a lot</li>
+<li>email: mdn150@aubg.edu</li>
+<li>Twitter: @mnestorov</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org645908d">
+<h3 id="org645908d">Why I chose to make these small tutorials</h3>
+<ul>
+<li>People seem to have some problems with the transition from C++ to FDS.</li>
+<li>I want to help!</li>
+<li>I want to also learn!</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Over the course of the past several years I found a certain love for C++, but instead of just reading about the language and doing some small experiments with it, I wanted to share my knowledge and to get better at it. Seeing how some students struggle with C++ in the beginning courses, I decided that I can help out. That way not only am I learning more in-depth concepts, but also I am making the lives of students easier (hopefully).
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org25491b5">
+<h3 id="org25491b5">How to look at C++</h3>
+<p>
+C++ as <b>four</b> sub-languages
+</p>
+<ul>
+<li>C</li>
+<li>OOP</li>
+<li>STL</li>
+<li>Templates</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+"C++ would make a decent teaching language if we could teach the ++ part without the C part." — Michael B. Feldman.
+</p>
+
+<p>
+<b>Bonus joke</b>: "In C++ it's harder to shoot yourself in the foot, but when you do, you blow off your whole leg." — Bjarne Stroustrup.
+</p>
+
+<p>
+C++ can sometimes be very annoying, because we have absolutely no idea how it works and what it does. The fact that having very similar syntax for wildly different things doesn't help either. So instead of just banging our heads until bleeding sets in, we can try to understand a little bit better what is happening with this language and (hopefully) try to minimize <b><b>undefined</b></b> behavior. In fact C++ is that special language where if you don't know what you are doing, the language re-enforces that by acting in a way where it doesn't know what it might do. That's pretty scary. That's why I will try to minimize this effect with these tutorials and help you out to make better C++ programs and to introduce effective methods for writing C++ code.
+</p>
+
+<p>
+C++ can be generally divided into four sub-categories or sub-languages. It's a daunting task to go over all of these aspects and trying to teach everything is something I can't do! But instead I will try to cover some topics that haven't been covered in depth in the C++ lectures and are somewhat elude to the students. Now our list seems like this
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org8898cc4">
+<h2 id="org8898cc4">What we are going to cover</h2>
+<ul>
+<li>File structure</li>
+<li>OOP</li>
+<li>Inheritance</li>
+<li>Templates</li>
+<li>STL</li>
+<li>Resource Management</li>
+<li>Good practices</li>
+<li>Compilation</li>
+<li>Linking</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org6892b83">
+<h2 id="org6892b83">File structure</h2>
+<ul>
+<li>Advantages:
+<ul>
+<li>Better code organization</li>
+<li>Faster compiling</li>
+<li>Separation of <b>implementation</b> from <b>interface</b></li>
+
+</ul></li>
+
+<li>Disadvantages:
+<ul>
+<li>More complicated structure</li>
+
+</ul></li>
+
+</ul>
+
+<aside class="notes">
+<p>
+It has come to my attention that many people, while writing their homeworks, neglect the advantages of structuring their <b><b>source</b></b> files. This is most noticeable when they are writing the first 3 FDS homeworks or their FDS project. Being able to properly manage your project into several files and to navigate between them in an optimal and cohesive way will minimize your C++ suffering (and coding experience in general).
+</p>
+
+<p>
+Now most of you already know this, but there are several great advantages to separating your <b>implementation</b> (cpp) files from your <b>interface</b> (h) files. One advantage is that this will bring code clarity to your program. Instead of navigating through one big <b>400</b> line <code>Source.cpp</code> file, and wondering where that one definition of that object is and then going back to the <code>main()</code> method to fix one line, you will have a nicely structured system. Every class will have it's own implementation and interface file, thus minimizing code searching and optimizing code writing! But that's not all. This separation will allow you to compile your programs faster. That is, every <b>source</b> file is compiled on its own. When you make a small change in your original 400 <a href="https://musikcube.com/line">https://musikcube.com/line</a> monstrosity, you have to wait for all of that code to <b><b>re-compile</b></b>, but if you have the files separated, you just have to re-compile only the changed files, making waiting time much smaller (naturally this effect can be seen when compiling large programs, while small ones won't have such noticeable impact on time). And lastly, we also gain the benefit of implementation from interface separation.
+</p>
+
+<p>
+But what we are sacrificing for these benefits is that we are increasing our project complexity. This shouldn't scare us that much, but we do have to keep this in mind - <b><b>We have to limit ourselves not to over layer our program</b></b>.
+</p>
+
+<p>
+Now I am not going to tell you how to add files and where to put them, I will just show you how to properly implement header and source files and how to avoid collisions.
+</p>
+
+<p>
+First things first. What's the difference between headers and sources? Apart from the obvious name difference, header files are considered to be the <b>interface</b> part of the source code, that is, the place where we explain what the program does, but <b>not</b> how it does it. The source (cpp) files are the <b>implementation</b> part, this is where we explain <b>how</b> we implement the interface. Keeping them separate allows us to keep a clean directory and structure and to separate our logic from our implementation.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org8dceee3">
+<h3 id="org8dceee3">How to work with headers?</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">iostream</span><span style="color: #99d1ce;">&gt;</span> <span style="color: #245361;">//</span><span style="color: #245361;">header we always include</span>
+<span class="linenr"> 1: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"awesomeclass1.h"</span>
+<span class="linenr"> 2: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"awesomeclass2.h"</span>
+<span class="linenr"> 3: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"awesomeclass3.h"</span> <span style="color: #245361;">// </span><span style="color: #245361;">our own class headers</span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #d26937;">int</span> <span style="color: #599cab;">main</span><span style="color: #99d1ce;">()</span>
+<span class="linenr"> 6: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 7: </span>    <span style="color: #d26937;">awesomeclass1</span> <span style="color: #599cab;">ac</span>;
+<span class="linenr"> 8: </span>    <span style="color: #d26937;">awesomeclass2</span> <span style="color: #599cab;">ac2</span>;
+<span class="linenr"> 9: </span>    <span style="color: #d26937;">awesomeclass3</span> <span style="color: #599cab;">ac3</span>;
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>    ac.do_something<span style="color: #33859e;">(</span>ac2<span style="color: #33859e;">)</span>;
+<span class="linenr">12: </span>
+<span class="linenr">13: </span>    ac3 = ac;
+<span class="linenr">14: </span>
+<span class="linenr">15: </span>    <span style="color: #195466; font-weight: bold;">return</span> <span style="color: #33859e; font-weight: bold;">0</span>;
+<span class="linenr">16: </span><span style="color: #99d1ce;">}</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+So what are header files and what do they do?
+</p>
+
+<p>
+Header files, usually ending with the <code>*.h</code> file extension (can be also <code>*.hxx</code>, <code>*.hpp</code>, or nothing at all), are code files that are <b><b>included</b></b> in our source files. We can look at header files as code that only serves as the interface to our classes. That is, it holds a declaration which we later on implement and/or include in our source files. Although we will talk about header files and how we <code>#include</code> them later on, what we can say now is that for every header file that is included, the contents of that file are put in the place of the <code>#include</code> keyword. What we can expect header files to do is to hold <b>declarations</b> inside of them. They just tell us what we are going to implement, but not <b>how</b> we are going to implement it (that's the job of the source files).
+</p>
+
+<p>
+<b><b>NOTE:</b></b> that for the <code>iostream</code> we used angle brackets and for our classes we used quotes. This just means that the header file <b>iostream</b> comes with the compiler and that the linker should look in the system directories for the definition. The quotes indicate that we are providing the header file and that the linker should look at the build directory.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org4055e46">
+<h3 id="org4055e46">Header guards</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
+<span class="linenr"> 1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">x</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #245361;">// </span><span style="color: #245361;">a.h</span>
+<span class="linenr"> 4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">a</span> <span style="color: #99d1ce;">{</span> <span style="color: #d26937;">X</span> <span style="color: #599cab;">x</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #245361;">// </span><span style="color: #245361;">b.h</span>
+<span class="linenr"> 7: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">b</span> <span style="color: #99d1ce;">{</span> <span style="color: #d26937;">X</span> <span style="color: #599cab;">x</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #245361;">// </span><span style="color: #245361;">source.cpp</span>
+<span class="linenr">10: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"a.h"</span> <span style="color: #245361;">// </span><span style="color: #245361;">include x.h for the first time</span>
+<span class="linenr">11: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"b.h"</span> <span style="color: #245361;">// </span><span style="color: #245361;">error! include x.h again!</span>
+</pre>
+</div>
+
+</section>
+<section >
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">x.h</span>
+<span class="linenr">1: </span><span style="color: #c23127;">#if</span><span style="color: #c23127;">n</span><span style="color: #c23127;">def</span> __X_H_INCLUDED__
+<span class="linenr">2: </span><span style="color: #c23127;">#define</span> <span style="color: #599cab;">__X_H_INCLUDED__</span>
+<span class="linenr">3: </span>
+<span class="linenr">4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">x</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr">5: </span>
+<span class="linenr">6: </span><span style="color: #c23127;">#endif</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Because we are going to be using a lot of headers in our program, we would need to include all of them. But because these files are actually copied when we <b>include</b> them, we would have several problems. One would be the code duplication. Another one will be the multiple declarations of classes and functions. To overcome this problem we would need to <b>guard</b> our header files in order not to use them more than once in our program. That is why we use the directives <code>#ifndef</code>, <code>#define</code>, and <code>#endif</code>. When we wrap our header file around with these directives, we ensure that the preprocessor will not copy a single file more than once into the source file.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org8352570">
+<h3 id="org8352570">Declarations vs Definitions</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">declarations</span>
+<span class="linenr"> 1: </span><span style="color: #195466; font-weight: bold;">extern</span> <span style="color: #d26937;">int</span> <span style="color: #599cab;">a</span>;
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">extern</span> <span style="color: #d26937;">char</span> <span style="color: #599cab;">b</span>;
+<span class="linenr"> 3: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">foo</span>; <span style="color: #245361;">// </span><span style="color: #245361;">extern not allowed for user types</span>
+<span class="linenr"> 4: </span><span style="color: #d26937;">double</span> <span style="color: #599cab;">sum</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">double</span>, <span style="color: #d26937;">int</span><span style="color: #99d1ce;">)</span>;  <span style="color: #245361;">// </span><span style="color: #245361;">no need for extern</span>
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #245361;">// </span><span style="color: #245361;">definitions</span>
+<span class="linenr"> 7: </span><span style="color: #d26937;">int</span> <span style="color: #599cab;">a</span>; <span style="color: #245361;">// </span><span style="color: #245361;">the implementation of a</span>
+<span class="linenr"> 8: </span><span style="color: #d26937;">char</span> <span style="color: #599cab;">c</span>; <span style="color: #245361;">// </span><span style="color: #245361;">the implementation of c</span>
+<span class="linenr"> 9: </span><span style="color: #d26937;">double</span> <span style="color: #599cab;">div</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">double</span> <span style="color: #599cab;">a</span>, <span style="color: #d26937;">int</span> <span style="color: #599cab;">x</span><span style="color: #99d1ce;">)</span> <span style="color: #99d1ce;">{</span> <span style="color: #195466; font-weight: bold;">return</span> a / x; <span style="color: #99d1ce;">}</span>
+<span class="linenr">10: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">foo</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+I want to take some time now to revisit two old concepts before we continue - namely I want to talk about <b>declarations</b> and <b>definitions</b>. Here we will mention the role of the <b>compiler</b> and <b>linker</b> briefly, but we will cover them later on. Now a <b>declaration</b> introduces an identifier and its type, be that type of a variable, object, or a function. Basically we are saying to the compiler that there is something with this name and this type, but we are not specifying <b>how</b> this specific thing is implemented. This is what the <b>compiler</b> needs in order to make a reference to that declaration. We can imagine the situation where we have a function which we want to use in multiple files in our program, it's just a very useful function, but we don't want to provide the implementation of the function in every source file. That's why we just declare the function, the compiler sees the declaration, makes a reference to it without the need to know its implementation, and then when we build the final executable, the linker links every reference of the declared function to its implementation. If you remember from the C++ course, a function prototype is a declaration.
+</p>
+
+<p>
+A <b>definition</b> in C++ is when we a define something in its complete form. This means that we need to both declare something and define it at the same time. We actually implement that specific identifier we have declared. When we write functions and give them a function body at the same time, that is a form of definition. When we write <code>int x;</code> we are both declaring and defining the variable <code>x</code>. This means that we are telling the compiler that there is a variable <code>x</code> of type <code>int</code> that is in the global scope in the current source file. It's important to note that giving this variable a value is not necessary in order to define it. But in the examples we have this specific keyword <code>extern</code> that is associated with declarations. What <code>extern</code> does is that it marks the variable and tells the compiler that this is only a declaration and that a definition will be found somewhere else. In general we use <code>extern</code> when we want to declare global variables in header files and <b>define</b> them in some source file.
+</p>
+
+<p>
+We can <b>declare</b> something as much as we like in as many files as we want, but we can only <b>define</b> something only <b>once</b>. Often when we get errors telling us that something is undefined (this is at linker time), what that means is that we have something declared, but we have not defined its implementation anywhere and we get a <b>missing symbols error</b>. On the other hand when we have multiple definitions of the same thing, the linker is confused as to which specific definition we want and we get a <b>duplicate symbols error</b>.
+</p>
+
+<p>
+Okay now let us go back to header files.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd6bde41">
+<h3 id="orgd6bde41">How and when to use headers</h3>
+<p>
+<code>class A</code> &gt; (uses) &gt; <code>class B</code> 
+</p>
+
+<ul>
+<li>do nothing if: A makes no references at all to B</li>
+<li>do nothing if: The only reference to B is in a friend declaration</li>
+<li>forward declare B if: A contains a B pointer or reference: <code>B* b</code>;</li>
+<li>forward declare B if: one or more functions has a B <b>object/pointer/reference</b> as a parameter, or as a return type: <code>B MyFunction(B myb)</code>;</li>
+<li><code>#include "b.h"</code> if: B is a parent class of A</li>
+<li><code>#include "b.h"</code> if: A contains a B object: <code>B b</code>;</li>
+
+</ul>
+
+
+</section>
+<section >
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #c23127;">#if</span><span style="color: #c23127;">n</span><span style="color: #c23127;">def</span> __MY_CLASS_H_INCLUDED__
+<span class="linenr"> 1: </span><span style="color: #c23127;">#define</span> <span style="color: #599cab;">__MY_CLASS_H_INCLUDED__</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #245361;">// </span><span style="color: #245361;">Forward declare dependencies</span>
+<span class="linenr"> 4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">F</span>;
+<span class="linenr"> 5: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">B</span>;
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #245361;">// </span><span style="color: #245361;">Include dependencies</span>
+<span class="linenr"> 8: </span><span style="color: #c23127;">#include</span> <span style="color: #99d1ce;">&lt;</span><span style="color: #2aa889;">map</span><span style="color: #99d1ce;">&gt;</span>
+<span class="linenr"> 9: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"c.h"</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #245361;">// </span><span style="color: #245361;">Our current class</span>
+<span class="linenr">12: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">MyClass</span> : <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">c</span>
+<span class="linenr">13: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">14: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">15: </span>  <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">map</span><span style="color: #33859e;">&lt;</span><span style="color: #d26937;">int</span>, <span style="color: #d26937;">char</span><span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">matrix</span>;  <span style="color: #245361;">// </span><span style="color: #245361;">a map object that is required by our class</span>
+<span class="linenr">16: </span>  <span style="color: #d26937;">F</span>* <span style="color: #599cab;">f</span>;                        <span style="color: #245361;">// </span><span style="color: #245361;">F pointer, so forward declare F</span>
+<span class="linenr">17: </span>  <span style="color: #d26937;">void</span> <span style="color: #599cab;">Func</span><span style="color: #33859e;">(</span><span style="color: #d26937;">B</span>&amp; <span style="color: #599cab;">b</span><span style="color: #33859e;">)</span>;             <span style="color: #245361;">// </span><span style="color: #245361;">B reference, so forward declare B</span>
+<span class="linenr">18: </span>
+<span class="linenr">19: </span>  <span style="color: #195466; font-weight: bold;">friend</span> <span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">MyFriend</span>;       <span style="color: #245361;">// </span><span style="color: #245361;">friend declaration is not a dependency</span>
+<span class="linenr">20: </span>                               <span style="color: #245361;">// </span><span style="color: #245361;">don't do anything about MyFriend</span>
+<span class="linenr">21: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">22: </span><span style="color: #c23127;">#endif</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+At this point, after we are revised what declarations and definitions are, we can talk about how to use headers and in which situations this is a viable option. The very short answer is - use header files when you have a class, a grouping of functions that do similar things, or a grouping of global variables. In general this approach is not bad and will do a fairly good job for you, but we shouldn't stop here. That's just the surface of it, to dig deeper we have to understand in which situations we can use header files and when to use forward declarations.
+</p>
+
+<p>
+Let's imagine that we will be writing a lot of classes, where there will be a lot of dependencies. So when we talk about header files and using multiple classes we are also talking about dependencies between classes (this may also mean just a grouping of functions, but for simplicity reasons, we will refer to a header file as being a single class that does one thing). As an example, a derived class will always be dependent of its parent class, which means that we must be aware of the parent class at compile time, so we can use the derived class (such a case will be when we have a <b>public</b> inheritance between two classes). There are two general forms of dependencies - one is, that there will be things that can be <b>forward declared</b>, and the other is, that things need to be <code>#include</code>-ed. Let's take an example with the following. Image we have class <code>A</code>, which uses class <code>B</code>. This makes A dependent on B. To decide if we need to <b>forward declare</b> or to include A depends on what the interaction between the two classes is.
+</p>
+
+<p>
+Some explanation is required here. First of we are protecting our class with the header guards. Then we are forward declaring two classes <code>F</code> and <code>B</code>. This means that we are telling the compiler that there is a user type class called <b>F</b> and <b>B</b> and that the implementation of the classes are somewhere else. This allows us to access the methods and variables of <b>F</b> and <b>B</b> without needing to specify their implementation. Forward declarations can be useful, because they can reduce compilation time. If we just want to access and use one or two functions from a class, instead of including the whole class (and copying its contents to the current file) we can just forward declare it and save ourselves some time.
+</p>
+
+<p>
+In general we want to remember this simple rule - prefer forward declarations to includes, in order to save compilation time and circular dependency issues. The benefits to these rules is that we are encapsulating the classes we use as much as possible, because the classes that use our classes don't need to know how they work. This means that if we restrict our use of includes and think about how the dependencies of the classes interact, we are writing encapsulated and decoupled code.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org0b83888">
+<h3 id="org0b83888">Circular Dependencies</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #245361;">// </span><span style="color: #245361;">b.h</span>
+<span class="linenr">1: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"a.h"</span>
+<span class="linenr">2: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">B</span> <span style="color: #99d1ce;">{</span> <span style="color: #d26937;">A</span> <span style="color: #599cab;">a</span>; <span style="color: #99d1ce;">}</span>;
+<span class="linenr">3: </span>
+<span class="linenr">4: </span><span style="color: #245361;">// </span><span style="color: #245361;">a.h</span>
+<span class="linenr">5: </span><span style="color: #c23127;">#include</span> <span style="color: #2aa889;">"b.h"</span>
+<span class="linenr">6: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">A</span> <span style="color: #99d1ce;">{</span> <span style="color: #d26937;">B</span> <span style="color: #599cab;">b</span>; <span style="color: #99d1ce;">}</span>;
+<span class="linenr">7: </span><span style="color: #245361;">// </span><span style="color: #245361;">problem! circular dependecies</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+I mentioned at some point about circular dependencies, but they are something that is very common when we are writing OOP code. In this example we see a circular dependency. If we were to just include both header files, we would be stuck in a loop, trying to figure out which class to include first, giving us a compilation error. In order to overcome this (and keep in mind that there is nothing wrong with such circular dependencies) we can just forward declare one of the two classes and include the other so we can break from this cycle. Now before you ask "what about the situation where we have explicit object declarations instead of pointers to objects?", let's just say that such a situation is <b>impossible</b>. Not that you can't write such a program, but there is an inherit design flaw to such code, it's virtually impossible to make such a code work, and there is a clear flaw in logic if you find yourself in such a situation. The other question you might have is - well when should we use pointers to objects? This totally depends on your program. For instance, if we have a <code>class Car</code> and a <code>class Wheel</code>, it's logical for the <b>Car</b> to include the <b>Wheel</b> class, but the <b>Wheel</b> class only needs a pointer to the Car object (it doesn't need the whole Car).
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org8ac62f5">
+<h2 id="org8ac62f5">The ++ in Cpp</h2>
+<ul>
+<li>C with classes
+<ul>
+<li>Classes and Objects</li>
+<li>Constructors and Operators</li>
+<li>Designs</li>
+
+</ul></li>
+<li>Virtuals and Inheritance
+<ul>
+<li>Multiple inheritance</li>
+<li>Virtual functions and destructors</li>
+<li>Inheritance models</li>
+
+</ul></li>
+
+</ul>
+
+<aside class="notes">
+<p>
+When C++ first came out it wasn't all that different from C. Apart from having standard object orientation functionalities and inheritance capabilities, the two languages were more or less the same. But overtime C and C++ grew to become very different. We already looked at how to structure our program in terms of files and how it executes. Now we will dive into the world of OOP in C++, we will revise what was though in the C++ course and will try to build upon that material by giving examples, by running code, and talking about practices for writing better C++. 
+</p>
+
+<p>
+First we will cover classes. What the classes implement in the background, what to do with constructors, destructors, and operators. We will look over some designs on how to build our classes for maximum utility and efficiency. Then we will go over inheritance and polymorphism, with discussions over the different models, how to use multiple inheritance, what virtual tables are, how to use virtual functions, and so on.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgeef51fa">
+<h2 id="orgeef51fa">C with classes</h2>
+<div class="outline-text-2" id="text-orgeef51fa">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orge78d88c">
+<h3 id="orge78d88c">Classes and Objects</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">private</span>: <span style="color: #245361;">// </span><span style="color: #245361;">(Used by default if not specified explicitly) No one can see in here</span>
+<span class="linenr"> 3: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">age</span>;
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">name</span>;
+<span class="linenr"> 6: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">job</span>;
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span>    <span style="color: #195466; font-weight: bold;">static</span> <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">Doctor</span> *<span style="color: #599cab;">d</span>;
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span>    <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">void</span> <span style="color: #599cab;">wave</span><span style="color: #33859e;">()</span>;
+<span class="linenr">11: </span>
+<span class="linenr">12: </span><span style="color: #195466; font-weight: bold;">protected</span>: <span style="color: #245361;">// </span><span style="color: #245361;">Can be seen only by class that is a child</span>
+<span class="linenr">13: </span>           <span style="color: #245361;">// </span><span style="color: #245361;">Usually we don't have a use case for protected</span>
+<span class="linenr">14: </span>    <span style="color: #d26937;">bool</span> <span style="color: #599cab;">is_married</span>;
+<span class="linenr">15: </span>
+<span class="linenr">16: </span><span style="color: #195466; font-weight: bold;">public</span>: <span style="color: #245361;">// </span><span style="color: #245361;">Everyone can see this part</span>
+<span class="linenr">17: </span>    <span style="color: #599cab;">Person</span><span style="color: #33859e;">()</span>;
+<span class="linenr">18: </span>    <span style="color: #599cab;">Person</span><span style="color: #33859e;">(</span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">name</span><span style="color: #33859e;">)</span>;
+<span class="linenr">19: </span>    ~<span style="color: #599cab;">Person</span><span style="color: #33859e;">()</span>;
+<span class="linenr">20: </span>
+<span class="linenr">21: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">get_name</span><span style="color: #33859e;">()</span>;
+<span class="linenr">22: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">get_job</span><span style="color: #33859e;">()</span>;
+<span class="linenr">23: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">get_age</span><span style="color: #33859e;">()</span>;
+<span class="linenr">24: </span>
+<span class="linenr">25: </span>    <span style="color: #d26937;">double</span> <span style="color: #599cab;">calculate_salary</span><span style="color: #33859e;">()</span>;
+<span class="linenr">26: </span>
+<span class="linenr">27: </span>    <span style="color: #d26937;">bool</span> <span style="color: #599cab;">get_occupation</span><span style="color: #33859e;">()</span> <span style="color: #33859e;">{</span> <span style="color: #195466; font-weight: bold;">return</span> is_married; <span style="color: #33859e;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">implicit inline function</span>
+<span class="linenr">28: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+This is a basic class. We can see the scopes of the class and what we can have as variables and functions in the different places. A quick note here - although we have 3 scopes, the ones we use the most are <code>private</code> and <code>public</code>, while <code>protected</code> is used in seldom cases, so we need not worry about it that much.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb5e0416">
+<h4 id="orgb5e0416">Initialization lists</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Library</span> 
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 3: </span>    <span style="color: #599cab;">Library</span><span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">name</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">list</span><span style="color: #d26937;">&lt;</span>Books<span style="color: #d26937;">&gt;</span>&amp; <span style="color: #599cab;">books</span><span style="color: #33859e;">)</span>;
+<span class="linenr"> 4: </span><span style="color: #195466; font-weight: bold;">private</span>:
+<span class="linenr"> 5: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">theName</span>;
+<span class="linenr"> 6: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">list</span><span style="color: #33859e;">&lt;</span>Books<span style="color: #33859e;">&gt;</span> <span style="color: #599cab;">books</span>;
+<span class="linenr"> 7: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">addressNum</span>;
+<span class="linenr"> 8: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #33859e; font-weight: bold;">Library</span>::<span style="color: #599cab;">Library</span><span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">name</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">list</span><span style="color: #33859e;">&lt;</span>Books<span style="color: #33859e;">&gt;</span>&amp; <span style="color: #599cab;">books</span><span style="color: #99d1ce;">)</span>
+<span class="linenr">11: </span><span style="color: #245361;">// </span><span style="color: #245361;">&lt;- Initialization start right here before the opening bracket</span>
+<span class="linenr">12: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">13: </span>    theName = name; <span style="color: #245361;">// </span><span style="color: #245361;">these are all assignments</span>
+<span class="linenr">14: </span>    theBooks = books;
+<span class="linenr">15: </span>    addressNum = <span style="color: #33859e; font-weight: bold;">0</span>;
+<span class="linenr">16: </span><span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">This is OK but can be done better</span>
+</pre>
+</div>
+
+</section>
+<section >
+
+<p>
+Constructor with initialization list
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #33859e; font-weight: bold;">Library</span>::<span style="color: #599cab;">Library</span><span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">name</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">list</span><span style="color: #33859e;">&lt;</span>Books<span style="color: #33859e;">&gt;</span>&amp; <span style="color: #599cab;">books</span><span style="color: #99d1ce;">)</span>
+<span class="linenr">1: </span>: theName<span style="color: #99d1ce;">(</span>name<span style="color: #99d1ce;">)</span>, <span style="color: #245361;">// </span><span style="color: #245361;">These are all now initialized</span>
+<span class="linenr">2: </span>  theBooks<span style="color: #99d1ce;">(</span>books<span style="color: #99d1ce;">)</span>, 
+<span class="linenr">3: </span>  addressNum<span style="color: #99d1ce;">(</span><span style="color: #33859e; font-weight: bold;">0</span><span style="color: #99d1ce;">)</span>
+<span class="linenr">4: </span><span style="color: #99d1ce;">{</span> <span style="color: #99d1ce;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">Empty constructor body</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+When we are initializing this object, we would write <code>Person p1;</code>, but what would happen with its data members. Will they be initialized to zero or not? We can never be sure about this and sometimes they might be <b>zero</b>, sometimes they might be left <b>uninitialized</b>. If we take the risk and read something that is uninitialized, then we will get undefined behavior. There are rules to remember when something is initialized to zero and when something is left uninitialized, but this all depends if you are writing the C part of C++ or the STL part, and things just get way to complicated. That is why we can take the safe approach and just <b>always</b> initialize our object when we create them. If we are just working with normal variables in a function, this would be like writing <code>int x = 0; double b; std::cin &gt;&gt; b; char* x = "pointer intialization"</code> and so on. For objects, however, this tasks is left to the constructor. The rule is simple - make sure that everything is initialized when an object is created.
+</p>
+
+<p>
+In the example we can see that the Library constructor makes 3 assignments to the data members. In C++, the <b>initialization</b> takes place <b>right before</b> we get into the constructor body! This means that in order to make sure that the variables are initialized, we have to put them into an <b>initialization list</b> (how intuitive!). There are several advantages to this approach. First we make sure that we won't have uninitialized data members and will avoid undefined behavior. Secondly, because we are assigning objects (the <code>string</code> and <code>list</code> members) we are avoiding calling their assignment constructors. In the previous code, where we assigned the variables, first we had to initialize the <code>string</code> and <code>list</code> variables, then we had to assign them the new values by calling a copy assignment operator. That's way too much work. But with the initialization list, not such thing needs to happen. The name and the phone are <b>copy-constructed</b> from the passed parameters. This means that only a copy constructor of the <code>string</code> and <code>list</code> is called in order to initialize the data members, and this operations (the copy constructor) is much more efficient than the previous code.
+</p>
+
+<p>
+If we want to initialize the data members to nothing or we don't have any parameters to pass to the constructor, we can just call the initialization list and leave the brackets empty.
+</p>
+
+<p>
+There is one little aspect we must note here and that is - we must write the order of our initialization list in the <b>same order</b> we declared our data members in our class. This is just how C++ works, we must first initialize <code>theName</code> and then <code>theBooks</code> and then <code>addressNum</code>. If we don't do that we will get an error.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org95639bc">
+<h4 id="org95639bc">Static non-local objects defined in different translation units</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">in the filesystem.cpp file</span>
+<span class="linenr"> 1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">FileSystem</span>
+<span class="linenr"> 2: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 3: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 4: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">size_t</span> <span style="color: #599cab;">numDisks</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>;
+<span class="linenr"> 5: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 6: </span><span style="color: #195466; font-weight: bold;">extern</span> <span style="color: #d26937;">FileSystem</span> <span style="color: #599cab;">tfs</span>;
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #245361;">// </span><span style="color: #245361;">in our .cpp file</span>
+<span class="linenr"> 9: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Directory</span> 
+<span class="linenr">10: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">11: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">12: </span>    Directory<span style="color: #33859e;">(</span><span style="color: #599cab;">params</span><span style="color: #33859e;">)</span>;
+<span class="linenr">13: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #33859e; font-weight: bold;">Directory</span>::<span style="color: #599cab;">Directory</span><span style="color: #99d1ce;">(</span>params<span style="color: #99d1ce;">)</span>
+<span class="linenr">16: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">17: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">size_t</span> <span style="color: #599cab;">disks</span> = tfs.numDisks<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">we use the tfs object,</span>
+<span class="linenr">18: </span>                                        <span style="color: #245361;">// </span><span style="color: #245361;">but we cannot be sure</span>
+<span class="linenr">19: </span>                                        <span style="color: #245361;">// </span><span style="color: #245361;">that it is initialized</span>
+<span class="linenr">20: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">21: </span>
+<span class="linenr">22: </span><span style="color: #d26937;">Directory</span> <span style="color: #599cab;">tempDir</span><span style="color: #99d1ce;">(</span>params<span style="color: #99d1ce;">)</span>;
+</pre>
+</div>
+
+</section>
+<section >
+
+<p>
+The solution:
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #d26937;">FileSystem</span>&amp; <span style="color: #599cab;">tfs</span><span style="color: #99d1ce;">()</span>         <span style="color: #245361;">// </span><span style="color: #245361;">this replaces the tfs object; it could be</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>                         <span style="color: #245361;">// </span><span style="color: #245361;">static in the FileSystem class</span>
+<span class="linenr"> 2: </span>    <span style="color: #195466; font-weight: bold;">static</span> <span style="color: #d26937;">FileSystem</span> <span style="color: #599cab;">fs</span>; <span style="color: #245361;">// </span><span style="color: #245361;">define and initialize a local static object</span>
+<span class="linenr"> 3: </span>    <span style="color: #195466; font-weight: bold;">return</span> fs;            <span style="color: #245361;">// </span><span style="color: #245361;">return a reference to it</span>
+<span class="linenr"> 4: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Directory</span> <span style="color: #99d1ce;">{</span> ... <span style="color: #99d1ce;">}</span>;  
+<span class="linenr"> 7: </span>                <span style="color: #245361;">// </span><span style="color: #245361;">as before</span>
+<span class="linenr"> 8: </span><span style="color: #33859e; font-weight: bold;">Directory</span>::<span style="color: #599cab;">Directory</span><span style="color: #99d1ce;">(</span>params<span style="color: #99d1ce;">)</span>              <span style="color: #245361;">// </span><span style="color: #245361;">as before, except references</span>
+<span class="linenr"> 9: </span><span style="color: #99d1ce;">{</span>                                         <span style="color: #245361;">// </span><span style="color: #245361;">to tfs are</span>
+<span class="linenr">10: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">size_t</span> <span style="color: #599cab;">disks</span> = tfs<span style="color: #33859e;">()</span>.numDisks<span style="color: #33859e;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">now to tfs()</span>
+<span class="linenr">11: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #d26937;">Directory</span>&amp; <span style="color: #599cab;">tempDir</span><span style="color: #99d1ce;">()</span>               <span style="color: #245361;">// </span><span style="color: #245361;">this replaces the tempDir object; it</span>
+<span class="linenr">14: </span><span style="color: #99d1ce;">{</span>                                  <span style="color: #245361;">// </span><span style="color: #245361;">could be static in the Directory class</span>
+<span class="linenr">15: </span>    <span style="color: #195466; font-weight: bold;">static</span> <span style="color: #d26937;">Directory</span> <span style="color: #599cab;">td</span><span style="color: #33859e;">(</span> params <span style="color: #33859e;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">define/initialize local static object</span>
+<span class="linenr">16: </span>    <span style="color: #195466; font-weight: bold;">return</span> td;                     <span style="color: #245361;">// </span><span style="color: #245361;">return reference to it</span>
+<span class="linenr">17: </span><span style="color: #99d1ce;">}</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+One final thing that is worth mentioning is the case when we have to <b>initialize non-local static objects from different translation units</b>. What that jumble of words means is that - if we have a <b>static object</b> (an object that has a duration from the beginning of its initialization till the end of the program) and if that object is <b>non-local</b> (it's in the global scope, namespace scope, or in the scope of an other class) and if it's in a <b>translation unit</b> (basically it's a single source file) how do we initialize it? The problem here is that if we use such a static non-local object, we can <b>never ever</b> be sure when it is initialized properly and we are down the road of undefined behavior. The way to overcome such situations is by writing a function that makes that static non-local object a static local object (basically implementing the <b>Singleton</b> design pattern. . . almost). We just need to write a small function in our code, where we define and initialize a static local object of what we need and return a reference to it. This way we make sure that every time the function to get the object is called, the object will <b>always</b> be initialized.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org6137193">
+<h3 id="org6137193">Constructors and Operators</h3>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #245361;">// </span><span style="color: #245361;">Empty class</span>
+<span class="linenr"> 1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">A</span> <span style="color: #99d1ce;">{}</span>;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #245361;">// </span><span style="color: #245361;">Empty class again</span>
+<span class="linenr"> 4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">A</span> 
+<span class="linenr"> 5: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 6: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 7: </span>    <span style="color: #599cab;">A</span><span style="color: #33859e;">()</span> <span style="color: #33859e;">{</span>...<span style="color: #33859e;">}</span>             <span style="color: #245361;">// </span><span style="color: #245361;">constructor</span>
+<span class="linenr"> 8: </span>    <span style="color: #599cab;">A</span><span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">A</span>&amp; <span style="color: #599cab;">rhs</span><span style="color: #33859e;">)</span> <span style="color: #33859e;">{</span>...<span style="color: #33859e;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">copy constructor</span>
+<span class="linenr"> 9: </span>    ~<span style="color: #599cab;">A</span><span style="color: #33859e;">()</span> <span style="color: #33859e;">{</span>...<span style="color: #33859e;">}</span>            <span style="color: #245361;">// </span><span style="color: #245361;">destructor</span>
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>    <span style="color: #d26937;">A</span>&amp; <span style="color: #195466; font-weight: bold;">operator</span><span style="color: #599cab;">=</span><span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">A</span>&amp; <span style="color: #599cab;">rhs</span><span style="color: #33859e;">)</span> <span style="color: #33859e;">{</span>...<span style="color: #33859e;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">copy assingment operator</span>
+<span class="linenr">12: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+All of the classes we write have at least several constructors in them which will be either user defined or put in the class by the compiler. Sometimes we don't have to explicitly tell C++ what kind of constructors we want, because our program doesn't requite such functionality, but sometimes we have to implement our own constructors and operators (<b>operator overloading</b>). It's a good thing to know what the compiler is implementing instead of us when we are not writing the constructors ourselves.
+</p>
+
+<p>
+Let's take this example for instance. Here we have a class that has nothing in it and we have a class that has four constructors implemented. There is virtually no difference between writing the empty class without constructors and the one with the 3 ctors and one operator implemented. The 3 cotrs and 1 operator that we will always have by default are - a default constructor, default destructor, copy constructor, and a copy assignment operator. In general there isn't much difference between what you will write as an implementation and what the compiler will write for there things, but keep in mind that in some specific cases you will be forced to write your own constructors. This will be the case when you have some constants and/or some references in your class. Why references? Because when you are copying an instance and you have a pointer in it, you would want to copy what the pointer points to (its content) and not the pointer only. And the case for <code>const</code> is that you would want to keep <b>const correctness</b> when copying. This is not a problem if our class has normal data members.
+</p>
+
+</aside>
+
+</section>
+<section >
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">template</span><span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>
+<span class="linenr">1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">NamedObject</span>
+<span class="linenr">2: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">3: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">4: </span>    <span style="color: #599cab;">NamedObject</span><span style="color: #33859e;">(</span><span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">name</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">T</span>&amp; <span style="color: #599cab;">value</span><span style="color: #33859e;">)</span>;
+<span class="linenr">5: </span><span style="color: #195466; font-weight: bold;">private</span>:
+<span class="linenr">6: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">nameValue</span>;
+<span class="linenr">7: </span>    <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">T</span> <span style="color: #599cab;">objectValue</span>;
+<span class="linenr">8: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+In this case when we have a reference, we just have to make sure that we are implementing a <b>deep</b> copy when we are writing the constructor or operator. But if our class has a <code>const</code> then we are in trouble. Because we cannot change the value of the initial object we want to re-assign, we cannot implement a proper copy assignment operator. In the case with the constant data member, a default copy assignment operator will not be implemented, and if we were to implement one of our own, we would not copy the <code>const</code> data members.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org7b5f21f">
+<h3 id="org7b5f21f">Designs</h3>
+<div class="outline-text-3" id="text-org7b5f21f">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org80157e9">
+<h4 id="org80157e9">Write OOP classes</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">AccessLevels</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 3: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">get_read_write</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e;">{</span> <span style="color: #195466; font-weight: bold;">return</span> readWrite; <span style="color: #33859e;">}</span>
+<span class="linenr"> 4: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">get_read_only</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e;">{</span> <span style="color: #195466; font-weight: bold;">return</span> readOnly; <span style="color: #33859e;">}</span>
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span>    <span style="color: #d26937;">void</span> <span style="color: #599cab;">set_read_write</span><span style="color: #33859e;">(</span><span style="color: #d26937;">int</span> <span style="color: #599cab;">value</span><span style="color: #33859e;">)</span> <span style="color: #33859e;">{</span> readWrite = value; <span style="color: #33859e;">}</span>
+<span class="linenr"> 7: </span>    <span style="color: #d26937;">void</span> <span style="color: #599cab;">set_write_only</span><span style="color: #33859e;">(</span><span style="color: #d26937;">int</span> <span style="color: #599cab;">value</span><span style="color: #33859e;">)</span> <span style="color: #33859e;">{</span> writeOnly = value; <span style="color: #33859e;">}</span>
+<span class="linenr"> 8: </span><span style="color: #195466; font-weight: bold;">private</span>:
+<span class="linenr"> 9: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">no_access</span>;    <span style="color: #245361;">// </span><span style="color: #245361;">no access to this </span>
+<span class="linenr">10: </span>                      <span style="color: #245361;">// </span><span style="color: #245361;">(maybe it's used as an internal constant)</span>
+<span class="linenr">11: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">read_only</span>;    <span style="color: #245361;">// </span><span style="color: #245361;">only read access</span>
+<span class="linenr">12: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">read_write</span>;   <span style="color: #245361;">// </span><span style="color: #245361;">read and write access</span>
+<span class="linenr">13: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">write_only</span>;   <span style="color: #245361;">// </span><span style="color: #245361;">write only access</span>
+<span class="linenr">14: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Although C++ gives us a lot of flexibility with what we can put into a class and under what type of scope, there have been several great designs that usually make our work much easier and allows us to quickly create our classes. This doesn't mean that we have to neglect what we are actually writing, but for most of the time we can follow these conventions.
+</p>
+
+<p>
+First of - declare your data members as private (not even protected). Okay so why do this? First off, by making our data members private we are limiting the access to them, we can only <b>get</b> them and <b>change</b> them only through functions. This allows us for finer control over our data and will also follow some consistency when writing classes. We won't need to bang our heads whether we are changing something or we are writing to something or whatever. The general rule is - every data member should be hidden, or - show only as much as you need. This means that some of our data members won't even need <code>getters</code> and <code>setters</code>, thus reducing our chances of bugs and lines of code. The last, and biggest, benefit to hide your data is <b>encapsulation</b>. This brings a lot of flexibility of implementation to the table and we should strive to make our classes as flexible and encapsulated as possible. A rule we can remember about this is - the more a class is used, the more it needs to be encapsulated. The same rules apply for <code>protected</code> data members. It might seem that they are encapsulated on first glance, but think about this - if we are to remove a <b>protected</b> data member, we are going to break an <b>undefined</b> amount of inherited classes, which is always more than what we will break if we just had that member as <b>private</b>. Seldom are the situations where <code>protected</code> will save the day.
+</p>
+
+<p>
+In order to access are already <code>private</code> variables, we must rely on getters and setters. These are small and fast functions that do what their name suggests. It's usually a good practice to make you getters <code>const</code>, this way you are ensuring yourself that the variable won't change upon retrieval. As a reminder - not all data members need such functions to them!
+</p>
+
+<p>
+Another thing that is worth mentioning about how to write classes is - do not over complicate them with functions that they <b>don't</b> necessarily need. This means that if a class needs helper functions, it's not necessary to put those functions as class methods. Although our intuition tells us that we need to encapsulate everything, this doesn't always mean - put everything into a class. Let's take a this source file for instance (<code>./src/robot_and_mines.cpp</code>). This is a little robot that goes through a maze, based on commands given by the user. To load the maze we use a function that reads a text file. The question is - since we are loading something specific that the robot will do, i.e. go through a maze, should that loading function be part of the robot class? Well maybe, it's not wrong to think that a robot might have the functionality to load its course. But at the same time maybe it's not such a good idea, because this increases the <b>size</b> of our class, we have another state to worry about, and if we were to extend this program even further, we might need to remove this function, since it will be getting in the way. So instead of making this function a class method or a friend function, just use it as a standalone thing that just helps the class. If we have multiple functions that are not really class specific, but are very helpful, we can just put them in a standalone <code>header</code> file or a <code>namespace</code> and used them from there. The takeaway is this - prefer to write non-member and non-friend functions to member functions (do not bloat your classes).
+</p>
+
+</aside>
+
+</section>
+<section >
+
+<p>
+Use inline functions
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 3: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">age</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e;">{</span> <span style="color: #195466; font-weight: bold;">return</span> theAge; <span style="color: #33859e;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">implicit inline request</span>
+<span class="linenr"> 4: </span>                                       <span style="color: #245361;">// </span><span style="color: #245361;">defined in class definition</span>
+<span class="linenr"> 5: </span>    <span style="color: #195466; font-weight: bold;">friend</span> <span style="color: #d26937;">job</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e;">{</span> <span style="color: #195466; font-weight: bold;">return</span> currJob; <span style="color: #33859e;">}</span> <span style="color: #245361;">// </span><span style="color: #245361;">friend functions can</span>
+<span class="linenr"> 6: </span>                                           <span style="color: #245361;">// </span><span style="color: #245361;">also be inline</span>
+<span class="linenr"> 7: </span><span style="color: #195466; font-weight: bold;">private</span>:
+<span class="linenr"> 8: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">theAge</span>;
+<span class="linenr"> 9: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #195466; font-weight: bold;">template</span><span style="color: #99d1ce;">&lt;</span><span style="color: #195466; font-weight: bold;">typename</span> <span style="color: #d26937;">T</span><span style="color: #99d1ce;">&gt;</span>                             <span style="color: #245361;">// </span><span style="color: #245361;">an explicit inline</span>
+<span class="linenr">12: </span><span style="color: #195466; font-weight: bold;">inline</span> <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">T</span>&amp; <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #599cab;">max</span><span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">T</span>&amp; <span style="color: #599cab;">a</span>, <span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">T</span>&amp; <span style="color: #599cab;">b</span><span style="color: #99d1ce;">)</span> <span style="color: #245361;">// </span><span style="color: #245361;">request: std::max is</span>
+<span class="linenr">13: </span><span style="color: #99d1ce;">{</span> <span style="color: #195466; font-weight: bold;">return</span> a &lt; b ? b : a; <span style="color: #99d1ce;">}</span>                        <span style="color: #245361;">// </span><span style="color: #245361;">preceded by &#8220;inline&#8221;</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Inlining functions are one of the greatest ideas ever - they allows us to write simple and fast code! Well what does this exactly mean? Inline functions are those that are either specifically written in the class body or are marked as <code>inline</code>. This removes the function call and replaces it with the body of the function directly. This reduces the work of the compiler to jump to function definitions and in general, optimizes our performance. Another optimization is that if we have a code stretch that doesn't have function calls, the compiler might optimize this section, and if we inline our functions we might promote such compiler optimizations. Great for us! But there is a "but" in this whole situation - using too much <code>inline</code> functions will bloat our object file making much bigger executable. On machines that don't have a lot of memory won't handle this very well. <b>Inlined</b> code can lead to additional paging and <b>reduced</b> cache hit rate, and all of the negatives accompanying this. But if the code we inline is small enough, this will lead to smaller code for the function in comparison to the code generated for the function call, which will <b>increase</b> cache hit ratio and will make object files <b>smaller</b>. So we must be careful what we inline and what we don't (duh).
+</p>
+
+<p>
+We have to keep in mind that <b>inlining</b> is a request to the compiler and not a command. We can have two approaches, one is to make <b>implicit inline requests</b> by inserting the body of the function in our class definition. These functions are usually member functions, but they can also be friend functions.
+</p>
+
+<p>
+Okay so when should we use inline functions? Well the thing is that the compiler will decide which functions to inline in reality. Inlining <b>in general</b> is a compile time thing (some build environments execute inlining  during linking and some even during runtime, but the standard is during compilation). This means that we should put our <code>inlines</code> in header files. Let's look at another aspect of inlining and that is the fact that the compiler decides when a function should be inlined. Well in general, a function that has too complicated logic, like loops, recursion, and so on, won't be a good candidate. Also unless a virtual function is trivial simple, it too won't be inlined by the compiler. All of this depends on the build environment and on the compiler you are using, but luckily for us, we will get warnings when a inline function might not be suitable, so that is a good indicator whether we are doing something correct. A good approach is to inline <b>nothing</b> in the beginning, then go over your code again and see what can be optimized further.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org9961555">
+<h4 id="org9961555">Treat class design as type design</h4>
+<ul>
+<li class="fragment roll-in">How should objects of your new type be created and destroyed?</li>
+<li class="fragment roll-in">How should object initialization differ from object assignment?</li>
+<li class="fragment roll-in">What are the restrictions on legal values for your new type?</li>
+<li class="fragment roll-in">What operators and functions make sense for the new type?</li>
+<li class="fragment roll-in">What standard functions should be disallowed?</li>
+<li class="fragment roll-in">Who should have access to the members of your new type?</li>
+<li class="fragment roll-in">Is a new type really what you need?</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+One of the things that will happen when you are writing your FDS project is that you won't have an idea what to do in the beginning and how to start. Hence you will hesitate how to build your classes and what to do with them.
+</p>
+
+<p>
+Writing classes isn't easy, because in C++ we are not creating only a class, but we are also creating a <b>user type</b>. This means that we have to take care of what that type must to do and what it must <b>not</b> do. That's why we can ask ourselves the following question in order to get a better grip of the classes we are writing. In consequence we will get a better understanding of the program we are writing.
+</p>
+
+<p>
+<b>How should objects of your new type be created and destroyed?</b> - How this is done influences the design of your class’s constructors and destructor, as well as its memory allocation and deallocation functions.
+</p>
+
+<p>
+<b>How should object intialization differ from object assignment?</b> - The answer to this question determines the behavior of and the differences between your constructors and your assignment operators. It’s important not to confuse initialization with assignment, because they correspond to different function calls.
+</p>
+
+<p>
+<b>What are the restrictions on legal values for your new type?</b> - Usually, only some combinations of values for a class’s data members are valid. Those combinations determine the invariants your class will have to maintain. The invariants determine the error checking you’ll have to do inside your member functions, especially your constructors, assignment operators, and “setter” functions. It may also affect the exceptions your functions throw and, on the off chance you use them, your functions’ exception specifications.
+</p>
+
+<p>
+<b>What operators and functions make sense for the new type?</b> - The answer to this question determines which functions you’ll declare for your class. Some functions will be member functions, but some will not.
+</p>
+
+<p>
+<b>What standard functions should be disallowed?</b> - Those are the ones you’ll need to declare private.
+</p>
+
+<p>
+<b>Who should have access to the members of your new type?</b> - This question helps you determine which members are public, which are protected, and which are private. It also helps you determine which classes and/or functions should be friends, as well as whether it makes sense to nest one class inside another.
+</p>
+
+<p>
+<b>Is a new type really what you need?</b> If you’re defining a new derived class only so you can add functionality to an existing class, perhaps you’d better achieve your goals by simply defining one or more non-member functions or templates.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org34aaf32">
+<h4 id="org34aaf32">Prefer pass-by-reference-to-const to pass-by-value</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Window</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 3: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">name</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>;     <span style="color: #245361;">// </span><span style="color: #245361;">return name of window</span>
+<span class="linenr"> 4: </span>    <span style="color: #195466; font-weight: bold;">virtual</span> <span style="color: #d26937;">void</span> <span style="color: #599cab;">display</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>; <span style="color: #245361;">// </span><span style="color: #245361;">draw window and contents</span>
+<span class="linenr"> 5: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">WindowWithScrollBars</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">Window</span>
+<span class="linenr"> 8: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 9: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">10: </span>    <span style="color: #195466; font-weight: bold;">virtual</span> <span style="color: #d26937;">void</span> <span style="color: #599cab;">display</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>;
+<span class="linenr">11: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #245361;">// </span><span style="color: #245361;">the bad functoin</span>
+<span class="linenr">14: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">printNameAndDisplay</span><span style="color: #99d1ce;">(</span><span style="color: #d26937;">Window</span> <span style="color: #599cab;">w</span><span style="color: #99d1ce;">)</span> <span style="color: #245361;">// </span><span style="color: #245361;">Bad! Parameter might be sliced!</span>
+<span class="linenr">15: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">16: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; w.name<span style="color: #33859e;">()</span>;
+<span class="linenr">17: </span>    w.display<span style="color: #33859e;">()</span>;
+<span class="linenr">18: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">19: </span>
+<span class="linenr">20: </span><span style="color: #245361;">// </span><span style="color: #245361;">the correct function</span>
+<span class="linenr">21: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">printNameAndDisplay</span><span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">Window</span>&amp; <span style="color: #599cab;">w</span><span style="color: #99d1ce;">)</span> <span style="color: #245361;">// </span><span style="color: #245361;">Correct! Parameter won't be sliced!</span>
+<span class="linenr">22: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">23: </span><span style="color: #33859e; font-weight: bold;">std</span>::cout &lt;&lt; w.name<span style="color: #33859e;">()</span>;
+<span class="linenr">24: </span>w.display<span style="color: #33859e;">()</span>;
+<span class="linenr">25: </span><span style="color: #99d1ce;">}</span>
+<span class="linenr">26: </span>
+<span class="linenr">27: </span><span style="color: #245361;">// </span><span style="color: #245361;">the call</span>
+<span class="linenr">28: </span><span style="color: #d26937;">WindowWithScrollBars</span> <span style="color: #599cab;">wwsb</span>;
+<span class="linenr">29: </span>printNameAndDisplay<span style="color: #99d1ce;">(</span>wwsb<span style="color: #99d1ce;">)</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Most of you are aware of what <b>pass-by-value</b> and <b>pass-by-reference</b> is, but here we will just discuss a few more advantages to using passing of references to <code>const</code>. One thing that happens when we are passing objects (and more specifically, <b>inherited</b> / <b>derived</b> objects from a base class) by value is that we are at the risk of <b>slicing</b> off the derived part of the object in the function call. What this means is that if we have a <code>class A</code> which inherits <code>class B</code>, and we pass an object of <code>type A</code> to a function by value (the function parameter accepts <code>type B</code>), the <b>A</b> part of that object will not be passed, and only the <b>B</b> part will remain. Okay maybe that sounds too complicated, let's revise. By passing something by value we are copying it and the function is using the copy. In the case of inherited classes, when we are passing a derived object by value the <b>copy constructor</b> of the class is called to make a copy - naturally. But when the object has a base class, the base class is copied first. If the parameter of the function is of the base class type, only the base class during the copying will be left, and the derived part will be omitted. That is why it's a better idea to pass-by-reference-to-const.
+</p>
+
+<p>
+Under the compiler, <b>references</b> are passed as pointers, so we are technically just passing a pointer. That is why if we have a build-in type like <code>int</code> it is more efficient to pass by value. Also we can say that the STL <b>iterators</b> and <b>function objects</b> are also good to pass-by-value, because they have been specifically build to be more optimal to copy than to be passed as a reference (as a pointer).
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org21d76df">
+<h2 id="org21d76df">Virtuals and Inheritance</h2>
+<ul>
+<li>Multiple inheritance</li>
+<li>Virtual functions and destructors</li>
+<li>Inheritance models</li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Let's talk about inheritance. It is one of the central ideas behind OOP and C++ gives us a lot of freedom to express ourselves. We are able to have single and multiple inheritance, then each link can be public, private, or protected. Then we can have virtual or non-virtual linking. Member functions can also be virtual, or non-virtual, or pure virtual. These are a lot of states to think about and we have to make sure that we understand exactly how these things work together. We are going to talk about public and private inheritance, difference between inheritance of interface and of implementation, how and when to use virtual functions, when to use multiple inheritance, etc. 
+</p>
+
+<p>
+But first we have to be sure what virtualization means in C++ and how to use <b>virtual inheritance</b> and <b>virtual functions</b>.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org8fb559e">
+<h3 id="org8fb559e">Dealing with multiple inheritance</h3>
+<aside class="notes">
+<p>
+We already know how inheritance works, and although we know that there are several ways to do it, it's better to get an idea about multiple inheritance as well from the start. As we can see from the two pictures, we have an inheritance hierarchy.
+</p>
+
+</aside>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">BorrowableItem</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 3: </span>    <span style="color: #d26937;">void</span> <span style="color: #599cab;">checkOut</span><span style="color: #33859e;">()</span>;
+<span class="linenr"> 4: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">ElectronicGadget</span> 
+<span class="linenr"> 7: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 8: </span><span style="color: #195466; font-weight: bold;">private</span>:
+<span class="linenr"> 9: </span>    <span style="color: #d26937;">bool</span> <span style="color: #599cab;">checkOut</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>;
+<span class="linenr">10: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr">11: </span>
+<span class="linenr">12: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">MP3Player</span>:
+<span class="linenr">13: </span><span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">BorrowableItem</span>,
+<span class="linenr">14: </span><span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">ElectronicGadget</span>
+<span class="linenr">15: </span><span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr">16: </span>
+<span class="linenr">17: </span><span style="color: #245361;">// </span><span style="color: #245361;">in some function</span>
+<span class="linenr">18: </span><span style="color: #d26937;">MP3Player</span> <span style="color: #599cab;">mp</span>;
+<span class="linenr">19: </span>mp.checkOut<span style="color: #99d1ce;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">ambiguous! a.k.a. problem!</span>
+</pre>
+</div>
+
+</section>
+<section >
+
+
+<div class="figure">
+<p><img src="./pics/inheritance1.png" alt="inheritance1.png" />
+</p>
+</div>
+
+<aside class="notes">
+<p>
+The thing with <b>MI</b> is that it allows us to inherit the same name function from more than one base class. From the first source we can see how we have inherited two functions with the same name and thus we confuse the compiler which form of <code>checkOut()</code> to use. You might notice that the two functions have <b>different access</b> levels, but since this function call has to be resolved during compilation, it doesn't matter that the access levels are not <code>public</code> or <code>protected</code>. What we can do here is to explicitly tell the compiler which version of the function to use, but that would lead to more complications. One thing that this form of multiple inheritance can lead to is the <b>deadly MI diamond</b> (scary!).
+</p>
+
+</aside>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">B</span> <span style="color: #99d1ce;">{</span>. . .<span style="color: #99d1ce;">}</span>;
+<span class="linenr">1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">X</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">B</span> <span style="color: #99d1ce;">{</span>. . .<span style="color: #99d1ce;">}</span>;
+<span class="linenr">2: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Y</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">B</span> <span style="color: #99d1ce;">{</span>. . .<span style="color: #99d1ce;">}</span>;
+<span class="linenr">3: </span>
+<span class="linenr">4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Z</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">X</span>, <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">Y</span> <span style="color: #99d1ce;">{</span>. . .<span style="color: #99d1ce;">}</span>; <span style="color: #245361;">// </span><span style="color: #245361;">Problem!</span>
+<span class="linenr">5: </span>                                     <span style="color: #245361;">// </span><span style="color: #245361;">2 anonymous instances of B</span>
+</pre>
+</div>
+
+</section>
+<section >
+
+
+<div class="figure">
+<p><img src="./pics/inheritance2.png" alt="inheritance2.png" />
+</p>
+</div>
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">B</span> <span style="color: #99d1ce;">{</span>. . .<span style="color: #99d1ce;">}</span>;
+<span class="linenr">1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">X</span>: <span style="color: #195466; font-weight: bold;">virtual</span> <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">B</span> <span style="color: #99d1ce;">{</span>. . .<span style="color: #99d1ce;">}</span>;
+<span class="linenr">2: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Y</span>: <span style="color: #195466; font-weight: bold;">virtual</span> <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">B</span> <span style="color: #99d1ce;">{</span>. . .<span style="color: #99d1ce;">}</span>;
+<span class="linenr">3: </span>
+<span class="linenr">4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Z</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">X</span>, <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">Y</span> <span style="color: #99d1ce;">{</span>. . .<span style="color: #99d1ce;">}</span>; <span style="color: #245361;">// </span><span style="color: #245361;">When base class is inherit as</span>
+<span class="linenr">5: </span>                                     <span style="color: #245361;">// </span><span style="color: #245361;">virtual, only anonymous copy in</span>
+<span class="linenr">6: </span>                                     <span style="color: #245361;">// </span><span style="color: #245361;">the child class is created!</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+This means that when we have MI where the child class can have several paths to the base class, we have to ask ourselves, do we want the data members of the base class to be copied into two instances or to remain as one. By default C++ makes copies of the base class, but we have to option to rebuttal and to insist on having only one. Here is where <b>virtual inheritance</b> comes to the rescue. This means that we can have this diamond shape inheritance form and not suffer from data duplication simply by putting the <code>virtual</code> keyword when we are inhere ting from the base class. This will tell the compiler that there should be only one instance of the base class and in consequence we should have it only in one place in our <b>virtual tables</b>. Thus we are creating a <b>virtual base class</b> when we do this sort of virtual inheritance. The problem is that this will create bigger object files and will slow down our program (it causes overhead). So instead of just immediately writing virtual everywhere, here is some advice to follow when we are in such situations - <b>1.</b> Don't use MI unless you need to. By default use non-virtual inheritance. <b>2.</b> If you need to use virtual inheritance, try not to put any data members in the class. That way you are avoiding odd behavior when initialization takes place. Advice <b>2</b> is how technically <code>interface</code>'s work in <code>Java</code> and <code>C#</code>.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgcc731a0">
+<h3 id="orgcc731a0">Virtual functions and destructors</h3>
+<aside class="notes">
+<p>
+We looked how virtual inheritance looks like, now let's go over virtualization and bindings in C++. Now we have two types of function binding in the language - <b>static</b> and <b>dynamic</b>. <b>Static</b> binding means that when a function is called, the compiler knows which functions was called and jumps to it. This is the default behavior of C++. This, in consequence, allows us to have <b>function overloading</b>. Even though there are two or more functions with the same name, the compiler uniquely identifies each function depending on the parameters passed to those function. On the other hand, <b>dynamic</b> binding tells the compiler to match a function call during <b>runtime</b>. This is achieved through <b>virtual functions</b>. A base class pointer points to the derived class object. And a functions is declared virtual in the base class. Then the matching function is defined at run-time using a virtual table entry.
+</p>
+
+<p>
+The virtual table is an interesting concept that allows us to have virtualization in C++. This table is a look up table of functions used to resolve function calls in a dynamic/late binding manner. This is also referred to as a <b>vtable</b> or a <b>dispatch table</b>. Now, every class that has at least one virtual function, or is derived from a class that uses virtual functions, has its own <code>vtable</code>. This table is simply a static array that the compiler sets up at compile time. The virtual table contains one entry for each virtual function that can be called by objects of the class. Each entry in this stable is simply a function pointer that points to the most-derived function accessible by that class. After that the compiler adds a hidden pointer to the base class. We can call this the <code>*_vptr</code>. This pointer is automatically set when a class instance is created so that it points to the pointer, which is actually a function parameter used by the compiler to resolve self-references. Keep in mind that this is in fact a real pointer. Consequently, it makes each class object allocated bigger by the size of one pointer. It also means that the pointer is inherited by the derived classes. This means that calling a virtual function is slower than calling a non-virtual one. Because we have to use the <code>*_vptr</code> to get to the appropriate virtual table. Then we have to index the virtual table to find the correct function call. Only then can we call the function. As a result we have to do 3 operations as opposed to 2 for a normal indirect function call, or 1 for a direct call.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org6f472d4">
+<h4 id="org6f472d4">Virtual Destructors</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">TimeKeeper</span> 
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 3: </span>    <span style="color: #599cab;">TimeKeeper</span><span style="color: #33859e;">()</span>;
+<span class="linenr"> 4: </span>    ~<span style="color: #599cab;">TimeKeeper</span><span style="color: #33859e;">()</span>;
+<span class="linenr"> 5: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 6: </span>
+<span class="linenr"> 7: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">AtomicClock</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">TimeKeeper</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 8: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">WaterClock</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">TimeKeeper</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 9: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">WristWatch</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">TimeKeeper</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr">10: </span>
+<span class="linenr">11: </span><span style="color: #245361;">// </span><span style="color: #245361;">some factory function in some source file</span>
+<span class="linenr">12: </span><span style="color: #d26937;">TimeKeeper</span>* <span style="color: #599cab;">getTimeKeeper</span><span style="color: #99d1ce;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">returns a pointer to a dynamic-</span>
+<span class="linenr">13: </span>                             <span style="color: #245361;">// </span><span style="color: #245361;">ally allocated object of a class</span>
+<span class="linenr">14: </span>                             <span style="color: #245361;">// </span><span style="color: #245361;">derived from TimeKeeper</span>
+<span class="linenr">15: </span>
+<span class="linenr">16: </span><span style="color: #d26937;">TimeKeeper</span> *<span style="color: #599cab;">ptk</span> = getTimeKeeper<span style="color: #99d1ce;">()</span>; <span style="color: #245361;">// </span><span style="color: #245361;">get dynamically</span>
+<span class="linenr">17: </span>                                   <span style="color: #245361;">// </span><span style="color: #245361;">allocated object</span>
+<span class="linenr">18: </span>                                   <span style="color: #245361;">// </span><span style="color: #245361;">from TimeKeeper hierarchy</span>
+<span class="linenr">19: </span><span style="color: #245361;">// </span><span style="color: #245361;">some code that uses it</span>
+<span class="linenr">20: </span>
+<span class="linenr">21: </span><span style="color: #195466; font-weight: bold;">delete</span> ptk; <span style="color: #245361;">// </span><span style="color: #245361;">release it to avoid resource leak</span>
+</pre>
+</div>
+
+</section>
+<section >
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">TimeKeeper</span> 
+<span class="linenr">1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">3: </span>    <span style="color: #599cab;">TimeKeeper</span><span style="color: #33859e;">()</span>;
+<span class="linenr">4: </span>    <span style="color: #195466; font-weight: bold;">virtual</span> ~<span style="color: #599cab;">TimeKeeper</span><span style="color: #33859e;">()</span>;
+<span class="linenr">5: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr">6: </span>
+<span class="linenr">7: </span><span style="color: #d26937;">TimeKeeper</span> *<span style="color: #599cab;">ptk</span> = getTimeKeeper<span style="color: #99d1ce;">()</span>;
+<span class="linenr">8: </span>
+<span class="linenr">9: </span><span style="color: #195466; font-weight: bold;">delete</span> ptk; <span style="color: #245361;">// </span><span style="color: #245361;">now behaves correctly</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+You probably have heard about <b>virtual destructors</b>. For most people they are some sort of a mystery, so now we will try to understand what they are good for and how to use them.
+</p>
+
+<p>
+In the example we can see how we have multiple inheritance of a base class for time keeping. For ease of use we have a factory function that returns a derived class pointer (to some of the derived classes), but is deleted through a base class pointer. The problem is this - the base class <code>TimeKeeper</code> doesn't have a <b>virtual destructor</b>. C++ specifies that when a derived class object is deleted through a pointer to a base class with a non-virtual destructor, results are <b>undefined</b>. What happens is that, typically, the derived part of the object gets left out and doesn't get destroyed. This means that if we get an <code>AtomicClock</code> returned to us, only the base class will be destroyed, and will leave the whole object into a <b>semi-deleted</b> state. This cause data structure corruption, data corruption, and memory leaks. Not something we want. To overcome this, we have to declare the base class as a <b>virtual destructor</b> in order to tell the compiler to dynamically go to the destructor of the derived class so that the full object is deleted from memory. The general rule to follow is - if a base class has a virtual function, then it should also have a virtual destructor as well. If a class doesn't have a virtual function, then it probably shouldn't be used as a base class and shouldn't have a virtual destructor as well. The problem of making every destructor virtual is that it makes the whole class expand with one extra pointer that is not needed, which may cause code bloat and problems later on (especially if we want our code to be compatible with other languages). This is why we only declare virtual destructors when we have at least one virtual function in our class.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org36fdc15">
+<h3 id="org36fdc15">Inheritance models</h3>
+<ul>
+<li class="fragment roll-in">is-a</li>
+<li class="fragment roll-in">Composition
+<ul>
+<li>has-a</li>
+<li>is-implemented-in-terms-of</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org8476404">
+<h4 id="org8476404">is-a model</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span> <span style="color: #99d1ce;">{</span> <span style="color: #99d1ce;">}</span>;
+<span class="linenr">1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Student</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">Person</span> <span style="color: #99d1ce;">{</span> <span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+There are several inheritance models we can use. The same way we can have <code>public</code>, <code>private</code>, and <code>protected</code> as access modifiers, we can have the same model of inheritance between classes. But the thing here is that all of these mean wildly different things.
+</p>
+
+<p>
+Let's start with <code>public</code> inheritance. If there is something that you absolutely <b>must</b> remember is this : public inheritance <b>means</b> <b><b>is a</b></b>. This means that every time you write <code>class A : public B</code> you are saying to the compiler (and to other readers of code) that <code>class A</code> <b><b>is a</b></b> type of <code>class B</code> but <b>not vice versa</b>. <b><b>A</b></b> is just a more specialized form of <b><b>B</b></b> and <b>anywhere</b> B is used, A can be used respectively without a problem, but if you use a B in the place where A is needed, things won't work. This is the whole idea behind <code>public</code> inheritance.
+</p>
+
+<p>
+If we take our example, we can clearly say that a every <code>Student</code> is a <code>Person</code>, but not every person is a student. This means that every data member and member function is <code>Person</code> can be used in <code>Student</code> and be correct, but we cannot do the reverse thing. This is intuitive enough and there isn't much to confuse us. 
+</p>
+
+<p>
+<b>Note:</b> <code>Private</code> inheritance on the other hand means something completely different and we are going to look at it in just a minute. <code>Protected</code> inheritance is something that doesn't really have a concept behind it (or at least the same way <code>private</code> and <code>public</code> have) so we will just not talk about it.
+</p>
+
+</aside>
+
+</section>
+<section >
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Bird</span>
+<span class="linenr">1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">3: </span>    <span style="color: #195466; font-weight: bold;">virtual</span> <span style="color: #d26937;">void</span> <span style="color: #599cab;">fly</span><span style="color: #33859e;">()</span>;
+<span class="linenr">4: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr">5: </span>
+<span class="linenr">6: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Penguin</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">Bird</span>
+<span class="linenr">7: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">8: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Let's look at a simple example to get a taste for <code>public</code> inheritance. Here we can see that the class Penguin is a Bird. So far so good. But wait a minute. Penguins cannot fly, so we have a problem. We have to change something to make <b>public inheritance</b> work.
+</p>
+
+</aside>
+
+</section>
+<section >
+
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Bird</span>
+<span class="linenr"> 1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 2: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">FlyingBird</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">Bird</span> 
+<span class="linenr"> 5: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 6: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 7: </span>    <span style="color: #195466; font-weight: bold;">virtual</span> <span style="color: #d26937;">void</span> <span style="color: #599cab;">fly</span><span style="color: #33859e;">()</span>;
+<span class="linenr"> 8: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Penguin</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">Bird</span> 
+<span class="linenr">11: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">12: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Here we fix the problem&#x2026; kind of. OK but what if the program we are writing doesn't really need a <code>fly()</code> method or that we don't have the conception of implementing something that can fly. Does that mean that our original design was correct? Maybe it was. It all depends on what we have to do. This goes for show how our perception of things can easily misguide us. In general in software design there isn't one right way to do things, but we have to think about how we implement things. I want to stress the point that until now, most of us are used to make associations between real life objects without really thinking about them. But when it comes to implementing part of life into a program, we have to be vary judicious on how we do that. When I say that <b>public</b> inheritance means that <code>class A</code> is a <code>class B</code> completely, this means <b>completely</b>, we cannot close our eyes to just one thing and ignore it.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org5783060">
+<h4 id="org5783060">Inheritance of interface and implementation</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Shape</span> 
+<span class="linenr">1: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr">2: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr">3: </span>    <span style="color: #195466; font-weight: bold;">virtual</span> <span style="color: #d26937;">void</span> <span style="color: #599cab;">draw</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span> = <span style="color: #33859e; font-weight: bold;">0</span>;
+<span class="linenr">4: </span>    <span style="color: #195466; font-weight: bold;">virtual</span> <span style="color: #d26937;">void</span> <span style="color: #599cab;">error</span><span style="color: #33859e;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span>&amp; <span style="color: #599cab;">msg</span><span style="color: #33859e;">)</span>;
+<span class="linenr">5: </span>    <span style="color: #d26937;">int</span> <span style="color: #599cab;">objectID</span><span style="color: #33859e;">()</span> <span style="color: #195466; font-weight: bold;">const</span>;
+<span class="linenr">6: </span><span style="color: #99d1ce;">}</span>;
+<span class="linenr">7: </span>
+<span class="linenr">8: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Rectangle</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">Shape</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr">9: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Ellipse</span>: <span style="color: #195466; font-weight: bold;">public</span> <span style="color: #d26937;">Shape</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Public inheritance is pretty useful, but we should think about how we use it and in what context. Here I want to talk about the several options we have. I have talked about interface and implementation quite a bit and in C++ we can inherit only the interface and provide our own implementation, we can inherit both the interface and implementation, but override the implementation, and we can also inherit both and not allow to override the implementation. Being able to make the difference between all of these things is quite important in order to understand the other models of inheritance we will cover.
+</p>
+
+<p>
+In this example, we have three cases for what we need to talk about. We have a <b>pure virtual</b> function, a normal virtual function, and just a normal function in the base <code>class Shape</code>. Now apart from the fact that we cannot make instances of the base class, these three functions represent how to can interact with interfaces and implementations.
+</p>
+
+<p>
+First let's look at the pure virtual function. Because we have the situation where we want to draw a specific shape, it is normal for our program to support such functionality. What the pure virtual function is telling is - we can draw whatever shape we want, but we have to say <b>how</b> to draw that specific thing. We do not have any default behavior so we are just inheriting an interface and only that. We can't make a generic algorithm to draw everything, so we are just getting these interface part of the class and implementing the logic ourselves.
+</p>
+
+<p>
+Then we have the <code>error</code> function. It's just a normal virtual function, which means that it has some default implementation in the base class. This is the situation, where we are both inheriting the interface and implementation logic, but we are giving ourselves room to redefine the error logic if we want to. That is - it's normal for every shape to have a specific error message to show, but if we are in a situation where we cannot specify a custom error, we still want to output something to the user, and that is why having a default option to fall back on is very useful.
+</p>
+
+<p>
+Finally we have the normal method that is getting the <code>id</code> of the object. Here it's pretty simple. We are saying that every object has the same logic of implementing the <code>id</code> function and we do not want to change that logic. So we are just declaring this function in the base class so that every object can have an id. This allows us to inherit both the interface and implementation and not alter anything from the inheritance.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orga8c55cf">
+<h4 id="orga8c55cf">Composition models</h4>
+<aside class="notes">
+<p>
+Now the last two models we should look at are the <code>has-a</code> and <code>is-implemented-in-terms-of</code> models. But they are somewhat different than <b>"simple"</b> public inheritance, and they mean totally different things. In short - <b>composition</b> is the relationship between types that arises when objects of one type have objects from another type. That is, we are modeling something that is <b>composed</b> of something else. The two models both use composition, but have different meanings in terms of the modeling part.
+</p>
+
+<p>
+<b>has-a</b> is in the <b>application domain</b>. Meaning - when our program is modeling something, we are modeling real world things, like people, cars, games, screens, etc. This is the application domain. <b>is-implemented-in-terms-of</b> means that we are modeling implementations like data structures, buffers, mutexes, etc. This is part of the <b>implementation domain</b>.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org1532cef">
+<h4 id="org1532cef">has-a</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr"> 0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Address</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">PhoneNumber</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span> 
+<span class="linenr"> 4: </span><span style="color: #99d1ce;">{</span>
+<span class="linenr"> 5: </span><span style="color: #195466; font-weight: bold;">public</span>:
+<span class="linenr"> 6: </span><span style="color: #195466; font-weight: bold;">private</span>:
+<span class="linenr"> 7: </span>    <span style="color: #33859e; font-weight: bold;">std</span>::<span style="color: #d26937;">string</span> <span style="color: #599cab;">name</span>;       <span style="color: #245361;">// </span><span style="color: #245361;">composed object</span>
+<span class="linenr"> 8: </span>    <span style="color: #d26937;">Address</span> <span style="color: #599cab;">address</span>;        <span style="color: #245361;">// </span><span style="color: #245361;">composed object</span>
+<span class="linenr"> 9: </span>    <span style="color: #d26937;">PhoneNumber</span> <span style="color: #599cab;">phoneNumber</span>;<span style="color: #245361;">// </span><span style="color: #245361;">composed object</span>
+<span class="linenr">10: </span>    <span style="color: #d26937;">PhoneNumber</span> <span style="color: #599cab;">faxNumber</span>;  <span style="color: #245361;">// </span><span style="color: #245361;">composed object</span>
+<span class="linenr">11: </span><span style="color: #99d1ce;">}</span>;
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Here are modeling something from the real world, where a <code>Person</code> <b>has-a</b> name, <b>has-a</b> address, <b>has-a</b> phone number, etc. The roles between <b>is-a</b> and <b>has-a</b> are very clear.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgdfeba3f">
+<h4 id="orgdfeba3f">is-implemented-in-terms-of</h4>
+<div class="org-src-container">
+
+<pre  class="src src-C++"><span class="linenr">0: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Person</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;
+<span class="linenr">1: </span><span style="color: #195466; font-weight: bold;">class</span> <span style="color: #d26937;">Student</span>
+<span class="linenr">2: </span>: <span style="color: #195466; font-weight: bold;">private</span> <span style="color: #d26937;">Person</span> <span style="color: #99d1ce;">{</span> . . . <span style="color: #99d1ce;">}</span>;  <span style="color: #245361;">// </span><span style="color: #245361;">inheritance is now private</span>
+<span class="linenr">3: </span>
+<span class="linenr">4: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">eat</span><span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">Person</span>&amp; <span style="color: #599cab;">p</span><span style="color: #99d1ce;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">anyone can eat</span>
+<span class="linenr">5: </span><span style="color: #d26937;">void</span> <span style="color: #599cab;">study</span><span style="color: #99d1ce;">(</span><span style="color: #195466; font-weight: bold;">const</span> <span style="color: #d26937;">Student</span>&amp; <span style="color: #599cab;">s</span><span style="color: #99d1ce;">)</span>; <span style="color: #245361;">// </span><span style="color: #245361;">only students study</span>
+<span class="linenr">6: </span><span style="color: #d26937;">Person</span> <span style="color: #599cab;">p</span>;  <span style="color: #245361;">// </span><span style="color: #245361;">p is a Person</span>
+<span class="linenr">7: </span><span style="color: #d26937;">Student</span> <span style="color: #599cab;">s</span>; <span style="color: #245361;">// </span><span style="color: #245361;">s is a Student</span>
+<span class="linenr">8: </span>eat<span style="color: #99d1ce;">(</span>p<span style="color: #99d1ce;">)</span>;    <span style="color: #245361;">// </span><span style="color: #245361;">fine, p is a Person</span>
+<span class="linenr">9: </span>eat<span style="color: #99d1ce;">(</span>s<span style="color: #99d1ce;">)</span>;    <span style="color: #245361;">// </span><span style="color: #245361;">error! a Student isn&#8217;t a Person</span>
+</pre>
+</div>
+
+<aside class="notes">
+<p>
+Okay, we covered some different models and we know what <code>public</code> inheritance does. But what about <code>private</code>? What does it do and what does it mean? And how and when should we use it? All of these are valid questions and we will cover them now.
+</p>
+
+<p>
+We can see from the example that we get different behavior when using <b>private inheritance</b>. Private inheritance works like this - the compiler will not convert a derived class into a base class and all of the protected (that's why the eat function fails at the end, because a <code>Student</code> is not a <code>Person</code>) and all members of the base class will be transformed into a private into the derived class. But what does all of this means? It means that private inheritance is a <b>is-implemented-in-terms-of</b> inheritance. If we have a <code>class A</code> which inherits from <code>class B</code> it does so because it is interested in the way some things in <b><b>B</b></b> are implemented and <b><b>not</b></b> because there is any conceptual relationship between the two classes. This makes class A into an implementation technique. That's why when we inherit privately, everything becomes private in the derived class, because we just want to use the implementation and not show it.
+</p>
+
+<p>
+Now the question is this - when should we use <code>private</code> inheritance and when should we use <b>composition</b>? The general approach is this - use composition by default, and <code>private</code> inheritance when you must. The <b>must</b> part comes in when we have protected members and/or virtual functions.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orgffd708b">
+<h2 id="orgffd708b">Exercises</h2>
+<ul>
+<li><a href="https://www.reddit.com/r/dailyprogrammer/comments/7d4yoe/20171114_challenge_340_intermediate_walk_in_a/">Walk in minefield</a></li>
+<li><a href="https://www.reddit.com/r/dailyprogrammer/comments/39ws1x/20150615_challenge_218_easy_todo_list_part_1/">Todo list part 1</a></li>
+<li><a href="https://www.reddit.com/r/dailyprogrammer/comments/364hq/20150617_challenge_219_intermediate_todo_list/">Todo list part 2</a></li>
+<li><a href="https://www.reddit.com/r/dailyprogrammer/comments/2vkwgb/20150211_challenge_201_practical_exercise_get/">Get your priorities straight</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org1231aa0">
+<h2 id="org1231aa0">References</h2>
+<div class="outline-text-2" id="text-org1231aa0">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgbec8f0a">
+<h3 id="orgbec8f0a">File Structure</h3>
+<ul>
+<li><a href="http://www.cplusplus.com/forum/articles/10627/">How to use header files</a></li>
+<li><a href="http://www.learncpp.com/cpp-tutorial/19-header-files/">Header files</a></li>
+<li><a href="https://stackoverflow.com/questions/333889/why-have-header-files-and-cpp-files">Why do we have header and cpp files</a></li>
+<li><a href="https://www.cprogramming.com/declare_vs_define.html">Declaration vs Definition</a></li>
+<li><a href="https://stackoverflow.com/questions/1410563/what-is-the-difference-between-a-definition-and-a-declaration">Difference between declaration and definition</a></li>
+<li><a href="http://aszt.inf.elte.hu/~gsd/halado_cpp/ch09s03.html">The PIMPL idiom</a></li>
+<li><a href="https://stackoverflow.com/questions/4757565/what-are-forward-declarations-in-c">Forward declarations</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org2f84a86">
+<h3 id="org2f84a86">Classes and Objects</h3>
+<ul>
+<li><a href="http://www.cplusplus.com/articles/y8hv0pDG/">Copy constructors, assignment operators, and exception safe assignment</a></li>
+<li><a href="http://www.drdobbs.com/the-problem-with-const-data-members/184403306">The Problem with const Data Members</a></li>
+<li><a href="http://en.cppreference.com/w/cpp/language/copy_assignment">Copy assignment</a></li>
+<li><a href="http://www.bogotobogo.com/cplusplus/functors.php">Functions / Function Objects</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orga2455e8">
+<h3 id="orga2455e8">Inheritance</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Multiple_inheritance">Multiple Inheritance</a></li>
+<li><a href="https://stackoverflow.com/questions/137282/how-can-i-avoid-the-diamond-of-death-when-using-multiple-inheritance">Deadly MI Diamond</a></li>
+<li><a href="https://www.cprogramming.com/tutorial/virtual_inheritance.html">Virtual inheritance</a></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="../js/head.min.js"></script>
+<script src="../js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: true,
+center: true,
+slideNumber: 'c',
+rollingLinks: true,
+keyboard: true,
+overview: true,
+width: 1920,
+height: 1080,
+margin: 0.00,
+maxScale: 2.00,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: '../js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: '../js/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: '../js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: '../js/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
